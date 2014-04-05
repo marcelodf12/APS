@@ -58,6 +58,7 @@ WSGI_APPLICATION = 'aps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME':'projectManager',
         'USER':'postgres',
         'PASSWORD':'is2',
         'HOST':'localhost',
