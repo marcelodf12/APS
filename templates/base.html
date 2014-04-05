@@ -3,7 +3,7 @@
 
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Alpha Project System</title>
+<title>{% block title %}{% endblock %}</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="{{STATIC_URL}}css/style.css" rel="stylesheet" type="text/css" />
@@ -15,7 +15,8 @@
 </div>
 <div id="menu">
 	<ul>
-
+		{% block menu1 %}{% endblock %}
+        <li><a href="/cerrar/">Cerrar</a></li>
 	</ul>
 </div>
 <div id="content">
@@ -23,27 +24,14 @@
 	<!--
 		Columna de contenido
 	-->
-	<br>
-    {% if user.is_authenticated %}
-        Usted esta autenticado como {{user.username|capfirst}}
-        <a href="inicio">Entrar</a>
-    {% else %}
-	<form method="post">{% csrf_token %}
-		Usuario:<br>
-		<input type="text" name="username" size="25" maxlength="50"><br>
-		Contraseña<br>
-		<input type="password" name="password" size="25" maxlength="50"><br><br>
-		<input type="submit" value="Entrar">
-	</form>
-    {% endif %}
-	<br>
-		
+		{% block contenido %}{% endblock %}
+
 	</div>
 	<div id="columnB">
 	<!--
 		Columna de Menu Lateral
 	-->
-
+		{% block menu2 %}{% endblock %}
 	</div>
 </div>
 <div id="footer">

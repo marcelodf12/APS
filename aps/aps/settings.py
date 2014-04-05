@@ -28,6 +28,12 @@ TEMPLATE_DEBUG = True
 from unipath import Path
 RUTA_PROYECTO = Path(__file__).ancestor(3)
 
+## Para el login
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGOUT_URL = reverse_lazy('logout')
+
 ALLOWED_HOSTS = []
 
 # Application definition

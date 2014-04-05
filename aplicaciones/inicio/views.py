@@ -4,5 +4,5 @@ from django.shortcuts import render
 
 from django.views.generic import TemplateView
 
-class index(TemplateView):
-    template_name = 'inicio/index.html'
+class home(TemplateView):
+    template_name = 'inicio/inicio.html'
