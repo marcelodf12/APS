@@ -24,8 +24,11 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+## Para que funcione esta linea debe hacerse pip install unipath
+from unipath import Path
+RUTA_PROYECTO = Path(__file__).ancestor(3)
 
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -36,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'aplicaciones.inicio',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,10 +51,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+
 ROOT_URLCONF = 'aps.urls'
 
 WSGI_APPLICATION = 'aps.wsgi.application'
 
+TEMPLATE_DIRS = (
+    RUTA_PROYECTO.child('templates'),
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -84,3 +92,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    RUTA_PROYECTO.child('static'),
+)
