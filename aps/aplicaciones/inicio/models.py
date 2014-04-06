@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 
 class Usuario(models.Model):
     user = models.OneToOneField(User)
-    estado = models.TextField()
-    nombre = models.TextField()
-    apellido = models.TextField()
-    correo = models.TextField()
+    estado = models.CharField(max_length=30)
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    correo = models.CharField(max_length=100)
 
     def __unicode__(self):
         return self.user.username

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+      Administración de Proyectos
+{% endblock %}
+
+{% block menu1 %}
+    <li><a href="/inicio/">Home</a></li>
+{% endblock %}
+
+
+
+{% block menu2 %}
+     <ul>
+		<li><a href="/proyectos/crear/">Nuevo Proyecto</a></li>
+		<li><a href="#">Modificar Proyecto</a></li>
+		<li><a href="#">Eliminar Proyecto</a></li>
+     </ul>
+
+{% endblock %}
+
+{% block contenido %}
+     <ul>
+         {% for project in proyectos %}
+            <h1>{{project.nombre}}</h1>
+            <li><b>Fecha de Inicio: </b>{{project.fechaInicio}}</li>
+            <li><b>Cantidad de Fases: </b>{{project.cantFases}}</li>
+            <li><b>Estado: </b>{{project.estado}}</li>
+         {% endfor %}
+     </ul>
+
+{% endblock %}

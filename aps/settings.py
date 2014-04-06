@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aplicaciones.inicio',
+    'aplicaciones.proyectos',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,6 +83,9 @@ DATABASES = {
         'PORT':'5432',
     }
 }
+
+# Archivos Dinamicos multimedia
+MEDIA_ROOT = RUTA_PROYECTO.child('media')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
