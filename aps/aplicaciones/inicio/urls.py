@@ -1,5 +1,6 @@
-from django.conf.urls import patterns, include, url
-from .views import home
+from django.conf.urls import patterns, url
+
+from aps.aplicaciones.inicio.views import home, Registrarse
 
 urlpatterns = patterns('',
     url(r'^$','django.contrib.auth.views.login',
@@ -8,5 +9,7 @@ urlpatterns = patterns('',
         name='logout'),
     url(r'^inicio/$', home.as_view(),
         name='home'),
+    url(r'^registrarse/$', Registrarse.as_view(), name='registrarse'),
+
 
 )

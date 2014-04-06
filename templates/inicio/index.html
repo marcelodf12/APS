@@ -28,16 +28,16 @@
         Usted esta autenticado como {{user.username|capfirst}}
         <a href="inicio">Entrar</a>
     {% else %}
-	<form method="post">{% csrf_token %}
-		Usuario:<br>
-		<input type="text" name="username" size="25" maxlength="50"><br>
-		Contraseña<br>
-		<input type="password" name="password" size="25" maxlength="50"><br><br>
-		<input type="submit" value="Entrar">
-	</form>
+        <form method="post">{% csrf_token %}
+            Usuario:<br>
+            <input type="text" name="username" size="25" maxlength="50"><br>
+            Contraseña<br>
+            <input type="password" name="password" size="25" maxlength="50"><br><br>
+            <input type="submit" value="Entrar"> <a href="/registrarse/">Registrase</a>
+        </form>
     {% endif %}
 	<br>
-		
+
 	</div>
 	<div id="columnB">
 	<!--

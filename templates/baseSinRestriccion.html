@@ -13,7 +13,6 @@
 	<h1>Alpha Project System</h1>
 	<h2>by Equipo R03 </h2>
 </div>
-{% if user.is_authenticated %}
     <div id="menu">
         <ul>
             {% block menu1 %}{% endblock %}
@@ -35,22 +34,6 @@
             {% block menu2 %}{% endblock %}
         </div>
     </div>
-{% else %}
-   <div id="menu">
-        <ul>
-            <li><a href="/cerrar/">Cerrar</a></li>
-        </ul>
-    </div>
-    <div id="content">
-        <div id="columnA">
-            <h1><font color="red">Acceso Restringido</font></h1><br>
-            <a href="/"> Home </a><br><br>
-            <a href="/registrarse/">Registrase</a><br><br><br>
-        </div>
-        <div id="columnB">
-        </div>
-    </div>
-{% endif %}
 <div id="footer">
         <p>Proyecto de Ingeniería de Software 2 - Ing. en Informática - 2014</p>
 </div>

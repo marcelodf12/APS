@@ -1,0 +1,25 @@
+{% extends "baseSinRestriccion.html" %}
+
+{% block title %}
+Registro
+{% endblock %}
+
+
+{% block menu1 %}
+		<li><a href="/">Atras</a></li>
+
+{% endblock %}
+
+{% block menu2 %}
+
+
+{% endblock %}
+
+
+{% block contenido %}
+    <form method="post">{% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Registrarse">
+    </form>
+
+{% endblock %}

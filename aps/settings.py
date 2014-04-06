@@ -6,6 +6,10 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
+
+Requiere los paquetes
+python-psycopg2
+Unipath
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,7 +30,7 @@ TEMPLATE_DEBUG = True
 
 ## Para que funcione esta linea debe hacerse pip install unipath
 from unipath import Path
-RUTA_PROYECTO = Path(__file__).ancestor(3)
+RUTA_PROYECTO = Path(__file__).ancestor(2)
 
 ## Para el login
 from django.core.urlresolvers import reverse_lazy
@@ -37,7 +41,6 @@ LOGOUT_URL = reverse_lazy('logout')
 ALLOWED_HOSTS = []
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,7 +86,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
