@@ -9,7 +9,7 @@ class crearProyecto(CreateView):
     template_name = 'proyectos/crearProyecto.html'
     model = Proyectos
     success_url = reverse_lazy('listar_proyectos')
-    #fields =
+    #fields = ['nombre','fechaInicio','cantFases']
 
     def form_valid(self, form):
         proyecto = form.save()
