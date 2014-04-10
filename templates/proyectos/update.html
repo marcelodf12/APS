@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% block title %}
-      Crear Nuevo Proyecto
+      Actualizar Proyecto
 {% endblock %}
 
 {% block menu1 %}
-
 {% endblock %}
-
 
 {% block menu2 %}
      <ul>
@@ -16,10 +14,11 @@
      </ul>
 
 {% endblock %}
+
 {% block contenido %}
-      <h1>Nuevo Proyectos</h1>
+      <h1>Altualizar Proyectos</h1>
         <form method="post">{% csrf_token %}
             {{form.as_p}}
-            <input type="submit" value="Crear">
+            <input type="submit" value="Actualizar">
         </form>
 {% endblock %}

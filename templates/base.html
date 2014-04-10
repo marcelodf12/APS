@@ -16,6 +16,7 @@
 {% if user.is_authenticated %}
     <div id="menu">
         <ul>
+            <li><a href="/inicio/">Home</a></li>
             {% block menu1 %}{% endblock %}
             <li><a href="/cerrar/">Cerrar</a></li>
         </ul>

@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block title %}
-      Lista de Proyectos
+      Iniciar Proyecto
 {% endblock %}
 
 {% block menu1 %}
 
 {% endblock %}
+
+
 
 {% block menu2 %}
      <ul>
@@ -23,8 +25,7 @@
             <li><b>Fecha de Inicio: </b>{{project.fechaInicio}}</li>
             <li><b>Cantidad de Fases: </b>{{project.cantFases}}</li>
             <li><b>Estado: </b>{{project.estado}}</li>
-            <a href="/proyectos/modificar/{{project.id}}">Modificar</a>
-            <a href="/proyectos/eliminar/{{project.id}}">Eliminar</a>
+            <a href="/proyectos/iniciar/{{project.id}}">Iniciar</a>
          {% endfor %}
      </ul>
 
