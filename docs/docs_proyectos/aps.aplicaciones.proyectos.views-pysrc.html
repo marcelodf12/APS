@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>aps.aplicaciones.proyectos.views</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="aps.aplicaciones.proyectos-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;aps ::
+        Package&nbsp;aplicaciones ::
+        <a href="aps.aplicaciones.proyectos-module.html">Package&nbsp;proyectos</a> ::
+        Module&nbsp;views
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="aps.aplicaciones.proyectos.views-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="aps.aplicaciones.proyectos.views-module.html">Module aps.aplicaciones.proyectos.views</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">""" Los nombres de clases son los nombres de las vistas que posteriormente son invocadas en el archivo URLS.py</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">shortcuts</tt> <tt class="py-keyword">import</tt> <tt class="py-name">render</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Module aps.aplicaciones.proyectos.views=aps.aplicaciones.proyectos.views-module.html"><a title="aps.aplicaciones.proyectos.views" class="py-name" href="#" onclick="return doclink('link-0', 'views', 'link-0');">views</a></tt><tt class="py-op">.</tt><tt class="py-name">generic</tt> <tt class="py-keyword">import</tt> <tt class="py-name">TemplateView</tt><tt class="py-op">,</tt> <tt class="py-name">CreateView</tt><tt class="py-op">,</tt> <tt class="py-name">ListView</tt><tt class="py-op">,</tt> <tt class="py-name">UpdateView</tt><tt class="py-op">,</tt> <tt class="py-name">FormView</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt class="py-name">aplicaciones</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package aps.aplicaciones.proyectos=aps.aplicaciones.proyectos-module.html"><a title="aps.aplicaciones.proyectos" class="py-name" href="#" onclick="return doclink('link-1', 'proyectos', 'link-1');">proyectos</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module aps.aplicaciones.proyectos.models=aps.aplicaciones.proyectos.models-module.html"><a title="aps.aplicaciones.proyectos.models" class="py-name" href="#" onclick="return doclink('link-2', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class aps.aplicaciones.proyectos.models.Proyectos=aps.aplicaciones.proyectos.models.Proyectos-class.html"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-3', 'Proyectos', 'link-3');">Proyectos</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">core</tt><tt class="py-op">.</tt><tt class="py-name">urlresolvers</tt> <tt class="py-keyword">import</tt> <tt class="py-name">reverse_lazy</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt class="py-name">aplicaciones</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="aps.aplicaciones.proyectos" class="py-name" href="#" onclick="return doclink('link-4', 'proyectos', 'link-1');">proyectos</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Module aps.aplicaciones.proyectos.forms=aps.aplicaciones.proyectos.forms-module.html"><a title="aps.aplicaciones.proyectos.forms" class="py-name" href="#" onclick="return doclink('link-5', 'forms', 'link-5');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Class aps.aplicaciones.proyectos.forms.ComentariosLog=aps.aplicaciones.proyectos.forms.ComentariosLog-class.html"><a title="aps.aplicaciones.proyectos.forms.ComentariosLog" class="py-name" href="#" onclick="return doclink('link-6', 'ComentariosLog', 'link-6');">ComentariosLog</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"># Create your views here.</tt> </tt>
+<a name="crearProyecto"></a><div id="crearProyecto-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="crearProyecto-toggle" onclick="return toggle('crearProyecto');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.crearProyecto-class.html">crearProyecto</a><tt class="py-op">(</tt><tt class="py-base-class">CreateView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="crearProyecto-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="crearProyecto-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt class="py-docstring">""" Vista de creacion de proyectos, hereda atributos y metodos de la clase CreateView """</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable aps.aplicaciones.proyectos.views.adminProyecto.template_name=aps.aplicaciones.proyectos.views.adminProyecto-class.html#template_name,Variable aps.aplicaciones.proyectos.views.crearProyecto.template_name=aps.aplicaciones.proyectos.views.crearProyecto-class.html#template_name,Variable aps.aplicaciones.proyectos.views.eliminarProyectos.template_name=aps.aplicaciones.proyectos.views.eliminarProyectos-class.html#template_name,Variable aps.aplicaciones.proyectos.views.iniciarProyecto.template_name=aps.aplicaciones.proyectos.views.iniciarProyecto-class.html#template_name,Variable aps.aplicaciones.proyectos.views.listarProyectos.template_name=aps.aplicaciones.proyectos.views.listarProyectos-class.html#template_name,Variable aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name=aps.aplicaciones.proyectos.views.listarProyectosNoIniciados-class.html#template_name,Variable aps.aplicaciones.proyectos.views.modificarProyectos.template_name=aps.aplicaciones.proyectos.views.modificarProyectos-class.html#template_name"><a title="aps.aplicaciones.proyectos.views.adminProyecto.template_name
+aps.aplicaciones.proyectos.views.crearProyecto.template_name
+aps.aplicaciones.proyectos.views.eliminarProyectos.template_name
+aps.aplicaciones.proyectos.views.iniciarProyecto.template_name
+aps.aplicaciones.proyectos.views.listarProyectos.template_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name
+aps.aplicaciones.proyectos.views.modificarProyectos.template_name" class="py-name" href="#" onclick="return doclink('link-7', 'template_name', 'link-7');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'proyectos/crearProyecto.html'</tt>      <tt class="py-comment"># Se define la direccion y nombre del template</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Variable aps.aplicaciones.proyectos.views.crearProyecto.model=aps.aplicaciones.proyectos.views.crearProyecto-class.html#model,Variable aps.aplicaciones.proyectos.views.listarProyectos.model=aps.aplicaciones.proyectos.views.listarProyectos-class.html#model,Variable aps.aplicaciones.proyectos.views.modificarProyectos.model=aps.aplicaciones.proyectos.views.modificarProyectos-class.html#model"><a title="aps.aplicaciones.proyectos.views.crearProyecto.model
+aps.aplicaciones.proyectos.views.listarProyectos.model
+aps.aplicaciones.proyectos.views.modificarProyectos.model" class="py-name" href="#" onclick="return doclink('link-8', 'model', 'link-8');">model</a></tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-9', 'Proyectos', 'link-3');">Proyectos</a></tt>                                   <tt class="py-comment"># Se asocia al modelo 'items'</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt id="link-10" class="py-name" targets="Variable aps.aplicaciones.proyectos.views.crearProyecto.success_url=aps.aplicaciones.proyectos.views.crearProyecto-class.html#success_url,Variable aps.aplicaciones.proyectos.views.eliminarProyectos.success_url=aps.aplicaciones.proyectos.views.eliminarProyectos-class.html#success_url,Variable aps.aplicaciones.proyectos.views.iniciarProyecto.success_url=aps.aplicaciones.proyectos.views.iniciarProyecto-class.html#success_url,Variable aps.aplicaciones.proyectos.views.modificarProyectos.success_url=aps.aplicaciones.proyectos.views.modificarProyectos-class.html#success_url"><a title="aps.aplicaciones.proyectos.views.crearProyecto.success_url
+aps.aplicaciones.proyectos.views.eliminarProyectos.success_url
+aps.aplicaciones.proyectos.views.iniciarProyecto.success_url
+aps.aplicaciones.proyectos.views.modificarProyectos.success_url" class="py-name" href="#" onclick="return doclink('link-10', 'success_url', 'link-10');">success_url</a></tt> <tt class="py-op">=</tt> <tt class="py-name">reverse_lazy</tt><tt class="py-op">(</tt><tt class="py-string">'listar_proyectos'</tt><tt class="py-op">)</tt>      <tt class="py-comment"># Se mostrara la vista 'listar_proyecto' en el caso de registro exitoso</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-comment">#fields = ['nombre','fechaInicio','cantFases']</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="crearProyecto.form_valid"></a><div id="crearProyecto.form_valid-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="crearProyecto.form_valid-toggle" onclick="return toggle('crearProyecto.form_valid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.crearProyecto-class.html#form_valid">form_valid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="crearProyecto.form_valid-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="crearProyecto.form_valid-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-docstring">""" Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">form</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.estado=aps.aplicaciones.proyectos.models.Proyectos-class.html#estado"><a title="aps.aplicaciones.proyectos.models.Proyectos.estado" class="py-name" href="#" onclick="return doclink('link-11', 'estado', 'link-11');">estado</a></tt><tt class="py-op">=</tt><tt class="py-string">'creado'</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-12" class="py-name" targets="Class aps.aplicaciones.proyectos.views.crearProyecto=aps.aplicaciones.proyectos.views.crearProyecto-class.html"><a title="aps.aplicaciones.proyectos.views.crearProyecto" class="py-name" href="#" onclick="return doclink('link-12', 'crearProyecto', 'link-12');">crearProyecto</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method aps.aplicaciones.proyectos.views.crearProyecto.form_valid()=aps.aplicaciones.proyectos.views.crearProyecto-class.html#form_valid,Method aps.aplicaciones.proyectos.views.eliminarProyectos.form_valid()=aps.aplicaciones.proyectos.views.eliminarProyectos-class.html#form_valid,Method aps.aplicaciones.proyectos.views.iniciarProyecto.form_valid()=aps.aplicaciones.proyectos.views.iniciarProyecto-class.html#form_valid"><a title="aps.aplicaciones.proyectos.views.crearProyecto.form_valid
+aps.aplicaciones.proyectos.views.eliminarProyectos.form_valid
+aps.aplicaciones.proyectos.views.iniciarProyecto.form_valid" class="py-name" href="#" onclick="return doclink('link-13', 'form_valid', 'link-13');">form_valid</a></tt><tt class="py-op">(</tt><tt class="py-name">form</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="adminProyecto"></a><div id="adminProyecto-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="adminProyecto-toggle" onclick="return toggle('adminProyecto');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.adminProyecto-class.html">adminProyecto</a><tt class="py-op">(</tt><tt class="py-base-class">TemplateView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="adminProyecto-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="adminProyecto-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-docstring">""" Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">    <tt id="link-14" class="py-name"><a title="aps.aplicaciones.proyectos.views.adminProyecto.template_name
+aps.aplicaciones.proyectos.views.crearProyecto.template_name
+aps.aplicaciones.proyectos.views.eliminarProyectos.template_name
+aps.aplicaciones.proyectos.views.iniciarProyecto.template_name
+aps.aplicaciones.proyectos.views.listarProyectos.template_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name
+aps.aplicaciones.proyectos.views.modificarProyectos.template_name" class="py-name" href="#" onclick="return doclink('link-14', 'template_name', 'link-7');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'proyectos/admin.html'</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
+<a name="listarProyectos"></a><div id="listarProyectos-def"><a name="L29"></a><tt class="py-lineno">29</tt> <a class="py-toggle" href="#" id="listarProyectos-toggle" onclick="return toggle('listarProyectos');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.listarProyectos-class.html">listarProyectos</a><tt class="py-op">(</tt><tt class="py-base-class">ListView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="listarProyectos-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="listarProyectos-expanded"><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">    <tt class="py-docstring">""" Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt id="link-15" class="py-name"><a title="aps.aplicaciones.proyectos.views.adminProyecto.template_name
+aps.aplicaciones.proyectos.views.crearProyecto.template_name
+aps.aplicaciones.proyectos.views.eliminarProyectos.template_name
+aps.aplicaciones.proyectos.views.iniciarProyecto.template_name
+aps.aplicaciones.proyectos.views.listarProyectos.template_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name
+aps.aplicaciones.proyectos.views.modificarProyectos.template_name" class="py-name" href="#" onclick="return doclink('link-15', 'template_name', 'link-7');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'proyectos/verProyectos.html'</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">    <tt id="link-16" class="py-name"><a title="aps.aplicaciones.proyectos.views.crearProyecto.model
+aps.aplicaciones.proyectos.views.listarProyectos.model
+aps.aplicaciones.proyectos.views.modificarProyectos.model" class="py-name" href="#" onclick="return doclink('link-16', 'model', 'link-8');">model</a></tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-17', 'Proyectos', 'link-3');">Proyectos</a></tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">    <tt id="link-18" class="py-name" targets="Variable aps.aplicaciones.proyectos.views.listarProyectos.context_object_name=aps.aplicaciones.proyectos.views.listarProyectos-class.html#context_object_name,Variable aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.context_object_name=aps.aplicaciones.proyectos.views.listarProyectosNoIniciados-class.html#context_object_name"><a title="aps.aplicaciones.proyectos.views.listarProyectos.context_object_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.context_object_name" class="py-name" href="#" onclick="return doclink('link-18', 'context_object_name', 'link-18');">context_object_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'proyectos'</tt>           <tt class="py-comment"># Se define un nombre para los objetos de esta clase (utilizado por</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">                                                <tt class="py-comment"># ejemplo para iterar en el template)</tt> </tt>
+<a name="listarProyectosNoIniciados"></a><div id="listarProyectosNoIniciados-def"><a name="L35"></a><tt class="py-lineno">35</tt> <a class="py-toggle" href="#" id="listarProyectosNoIniciados-toggle" onclick="return toggle('listarProyectosNoIniciados');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.listarProyectosNoIniciados-class.html">listarProyectosNoIniciados</a><tt class="py-op">(</tt><tt class="py-base-class">ListView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="listarProyectosNoIniciados-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="listarProyectosNoIniciados-expanded"><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">    <tt class="py-docstring">""" Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt id="link-19" class="py-name"><a title="aps.aplicaciones.proyectos.views.adminProyecto.template_name
+aps.aplicaciones.proyectos.views.crearProyecto.template_name
+aps.aplicaciones.proyectos.views.eliminarProyectos.template_name
+aps.aplicaciones.proyectos.views.iniciarProyecto.template_name
+aps.aplicaciones.proyectos.views.listarProyectos.template_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name
+aps.aplicaciones.proyectos.views.modificarProyectos.template_name" class="py-name" href="#" onclick="return doclink('link-19', 'template_name', 'link-7');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'proyectos/listanoiniciados.html'</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt id="link-20" class="py-name" targets="Variable aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.queryset=aps.aplicaciones.proyectos.views.listarProyectosNoIniciados-class.html#queryset"><a title="aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.queryset" class="py-name" href="#" onclick="return doclink('link-20', 'queryset', 'link-20');">queryset</a></tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-21', 'Proyectos', 'link-3');">Proyectos</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt id="link-22" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos.estado" class="py-name" href="#" onclick="return doclink('link-22', 'estado', 'link-11');">estado</a></tt><tt class="py-op">=</tt><tt class="py-string">'creado'</tt><tt class="py-op">)</tt>    <tt class="py-comment"># Se usa un filtro para mostrar los proyectos con estado creado</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt id="link-23" class="py-name"><a title="aps.aplicaciones.proyectos.views.listarProyectos.context_object_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.context_object_name" class="py-name" href="#" onclick="return doclink('link-23', 'context_object_name', 'link-18');">context_object_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'proyectos'</tt> </tt>
+</div><a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt>
+<a name="modificarProyectos"></a><div id="modificarProyectos-def"><a name="L41"></a><tt class="py-lineno">41</tt> <a class="py-toggle" href="#" id="modificarProyectos-toggle" onclick="return toggle('modificarProyectos');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.modificarProyectos-class.html">modificarProyectos</a><tt class="py-op">(</tt><tt class="py-base-class">UpdateView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="modificarProyectos-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="modificarProyectos-expanded"><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt class="py-docstring">""" Vista de modificacion de proyectos, hereda atributos y metodos de la clase UpdateView """</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">    <tt id="link-24" class="py-name"><a title="aps.aplicaciones.proyectos.views.crearProyecto.model
+aps.aplicaciones.proyectos.views.listarProyectos.model
+aps.aplicaciones.proyectos.views.modificarProyectos.model" class="py-name" href="#" onclick="return doclink('link-24', 'model', 'link-8');">model</a></tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-25', 'Proyectos', 'link-3');">Proyectos</a></tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">    <tt id="link-26" class="py-name" targets="Variable aps.aplicaciones.proyectos.views.modificarProyectos.fields=aps.aplicaciones.proyectos.views.modificarProyectos-class.html#fields"><a title="aps.aplicaciones.proyectos.views.modificarProyectos.fields" class="py-name" href="#" onclick="return doclink('link-26', 'fields', 'link-26');">fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'nombre'</tt><tt class="py-op">]</tt>     <tt class="py-comment"># Permite modificar solo el campo 'nombre'</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">    <tt id="link-27" class="py-name"><a title="aps.aplicaciones.proyectos.views.adminProyecto.template_name
+aps.aplicaciones.proyectos.views.crearProyecto.template_name
+aps.aplicaciones.proyectos.views.eliminarProyectos.template_name
+aps.aplicaciones.proyectos.views.iniciarProyecto.template_name
+aps.aplicaciones.proyectos.views.listarProyectos.template_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name
+aps.aplicaciones.proyectos.views.modificarProyectos.template_name" class="py-name" href="#" onclick="return doclink('link-27', 'template_name', 'link-7');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'proyectos/update.html'</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">    <tt id="link-28" class="py-name"><a title="aps.aplicaciones.proyectos.views.crearProyecto.success_url
+aps.aplicaciones.proyectos.views.eliminarProyectos.success_url
+aps.aplicaciones.proyectos.views.iniciarProyecto.success_url
+aps.aplicaciones.proyectos.views.modificarProyectos.success_url" class="py-name" href="#" onclick="return doclink('link-28', 'success_url', 'link-10');">success_url</a></tt> <tt class="py-op">=</tt> <tt class="py-name">reverse_lazy</tt><tt class="py-op">(</tt><tt class="py-string">'listar_proyectos'</tt><tt class="py-op">)</tt>      <tt class="py-comment"># Se mostrara la vista 'listar_proyecto' en el caso de modificacion exitosa</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"> </tt>
+<a name="modificarProyectos.get_object"></a><div id="modificarProyectos.get_object-def"><a name="L48"></a><tt class="py-lineno">48</tt> <a class="py-toggle" href="#" id="modificarProyectos.get_object-toggle" onclick="return toggle('modificarProyectos.get_object');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.modificarProyectos-class.html#get_object">get_object</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">queryset</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="modificarProyectos.get_object-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="modificarProyectos.get_object-expanded"><a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-docstring">""" Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-name">obj</tt> <tt class="py-op">=</tt> <tt id="link-29" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-29', 'Proyectos', 'link-3');">Proyectos</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">kwargs</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">obj</tt> </tt>
+</div></div><a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt>
+<a name="eliminarProyectos"></a><div id="eliminarProyectos-def"><a name="L53"></a><tt class="py-lineno">53</tt> <a class="py-toggle" href="#" id="eliminarProyectos-toggle" onclick="return toggle('eliminarProyectos');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.eliminarProyectos-class.html">eliminarProyectos</a><tt class="py-op">(</tt><tt class="py-base-class">FormView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="eliminarProyectos-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="eliminarProyectos-expanded"><a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">    <tt class="py-docstring">""" Vista de eliminacion de proyectos, hereda atributos y metodos de la clase FormView """</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">    <tt id="link-30" class="py-name" targets="Variable aps.aplicaciones.proyectos.views.eliminarProyectos.form_class=aps.aplicaciones.proyectos.views.eliminarProyectos-class.html#form_class,Variable aps.aplicaciones.proyectos.views.iniciarProyecto.form_class=aps.aplicaciones.proyectos.views.iniciarProyecto-class.html#form_class"><a title="aps.aplicaciones.proyectos.views.eliminarProyectos.form_class
+aps.aplicaciones.proyectos.views.iniciarProyecto.form_class" class="py-name" href="#" onclick="return doclink('link-30', 'form_class', 'link-30');">form_class</a></tt> <tt class="py-op">=</tt> <tt id="link-31" class="py-name"><a title="aps.aplicaciones.proyectos.forms.ComentariosLog" class="py-name" href="#" onclick="return doclink('link-31', 'ComentariosLog', 'link-6');">ComentariosLog</a></tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">    <tt id="link-32" class="py-name"><a title="aps.aplicaciones.proyectos.views.adminProyecto.template_name
+aps.aplicaciones.proyectos.views.crearProyecto.template_name
+aps.aplicaciones.proyectos.views.eliminarProyectos.template_name
+aps.aplicaciones.proyectos.views.iniciarProyecto.template_name
+aps.aplicaciones.proyectos.views.listarProyectos.template_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name
+aps.aplicaciones.proyectos.views.modificarProyectos.template_name" class="py-name" href="#" onclick="return doclink('link-32', 'template_name', 'link-7');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'proyectos/eliminar.html'</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">    <tt id="link-33" class="py-name"><a title="aps.aplicaciones.proyectos.views.crearProyecto.success_url
+aps.aplicaciones.proyectos.views.eliminarProyectos.success_url
+aps.aplicaciones.proyectos.views.iniciarProyecto.success_url
+aps.aplicaciones.proyectos.views.modificarProyectos.success_url" class="py-name" href="#" onclick="return doclink('link-33', 'success_url', 'link-10');">success_url</a></tt> <tt class="py-op">=</tt> <tt class="py-name">reverse_lazy</tt><tt class="py-op">(</tt><tt class="py-string">'listar_proyectos'</tt><tt class="py-op">)</tt>      <tt class="py-comment"># Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"> </tt>
+<a name="eliminarProyectos.form_valid"></a><div id="eliminarProyectos.form_valid-def"><a name="L59"></a><tt class="py-lineno">59</tt> <a class="py-toggle" href="#" id="eliminarProyectos.form_valid-toggle" onclick="return toggle('eliminarProyectos.form_valid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.eliminarProyectos-class.html#form_valid">form_valid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="eliminarProyectos.form_valid-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="eliminarProyectos.form_valid-expanded"><a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-docstring">""" Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt id="link-34" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-34', 'Proyectos', 'link-3');">Proyectos</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">kwargs</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos.estado" class="py-name" href="#" onclick="return doclink('link-35', 'estado', 'link-11');">estado</a></tt><tt class="py-op">=</tt><tt class="py-string">'eliminado'</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-36" class="py-name" targets="Class aps.aplicaciones.proyectos.views.eliminarProyectos=aps.aplicaciones.proyectos.views.eliminarProyectos-class.html"><a title="aps.aplicaciones.proyectos.views.eliminarProyectos" class="py-name" href="#" onclick="return doclink('link-36', 'eliminarProyectos', 'link-36');">eliminarProyectos</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="aps.aplicaciones.proyectos.views.crearProyecto.form_valid
+aps.aplicaciones.proyectos.views.eliminarProyectos.form_valid
+aps.aplicaciones.proyectos.views.iniciarProyecto.form_valid" class="py-name" href="#" onclick="return doclink('link-37', 'form_valid', 'link-13');">form_valid</a></tt><tt class="py-op">(</tt><tt class="py-name">form</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt>
+<a name="iniciarProyecto"></a><div id="iniciarProyecto-def"><a name="L66"></a><tt class="py-lineno">66</tt> <a class="py-toggle" href="#" id="iniciarProyecto-toggle" onclick="return toggle('iniciarProyecto');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.iniciarProyecto-class.html">iniciarProyecto</a><tt class="py-op">(</tt><tt class="py-base-class">FormView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iniciarProyecto-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="iniciarProyecto-expanded"><a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">    <tt class="py-docstring">""" Vista de inicio de proyectos, hereda atributos y metodos de la clase FormView """</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">    <tt id="link-38" class="py-name"><a title="aps.aplicaciones.proyectos.views.eliminarProyectos.form_class
+aps.aplicaciones.proyectos.views.iniciarProyecto.form_class" class="py-name" href="#" onclick="return doclink('link-38', 'form_class', 'link-30');">form_class</a></tt> <tt class="py-op">=</tt> <tt id="link-39" class="py-name"><a title="aps.aplicaciones.proyectos.forms.ComentariosLog" class="py-name" href="#" onclick="return doclink('link-39', 'ComentariosLog', 'link-6');">ComentariosLog</a></tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">    <tt id="link-40" class="py-name"><a title="aps.aplicaciones.proyectos.views.adminProyecto.template_name
+aps.aplicaciones.proyectos.views.crearProyecto.template_name
+aps.aplicaciones.proyectos.views.eliminarProyectos.template_name
+aps.aplicaciones.proyectos.views.iniciarProyecto.template_name
+aps.aplicaciones.proyectos.views.listarProyectos.template_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name
+aps.aplicaciones.proyectos.views.modificarProyectos.template_name" class="py-name" href="#" onclick="return doclink('link-40', 'template_name', 'link-7');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'proyectos/iniciar.html'</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">    <tt id="link-41" class="py-name"><a title="aps.aplicaciones.proyectos.views.crearProyecto.success_url
+aps.aplicaciones.proyectos.views.eliminarProyectos.success_url
+aps.aplicaciones.proyectos.views.iniciarProyecto.success_url
+aps.aplicaciones.proyectos.views.modificarProyectos.success_url" class="py-name" href="#" onclick="return doclink('link-41', 'success_url', 'link-10');">success_url</a></tt> <tt class="py-op">=</tt> <tt class="py-name">reverse_lazy</tt><tt class="py-op">(</tt><tt class="py-string">'listar_proyectos'</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line"> </tt>
+<a name="iniciarProyecto.form_valid"></a><div id="iniciarProyecto.form_valid-def"><a name="L72"></a><tt class="py-lineno">72</tt> <a class="py-toggle" href="#" id="iniciarProyecto.form_valid-toggle" onclick="return toggle('iniciarProyecto.form_valid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.views.iniciarProyecto-class.html#form_valid">form_valid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iniciarProyecto.form_valid-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="iniciarProyecto.form_valid-expanded"><a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">        <tt class="py-docstring">""" Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt id="link-42" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-42', 'Proyectos', 'link-3');">Proyectos</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">kwargs</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos.estado" class="py-name" href="#" onclick="return doclink('link-43', 'estado', 'link-11');">estado</a></tt><tt class="py-op">=</tt><tt class="py-string">'activo'</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-44" class="py-name" targets="Class aps.aplicaciones.proyectos.views.iniciarProyecto=aps.aplicaciones.proyectos.views.iniciarProyecto-class.html"><a title="aps.aplicaciones.proyectos.views.iniciarProyecto" class="py-name" href="#" onclick="return doclink('link-44', 'iniciarProyecto', 'link-44');">iniciarProyecto</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="aps.aplicaciones.proyectos.views.crearProyecto.form_valid
+aps.aplicaciones.proyectos.views.eliminarProyectos.form_valid
+aps.aplicaciones.proyectos.views.iniciarProyecto.form_valid" class="py-name" href="#" onclick="return doclink('link-45', 'form_valid', 'link-13');">form_valid</a></tt><tt class="py-op">(</tt><tt class="py-name">form</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="aps.aplicaciones.proyectos-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Apr 12 00:28:39 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
