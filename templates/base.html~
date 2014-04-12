@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>{% block title %}{% endblock %}</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="{{STATIC_URL}}css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<h1>Alpha Project System</h1>
+	<h2>by Equipo R03 </h2>
+</div>
+{% if user.is_authenticated %}
+    <div id="menu">
+        <ul>
+            <li><a href="/inicio/">Home</a></li>
+            {% block menu1 %}{% endblock %}
+            <li><a href="/cerrar/">Cerrar</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="columnA">
+        <!--
+            Columna de contenido
+        -->
+            {% block contenido %}{% endblock %}
+
+        </div>
+        <div id="columnB">
+        <!--
+            Columna de Menu Lateral
+        -->
+            {% block menu2 %}{% endblock %}
+        </div>
+    </div>
+{% else %}
+   <div id="menu">
+        <ul>
+            <li><a href="/cerrar/">Cerrar</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="columnA">
+            <h1><font color="red">Acceso Restringido</font></h1><br>
+            <a href="/"> Home </a><br><br>
+            <a href="/registrarse/">Registrase</a><br><br><br>
+        </div>
+        <div id="columnB">
+        </div>
+    </div>
+{% endif %}
+<div id="footer">
+        <p>Proyecto de Ingeniería de Software 2 - Ing. en Informática - 2014</p>
+</div>
+<div align=center>Facultad Politécnica - Universidad Nacional de Asunción</a></div></body>
+</html>
