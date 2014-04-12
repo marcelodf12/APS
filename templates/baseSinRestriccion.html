@@ -1,6 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>{% block title %}{% endblock %}</title>
@@ -10,8 +8,24 @@
 </head>
 <body>
 <div id="header">
-	<h1>Alpha Project System</h1>
-	<h2>by Equipo R03 </h2>
+<table style="text-align: left; width: 100%; background-color: white;"
+border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td
+style="vertical-align: middle; width: 161px; text-align: center;"><img
+style="width: 139px; height: 71px;" alt=""
+src="{{STATIC_URL}}images/Logo.png" /><br />
+</td>
+<td style="vertical-align: top; width: 597px;">
+<h1>Ingeniería de Software II<br />
+</h1>
+<h2>by Equipo R03 </h2>
+</td>
+</tr>
+</tbody>
+</table>
+<br />
 </div>
     <div id="menu">
         <ul><li><a href="/inicio/">Home</a></li>
@@ -21,11 +35,12 @@
     </div>
     <div id="content">
         <div id="columnA">
+            <div id="formDiv">
         <!--
             Columna de contenido
         -->
             {% block contenido %}{% endblock %}
-
+        </div>
         </div>
         <div id="columnB">
         <!--
