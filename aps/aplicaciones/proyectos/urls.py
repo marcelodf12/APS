@@ -1,3 +1,8 @@
+""" Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py de
+    la aplicacion 'proyectos'.
+    Todas las urls definidas aqui esta relacionadas con la administracion de proyectos
+"""
+
 from django.conf.urls import patterns, url
 from aps.aplicaciones.proyectos.views import \
     crearProyecto, \
@@ -9,9 +14,6 @@ from aps.aplicaciones.proyectos.views import \
     iniciarProyecto
 
 urlpatterns = patterns('',
-    """ Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py de
-    la aplicacion 'proyectos'.
-    Todas las urls definidas aqui esta relacionadas con la administracion de proyectos """
 
     url(r'^crear/$', crearProyecto.as_view(), name='crear_proyecto'),
     url(r'^admin/$', adminProyecto.as_view(), name='admin_proyecto'),

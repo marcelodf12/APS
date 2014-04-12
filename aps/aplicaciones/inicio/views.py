@@ -1,3 +1,5 @@
+""" Los nombres de clases son los nombres de las vistas que posteriormente son invocadas en el archivo URLS.py """
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -8,7 +10,7 @@ from aps.aplicaciones.inicio.forms import UserForm
 from django.core.urlresolvers import reverse_lazy
 from aps.aplicaciones.inicio.models import Usuario  # se importan los modelos definidos en el archivo MODELS.py
 
-""" Los nombres de clases son los nombres de las vistas que posteriormente son invocadas en el archivo URLS.py """
+
 
 class home(TemplateView):
     """ Vista de bienvenida (login exitoso), hereda atributos y metodos de la clase TemplateView """

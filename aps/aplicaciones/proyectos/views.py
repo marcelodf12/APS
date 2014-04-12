@@ -1,11 +1,11 @@
+""" Los nombres de clases son los nombres de las vistas que posteriormente son invocadas en el archivo URLS.py
+Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py
+"""
 from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView
 from aps.aplicaciones.proyectos.models import Proyectos
 from django.core.urlresolvers import reverse_lazy
 from aps.aplicaciones.proyectos.forms import ComentariosLog
-
-""" Los nombres de clases son los nombres de las vistas que posteriormente son invocadas en el archivo URLS.py"""
-""" Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py """
 
 # Create your views here.
 class crearProyecto(CreateView):
