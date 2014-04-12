@@ -13,4 +13,6 @@ urlpatterns = patterns('',
     url(r'^', include('aplicaciones.inicio.urls')),
     url(r'^items/', include('aplicaciones.items.urls')),
     url(r'^proyectos/', include('aplicaciones.proyectos.urls')),
+    url(r'^fases/', include('aplicaciones.fases.urls')),
+
 )

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+      Crear Fase
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+     <ul>
+        <li><a href="/fases/listar/">Listar Fases</a></li>
+		<li><a href="/fases/crear/">Nueva Fase</a></li>
+     </ul>
+
+{% endblock %}
+
+{% block contenido %}
+     <h1>Nueva Fase</h1>
+        <form method="post">{% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Crear">
+        </form>
+ {% endblock %}

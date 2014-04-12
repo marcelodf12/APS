@@ -51,6 +51,8 @@ INSTALLED_APPS = (
     'aplicaciones.inicio',
     'aplicaciones.proyectos',
     'aplicaciones.items',
+    'aplicaciones.fases',
+
 )
 
 MIDDLEWARE_CLASSES = (

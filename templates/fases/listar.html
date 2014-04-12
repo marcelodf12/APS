@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+      Lista de Fases
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+     <ul>
+        <li><a href="/fases/listar/">Listar Fases</a></li>
+		<li><a href="/fases/crear/">Nuevo Fases</a></li>
+     </ul>
+
+{% endblock %}
+
+{% block contenido %}
+     <h1>Lista de fases</h1>
+        {% for f in fases %}
+            <h2>{{f.nombre}}</h2>
+            <ul>
+                <li><b>Fecha de Inicio: </b>{{f.fechaInicio}}</li>
+                <li><b>Cantidad de Items: </b>{{f.cantItems}}</li>
+                <li><b>Estado</b> {{f.estado}}</li>
+            </ul>
+            <br><br>
+
+        {% endfor %}
+ {% endblock %}
