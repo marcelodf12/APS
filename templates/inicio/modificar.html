@@ -10,7 +10,7 @@ Bienvenido
         <li><a href="/fases/admin/">Fases</a></li>
 		<li><a href="/items/admin">Desarrollo</a></li>
 		<li><a href="#">Gestión de Cambios</a></li>
-        <li><a href="/modificar/{{user.id}}">Usuarios</a></li>
+        <li><a href="#">Usuarios</a></li>
 
 {% endblock %}
 
@@ -21,6 +21,13 @@ Bienvenido
 
 
 {% block contenido %}
-    <h1>Bienvenido</h1>
+    <form method="post">{% csrf_token %}
+        {{form.as_p}}
+        <input type="password" name="pass">
+        <input type="submit" value="Actualizar">
+    </form>
+        <form action="/modificar/password/">{% csrf_token %}
+            <input type="submit" value="Cambiar Contraseña">
+        </form>
 
 {% endblock %}
