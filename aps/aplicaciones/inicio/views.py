@@ -7,11 +7,13 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.views.generic import UpdateView
+from django.views.generic import CreateView
+from django.views.generic import ListView
+from django.views.generic import DeleteView
 from django.core.urlresolvers import reverse_lazy
-from django.contrib.auth.models import User
-#from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
+from django.contrib.auth.models import User, Group
+from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
 from django.shortcuts import render, HttpResponseRedirect
-from .forms import ComentariosLog
 
 class home(TemplateView):
     """ Vista de bienvenida (login exitoso), hereda atributos y metodos de la clase TemplateView """
@@ -22,7 +24,7 @@ class Registrarse(FormView):
     """ Vista para registrar un usuario, hereda atributos y metodos de la clase FormView """
 
     template_name = 'inicio/registro.html'
-    #form_class = UserForm                   # Formulario a utilizar para la vista
+    form_class = UserForm                   # Formulario a utilizar para la vista
     success_url = reverse_lazy('login')     # Se mostrara la vista 'login' en el caso de registro exitoso
 
     def form_valid(self, form):
@@ -45,9 +47,8 @@ class UpdateUser(UpdateView):
         obj = User.objects.get(id=self.kwargs['id'])
         return obj
 
-
 class ActualizarPassView(FormView):
-    #form_class = ActualizarPass
+    form_class = ActualizarPass
     template_name = 'inicio/modificarPassword.html'
     success_url = reverse_lazy('inicio')
 
@@ -71,15 +72,48 @@ class ActualizarPassView(FormView):
                 usuario.save()
         return HttpResponseRedirect('/inicio/')
 
-class eliminarUser(FormView):
-    """ Vista de eliminacion de proyectos, hereda atributos y metodos de la clase FormView """
-    form_class = ComentariosLog
-    template_name = 'proyectos/eliminar user.html'
-    success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
+class CrearGrupo(CreateView):
+    model = Group
+    template_name = 'inicio/crearGrupo.html'
+    success_url = reverse_lazy('home')
+    fields = ['name']
 
-    def form_valid(self, form):
-        """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
-        proyecto = Proyectos.objects.get(id=self.kwargs['id'])
-        proyecto.estado='eliminado'
-        proyecto.save()
-        return super(eliminarProyectos, self).form_valid(form)
+class adminGrupos(TemplateView):
+    """ Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """
+    template_name = 'inicio/adminGrupos.html'
+
+class listarGrupos(ListView):
+    """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
+    template_name = 'inicio/listarGrupos.html'
+    model = Group
+    context_object_name = 'grupos'
+
+class eliminarGrupo(DeleteView):
+    """ Vista para Eliminar un Grupo """
+    model = Group
+    template_name = 'inicio/deleteGrupo.html'
+    success_url = reverse_lazy('listar_grupos')      # Se mostrara la vista 'listar_permisos' en el caso de modificacion exitosa
+
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = Group.objects.get(id=self.kwargs['id'])
+        return obj
+
+class listarUsuarios(ListView):
+    """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
+    template_name = 'inicio/listarUsuarios.html'
+    model = User
+    context_object_name = 'usuarios'
+
+class asignarGrupo(UpdateUser):
+    template_name = 'inicio/asignarGrupo.html'
+    fields = ['groups']
+
+class listarUsuriosDeGrupo(ListView):
+    template_name = 'inicio/listarUsuariosDeGrupo.html'
+    context_object_name = 'usuarios'
+
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = User.objects.filter(id=self.kwargs['id'])
+        return obj

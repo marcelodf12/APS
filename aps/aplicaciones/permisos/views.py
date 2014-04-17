@@ -1,8 +1,11 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, DeleteView
 from aps.aplicaciones.permisos.models import Permisos
 from django.core.urlresolvers import reverse_lazy
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+from django.core import serializers
+from django.http import HttpResponse
+
+
 # Create your views here.
 class admin(TemplateView):
     """ Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """
@@ -26,13 +29,12 @@ class crear(CreateView):
         permiso.save()
         return super(crear, self).form_valid(form)
 
-from django.core import serializers
-from django.http import HttpResponse
+
 class permisos_ajax(TemplateView):
     def get(self, request, *args, **kwargs):
         id_usuario = request.GET['idusuario']
         permisos = Permisos.objects.filter(usuario__id=id_usuario)
-        data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fase','item'))
+        data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
         return HttpResponse(data, mimetype='application/json')
 
 class eliminar(DeleteView):
@@ -45,3 +47,16 @@ class eliminar(DeleteView):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = Permisos.objects.get(id=self.kwargs['id'])
         return obj
+
+class listarGrupos(ListView):
+    """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
+    template_name = 'permisos/listarGrupos.html'
+    model = Group
+    context_object_name = 'grupos'
+
+class permisos_grupos_ajax(TemplateView):
+    def get(self, request, *args, **kwargs):
+        id_grupo = request.GET['idgrupo']
+        permisos = Permisos.objects.filter(grupo__id=id_grupo)
+        data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
+        return HttpResponse(data, mimetype='application/json')
