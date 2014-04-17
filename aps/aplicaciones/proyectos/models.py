@@ -14,4 +14,3 @@ class Proyectos(models.Model):
         """ Metodo llamado para visualizar objetos. En este caso se mostrara el valor del atributo
         'nombre' para cada instancia del modelo Proyectos  """
         return self.nombre
-

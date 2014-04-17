@@ -4,8 +4,7 @@
      Todas las urls definidas aqui esta relacionadas con el inicio de sesion
 """
 from django.conf.urls import patterns, url
-from aps.aplicaciones.inicio.views import home, Registrarse
-
+from .views import home, Registrarse
 
 urlpatterns = patterns('',
     url(r'^$','django.contrib.auth.views.login',{'template_name':'inicio/index.html'}, name='login'),

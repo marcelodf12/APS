@@ -3,22 +3,22 @@ Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py
 """
 from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView
-from aps.aplicaciones.proyectos.models import Proyectos
+from .models import Proyectos
 from django.core.urlresolvers import reverse_lazy
-from aps.aplicaciones.proyectos.forms import ComentariosLog
+from .forms import ComentariosLog
 
 # Create your views here.
 class crearProyecto(CreateView):
     """ Vista de creacion de proyectos, hereda atributos y metodos de la clase CreateView """
     template_name = 'proyectos/crearProyecto.html'      # Se define la direccion y nombre del template
-    model = Proyectos                                   # Se asocia al modelo 'items'
+    model = Proyectos                                   # Se asocia al modelo 'Proyectos'
     success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyecto' en el caso de registro exitoso
     #fields = ['nombre','fechaInicio','cantFases']
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         proyecto = form.save()
-        proyecto.estado='creado'
+        proyecto.estado ='creado'
         proyecto.save()
         return super(crearProyecto, self).form_valid(form)
 

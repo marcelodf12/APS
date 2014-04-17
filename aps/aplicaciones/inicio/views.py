@@ -6,9 +6,9 @@ from django.shortcuts import render
 
 from django.views.generic import TemplateView
 from django.views.generic import FormView
-from aps.aplicaciones.inicio.forms import UserForm
+from .forms import UserForm
 from django.core.urlresolvers import reverse_lazy
-from aps.aplicaciones.inicio.models import Usuario  # se importan los modelos definidos en el archivo MODELS.py
+from .models import Usuario  # se importan los modelos definidos en el archivo MODELS.py
 
 
 

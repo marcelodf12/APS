@@ -1,6 +1,6 @@
 """
      Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py
-     include(Parametro) incluye las urls que se encuentran definidas en Parametro
+     include(Parametro) incluye las urls que se encuentran definidas en Parametro.
      Aqui se encuentran las urls "raiz" que permiten acceder a las urls de todas las aplicaciones
      incluimos los archivos URL.py de todas las aplicaciones
 """

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+      Actualizar Items
+{% endblock %}
+
+{% block menu1 %}
+{% endblock %}
+
+{% block menu2 %}
+     <ul>
+        <li><a href="/items/listar/">Listar Items</a></li>
+		<li><a href="/items/crear/">Nuevo Item</a></li>
+     </ul>
+
+{% endblock %}
+
+{% block contenido %}
+      <h1>Actualizar Items</h1>
+        <form method="post">{% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Actualizar">
+        </form>
+{% endblock %}
