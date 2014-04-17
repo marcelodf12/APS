@@ -1,11 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView, CreateView
+from django.views.generic import TemplateView, ListView, CreateView, DeleteView
 from aps.aplicaciones.permisos.models import Permisos
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import User
-from aps.aplicaciones.proyectos.models import Proyectos
-from aps.aplicaciones.fases.models import fases
-from aps.aplicaciones.items.models import items
 # Create your views here.
 class admin(TemplateView):
     """ Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """
@@ -35,12 +32,16 @@ class permisos_ajax(TemplateView):
     def get(self, request, *args, **kwargs):
         id_usuario = request.GET['idusuario']
         permisos = Permisos.objects.filter(usuario__id=id_usuario)
-        for p in permisos:
-            try:
-                aux = str(p.proyecto)
-                p.proyecto = aux
-                print aux
-            except:
-                print 'algo paso'
         data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fase','item'))
         return HttpResponse(data, mimetype='application/json')
+
+class eliminar(DeleteView):
+    """ Vista para Eliminar un permiso """
+    model = Permisos
+    template_name = 'permisos/delete.html'
+    success_url = reverse_lazy('listar_permisos')      # Se mostrara la vista 'listar_permisos' en el caso de modificacion exitosa
+
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = Permisos.objects.get(id=self.kwargs['id'])
+        return obj
