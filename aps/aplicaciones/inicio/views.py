@@ -9,7 +9,7 @@ from django.views.generic import FormView
 from django.views.generic import UpdateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import User
-from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
+#from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
 from django.shortcuts import render, HttpResponseRedirect
 
 class home(TemplateView):
@@ -21,7 +21,7 @@ class Registrarse(FormView):
     """ Vista para registrar un usuario, hereda atributos y metodos de la clase FormView """
 
     template_name = 'inicio/registro.html'
-    form_class = UserForm                   # Formulario a utilizar para la vista
+    #form_class = UserForm                   # Formulario a utilizar para la vista
     success_url = reverse_lazy('login')     # Se mostrara la vista 'login' en el caso de registro exitoso
 
     def form_valid(self, form):
@@ -46,7 +46,7 @@ class UpdateUser(UpdateView):
 
 
 class ActualizarPassView(FormView):
-    form_class = ActualizarPass
+    #form_class = ActualizarPass
     template_name = 'inicio/modificarPassword.html'
     success_url = reverse_lazy('inicio')
 

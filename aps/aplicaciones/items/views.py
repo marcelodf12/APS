@@ -33,6 +33,12 @@ class listarItems(ListView):
     template_name = 'items/listar.html'
     context_object_name = 'items'
 
+class listarItemsEliminados(ListView):
+    """ Vista de listado de items, hereda atributos y metodos de la clase ListView """
+    model = items
+    template_name = 'items/listar eliminados.html'
+    context_object_name = 'items'
+
 class modificarItems(UpdateView):
     """ Vista de modificacion de proyectos, hereda atributos y metodos de la clase UpdateView """
     model = items
@@ -50,3 +56,10 @@ class eliminarItems(FormView):
     form_class = ComentariosLog
     template_name = 'items/eliminar.html'
     success_url = reverse_lazy('listar_item')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
+
+    def form_valid(self, form):
+        """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
+        item = items.objects.get(id=self.kwargs['id'])
+        item.estado='eliminado'
+        item.save()
+        return super(eliminarItems, self).form_valid(form)

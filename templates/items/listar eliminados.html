@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+      Lista de Items Eliminados
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+     <ul>
+        <li><a href="/items/listar/">Listar Items</a></li>
+		<li><a href="/items/crear/">Nuevo Item</a></li>
+     </ul>
+
+{% endblock %}
+
+{% block contenido %}
+     <h1>Lista de Items Eliminados</h1>
+      {% for i in items %}
+          {% if i.estado == 'eliminado' %}
+                <h2>{{i.nombre}}</h2>
+                <ul>
+                    <li><b>Estado</b> {{i.estado}}</li>
+                    <li><b>Complejidad</b> {{i.complejidad}}</li>
+                    <li><b>Version Actual</b> {{i.versionAct}}</li>
+                    <a href="/items/restaurar/{{i.id}}">Restaurar</a>
+                </ul>
+                <br><br>
+          {% endif %}
+      {% endfor %}
+{% endblock %}
