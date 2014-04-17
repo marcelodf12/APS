@@ -23,8 +23,7 @@ Bienvenido
 {% block contenido %}
     <form method="post">{% csrf_token %}
         {{form.as_p}}
-        <input type="password" name="pass">
-        <input type="submit" value="Actualizar">
+        <br><input type="submit" value="Actualizar"><br>
     </form>
         <form action="/modificar/password/">{% csrf_token %}
             <input type="submit" value="Cambiar Contraseña">

@@ -6,12 +6,7 @@ Bienvenido
 
 
 {% block menu1 %}
-		<li><a href="/proyectos/admin/">Proyectos</a></li>
-        <li><a href="/fases/admin/">Fases</a></li>
-		<li><a href="/items/admin">Desarrollo</a></li>
-		<li><a href="#">Gestión de Cambios</a></li>
-        <li><a href="/modificar/{{user.id}}">Usuarios</a></li>
-
+<li><a href="#"> Bienvenido {{user.first_name}} {{user.last_name}}</a></li>
 {% endblock %}
 
 {% block menu2 %}
@@ -21,6 +16,64 @@ Bienvenido
 
 
 {% block contenido %}
-    <h1>Bienvenido</h1>
+    <table style="text-align: left; width: 100%;" border="0" cellpadding="0"
+cellspacing="0">
+<tbody>
+<tr>
+<td style="vertical-align: top;">
+    <a href="/proyectos/admin/">
+        <img style="width: 128px; height: 128px;" alt="" src="{{STATIC_URL}}images/Proyecto.png"><br><br>
+    </a>
+
+</td>
+<td style="vertical-align: top;">
+    <a href="/fases/admin/">
+        <img style="width: 128px; height: 128px;" alt="" src="{{STATIC_URL}}images/Fases.png"><br><br>
+    </a>
+</td>
+<td style="vertical-align: top;">
+    <a href="/items/admin">
+        <img style="width: 128px; height: 128px;" alt="" src="{{STATIC_URL}}images/item.png"><br><br>
+    </a>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Gestión de Proyectos<br><br><br><br>
+</td>
+<td style="vertical-align: top;">Gestión de Fases<br><br><br><br>
+</td>
+<td style="vertical-align: top;">Módulo de Desarrollo<br><br><br><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+    <a href="/modificar/{{user.id}}">
+        <img style="width: 128px; height: 128px;" alt="" src="{{STATIC_URL}}images/Usuario.png"><br><br>
+    </a>
+
+</td>
+<td style="vertical-align: top;">
+    <a href="#">
+        <img style="width: 128px; height: 128px;" alt="" src="{{STATIC_URL}}images/Permisos.png"><br><br>
+    </a>
+
+</td>
+<td style="vertical-align: top;">
+    <a href="/cerrar/">
+        <img style="width: 128px; height: 128px;" alt="" src="{{STATIC_URL}}images/CerraSesion.png"><br><br>
+    </a>
+
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Gestión de Usuario<br><br><br><br>
+</td>
+<td style="vertical-align: top;">Gestión de Permisos<br><br><br><br>
+</td>
+<td style="vertical-align: top;">Cerrar Sesión<br><br><br><br>
+</td>
+</tr>
+</tbody>
+</table>
 
 {% endblock %}

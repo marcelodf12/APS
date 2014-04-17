@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^registrarse/$', Registrarse.as_view(), name='registrarse'),
     url(r'^modificar/(?P<id>\d+)$', UpdateUser.as_view(), name='updateUser'),
     url(r'^modificar/password/$', ActualizarPassView.as_view(), name='updatePassword'),
+
 )

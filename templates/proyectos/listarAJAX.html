@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}
+      Lista de Proyectos
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+        <img src='/static/images/Detalles.png' width='24' height='24'><a href="/proyectos/listar/">  Listar Proyectos</a><br><br>
+		<img src='/static/images/Add.png' width='24' height='24'><a href="/proyectos/crear/">  Nuevo Proyecto</a><br><br>
+        <img src='/static/images/star.png' width='24' height='24'><a href="/proyectos/noIniciados/">  Iniciar Proyecto</a><br><br>
+
+        <br><br>
+
+
+{% endblock %}
+
+{% block contenido %}
+<h1>Filtro</h1>
+<select onchange="inicio(this.value);">
+    <option>Seleccione el Filtro</option>
+    <option value="creado">Creados</option>
+    <option value="activo">Activos</option>
+    <option value="eliminado">Eliminados</option>
+</select>
+<div id="datos">
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    function inicio(valor){
+        $.ajax({
+          data : {'estado' : valor},
+          url : '/proyectos/listar_ajax/',
+          type : 'get',
+          success : function(data){
+            var html="";
+            for(i=0;i<data.length;i++){
+                html+="<ul><h1><img src='/static/images/Proyecto.png' width='32' height='32'> "+ data[i].fields.nombre + "</h1>";
+                html+="<li><b>Fecha de Inicio: </b>" + data[i].fields.fechaInicio + "</li>";
+                html+="<li><b>Cantidad de Fases: </b>" + data[i].fields.cantFases+ "</li>";
+                html+="<a href='/proyectos/modificar/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a>";
+                html+=" <a href='/proyectos/eliminar/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a></ul><br><br>";
+            }
+            $('#datos').html(html);
+          }
+        });
+    }
+
+</script>
+{% endblock %}
+

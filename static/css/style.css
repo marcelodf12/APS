@@ -14,9 +14,6 @@ ul.errorlist{
 span.helptext{
     display:block;
 }
-label{
-    display:block;
-}
 input{
     display:block;
 }
@@ -31,6 +28,18 @@ a {
 a:hover {
 	text-decoration: none;
 }
+
+select {
+    background-color:#CAE4FF;
+    padding:8px;
+    border:solid 1px #DEDEDE;
+    border-radius:5px;
+    display:block;
+    }
+select:focus {
+    box-shadow:0 0 15px #036;
+    background-color:#CCD4DC;
+    }
 
 .list1 {
 	margin: 0;
@@ -197,7 +206,6 @@ img.left {
     margin-top: 15px;
     width: 100px;
     text-align: right;
-    float: left;
     }
 
 #formDiv input {

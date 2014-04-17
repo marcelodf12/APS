@@ -14,7 +14,6 @@ from django.shortcuts import render, HttpResponseRedirect
 
 class home(TemplateView):
     """ Vista de bienvenida (login exitoso), hereda atributos y metodos de la clase TemplateView """
-
     template_name = 'inicio/inicio.html'    # Se define la direccion y nombre del template
 
 
@@ -37,7 +36,7 @@ class Registrarse(FormView):
 class UpdateUser(UpdateView):
     model = User
     template_name = "inicio/modificar.html"
-    success_url = reverse_lazy('inicio')
+    success_url = reverse_lazy('home')
     fields= ['first_name', 'last_name','email']
 
     def get_object(self, queryset=None):

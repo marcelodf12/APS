@@ -11,13 +11,14 @@ from aps.aplicaciones.proyectos.views import \
     modificarProyectos, \
     eliminarProyectos, \
     listarProyectosNoIniciados, \
-    iniciarProyecto
+    iniciarProyecto, listarProyectosAJAX, proyectos_ajax
 
 urlpatterns = patterns('',
 
     url(r'^crear/$', crearProyecto.as_view(), name='crear_proyecto'),
     url(r'^admin/$', adminProyecto.as_view(), name='admin_proyecto'),
-    url(r'^listar/$', listarProyectos.as_view(), name='listar_proyectos'),
+    url(r'^listar/$', listarProyectosAJAX.as_view(), name='listar_proyectos'),
+    url(r'^listar_ajax/$', proyectos_ajax.as_view(), name='listar_proyectos_ajax'),
     url(r'^modificar/(?P<id>\d+)$', modificarProyectos.as_view(), name='modificar_proyectos'),
     url(r'^eliminar/(?P<id>\d+)$', eliminarProyectos.as_view(), name='eliminar_proyectos'),
     url(r'^iniciar/(?P<id>\d+)$', iniciarProyecto.as_view(), name='iniciar_proyecto'),

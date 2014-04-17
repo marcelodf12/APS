@@ -75,3 +75,18 @@ class iniciarProyecto(FormView):
         proyecto.estado='activo'
         proyecto.save()
         return super(iniciarProyecto, self).form_valid(form)
+
+class listarProyectosAJAX(ListView):
+    model = Proyectos
+    context_object_name = 'projectos'
+    template_name = 'proyectos/listarAJAX.html'
+
+
+from django.core import serializers
+from django.http import HttpResponse
+class proyectos_ajax(TemplateView):
+    def get(self, request, *args, **kwargs):
+        estado_proyecto = request.GET['estado']
+        proyectos = Proyectos.objects.filter(estado=estado_proyecto)
+        data = serializers.serialize('json',proyectos,fields=('nombre','fechaInicio','cantFases'))
+        return HttpResponse(data, mimetype='application/json')
