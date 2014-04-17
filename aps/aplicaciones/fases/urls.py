@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from aps.aplicaciones.fases.views import adminFases , crearFase, listarFases , modificarFases, eliminarFase
+from .views import adminFases , crearFase, listarFases , modificarFases, eliminarFase
 
 admin.autodiscover()
 

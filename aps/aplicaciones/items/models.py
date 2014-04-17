@@ -1,5 +1,5 @@
 from django.db import models
-from aps.aplicaciones.fases.models import fases
+from aplicaciones.fases.models import fases
 
 # Create your models here.
 class items(models.Model):

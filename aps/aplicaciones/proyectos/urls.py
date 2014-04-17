@@ -4,7 +4,7 @@
 """
 
 from django.conf.urls import patterns, url
-from aps.aplicaciones.proyectos.views import \
+from .views import \
     crearProyecto, \
     adminProyecto, \
     listarProyectos, \
