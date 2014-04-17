@@ -74,6 +74,8 @@ TEMPLATE_DIRS = (
     RUTA_PROYECTO.child('templates'),
 )
 
+
+
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
@@ -113,3 +115,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     RUTA_PROYECTO.child('static'),
 )
+
+

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+      Nuevo Permiso
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+
+
+{% block menu2 %}
+        <img src='/static/images/Detalles.png' width='24' height='24'><a href="/permisos/listar/">  Listar Permisos</a><br><br>
+		<img src='/static/images/Add.png' width='24' height='24'><a href="/permisos/crear/">  Nuevo Permiso</a><br><br>
+        <br><br>
+{% endblock %}
+
+{% block contenido %}
+      <h1>Asignar Nuevo Permiso</h1>
+        <form method="post">{% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Crear">
+        </form>
+{% endblock %}

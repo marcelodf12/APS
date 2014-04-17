@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^items/', include('aplicaciones.items.urls')),
     url(r'^proyectos/', include('aplicaciones.proyectos.urls')),
     url(r'^fases/', include('aplicaciones.fases.urls')),
+    url(r'^permisos/', include('aplicaciones.permisos.urls')),
 )

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}
+      Listar Permisos
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+
+
+{% block menu2 %}
+        <img src='/static/images/Detalles.png' width='24' height='24'><a href="/permisos/listar/">  Listar Permisos</a><br><br>
+		<img src='/static/images/Add.png' width='24' height='24'><a href="/permisos/crear/">  Nuevo Permiso</a><br><br>
+        <br><br>
+{% endblock %}
+
+{% block contenido %}
+        <h1>Filtro</h1>
+            <select onchange="inicio(this.value);">
+                <option>Seleccione el Filtro</option>
+                    {% for u in usuarios %}
+                        <option value="{{u.id}}">{{u.username}}--> {{u.first_name}} {{u.last_name}}</option>
+                    {% endfor %}
+            </select><br><br>
+
+<div id="datos">
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    function inicio(valor){
+	console.log(valor);
+        $.ajax({
+          data : {'idusuario' : valor},
+          url : '/permisos/listar_ajax/',
+          type : 'get',
+          success : function(data){
+            var html="<table style='text-align: left; width: 100%;' border='0' cellpadding='0' cellspacing='0'> <tbody>";
+                html+="<tr>";
+                html+="<td style='vertical-align: top;'> PERMISO </td>";
+                html+="<td style='vertical-align: top;'> TIPO </td>";
+                html+="<td style='vertical-align: top;'> PROYECTO </td>";
+                html+="<td style='vertical-align: top;'> FASE </td>";
+                html+="<td style='vertical-align: top;'> ITEM </td>";
+                html+="</tr>";
+            for(i=0;i<data.length;i++){
+                html+="<tr>";
+                html+="<td style='vertical-align: top;'> " + data[i].fields.permiso + "</td>";
+                html+="<td style='vertical-align: top;'> " + data[i].fields.tipoObjeto + "</td>";
+                html+="<td style='vertical-align: top;'> " + data[i].fields.proyecto + "</td>";
+                html+="<td style='vertical-align: top;'> " + data[i].fields.fase + "</td>";
+                html+="<td style='vertical-align: top;'> " + data[i].fields.item + "</td>";
+                html+="</tr>";
+
+            }
+            html+="</tbody></table><br>"
+            $('#datos').html(html);
+          }
+        });
+    }
+
+</script>
+{% endblock %}
