@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+Bienvenido
+{% endblock %}
+
+
+{% block menu1 %}
+		<li><a href="/proyectos/admin/">Proyectos</a></li>
+        <li><a href="/fases/admin/">Fases</a></li>
+		<li><a href="/items/admin">Desarrollo</a></li>
+		<li><a href="#">Gestión de Cambios</a></li>
+        <li><a href="#">Usuarios</a></li>
+
+{% endblock %}
+
+{% block menu2 %}
+
+
+{% endblock %}
+
+
+{% block contenido %}
+    <form method="post">{% csrf_token %}
+        {{form.as_p}}
+        <br><input type="submit" value="Actualizar"><br>
+    </form>
+        <form action="/modificar/password/">{% csrf_token %}
+            <input type="submit" value="Cambiar Contraseña">
+        </form>
+
+{% endblock %}

@@ -7,6 +7,8 @@
 <link href="{{STATIC_URL}}css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<script src="{{STATIC_URL}}js/jquery.js"></script>
+{% block js %}{% endblock %}
 <div id="header">
 <table style="text-align: left; width: 100%; background-color: white;"
 border="0" cellpadding="0" cellspacing="0">
@@ -32,7 +34,6 @@ src="{{STATIC_URL}}images/Logo.png" /><br />
         <ul>
             <li><a href="/inicio/">Home</a></li>
             {% block menu1 %}{% endblock %}
-            <li><a href="/cerrar/">Cerrar</a></li>
         </ul>
     </div>
     <div id="content">

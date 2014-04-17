@@ -1,4 +1,5 @@
 from django.db import models
+from aps.aplicaciones.fases.models import fases
 
 # Create your models here.
 class items(models.Model):
@@ -9,6 +10,7 @@ class items(models.Model):
     versionAct = models.IntegerField()
     estado = models.CharField(max_length=15)
     complejidad = models.IntegerField()
+    fase = models.ForeignKey(fases)
 
     def __unicode__(self):
         """ Metodo llamado para visualizar objetos. En este caso se mostrara el valor del atributo 'nombre' para

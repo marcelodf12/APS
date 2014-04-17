@@ -6,15 +6,14 @@ from django.shortcuts import render
 
 from django.views.generic import TemplateView
 from django.views.generic import FormView
-from .forms import UserForm
+from django.views.generic import UpdateView
 from django.core.urlresolvers import reverse_lazy
-from .models import Usuario  # se importan los modelos definidos en el archivo MODELS.py
-
-
+from django.contrib.auth.models import User
+from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
+from django.shortcuts import render, HttpResponseRedirect
 
 class home(TemplateView):
     """ Vista de bienvenida (login exitoso), hereda atributos y metodos de la clase TemplateView """
-
     template_name = 'inicio/inicio.html'    # Se define la direccion y nombre del template
 
 
@@ -27,15 +26,46 @@ class Registrarse(FormView):
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
-
-        user = form.save()          # Se crea un nuevo user de django
-        usuarioNuevo = Usuario()    # Se crea un objeto de tipo Usuario
-
-        # Se guarda los datos del formulario en el objeto 'UsuarioNuevo' creado anteriormente
-        usuarioNuevo.user = user
-        usuarioNuevo.nombre = form.cleaned_data['nombre']
-        usuarioNuevo.apellido = form.cleaned_data['apellido']
-        usuarioNuevo.correo = form.cleaned_data['correo']
-        usuarioNuevo.estado = 'activo'
-        usuarioNuevo.save()
+        user = form.save()
+        user.first_name = form.cleaned_data['nombre']
+        user.last_name = form.cleaned_data['apellido']
+        user.email = form.cleaned_data['correo']
+        user.save()
         return super(Registrarse, self).form_valid(form)
+
+class UpdateUser(UpdateView):
+    model = User
+    template_name = "inicio/modificar.html"
+    success_url = reverse_lazy('home')
+    fields= ['first_name', 'last_name','email']
+
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = User.objects.get(id=self.kwargs['id'])
+        return obj
+
+
+class ActualizarPassView(FormView):
+    form_class = ActualizarPass
+    template_name = 'inicio/modificarPassword.html'
+    success_url = reverse_lazy('inicio')
+
+    def post(self, request, *args, **kwargs):
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        usuario=request.user
+        if form.is_valid():
+            return self.form_valid(form, usuario, **kwargs)
+        else:
+            return self.form_invalid(form, **kwargs)
+
+    def form_valid(self, form, usuario):
+        nombre=form.cleaned_data['usuario']
+        passAnt=(form.cleaned_data['passAnt'])
+        pass1=form.cleaned_data['pass1']
+        pass2=form.cleaned_data['pass2']
+        if pass1==pass2:
+            if(usuario.check_password(passAnt)):
+                usuario.set_password(pass1)
+                usuario.save()
+        return HttpResponseRedirect('/inicio/')

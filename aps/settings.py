@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'aplicaciones.proyectos',
     'aplicaciones.items',
     'aplicaciones.fases',
+    'aplicaciones.permisos',
 
 )
 
