@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView
 from django.core.urlresolvers import reverse_lazy
 from .models import fases
-#from aps.aplicaciones.proyectos.forms import ComentariosLog
+from aps.aplicaciones.proyectos.forms import ComentariosLog
 
 
 # Create your views here.
@@ -40,7 +40,7 @@ class modificarFases(UpdateView):
 
 class eliminarFase(FormView):
     """ Vista de eliminacion de fases, hereda atributos y metodos de la clase FormView """
-    #form_class = ComentariosLog
+    form_class = ComentariosLog
     template_name = 'fases/eliminar.html'
     success_url = reverse_lazy('listar_fases')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
 
