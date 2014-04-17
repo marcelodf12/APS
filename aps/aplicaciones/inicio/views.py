@@ -14,6 +14,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import User, Group
 from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
 from django.shortcuts import render, HttpResponseRedirect
+from .forms import ComentariosLog
 
 class home(TemplateView):
     """ Vista de bienvenida (login exitoso), hereda atributos y metodos de la clase TemplateView """
@@ -117,3 +118,17 @@ class listarUsuriosDeGrupo(ListView):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = User.objects.filter(id=self.kwargs['id'])
         return obj
+
+
+class eliminarUser(FormView):
+    """ Vista de eliminacion de proyectos, hereda atributos y metodos de la clase FormView """
+    form_class = ComentariosLog
+    template_name = 'proyectos/eliminar.html'
+    success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
+
+    def form_valid(self, form):
+        """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
+        proyecto = .objects.get(id=self.kwargs['id'])
+        proyecto.estado='eliminado'
+        proyecto.save()
+        return super(eliminarProyectos, self).form_valid(form)
