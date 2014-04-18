@@ -106,7 +106,7 @@ class asignarGrupo(UpdateUser):
     template_name = 'inicio/asignarGrupo.html'
     fields = ['groups']
 
-class listarUsuriosDeGrupo(ListView):
+class listarUsuariosDeGrupo(ListView):
     model = User
     template_name = 'inicio/listarUsuariosDeGrupo.html'
     context_object_name = 'usuarios'

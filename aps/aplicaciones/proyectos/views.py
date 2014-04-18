@@ -59,9 +59,9 @@ class eliminarProyectos(FormView):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         usuario=request.user
-        print usuario
+        id_proyecto = kwargs['id']
         if form.is_valid():
-            if Permisos.valido(usuario=usuario, permiso='DELETE', tipoObjeto='proyecto'):
+            if Permisos.valido(usuario=usuario, permiso='DEL', tipoObjeto='proyecto', id=id_proyecto):
                 proyecto = Proyectos.objects.get(id=self.kwargs['id'])
                 proyecto.estado='eliminado'
                 proyecto.save()
