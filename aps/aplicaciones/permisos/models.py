@@ -28,23 +28,34 @@ class Permisos(models.Model):
     id_fk = models.IntegerField()
 
     def __unicode__(self):
-        return self.permiso
+        return self.permiso + ' ' + self.tipoObjeto + ' ' + str(self.id_fk) + ' ' + str(self.usuario)
 
     @staticmethod
     def valido(**kwargs):
         """
             Funcion que retorna True si se tienen los permisos necesarios
             :param usuario: Usuario
+            :param grupo: Grupo
             :param permiso: Permiso
             :param tipoObjeto: Tipo de Objeto
-            :param proyecto: Proyecto Opcional
-            :param fase: fase Opcional
-            :param item: Item Opcional
+            :param id: Clave foranea al objeto
         """
-        print kwargs.get('usuario')
-        print kwargs.get('permiso')
-        print kwargs.get('tipoObjeto')
-        print kwargs.get('proyecto')
-        print kwargs.get('fase')
-        print kwargs.get('item')
+        u=kwargs.get('usuario')
+        g=kwargs.get('grupo')
+        p=kwargs.get('permiso')
+        t=kwargs.get('tipoObjeto')
+        i=kwargs.get('id')
+        # print 'Permiso  : ' + p
+        # print 'Usuario  : ' + str(u)
+        # print 'Tipo     : ' + str(t)
+        # print 'Id       : ' + str(i)
+        grupos=Group.objects.filter(user__username=u)
+        permU = Permisos.objects.filter(usuario__username=u).filter(tipoObjeto=t).filter(id_fk=i).filter(permiso=p)
+        if permU:
+            return True
+        else:
+            for g in grupos:
+                permG = Permisos.objects.filter(grupo__name=g).filter(tipoObjeto=t).filter(id_fk=i).filter(permiso=p)
+                if permG:
+                    return True
         return False
