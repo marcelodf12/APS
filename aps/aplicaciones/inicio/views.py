@@ -15,6 +15,10 @@ from django.contrib.auth.models import User, Group
 from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
 from django.shortcuts import render, HttpResponseRedirect
 
+class errorpermisos(TemplateView):
+    """ Vista de bienvenida (login exitoso), hereda atributos y metodos de la clase TemplateView """
+    template_name = 'error/permisos.html'    # Se define la direccion y nombre del template
+
 class home(TemplateView):
     """ Vista de bienvenida (login exitoso), hereda atributos y metodos de la clase TemplateView """
     template_name = 'inicio/inicio.html'    # Se define la direccion y nombre del template
@@ -109,11 +113,10 @@ class asignarGrupo(UpdateUser):
     template_name = 'inicio/asignarGrupo.html'
     fields = ['groups']
 
-class listarUsuriosDeGrupo(ListView):
+class listarUsuariosDeGrupo(TemplateView):
     template_name = 'inicio/listarUsuariosDeGrupo.html'
-    context_object_name = 'usuarios'
 
-    def get_object(self, queryset=None):
-        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
-        obj = User.objects.filter(id=self.kwargs['id'])
-        return obj
+    def get(self, request, *args, **kwargs):
+        id_grupo = kwargs['id']
+        usuarios=User.objects.filter(groups__id=id_grupo)
+        return render(request,'inicio/listarUsuariosDeGrupo.html',{'usuarios':usuarios})
