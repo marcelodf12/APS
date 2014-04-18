@@ -129,7 +129,7 @@ class eliminarUser(FormView):
             usuario.is_active=False
             usuario.save()
         else:
-            return HttpResponseRedirect(reverse_lazy("listar_grupos"))
+            return HttpResponseRedirect(reverse_lazy("error_permiso"))
 
         return super(eliminarUser, self).form_valid(form)
 

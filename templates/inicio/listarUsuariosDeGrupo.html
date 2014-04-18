@@ -18,11 +18,13 @@
 {% block contenido %}
      <ul>
          {% for u in usuarios %}
-            <h1>{{u.username}}</h1>
-            <li><b>Nombre: </b>{{u.first_name}}</li>
-            <li><b>Apellido: </b>{{u.last_name}}</li>
-            <a href="/Grupos/asignar/{{u.id}}"><img src='/static/images/Grupo.png' width='32' height='32'></a>
-            <a href="/usuarios/eliminar/{{u.id}}"><img src='/static/images/Delete.png' width='32' height='32'></a>
+             {% if u.is_active == True %}
+                <h1>{{u.username}}</h1>
+                <li><b>Nombre: </b>{{u.first_name}}</li>
+                <li><b>Apellido: </b>{{u.last_name}}</li>
+                <a href="/Grupos/asignar/{{u.id}}"><img src='/static/images/Grupo.png' width='32' height='32'></a>
+                <a href="/usuarios/eliminar/{{u.id}}"><img src='/static/images/Delete.png' width='32' height='32'></a>
+            {% endif %}
          {% endfor %}
      </ul>
 
