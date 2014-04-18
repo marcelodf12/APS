@@ -8,9 +8,17 @@
 {% endblock %}
 
 {% block contenido %}
-      <h1>Esta seguro</h1>
+
+    {% if u.id == 1 %} CAMBIAR...
+        <ul><h1> Error <img src='/static/images/item.png' width='32' height='32'></h1></ul>
+        <h1>El usuario 'root' no puede ser eliminado <h1>
+    {% else %}
+        <h1>Esta seguro</h1>
         <form method="post">{% csrf_token %}
             {{form.as_p}}
+            {{user.id}}
             <input type="submit" value="Confirmar">
         </form>
+    {% endif %}
+
 {% endblock %}

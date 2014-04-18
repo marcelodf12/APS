@@ -15,6 +15,7 @@ from django.contrib.auth.models import User, Group
 from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import ComentariosLog
+from django.contrib.auth.models import User
 
 class home(TemplateView):
     """ Vista de bienvenida (login exitoso), hereda atributos y metodos de la clase TemplateView """
@@ -100,17 +101,18 @@ class eliminarGrupo(DeleteView):
         obj = Group.objects.get(id=self.kwargs['id'])
         return obj
 
-class listarUsuarios(ListView):
-    """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
-    template_name = 'inicio/listarUsuarios.html'
-    model = User
-    context_object_name = 'usuarios'
+# class listarUsuarios(ListView):
+#     """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
+#     template_name = 'inicio/listarUsuarios.html'
+#     model = User
+#     context_object_name = 'usuarios'
 
 class asignarGrupo(UpdateUser):
     template_name = 'inicio/asignarGrupo.html'
     fields = ['groups']
 
 class listarUsuriosDeGrupo(ListView):
+    model = User
     template_name = 'inicio/listarUsuariosDeGrupo.html'
     context_object_name = 'usuarios'
 
@@ -119,16 +121,16 @@ class listarUsuriosDeGrupo(ListView):
         obj = User.objects.filter(id=self.kwargs['id'])
         return obj
 
+class eliminarUser(FormView):
+    """ Vista de eliminacion de proyectos, hereda atributos y metodos de la clase FormView """
+    form_class = ComentariosLog
+    template_name = 'inicio/eliminar user.html'
+    success_url = reverse_lazy('listar_usuarios')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
 
-# class eliminarUser(FormView):
-#     """ Vista de eliminacion de proyectos, hereda atributos y metodos de la clase FormView """
-#     form_class = ComentariosLog
-#     template_name = 'proyectos/eliminar.html'
-#     success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
-#
-#     def form_valid(self, form):
-#         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
-#         proyecto = .objects.get(id=self.kwargs['id'])
-#         proyecto.estado='eliminado'
-#         proyecto.save()
-#         return super(eliminarProyectos, self).form_valid(form)
+    def form_valid(self, form):
+        """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
+        usuario = User.objects.get(id=self.kwargs['id'])
+        if usuario.id != 1:
+             usuario.is_active=False
+        usuario.save()
+        return super(eliminarUser, self).form_valid(form)
