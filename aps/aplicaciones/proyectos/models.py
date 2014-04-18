@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Proyectos(models.Model):
@@ -8,7 +9,8 @@ class Proyectos(models.Model):
     nombre = models.CharField(max_length=50)
     fechaInicio = models.DateField()
     cantFases = models.IntegerField()
-    estado = models.CharField(max_length=50)
+    estado = models.CharField(max_length=50, default='creado')
+    lider = models.ForeignKey(User, null='true')
 
     def __unicode__(self):
         """ Metodo llamado para visualizar objetos. En este caso se mostrara el valor del atributo

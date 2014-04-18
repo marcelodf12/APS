@@ -12,21 +12,39 @@ TIPOS_PERMISOS = (
     ('fase','fase'),
     ('item','item'),
     ('permiso','permiso'),
+    ('atributo','atributo')
 )
 CLASE_PERMISOS = (
     ('VER','VER'),
     ('ADD','ADD'),
-    ('MODIFICAR','MODIFICAR'),
-    ('DELETE','DELETE'),
+    ('MOD','MOD'),
+    ('DEL','DEL'),
 )
 class Permisos(models.Model):
     permiso = models.CharField(max_length=30, choices=CLASE_PERMISOS)
     tipoObjeto = models.CharField(max_length=15, choices=TIPOS_PERMISOS)
     usuario = models.ForeignKey(User, null='True', blank='True')
     grupo = models.ForeignKey(Group, null='True', blank='True')
-    proyecto = models.ForeignKey(Proyectos, null='True', blank='True')
-    fases = models.ForeignKey(fases, null='True', blank='True')
-    items = models.ForeignKey(items, null='True', blank='True')
+    id_fk = models.IntegerField()
 
     def __unicode__(self):
         return self.permiso
+
+    @staticmethod
+    def valido(**kwargs):
+        """
+            Funcion que retorna True si se tienen los permisos necesarios
+            :param usuario: Usuario
+            :param permiso: Permiso
+            :param tipoObjeto: Tipo de Objeto
+            :param proyecto: Proyecto Opcional
+            :param fase: fase Opcional
+            :param item: Item Opcional
+        """
+        print kwargs.get('usuario')
+        print kwargs.get('permiso')
+        print kwargs.get('tipoObjeto')
+        print kwargs.get('proyecto')
+        print kwargs.get('fase')
+        print kwargs.get('item')
+        return False

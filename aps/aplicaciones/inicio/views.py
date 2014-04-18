@@ -132,3 +132,6 @@ class eliminarUser(FormView):
             return HttpResponseRedirect(reverse_lazy("listar_grupos"))
 
         return super(eliminarUser, self).form_valid(form)
+
+class errorPermiso(TemplateView):
+    template_name = 'error/permisos.html'

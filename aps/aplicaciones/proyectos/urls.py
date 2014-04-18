@@ -7,7 +7,6 @@ from django.conf.urls import patterns, url
 from .views import \
     crearProyecto, \
     adminProyecto, \
-    listarProyectos, \
     modificarProyectos, \
     eliminarProyectos, \
     listarProyectosNoIniciados, \

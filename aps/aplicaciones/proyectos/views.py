@@ -5,14 +5,18 @@ from django.views.generic import TemplateView, CreateView, ListView, UpdateView,
 from .models import Proyectos
 from django.core.urlresolvers import reverse_lazy
 from .forms import ComentariosLog
+from aps.aplicaciones.permisos.models import Permisos
+from django.shortcuts import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
 class crearProyecto(CreateView):
     """ Vista de creacion de proyectos, hereda atributos y metodos de la clase CreateView """
     template_name = 'proyectos/crearProyecto.html'      # Se define la direccion y nombre del template
     model = Proyectos                                   # Se asocia al modelo 'Proyectos'
     success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyecto' en el caso de registro exitoso
-    #fields = ['nombre','fechaInicio','cantFases']
+    fields = ['nombre','fechaInicio','cantFases']
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
@@ -21,16 +25,11 @@ class crearProyecto(CreateView):
         proyecto.save()
         return super(crearProyecto, self).form_valid(form)
 
+
 class adminProyecto(TemplateView):
     """ Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """
     template_name = 'proyectos/admin.html'
 
-class listarProyectos(ListView):
-    """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
-    template_name = 'proyectos/verProyectos.html'
-    model = Proyectos
-    context_object_name = 'proyectos'           # Se define un nombre para los objetos de esta clase (utilizado por
-                                                # ejemplo para iterar en el template)
 class listarProyectosNoIniciados(ListView):
     """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
     template_name = 'proyectos/listanoiniciados.html'
@@ -55,12 +54,22 @@ class eliminarProyectos(FormView):
     template_name = 'proyectos/eliminar.html'
     success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
 
-    def form_valid(self, form):
-        """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
-        proyecto = Proyectos.objects.get(id=self.kwargs['id'])
-        proyecto.estado='eliminado'
-        proyecto.save()
-        return super(eliminarProyectos, self).form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        usuario=request.user
+        print usuario
+        if form.is_valid():
+            if Permisos.valido(usuario=usuario, permiso='DELETE', tipoObjeto='proyecto'):
+                proyecto = Proyectos.objects.get(id=self.kwargs['id'])
+                proyecto.estado='eliminado'
+                proyecto.save()
+                return HttpResponseRedirect('/proyectos/listar/')
+            else:
+                return HttpResponseRedirect('/error/permisos/')
+        else :
+            return self.form_invalid(form)
 
 class iniciarProyecto(FormView):
     """ Vista de inicio de proyectos, hereda atributos y metodos de la clase FormView """

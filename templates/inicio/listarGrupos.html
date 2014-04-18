@@ -20,8 +20,8 @@
      <ul>
          {% for grupo in grupos %}
             <h1>{{grupo.name}}</h1>
-            <b>Acciones:</b><br><!--
-            <a href="/Grupos/listarUsuarios/{{grupo.id}}"><img src='/static/images/Usuario.png' width='24' height='24'></a>-->
+            <b>Acciones:</b><br>
+            <a href="/Grupos/listarUsuarios/{{grupo.id}}"><img src='/static/images/Usuario.png' width='24' height='24'></a>
             <a href="/Grupos/eliminar/{{grupo.id}}"><img src='/static/images/Delete.png' width='24' height='24'></a>
          {% endfor %}
      </ul>
