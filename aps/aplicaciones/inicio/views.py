@@ -101,11 +101,6 @@ class eliminarGrupo(DeleteView):
         obj = Group.objects.get(id=self.kwargs['id'])
         return obj
 
-# class listarUsuarios(ListView):
-#     """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
-#     template_name = 'inicio/listarUsuarios.html'
-#     model = User
-#     context_object_name = 'usuarios'
 
 class asignarGrupo(UpdateUser):
     template_name = 'inicio/asignarGrupo.html'
@@ -131,6 +126,9 @@ class eliminarUser(FormView):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         usuario = User.objects.get(id=self.kwargs['id'])
         if usuario.id != 1:
-             usuario.is_active=False
-        usuario.save()
+            usuario.is_active=False
+            usuario.save()
+        else:
+            return HttpResponseRedirect(reverse_lazy("listar_grupos"))
+
         return super(eliminarUser, self).form_valid(form)
