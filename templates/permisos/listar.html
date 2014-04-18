@@ -39,23 +39,38 @@
           url : '/permisos/listar_ajax/',
           type : 'get',
           success : function(data){
-            var html="<table style='text-align: left; width: 100%;' border='0' cellpadding='0' cellspacing='0'> <tbody>";
+            var html="<table id='tablaDatos' border='0' cellpadding='0' cellspacing='0'> <tbody>";
                 html+="<tr>";
-                html+="<td style='vertical-align: top;'> PERMISO </td>";
-                html+="<td style='vertical-align: top;'> TIPO </td>";
-                html+="<td style='vertical-align: top;'> PROYECTO </td>";
-                html+="<td style='vertical-align: top;'> FASE </td>";
-                html+="<td style='vertical-align: top;'> ITEM </td>";
+                html+="<td style='background-color:#193B7C; font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> PERMISO </td>";
+                html+="<td style='background-color:#193B7C; font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> TIPO </td>";
+                html+="<td style='background-color:#193B7C; font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> PROYECTO </td>";
+                html+="<td style='background-color:#193B7C; font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> FASE </td>";
+                html+="<td style='background-color:#193B7C; font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> ITEM </td>";
+                html+="<td style='background-color:#193B7C; font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> ATRIBUTO </td>";
+                html+="<td style='background-color:#193B7C; font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> . </td>";
                 html+="</tr>";
             for(i=0;i<data.length;i++){
-                html+="<tr>";
-                html+="<td style='vertical-align: top;'> " + data[i].fields.permiso + "</td>";
-                html+="<td style='vertical-align: top;'> " + data[i].fields.tipoObjeto + "</td>";
-                html+="<td style='vertical-align: top;'> " + data[i].fields.proyecto + "</td>";
-                html+="<td style='vertical-align: top;'> " + data[i].fields.fases + "</td>";
-                html+="<td style='vertical-align: top;'> " + data[i].fields.items + "</td>";
-                html+="<td style='vertical-align: top;'> <a href='/permisos/eliminar/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a></td>";
-                html+="</tr>";
+                if(i%2==0){
+                    html+="<tr>";
+                    html+="<td style='vertical-align: top;' bgcolor=#EBEFFB> " + data[i].fields.permiso + "</td>";
+                    html+="<td style='vertical-align: top;' bgcolor=#EBEFFB> " + data[i].fields.tipoObjeto + "</td>";
+                    html+="<td style='vertical-align: top;' bgcolor=#EBEFFB> " + data[i].fields.proyecto + "</td>";
+                    html+="<td style='vertical-align: top;' bgcolor=#EBEFFB> " + data[i].fields.fases + "</td>";
+                    html+="<td style='vertical-align: top;' bgcolor=#EBEFFB> " + data[i].fields.items + "</td>";
+                    html+="<td style='vertical-align: top;' bgcolor=#EBEFFB> " + data[i].fields.atributo + "</td>";
+                    html+="<td style='vertical-align: top;' bgcolor=#EBEFFB> <a href='/permisos/eliminar/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a></td>";
+                    html+="</tr>";
+                }else{
+                    html+="<tr>";
+                    html+="<th style='vertical-align: top;' bgcolor=#CCD6F5> " + data[i].fields.permiso + "</td>";
+                    html+="<th style='vertical-align: top;' bgcolor=#CCD6F5> " + data[i].fields.tipoObjeto + "</td>";
+                    html+="<th style='vertical-align: top;' bgcolor=#CCD6F5> " + data[i].fields.proyecto + "</td>";
+                    html+="<th style='vertical-align: top;' bgcolor=#CCD6F5> " + data[i].fields.fases + "</td>";
+                    html+="<th style='vertical-align: top;' bgcolor=#CCD6F5> " + data[i].fields.items + "</td>";
+                    html+="<th style='vertical-align: top;' bgcolor=#CCD6F5> " + data[i].fields.atributo + "</td>";
+                    html+="<th style='vertical-align: top;' bgcolor=#CCD6F5> <a href='/permisos/eliminar/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a></td>";
+                    html+="</tr>";
+                }
 
             }
             html+="</tbody></table><br>"
