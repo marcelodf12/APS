@@ -19,6 +19,8 @@ CLASE_PERMISOS = (
     ('ADD','ADD'),
     ('MOD','MOD'),
     ('DEL','DEL'),
+    ('INI','INI'),
+    ('REV','REV')
 )
 class Permisos(models.Model):
     permiso = models.CharField(max_length=30, choices=CLASE_PERMISOS)

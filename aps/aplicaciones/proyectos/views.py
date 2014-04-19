@@ -20,10 +20,13 @@ class crearProyecto(CreateView):
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
-        proyecto = form.save()
-        proyecto.estado ='creado'
-        proyecto.save()
-        return super(crearProyecto, self).form_valid(form)
+        if(Permisos.valido(usuario=self.request.user,permiso='ADD',tipoObjeto='proyecto',id=0)):
+            proyecto = form.save()
+            proyecto.estado ='creado'
+            proyecto.save()
+            return super(crearProyecto, self).form_valid(form)
+        else:
+            return HttpResponseRedirect('/error/permisos/')
 
 
 class adminProyecto(TemplateView):
@@ -47,6 +50,15 @@ class modificarProyectos(UpdateView):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = Proyectos.objects.get(id=self.kwargs['id'])
         return obj
+
+    def form_valid(self, form):
+        if(Permisos.valido(usuario=self.request.user,tipoObjeto='proyecto',id=self.kwargs['id'],permiso='MOD')):
+            print 'tiene permiso'
+            return super(modificarProyectos, self).form_valid(form)
+        else:
+            print 'no tiene permiso'
+            return HttpResponseRedirect('/error/permisos/')
+
 
 class eliminarProyectos(FormView):
     """ Vista de eliminacion de proyectos, hereda atributos y metodos de la clase FormView """
