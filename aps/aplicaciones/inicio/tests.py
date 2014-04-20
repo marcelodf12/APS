@@ -51,7 +51,7 @@ class TestEliminarUser(unittest.TestCase):
         # Creacion de un usuario para la autenticacion
         self.userLogin = User.objects.create_user(username="fulano Login", password="123")
 
-        #Creacion de usuarios para la eliminacion
+        #Creacion de un usuario para la eliminacion
         #self.userRegistrado = User.objects.create_user(username="fulano Registrado 1", password="123") #PORQUE NO ES = A LO DE ABAJO
         self.userRegistrado = User()
         self.userRegistrado.username = "fulano Registrado 1"
