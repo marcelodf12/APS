@@ -65,13 +65,12 @@ class TestEliminarUser(unittest.TestCase):
 
         # Peticion POST para eliminar el usuario con id=2
         response = self.client.post("/usuarios/eliminar/2", data={'comentario': 'eliminacion de prueba'})
-        #print self.userRegistrado.is_active     #PORQUE ESTO DA TRUE!!!!!!!!!  BORRAR LINEA
-
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
 
         # Se consulta si el usuario fue borrado, si su estado fue cambiado a 'False'
-        e = User.objects.get(username="fulano Registrado 1", password="123", is_active=False)
+        e = User.objects.get(username="fulano Registrado 1", password="123")
 
+        self.assertFalse(e.is_active)
         #print "\nId del usuario:", e.pk                                # Id del usuario borrado
         #print "Username del usuario:", e.get_username().__str__()      # Username del usuario borrado
         #print "Esta Activo:", e.is_active                              # Booleano de estado (activo o inactivo)
