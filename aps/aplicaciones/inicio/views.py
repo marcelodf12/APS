@@ -120,7 +120,7 @@ class eliminarUser(FormView):
     """ Vista de eliminacion de proyectos, hereda atributos y metodos de la clase FormView """
     form_class = ComentariosLog
     template_name = 'inicio/eliminar user.html'
-    success_url = reverse_lazy('listar_usuarios')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
+    success_url = reverse_lazy('listar_usuarios')      # Se mostrara la vista 'listar_usuarios' en el caso de eliminacion exitosa
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
