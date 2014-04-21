@@ -4,6 +4,9 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import User, Group
 from django.core import serializers
 from django.http import HttpResponse
+from aps.aplicaciones.proyectos.models import Proyectos
+from aps.aplicaciones.fases.models import fases
+from aps.aplicaciones.items.models import items
 
 
 # Create your views here.
@@ -34,8 +37,29 @@ class permisos_ajax(TemplateView):
     def get(self, request, *args, **kwargs):
         id_usuario = request.GET['idusuario']
         permisos = Permisos.objects.filter(usuario__id=id_usuario)
-        data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
-        return HttpResponse(data, mimetype='application/json')
+        datajson = '['
+        for p in permisos:
+            proyecto=fase=item=atributo='none'
+            tipo=p.tipoObjeto
+            pk_id=p.id_fk
+            if tipo =='proyecto':
+                proyecto=Proyectos.objects.get(id=pk_id).nombre
+            elif tipo =='fase':
+                fase=fases.objects.get(id=pk_id).nombre
+            elif tipo =='item':
+                item=items.objects.get(id=pk_id).nombre
+            datajson+='{"pk": ' + str(p.id) + ', "model": "permisos.permisos", "fields": {'
+            datajson+='"permiso": "' + p.permiso + '", '
+            datajson+='"tipoObjeto": "' + p.tipoObjeto + '", '
+            datajson+='"proyecto": "' + proyecto + '", '
+            datajson+='"fases": "' + fase + '", '
+            datajson+='"items": "' + item + '"}},'
+        datajson=datajson[:-1]
+        datajson+=']'
+        # print datajson
+        # data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
+        # print data
+        return HttpResponse(datajson, mimetype='application/json')
 
 class eliminar(DeleteView):
     """ Vista para Eliminar un permiso """
@@ -58,5 +82,24 @@ class permisos_grupos_ajax(TemplateView):
     def get(self, request, *args, **kwargs):
         id_grupo = request.GET['idgrupo']
         permisos = Permisos.objects.filter(grupo__id=id_grupo)
-        data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
-        return HttpResponse(data, mimetype='application/json')
+        datajson = '['
+        for p in permisos:
+            proyecto=fase=item=atributo='none'
+            tipo=p.tipoObjeto
+            pk_id=p.id_fk
+            if tipo =='proyecto':
+                proyecto=Proyectos.objects.get(id=pk_id).nombre
+            elif tipo =='fase':
+                fase=fases.objects.get(id=pk_id).nombre
+            elif tipo =='item':
+                item=items.objects.get(id=pk_id).nombre
+            datajson+='{"pk": ' + str(p.id) + ', "model": "permisos.permisos", "fields": {'
+            datajson+='"permiso": "' + p.permiso + '", '
+            datajson+='"tipoObjeto": "' + p.tipoObjeto + '", '
+            datajson+='"proyecto": "' + proyecto + '", '
+            datajson+='"fases": "' + fase + '", '
+            datajson+='"items": "' + item + '"}},'
+        datajson=datajson[:-1]
+        datajson+=']'
+        #data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
+        return HttpResponse(datajson, mimetype='application/json')
