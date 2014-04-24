@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse_lazy
 from .forms import ComentariosLog
 from aps.aplicaciones.permisos.models import Permisos
 from django.shortcuts import HttpResponseRedirect
+from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -31,7 +32,11 @@ class crearProyecto(CreateView):
 
 class adminProyecto(TemplateView):
     """ Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """
-    template_name = 'proyectos/admin.html'
+    def get(self, request, *args, **kwargs):
+        if(Permisos.valido(permiso='VER', tipoObjeto='proyecto', usuario=self.request.user, id=0)):
+            return TemplateResponse(request, 'proyectos/admin.html', {})
+        else:
+            return HttpResponseRedirect('/error/permisos/')
 
 class listarProyectosNoIniciados(ListView):
     """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
