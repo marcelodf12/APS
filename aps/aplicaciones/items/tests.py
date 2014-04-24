@@ -135,7 +135,6 @@ class TestCrearItem(unittest.TestCase):
         #print "Estado del item:", e.estado                        # Estado del item creado
 
         #self.assertEqual(e.estado, "creado")
-        #self.assertFalse(e.is_active)
 
 
 if __name__ == '__main__':
