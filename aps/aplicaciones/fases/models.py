@@ -7,7 +7,7 @@ class fases(models.Model):
     fechaInicioP = models.DateField()
     fechaInicioR = models.DateField()
     estado = models.CharField(max_length=50, default='creado')
-    proyecto = models.ForeignKey(Proyectos)
+    proyecto = models.ForeignKey(Proyectos, null='True')
     costo = models.IntegerField(null='True')
     presupuesto = models.IntegerField()
 

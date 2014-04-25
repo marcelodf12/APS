@@ -3,23 +3,34 @@ from django.views.generic import TemplateView, CreateView, ListView, UpdateView,
 from django.core.urlresolvers import reverse_lazy
 from .models import fases
 from aps.aplicaciones.proyectos.forms import ComentariosLog
+from aps.aplicaciones.proyectos.models import Proyectos
 
 
 # Create your views here.
 class adminFases(TemplateView):
     template_name = 'fases/admin.html'
-class crearFase(CreateView):
+
+class crearFaseEnProyecto(CreateView):
     model = fases
     template_name = 'fases/crear.html'
-    success_url = reverse_lazy("admin_fases")
-    fields = ['nombre', 'fechaInicioP', 'fechaInicioR', 'proyecto','presupuesto']
-
+    success_url = reverse_lazy("admin_proyecto")
+    fields = ['nombre', 'fechaInicioP', 'fechaInicioR','presupuesto']
 
     def form_valid(self, form):
-        fase = form.save()
-        fase.estado = 'creado'
-        fase.save()
-        return super(crearFase, self).form_valid(form)
+        p=Proyectos.objects.get(id=self.kwargs['id'])
+        fas=fases.objects.filter(proyecto=p)
+        cant_act=0
+        for f in fas:
+            cant_act+=1
+        if(p.cantFases>cant_act):
+            fase = form.save()
+            fase.estado = 'creado'
+            fase.proyecto = p
+            fase.save()
+            print fase
+            return super(crearFaseEnProyecto, self).form_valid(form)
+        else:
+            return render(self.request, 'error/general.html', {'mensaje':'Ya no se pueden agregar fases'})
 
 class listarFases(ListView):
     model = fases

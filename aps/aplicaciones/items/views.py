@@ -42,7 +42,7 @@ class listarItemsEliminados(ListView):
 class modificarItems(UpdateView):
     """ Vista de modificacion de proyectos, hereda atributos y metodos de la clase UpdateView """
     model = items
-    #fields = ['nombre']     # Permite modificar solo el campo 'nombre'
+    fields = ['nombre','complejidad','costo']     # Permite modificar solo el campo 'nombre'
     template_name = 'items/update.html'
     success_url = reverse_lazy('listar_item')      # Se mostrara la vista 'listar_proyecto' en el caso de modificacion exitosa
 

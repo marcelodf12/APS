@@ -6,7 +6,7 @@ from .models import Proyectos
 from django.core.urlresolvers import reverse_lazy
 from .forms import ComentariosLog
 from aps.aplicaciones.permisos.models import Permisos
-from django.shortcuts import HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect, render
 from django.template.response import TemplateResponse
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.items.models import items
@@ -26,6 +26,7 @@ class crearProyecto(CreateView):
         if(Permisos.valido(usuario=self.request.user,permiso='ADD',tipoObjeto='proyecto',id=0)):
             proyecto = form.save()
             proyecto.estado ='creado'
+            proyecto.lider = self.request.user
             proyecto.save()
             return super(crearProyecto, self).form_valid(form)
         else:
@@ -99,9 +100,16 @@ class iniciarProyecto(FormView):
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         proyecto = Proyectos.objects.get(id=self.kwargs['id'])
-        proyecto.estado='activo'
-        proyecto.save()
-        return super(iniciarProyecto, self).form_valid(form)
+        fas=fases.objects.filter(proyecto=proyecto)
+        cant_act=0
+        for f in fas:
+            cant_act+=1
+        if(proyecto.cantFases==cant_act):
+            proyecto.estado='activo'
+            proyecto.save()
+            return super(iniciarProyecto, self).form_valid(form)
+        else:
+            return render(self.request, 'error/general.html', {'mensaje':'El proyecto no tiene todas las fases creadas'})
 
 class listarProyectosAJAX(ListView):
     model = Proyectos
@@ -123,7 +131,7 @@ class detallesProyecto(TemplateView):
     """ Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """
     def get(self, request, *args, **kwargs):
         p=Proyectos.objects.get(id=self.kwargs['id'])
-        f=fases.objects.filter(proyecto=p)
+        f=fases.objects.filter(proyecto=p).order_by('pk')
         i=items.objects.filter(fase__proyecto=p)
         costo_total=0
         for fas in f:
