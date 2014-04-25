@@ -10,7 +10,7 @@ from .views import \
     modificarProyectos, \
     eliminarProyectos, \
     listarProyectosNoIniciados, \
-    iniciarProyecto, listarProyectosAJAX, proyectos_ajax
+    iniciarProyecto, listarProyectosAJAX, proyectos_ajax, detallesProyecto
 
 urlpatterns = patterns('',
 
@@ -22,4 +22,5 @@ urlpatterns = patterns('',
     url(r'^eliminar/(?P<id>\d+)$', eliminarProyectos.as_view(), name='eliminar_proyectos'),
     url(r'^iniciar/(?P<id>\d+)$', iniciarProyecto.as_view(), name='iniciar_proyecto'),
     url(r'^noIniciados/$', listarProyectosNoIniciados.as_view(), name='listar_proyectos_no_iniciados'),
+    url(r'^detalles/(?P<id>\d+)$', detallesProyecto.as_view(), name='detalle_proyecto'),
 )

@@ -12,6 +12,7 @@ class crearFase(CreateView):
     model = fases
     template_name = 'fases/crear.html'
     success_url = reverse_lazy("admin_fases")
+    fields = ['nombre', 'fechaInicioP', 'fechaInicioR', 'proyecto','presupuesto']
 
 
     def form_valid(self, form):

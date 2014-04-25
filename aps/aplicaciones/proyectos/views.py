@@ -8,7 +8,9 @@ from .forms import ComentariosLog
 from aps.aplicaciones.permisos.models import Permisos
 from django.shortcuts import HttpResponseRedirect
 from django.template.response import TemplateResponse
-from django.contrib.auth.decorators import login_required
+from aps.aplicaciones.fases.models import fases
+from aps.aplicaciones.items.models import items
+import datetime
 
 # Create your views here.
 
@@ -17,7 +19,7 @@ class crearProyecto(CreateView):
     template_name = 'proyectos/crearProyecto.html'      # Se define la direccion y nombre del template
     model = Proyectos                                   # Se asocia al modelo 'Proyectos'
     success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyecto' en el caso de registro exitoso
-    fields = ['nombre','fechaInicio','cantFases']
+    fields = ['nombre','fechaInicio','fechaFinP','cantFases','presupuesto','penalizacion']
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
@@ -115,3 +117,46 @@ class proyectos_ajax(TemplateView):
         proyectos = Proyectos.objects.filter(estado=estado_proyecto)
         data = serializers.serialize('json',proyectos,fields=('nombre','fechaInicio','cantFases'))
         return HttpResponse(data, mimetype='application/json')
+
+
+class detallesProyecto(TemplateView):
+    """ Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """
+    def get(self, request, *args, **kwargs):
+        p=Proyectos.objects.get(id=self.kwargs['id'])
+        f=fases.objects.filter(proyecto=p)
+        i=items.objects.filter(fase__proyecto=p)
+        costo_total=0
+        for fas in f:
+            cos_fas = 0
+            aux = items.objects.filter(fase=fas)
+            for a in aux:
+                cos_fas += a.costo
+            fas.costo = cos_fas
+            fas.save()
+        for it in i:
+            costo_total += it.costo
+        print costo_total
+        hoy=datetime.datetime.now().date()
+        diasRestantes = datetime.datetime.strptime(str(p.fechaFinP), '%Y-%m-%d').date() - hoy
+        if(diasRestantes.days<0):
+            penalizacion = diasRestantes.days * p.penalizacion
+        else:
+            penalizacion = 0
+        saldo = p.presupuesto - costo_total + penalizacion
+        print saldo
+
+
+        # for fas in f:
+        #     i.append(items.objects.filter(fase=fas))
+        if(True):
+            return TemplateResponse(request, 'proyectos/tablaProyecto.html', {
+                'proyecto':p ,
+                'fases':f,
+                'items':i,
+                'costoTotal':costo_total,
+                'diasRestantes':diasRestantes,
+                'penalizacion':penalizacion,
+                'saldo': saldo
+            })
+        else:
+            return HttpResponseRedirect('/error/permisos/')

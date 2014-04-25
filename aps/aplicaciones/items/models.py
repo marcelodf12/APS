@@ -7,10 +7,11 @@ class items(models.Model):
     en una tabla y sus atributos se traduciran en campos de la misma. """
 
     nombre = models.CharField(max_length=100)
-    versionAct = models.IntegerField()
-    estado = models.CharField(max_length=15)
+    versionAct = models.IntegerField(default='1')
+    estado = models.CharField(max_length=15, default='creado')
     complejidad = models.IntegerField()
     fase = models.ForeignKey(fases)
+    costo = models.IntegerField()
 
     def __unicode__(self):
         """ Metodo llamado para visualizar objetos. En este caso se mostrara el valor del atributo 'nombre' para
