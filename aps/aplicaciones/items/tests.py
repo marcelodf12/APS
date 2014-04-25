@@ -209,7 +209,7 @@ class TestEliminarItem(unittest.TestCase):
         # print "Version actual:", consultaInstancia.versionAct                     # Version actual del item borrado
         # print "Estado del item:", consultaInstancia.estado                        # Estado del item borrado
 
-
+        self.assertNotEquals(consultaInstancia, None)
 
 
 if __name__ == '__main__':

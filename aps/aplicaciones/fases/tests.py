@@ -63,143 +63,123 @@ class TestCrearFase(unittest.TestCase):
         self.assertNotEquals(consultaInstancia,None)
 
 
-# class TestModificarItem(unittest.TestCase):
-#     """Prueba para comprobar la modificacion de items"""
-#
-#     def setUp(self):
-#         # Creacion de un cliente
-#             self.cliente = Client()
-#
-#             # Creacion de un usuario para la autenticacion
-#             userLogin = User.objects.create_user(username="fulano Login2", password="123")
-#
-#             #Creacion de un usuario Lider para instanciar un proyecto
-#             userRegistrado = User()
-#             userRegistrado.username = "fulano Lider2"
-#             userRegistrado.password = "123"
-#             userRegistrado.save()
-#
-#             #Creacion de un proyecto para instanciar una fase
-#             proyectoRegistrado = Proyectos()
-#             proyectoRegistrado.nombre = "proyecto Registrado"
-#             proyectoRegistrado.cantFases = 7
-#             proyectoRegistrado.fechaInicio = "2014-03-03"
-#             proyectoRegistrado.lider = userRegistrado
-#             proyectoRegistrado.save()
-#
-#             #Creacion de una fase para instanciar un item
-#             faseRegistrada = fases()
-#             faseRegistrada.nombre = "fase Registrada"
-#             faseRegistrada.proyecto = proyectoRegistrado
-#             faseRegistrada.versionAct = 1
-#             faseRegistrada.complejidad = 10
-#             faseRegistrada.cantItems = 6
-#             faseRegistrada.fechaInicio = "2014-03-24"
-#             faseRegistrada.save()
-#
-#             #Creacion de un item para la eliminacion
-#             itemRegistrado = items()
-#             itemRegistrado.pk = 1
-#             itemRegistrado.nombre = "item Registrado"
-#             itemRegistrado.fase = faseRegistrada
-#             itemRegistrado.versionAct = 1
-#             itemRegistrado.complejidad = 10
-#             itemRegistrado.save()
-#
-#
-#     def test_details(self):
-#         # Cliente es autenticado como el usuario 'fulano Login'
-#         b = self.cliente.login(username='fulano Login2', password='123')
-#
-#         # Peticion POST para modificar el item con id=1
-#         response = self.cliente.post("/items/modificar/1",data={'nombre':'item prueba modificado',
-#                                                            'versionAct':'2',         #Esto debe ser automatico
-#                                                            'estado':'creado',        #Esto debe ser automatico
-#                                                            'complejidad':'10',
-#                                                            'fase':'1'
-#                                                            })
-#
-#         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
-#
-#         # Se consulta por el item modificado en la tabla items
-#         consultaInstancia = items.objects.get(nombre="item prueba modificado",
-#                               versionAct="2",       #Esto debe ser automatico
-#                               estado="creado",      #Esto debe ser automatico
-#                               complejidad="10",
-#                               fase="1")
-#
-#         #print "\nNombre del item: ", consultaInstancia.nombre                     # Nombre del item modificado
-#         #print "Complejidad del item: ", consultaInstancia.complejidad             # Complejidad del item modificado
-#         #print "Version actual:", consultaInstancia.versionAct                     # Version actual del item modificado
-#         #print "Estado del item:", consultaInstancia.estado                        # Estado del item modificado
-#
-#         self.assertNotEquals(consultaInstancia, None)
-#
-#
-# class TestEliminarItem(unittest.TestCase):
-#     """
-#         Prueba para comprobar si la eliminacion de usuarios se realiza de forma logica
-#     """
-#     def setUp(self):
-#
-#             # Creacion de un cliente
-#             self.cliente = Client()
-#
-#             # Creacion de un usuario para la autenticacion
-#             self.userLogin = User.objects.create_user(username="fulano Login3", password="123")
-#
-#             #Creacion de un usuario Lider para instanciar un proyecto
-#             userRegistrado = User()
-#             userRegistrado.username = "fulano Lider3"
-#             userRegistrado.password = "123"
-#             userRegistrado.save()
-#
-#             #Creacion de un proyecto para instanciar una fase
-#             proyectoRegistrado = Proyectos()
-#             proyectoRegistrado.nombre = "proyecto Registrado"
-#             proyectoRegistrado.cantFases = 7
-#             proyectoRegistrado.fechaInicio = "2014-03-03"
-#             proyectoRegistrado.lider = userRegistrado
-#             proyectoRegistrado.save()
-#
-#             #Creacion de una fase para instanciar un item
-#             faseRegistrada = fases()
-#             faseRegistrada.nombre = "fase Registrada"
-#             faseRegistrada.proyecto = proyectoRegistrado
-#             faseRegistrada.versionAct = 1
-#             faseRegistrada.complejidad = 10
-#             faseRegistrada.cantItems = 6
-#             faseRegistrada.fechaInicio = "2014-03-24"
-#             faseRegistrada.save()
-#
-#             #Creacion de un item para la eliminacion
-#             itemRegistrado = items()
-#             itemRegistrado.pk = 1
-#             itemRegistrado.nombre = "item Registrado"
-#             itemRegistrado.fase = faseRegistrada
-#             itemRegistrado.versionAct = 1
-#             itemRegistrado.complejidad = 10
-#             itemRegistrado.save()
-#
-#
-#     def test_details(self):
-#
-#         # Cliente es autenticado como el usuario 'fulano Login'
-#         b = self.cliente.login(username='fulano Login3', password='123')
-#
-#         # Peticion POST para eliminar el item con id=1
-#         response = self.cliente.post("/items/eliminar/1",data={'comentario':'eliminacion item de prueba'})
-#
-#         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
-#
-#         #Se consulta si el item fue borrado, si su estado fue cambiado a 'eliminado'
-#         consultaInstancia = items.objects.get(nombre="item Registrado", complejidad=10, versionAct=1, estado="eliminado" )
-#
-#
-#         # print "\nNombre del item: ", consultaInstancia.nombre                     # Nombre del item borrado
-#         # print "Complejidad del item: ", consultaInstancia.complejidad             # Complejidad del item borrado
-#         # print "Version actual:", consultaInstancia.versionAct                     # Version actual del item borrado
-#         # print "Estado del item:", consultaInstancia.estado                        # Estado del item borrado
+class TestModificarFase(unittest.TestCase):
+    """Prueba para comprobar la modificacion de items"""
+
+    def setUp(self):
+        # Creacion de un cliente
+            self.cliente = Client()
+
+            # Creacion de un usuario para la autenticacion
+            userLogin = User.objects.create_user(username="fulano Login2", password="123")
+
+            #Creacion de un usuario Lider para instanciar un proyecto
+            userRegistrado = User()
+            userRegistrado.username = "fulano Lider2"
+            userRegistrado.password = "123"
+            userRegistrado.save()
+
+            #Creacion de un proyecto para instanciar una fase
+            proyectoRegistrado = Proyectos()
+            proyectoRegistrado.nombre = "proyecto Registrado"
+            proyectoRegistrado.pk=2
+            proyectoRegistrado.cantFases = 7
+            proyectoRegistrado.fechaInicio = "2014-03-03"
+            proyectoRegistrado.lider = userRegistrado
+            proyectoRegistrado.save()
+
+            #Creacion de una fase para la modificacion
+            faseRegistrada = fases()
+            faseRegistrada.nombre = "fase Registrada"
+            faseRegistrada.pk=2
+            faseRegistrada.proyecto = proyectoRegistrado
+            faseRegistrada.estado = "creado"
+            faseRegistrada.cantItems = 6
+            faseRegistrada.fechaInicio = "2014-03-24"
+            faseRegistrada.save()
+
+
+
+    def test_details(self):
+        # Cliente es autenticado como el usuario 'fulano Login'
+        b = self.cliente.login(username='fulano Login2', password='123')
+
+        # Peticion POST para modificar la fase con id=2
+        response = self.cliente.post("/fases/modificar/2",data={'nombre':'fase Registrada modificada'})
+
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
+
+        # Se consulta por el item modificado en la tabla items
+        consultaInstancia = fases.objects.get(nombre="fase Registrada modificada")
+
+        #print "\nNombre de la fase: ", consultaInstancia.nombre                     # Nombre de la fase modificada
+        #print "Fecha de inicio: ", consultaInstancia.fechaInicio                    # Fecha inicio de la fase modificada
+        #print "Cant. de items: ", consultaInstancia.cantItems                       # Cantidad de items de la fase modificada
+        #print "Estado de la fase: ", consultaInstancia.estado                       # Estado de la fase modificada
+        #print "Proyecto asociado: ", consultaInstancia.proyecto                     # Proyecto de la fase modificada
+
+
+        self.assertNotEquals(consultaInstancia, None)
+
+
+class TestEliminarFase(unittest.TestCase):
+    """
+        Prueba para comprobar la eliminacion de fases
+    """
+    def setUp(self):
+
+            # Creacion de un cliente
+            self.cliente = Client()
+
+            # Creacion de un usuario para la autenticacion
+            self.userLogin = User.objects.create_user(username="fulano Login3", password="123")
+
+            #Creacion de un usuario Lider para instanciar un proyecto
+            userRegistrado = User()
+            userRegistrado.username = "fulano Lider3"
+            userRegistrado.password = "123"
+            userRegistrado.save()
+
+            #Creacion de un proyecto para instanciar una fase
+            proyectoRegistrado = Proyectos()
+            proyectoRegistrado.nombre = "proyecto Registrado"
+            proyectoRegistrado.pk=3
+            proyectoRegistrado.cantFases = 7
+            proyectoRegistrado.fechaInicio = "2014-03-03"
+            proyectoRegistrado.lider = userRegistrado
+            proyectoRegistrado.save()
+
+            #Creacion de una fase para la eliminacion
+            faseRegistrada = fases()
+            faseRegistrada.nombre = "fase prueba"
+            faseRegistrada.pk=3
+            faseRegistrada.proyecto = proyectoRegistrado
+            faseRegistrada.estado = "creado"
+            faseRegistrada.cantItems = 6
+            faseRegistrada.fechaInicio = "2014-03-24"
+            faseRegistrada.save()
+
+
+    def test_details(self):
+
+        # Cliente es autenticado como el usuario 'fulano Login'
+        b = self.cliente.login(username='fulano Login3', password='123')
+
+        # Peticion POST para eliminar la fase con id=3
+        response = self.cliente.post("/fases/eliminar/3",data={'comentario':'eliminacion fase de prueba'})
+
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+
+        #Se consulta si la fase fue borrada, si su estado fue cambiado a 'eliminado'
+        consultaInstancia = fases.objects.get(nombre="fase prueba", fechaInicio="2014-03-24", cantItems=6, estado="eliminado")
+
+
+        #print "\nNombre de la fase: ", consultaInstancia.nombre                   # Nombre del item borrado
+        #print "Fecha de inicio: ", consultaInstancia.fechaInicio                  # Complejidad del item borrado
+        #print "Cantidad de items: ", consultaInstancia.cantItems                  # Version actual del item borrado
+        #print "Estado de la fase: ", consultaInstancia.estado                     # Estado del item borrado
+
+        self.assertNotEquals(consultaInstancia, None)
 
 
 if __name__ == '__main__':
