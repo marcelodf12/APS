@@ -50,7 +50,7 @@ class listarProyectosNoIniciados(ListView):
 class modificarProyectos(UpdateView):
     """ Vista de modificacion de proyectos, hereda atributos y metodos de la clase UpdateView """
     model = Proyectos
-    fields = ['nombre']     # Permite modificar solo el campo 'nombre'
+    fields = ['nombre','fechaInicio','fechaFinP','penalizacion','presupuesto']     # Permite modificar solo el campo 'nombre'
     template_name = 'proyectos/update.html'
     success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyecto' en el caso de modificacion exitosa
 
@@ -60,12 +60,16 @@ class modificarProyectos(UpdateView):
         return obj
 
     def form_valid(self, form):
-        if(Permisos.valido(usuario=self.request.user,tipoObjeto='proyecto',id=self.kwargs['id'],permiso='MOD')):
-            print 'tiene permiso'
-            return super(modificarProyectos, self).form_valid(form)
+        p=Proyectos.objects.get(id=self.kwargs['id'])
+        if(p.estado == 'creado'):
+            if(Permisos.valido(usuario=self.request.user,tipoObjeto='proyecto',id=self.kwargs['id'],permiso='MOD')):
+                print 'tiene permiso'
+                return super(modificarProyectos, self).form_valid(form)
+            else:
+                print 'no tiene permiso'
+                return HttpResponseRedirect('/error/permisos/')
         else:
-            print 'no tiene permiso'
-            return HttpResponseRedirect('/error/permisos/')
+            return render(self.request, 'error/general.html', {'mensaje':'Solo puede modificar un proyecto No iniciado'})
 
 
 class eliminarProyectos(FormView):

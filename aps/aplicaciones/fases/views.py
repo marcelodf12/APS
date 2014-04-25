@@ -42,10 +42,9 @@ class modificarFases(UpdateView):
     model = fases
     fields = ['nombre']     # Permite modificar solo el campo 'nombre'
     template_name = 'fases/update.html'
-    success_url = reverse_lazy('listar_fases')      # Se mostrara la vista 'listar_fases' en el caso de modificacion exitosa
+    success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyectos' en el caso de modificacion exitosa
 
     def get_object(self, queryset=None):
-
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = fases.objects.get(id=self.kwargs['id'])
         return obj
@@ -54,7 +53,7 @@ class eliminarFase(FormView):
     """ Vista de eliminacion de fases, hereda atributos y metodos de la clase FormView """
     form_class = ComentariosLog
     template_name = 'fases/eliminar.html'
-    success_url = reverse_lazy('listar_fases')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
+    success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """

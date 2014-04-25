@@ -10,7 +10,7 @@ class items(models.Model):
     versionAct = models.IntegerField(default='1')
     estado = models.CharField(max_length=15, default='creado')
     complejidad = models.IntegerField()
-    fase = models.ForeignKey(fases)
+    fase = models.ForeignKey(fases, null='True')
     costo = models.IntegerField()
 
     def __unicode__(self):

@@ -6,6 +6,7 @@ from django.views.generic import TemplateView, CreateView, ListView, UpdateView,
 from django.core.urlresolvers import reverse_lazy
 from .models import items
 from .forms import ComentariosLog
+from aps.aplicaciones.fases.models import fases
 
 # Create your views here.
 class adminItems(TemplateView):
@@ -24,8 +25,24 @@ class crearItem(CreateView):
         item=form.save()        # Se guardan los datos del formulario en 'item'????????
         item.versionAct = 1     # Se define un valor predeterminado para la version del item
         item.estado = 'creado'
-        item.save()             # Se guardan ?????????
+        item.save()
         return super(crearItem, self).form_valid(form)
+
+class crearItemEnFase(CreateView):
+    model = items
+    template_name = 'items/crear.html'
+    success_url = reverse_lazy('listar_proyectos')
+    fields = ['nombre', 'complejidad', 'costo']
+
+    def form_valid(self, form):
+        """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
+        f= fases.objects.get(id=self.kwargs['id'])
+        item=form.save()        # Se guardan los datos del formulario en 'item'????????
+        item.versionAct = 1     # Se define un valor predeterminado para la version del item
+        item.estado = 'creado'
+        item.fase = f
+        item.save()
+        return super(crearItemEnFase, self).form_valid(form)
 
 class listarItems(ListView):
     """ Vista de listado de items, hereda atributos y metodos de la clase ListView """
