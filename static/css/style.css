@@ -6,7 +6,7 @@ body {
 	text-align: justify;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size: 10pt;
-	color: #666666;
+	color: #777;
 }
 ul.errorlist{
     color:#B4020E;
@@ -29,8 +29,8 @@ a:hover {
 	text-decoration: none;
 }
 
-select {
-    background-color:#CAE4FF;
+select{
+    background-image:url(/static/images/fondoBoton.jpeg);
     padding:8px;
     border:solid 1px #DEDEDE;
     border-radius:5px;
@@ -38,8 +38,11 @@ select {
     }
 select:focus {
     box-shadow:0 0 15px #036;
-    background-color:#CCD4DC;
+    background-image:url(/static/images/fondoBoton.jpeg);
     }
+option {
+    background:#c8e0ec;
+}
 
 
 
@@ -49,18 +52,21 @@ select:focus {
 	font-size: 16px;
 
 }
-#tablaDatos th, #tablaDatos td {
+#tablaDatos th, #tablaDatos td, #tablaDatos2 th, #tablaDatos2 td{
    width: 25%;
    text-align: left;
    vertical-align: top;
    border: 1px solid #fff;
    border-collapse: 1px;
    padding: 0.3em;
-   background-color: #EBEFFB;
+   background-image:url(/static/images/fondoBoton.jpeg);
+}
+#tablaDatos td.title {
+   background-image:url(/static/images/fondoBoton4.jpeg);
 }
 
-#tablaDatos td {
-   background-color:rgba(193, 211, 255, 1);
+#tablaDatos td, #tablaDatos2 td{
+   background-image:url(/static/images/fondoBoton2.jpeg);
 }
 
 #tablaDatos2 {
@@ -68,19 +74,6 @@ select:focus {
 	width: 100%;
 	font-size: 16px;
 
-}
-#tablaDatos2 th, #tablaDatos2 td {
-   width: 25%;
-   text-align: left;
-   vertical-align: top;
-   border: 1px solid #fff;
-   border-collapse: 1px;
-   padding: 0.3em;
-   background-color: #EBEFFB;
-}
-
-#tablaDatos2 td {
-   background-color:rgba(193, 211, 255, 1);
 }
 
 
@@ -253,14 +246,14 @@ img.left {
     }
 
 #formDiv input {
-    background-color:#CAE4FF;
+    background-image:url(/static/images/fondoBoton.jpeg);
     padding:8px;
     border:solid 1px #DEDEDE;
     border-radius:5px;
     }
 #formDiv input:focus {
     box-shadow:0 0 15px #036;
-    background-color:#CCD4DC;
+    background-image:url(/static/images/fondoBoton3.jpeg);
     }
 #formDiv a:visited, a:link{
     font-size: 15px;
