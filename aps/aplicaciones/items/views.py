@@ -17,7 +17,7 @@ class crearItem(CreateView):
     model = items                               # Se asocia al modelo 'items'
     template_name = 'items/crear.html'
     success_url = reverse_lazy("admin_items")   # Se mostrara la vista 'admin_items' en el caso de creacion exitosa
-    #fields = ['nombre', 'complejidad']         # PENDIENTE???????
+    fields = ['nombre','complejidad','fase']
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
@@ -45,6 +45,7 @@ class modificarItems(UpdateView):
     #fields = ['nombre']     # Permite modificar solo el campo 'nombre'
     template_name = 'items/update.html'
     success_url = reverse_lazy('listar_item')      # Se mostrara la vista 'listar_proyecto' en el caso de modificacion exitosa
+    fields = ['nombre','complejidad','fase']
 
     def get_object(self, queryset=None):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
