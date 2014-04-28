@@ -5,8 +5,8 @@
 """
 from django.conf.urls import patterns, url
 from aps.aplicaciones.inicio.views import home, Registrarse, UpdateUser, ActualizarPassView
-from aps.aplicaciones.inicio.views import CrearGrupo, adminGrupos, listarGrupos, eliminarGrupo
-from aps.aplicaciones.inicio.views import asignarGrupo, listarUsuariosDeGrupo, eliminarUser, errorPermiso
+from aps.aplicaciones.inicio.views import CrearGrupo, adminGrupos, listarGrupos, eliminarGrupo, listarUsuarios
+from aps.aplicaciones.inicio.views import asignarGrupo, listarUsuariosDeGrupo, eliminarUser, errorPermiso, error
 urlpatterns = patterns('',
     url(r'^$','django.contrib.auth.views.login',{'template_name':'inicio/index.html'}, name='login'),
     url(r'^cerrar/$','django.contrib.auth.views.logout_then_login', name='logout'),
@@ -20,7 +20,8 @@ urlpatterns = patterns('',
     url(r'^Grupos/eliminar/(?P<id>[\w]+)$', eliminarGrupo.as_view(), name='delete_grupo'),
     url(r'^Grupos/asignar/(?P<id>[\w]+)$', asignarGrupo.as_view(), name='asignar_grupo'),
     url(r'^usuarios/eliminar/(?P<id>[\w]+)$', eliminarUser.as_view(), name='eliminar_usuarios_de_grupo'),
-    url(r'^usuarios/listar/', listarUsuariosDeGrupo.as_view(), name='listar_usuarios'),
+    url(r'^usuarios/listar/', listarUsuarios.as_view(), name='listar_usuarios'),
     url(r'^error/permisos/', errorPermiso.as_view(), name='error_permiso'),
+    url(r'^error/', error.as_view(), name='error'),
     url(r'^Grupos/listarUsuarios/(?P<id>[\w]+)$', listarUsuariosDeGrupo.as_view(), name='listar_usuarios_de_grupo'),
 )

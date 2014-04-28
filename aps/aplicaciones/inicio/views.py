@@ -106,15 +106,19 @@ class asignarGrupo(UpdateUser):
     template_name = 'inicio/asignarGrupo.html'
     fields = ['groups']
 
-class listarUsuariosDeGrupo(ListView):
-    model = User
+class listarUsuarios(ListView):
     template_name = 'inicio/listarUsuariosDeGrupo.html'
+    model = User
     context_object_name = 'usuarios'
 
-    def get_object(self, queryset=None):
+class listarUsuariosDeGrupo(TemplateView):
+    template_name = 'inicio/listarUsuariosDeGrupo.html'
+
+    def get(self, request, *args, **kwargs):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
-        obj = User.objects.filter(id=self.kwargs['id'])
-        return obj
+        obj = User.objects.filter(groups__id=self.kwargs['id'])
+        print obj
+        return render(self.request, 'inicio/listarUsuariosDeGrupo.html', {'usuarios':obj})
 
 class eliminarUser(FormView):
     """ Vista de eliminacion de proyectos, hereda atributos y metodos de la clase FormView """
@@ -135,3 +139,5 @@ class eliminarUser(FormView):
 
 class errorPermiso(TemplateView):
     template_name = 'error/permisos.html'
+class error(TemplateView):
+    template_name = 'error/general.html'

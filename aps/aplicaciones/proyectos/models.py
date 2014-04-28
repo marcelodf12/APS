@@ -8,9 +8,14 @@ class Proyectos(models.Model):
 
     nombre = models.CharField(max_length=50)
     fechaInicio = models.DateField()
+    fechaFinP = models.DateField()
+    fechaFinR = models.DateField(null='True')
     cantFases = models.IntegerField()
     estado = models.CharField(max_length=50, default='creado')
-    lider = models.ForeignKey(User, null='true')
+    presupuesto = models.IntegerField()
+    penalizacion= models.IntegerField()
+    saldo = models.IntegerField(null='True')
+    lider = models.ForeignKey(User, null='True')
 
     def __unicode__(self):
         """ Metodo llamado para visualizar objetos. En este caso se mostrara el valor del atributo

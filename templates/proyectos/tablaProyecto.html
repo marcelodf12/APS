@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block title %}
+      Administración de Proyectos
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+
+
+{% block menu2 %}
+        <img src='/static/images/Detalles.png' width='24' height='24'><a href="/proyectos/listar/">  Listar Proyectos</a><br><br>
+        <img src='/static/images/Add.png' width='24' height='24'><a href="/fases/crearEnProyecto/{{proyecto.pk}}">  Agregar Nueva Fase</a><br><br>
+        <img src='/static/images/star.png' width='24' height='24'><a href="/proyectos/iniciar/{{proyecto.pk}}">  Iniciar Este Proyecto</a><br><br>
+
+        <br><br>
+
+{% endblock %}
+
+{% block contenido %}
+<table style="text-align: left; width: 100%; background-color:rgba(26, 108, 122, 1);font-weight: bold ; color: #FFF;" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+    <tr>
+        <td style="vertical-align: top; text-align: center; padding: 5px;">{{ proyecto.nombre }}<br></td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <table style="text-align: left; width: 100%;" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: top; width: 35px;"><br></td>
+                        <td style="vertical-align: top; width: 1002px;">
+                            <table style="text-align: left; width: 100%; background-color: white;" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td style="vertical-align: top;">
+                                            <table id="tablaDatos">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align: top;">Fecha de Inicio<br></td>
+                                                        <td style="vertical-align: top;">{{proyecto.fechaInicio}}<br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="vertical-align: top;">Fecha probable de fin<br></th>
+                                                        <th style="vertical-align: top;">{{proyecto.fechaFinP}}<br></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align: top;">Dias restantes<br></td>
+                                                        <td style="vertical-align: top;">{{diasRestantes}}<br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="vertical-align: top;">Presupuesto<br></th>
+                                                        <th style="vertical-align: top;">{{proyecto.presupuesto}}<br></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align: top;">Costo real de fases<br></td>
+                                                        <td style="vertical-align: top;">{{costoTotal}}<br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="vertical-align: top;">Penalizacion por retraso<br></th>
+                                                        <th style="vertical-align: top;">{{penalizacion}}<br></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align: top;">Saldo<br></td>
+                                                        {% if saldo < 0 %}
+                                                            <td style="vertical-align: top; color:#F00;">{{saldo}}<br></td>
+                                                        {% else %}
+                                                            <td style="vertical-align: top;">{{saldo}}<br></td>
+                                                        {% endif %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align: top;">
+                                            <!-- FASES -->
+                                            {% for f in fases %}
+                                            <table style="text-align: left; width: 100%; background-color:rgba(26, 108, 122, 1);font-weight: bold ; color: #FFF;" border="0" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top; text-align:right; padding: 5px;">
+                                                        {{ f.nombre }}
+                                                        <a href="/fases/modificar/{{f.pk}}"><img src='/static/images/Edit.png' width='32' height='32'></a>
+                                                        <a href="/items/crearEnFase/{{f.pk}}"><img src='/static/images/Add.png' width='32' height='32'></a>
+                                                        <br></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="vertical-align: top;">
+                                                        <table style="text-align: left; width: 100%;" border="0" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td style="vertical-align: top; width: 35px;"><br></td>
+                                                                <td style="vertical-align: top; width: 1002px;">
+                                                                    <table style="text-align: left; width: 100%; background-color: white;" border="0" cellpadding="0" cellspacing="0">
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td style="vertical-align: top;">
+                                                                                <table id="tablaDatos2" style="text-align: left; width: 100%; padding: 2px;">
+                                                                                    <tbody>
+                                                                                    <tr>
+                                                                                        <td style="vertical-align: top;">Fecha de Inicio Programada<br></td>
+                                                                                        <td style="vertical-align: top;">{{f.fechaInicioP}}<br> </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th style="vertical-align: top;">Fecha de Inicio Real<br></th>
+                                                                                        <th style="vertical-align: top;">{{f.fechaInicioR}}<br></th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td style="vertical-align: top;">Presupuesto Asignado<br> </td>
+                                                                                        <td style="vertical-align: top;">{{f.presupuesto}}<br></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th style="vertical-align: top;">Costo Real<br></th>
+                                                                                        <th style="vertical-align: top;">{{f.costo}}<br></th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td style="vertical-align: top;">Estado<br></td>
+                                                                                        <td style="vertical-align: top;">{{f.estado}}<br></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th colspan="2">
+                                                                                            <!-- ITEMS -->
+                                                                                            {% for i in items %}
+                                                                                            {% if i.fase_id == f.pk %}
+                                                                                                <a href='#'><img src='/static/images/Fases.png' width='24' height='24'></a>  {{i.nombre}}<br>
+                                                                                            {% endif %}
+                                                                                            {% endfor %}
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            {% endfor %}
+
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<br><br><br>
+{% endblock %}
