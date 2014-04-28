@@ -29,6 +29,11 @@ class TestCrearFase(unittest.TestCase):
             proyectoRegistrado.cantFases = 7
             proyectoRegistrado.fechaInicio = "2014-03-03"
             proyectoRegistrado.lider = userRegistrado
+            proyectoRegistrado.fechaFinP = "2014-10-03"
+            proyectoRegistrado.fechaFinR = "2014-10-04"
+            proyectoRegistrado.presupuesto=1500
+            proyectoRegistrado.penalizacion=350
+
             proyectoRegistrado.save()
 
 
@@ -37,30 +42,28 @@ class TestCrearFase(unittest.TestCase):
         # Cliente es autenticado como el usuario 'fulano Login'
         b = self.cliente.login(username='fulano Login', password='123')
 
-        # Peticion POST para crear un item con id=1
-        response = self.cliente.post("/fases/crear/1",data={'nombre':'fase prueba',
-                                                           'fechaInicio':'2014-04-03',
-                                                           'cantItems':4,
+        # Peticion POST para crear una fase
+        # FALTA DEFINIR LO DEL ID DEL PROYECTO EN LA URL
+        response = self.cliente.post("/fases/crearEnProyecto/",data={'nombre':'fase prueba',
+                                                           'fechaInicioP':'2014-04-03',
+                                                           'fechaInicioR':'2014-04-03',
                                                            'estado':'creado',
-                                                           'proyecto':'1'
+                                                           'presupuesto':'2000'
                                                            })
 
         print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
-        # Se consulta por el item creado en la tabla de items
+        # Se consulta por la fase creada en la tabla de items
         consultaInstancia = fases.objects.get(nombre="fase prueba",
-                            fechaInicio="2014-04-03",
-                            cantItems=4,
-                            estado="creado",
-                            proyecto="1")
+                           fechaInicioP="2014-04-03",
+                           estado="creado",
+                           presupuesto="2000")
 
-        #print "\nNombre del item: ", consultaInstancia.nombre                     # Nombre de la fase creada
-        #print "Complejidad del item: ", consultaInstancia.fechaInicio             # Fecha de inicio de la fase creada
-        #print "Version actual: ", consultaInstancia.cantItems                     # Cant. de items de la fase creada
-        #print "Estado del item: ", consultaInstancia.estado                       # Estado de la fase creada
-        #print "Proyecto asociado: ", consultaInstancia.proyecto                   # Proyecto de la fase creada
+        #print "\nNombre de la fase: ", consultaInstancia.nombre                    # Nombre de la fase creada
+        #print "Estado: ", consultaInstancia.estado                                 # Estado de la fase creada
+        #print "Presupuesto: ", consultaInstancia.presupuesto                       # Proyecto de la fase creada
 
-        self.assertNotEquals(consultaInstancia,None)
+        #self.assertNotEquals(consultaInstancia,None)
 
 
 class TestModificarFase(unittest.TestCase):
@@ -86,6 +89,10 @@ class TestModificarFase(unittest.TestCase):
             proyectoRegistrado.cantFases = 7
             proyectoRegistrado.fechaInicio = "2014-03-03"
             proyectoRegistrado.lider = userRegistrado
+            proyectoRegistrado.fechaFinP = "2014-10-03"
+            proyectoRegistrado.fechaFinR = "2014-10-04"
+            proyectoRegistrado.presupuesto = 100000000
+            proyectoRegistrado.penalizacion = 10000000
             proyectoRegistrado.save()
 
             #Creacion de una fase para la modificacion
@@ -96,6 +103,11 @@ class TestModificarFase(unittest.TestCase):
             faseRegistrada.estado = "creado"
             faseRegistrada.cantItems = 6
             faseRegistrada.fechaInicio = "2014-03-24"
+
+            faseRegistrada.fechaInicioP = "2014-03-05"
+            faseRegistrada.fechaInicioR = "2014-03-06"
+            faseRegistrada.presupuesto=100000000
+
             faseRegistrada.save()
 
 
@@ -147,6 +159,9 @@ class TestEliminarFase(unittest.TestCase):
             proyectoRegistrado.cantFases = 7
             proyectoRegistrado.fechaInicio = "2014-03-03"
             proyectoRegistrado.lider = userRegistrado
+            proyectoRegistrado.fechaFinP = "2014-03-03"
+            proyectoRegistrado.presupuesto= 1000
+            proyectoRegistrado.penalizacion=500
             proyectoRegistrado.save()
 
             #Creacion de una fase para la eliminacion
@@ -156,7 +171,9 @@ class TestEliminarFase(unittest.TestCase):
             faseRegistrada.proyecto = proyectoRegistrado
             faseRegistrada.estado = "creado"
             faseRegistrada.cantItems = 6
-            faseRegistrada.fechaInicio = "2014-03-24"
+            faseRegistrada.fechaInicioP = "2014-03-24"
+            faseRegistrada.fechaInicioR = "2014-03-24"
+            faseRegistrada.presupuesto = 1000
             faseRegistrada.save()
 
 
@@ -171,12 +188,11 @@ class TestEliminarFase(unittest.TestCase):
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
 
         #Se consulta si la fase fue borrada, si su estado fue cambiado a 'eliminado'
-        consultaInstancia = fases.objects.get(nombre="fase prueba", fechaInicio="2014-03-24", cantItems=6, estado="eliminado")
+        consultaInstancia = fases.objects.get(nombre="fase prueba", fechaInicioP="2014-03-24", estado="eliminado")
 
 
         #print "\nNombre de la fase: ", consultaInstancia.nombre                   # Nombre del item borrado
-        #print "Fecha de inicio: ", consultaInstancia.fechaInicio                  # Complejidad del item borrado
-        #print "Cantidad de items: ", consultaInstancia.cantItems                  # Version actual del item borrado
+        #print "Fecha de inicio: ", consultaInstancia.fechaInicioP                  # Complejidad del item borrado
         #print "Estado de la fase: ", consultaInstancia.estado                     # Estado del item borrado
 
         self.assertNotEquals(consultaInstancia, None)
