@@ -51,7 +51,7 @@ class TestCrearFase(unittest.TestCase):
                                                            'presupuesto':'2000'
                                                            })
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         # Se consulta por la fase creada en la tabla de items
         consultaInstancia = fases.objects.get(nombre="fase prueba",
@@ -61,9 +61,9 @@ class TestCrearFase(unittest.TestCase):
 
         #print "\nNombre de la fase: ", consultaInstancia.nombre                    # Nombre de la fase creada
         #print "Estado: ", consultaInstancia.estado                                 # Estado de la fase creada
-        #print "Presupuesto: ", consultaInstancia.presupuesto                       # Proyecto de la fase creada
+        #print "Presupuesto: ", consultaInstancia.presupuesto                       # Presupuesto de la fase creada
 
-        #self.assertNotEquals(consultaInstancia,None)
+        self.assertNotEquals(consultaInstancia,None)
 
 
 class TestModificarFase(unittest.TestCase):
@@ -124,11 +124,9 @@ class TestModificarFase(unittest.TestCase):
         # Se consulta por el item modificado en la tabla items
         consultaInstancia = fases.objects.get(nombre="fase Registrada modificada")
 
-        #print "\nNombre de la fase: ", consultaInstancia.nombre                     # Nombre de la fase modificada
-        #print "Fecha de inicio: ", consultaInstancia.fechaInicio                    # Fecha inicio de la fase modificada
-        #print "Cant. de items: ", consultaInstancia.cantItems                       # Cantidad de items de la fase modificada
-        #print "Estado de la fase: ", consultaInstancia.estado                       # Estado de la fase modificada
-        #print "Proyecto asociado: ", consultaInstancia.proyecto                     # Proyecto de la fase modificada
+        #print "\nNombre de la fase: ", consultaInstancia.nombre                  # Nombre de la fase modificada
+        #print "Estado de la fase: ", consultaInstancia.estado                    # Estado de la fase modificada
+        #print "Presupuesto: ", consultaInstancia.presupuesto                     # Presupuesto de la fase modificada
 
 
         self.assertNotEquals(consultaInstancia, None)
@@ -191,9 +189,9 @@ class TestEliminarFase(unittest.TestCase):
         consultaInstancia = fases.objects.get(nombre="fase prueba", fechaInicioP="2014-03-24", estado="eliminado")
 
 
-        #print "\nNombre de la fase: ", consultaInstancia.nombre                   # Nombre del item borrado
-        #print "Fecha de inicio: ", consultaInstancia.fechaInicioP                  # Complejidad del item borrado
-        #print "Estado de la fase: ", consultaInstancia.estado                     # Estado del item borrado
+        #print "\nNombre de la fase: ", consultaInstancia.nombre                  # Nombre de la fase eliminada
+        #print "Estado de la fase: ", consultaInstancia.estado                    # Estado de la fase eliminada
+        #print "Presupuesto: ", consultaInstancia.presupuesto                     # Presupuesto de la fase eliminada
 
         self.assertNotEquals(consultaInstancia, None)
 

@@ -19,9 +19,11 @@
         {% for f in fases %}
             <h2>{{f.nombre}}</h2>
             <ul>
-                <li><b>Fecha de Inicio: </b>{{f.fechaInicio}}</li>
-                <li><b>Cantidad de Items: </b>{{f.cantItems}}</li>
-                <li><b>Estado</b> {{f.estado}}</li>
+                <li><b>Fecha de InicioP: </b>{{f.fechaInicioP}}</li>
+                <li><b>Fecha de InicioR: </b>{{f.fechaInicioR}}</li>
+                <li><b>Estado:</b> {{f.estado}}</li>
+                <li><b>Proyecto:</b> {{f.proyecto}}</li>
+                <li><b>Presupuesto: </b>{{f.presupuesto}}</li>
             <a href="/fases/modificar/{{f.id}}">Modificar</a>
             <a href="/fases/eliminar/{{f.id}}">Eliminar</a>
             </ul>
