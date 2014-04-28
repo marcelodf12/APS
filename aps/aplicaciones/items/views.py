@@ -18,7 +18,7 @@ class crearItem(CreateView):
     model = items                               # Se asocia al modelo 'items'
     template_name = 'items/crear.html'
     success_url = reverse_lazy("admin_items")   # Se mostrara la vista 'admin_items' en el caso de creacion exitosa
-    fields = ['nombre', 'complejidad', 'fase', 'costo']
+    fields = ['nombre', 'complejidad', 'costo']
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
