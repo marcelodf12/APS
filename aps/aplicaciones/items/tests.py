@@ -175,7 +175,7 @@ class TestEliminarItem(unittest.TestCase):
 
             #Creacion de un proyecto para instanciar una fase
             proyectoRegistrado = Proyectos()
-            proyectoRegistrado.nombre = "proyecto Registrado"
+            #proyectoRegistrado.nombre = "proyecto Registrado"
             proyectoRegistrado.cantFases = 7
             proyectoRegistrado.fechaInicio = "2014-03-03"
             proyectoRegistrado.lider = userRegistrado
@@ -188,7 +188,7 @@ class TestEliminarItem(unittest.TestCase):
             #Creacion de una fase para instanciar un item
             faseRegistrada = fases()
             faseRegistrada.nombre = "fase Registrada"
-            faseRegistrada.proyecto = proyectoRegistrado
+            #faseRegistrada.proyecto = proyectoRegistrado
             faseRegistrada.versionAct = 1
             faseRegistrada.complejidad = 10
             faseRegistrada.cantItems = 6
