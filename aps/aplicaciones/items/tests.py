@@ -11,7 +11,7 @@ class TestCrearItem(unittest.TestCase):
     """ Prueba para comprobar la creacion de items """
 
     def setUp(self):
-        # Creacion de un cliente
+            # Creacion de un cliente
             self.cliente = Client()
 
             # Creacion de un usuario para la autenticacion
@@ -80,7 +80,7 @@ class TestModificarItem(unittest.TestCase):
     """Prueba para comprobar la modificacion de items"""
 
     def setUp(self):
-        # Creacion de un cliente
+            # Creacion de un cliente
             self.cliente = Client()
 
             # Creacion de un usuario para la autenticacion
