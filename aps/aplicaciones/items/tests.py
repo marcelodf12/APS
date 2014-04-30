@@ -48,6 +48,13 @@ class TestCrearItem(unittest.TestCase):
             faseRegistrada.presupuesto=100000000
             faseRegistrada.save()
 
+            # Asignacion del permiso ADD para userRegistrado, a fin de poder crear un item
+            # permisoUserLogin = Permisos()
+            # permisoUserLogin.permiso = "ADD"
+            # permisoUserLogin.tipoObjeto = "item"
+            # permisoUserLogin.usuario = userRegistrado
+            # permisoUserLogin.save()
+
 
     def test_details(self):
         # Cliente es autenticado como el usuario 'fulano Login'
@@ -122,11 +129,18 @@ class TestModificarItem(unittest.TestCase):
             itemRegistrado = items()
             itemRegistrado.pk = 1
             itemRegistrado.nombre = "item Registrado"
-            #itemRegistrado.fase = faseRegistrada
             itemRegistrado.versionAct = 1
             itemRegistrado.complejidad = 10
             itemRegistrado.costo = 2000
             itemRegistrado.save()
+
+            # Asignacion del permiso MOD para userRegistrado, a fin de poder modificar un item
+            # permisoUserLogin = Permisos()
+            # permisoUserLogin.permiso = "MOD"
+            # permisoUserLogin.tipoObjeto = "item"
+            # permisoUserLogin.id_fk = 1
+            # permisoUserLogin.usuario = userRegistrado
+            # permisoUserLogin.save()
 
 
     def test_details(self):
@@ -175,7 +189,6 @@ class TestEliminarItem(unittest.TestCase):
 
             #Creacion de un proyecto para instanciar una fase
             proyectoRegistrado = Proyectos()
-            #proyectoRegistrado.nombre = "proyecto Registrado"
             proyectoRegistrado.cantFases = 7
             proyectoRegistrado.fechaInicio = "2014-03-03"
             proyectoRegistrado.lider = userRegistrado
@@ -188,7 +201,6 @@ class TestEliminarItem(unittest.TestCase):
             #Creacion de una fase para instanciar un item
             faseRegistrada = fases()
             faseRegistrada.nombre = "fase Registrada"
-            #faseRegistrada.proyecto = proyectoRegistrado
             faseRegistrada.versionAct = 1
             faseRegistrada.complejidad = 10
             faseRegistrada.cantItems = 6
@@ -207,6 +219,14 @@ class TestEliminarItem(unittest.TestCase):
             itemRegistrado.complejidad = 10
             itemRegistrado.costo = 2000
             itemRegistrado.save()
+
+            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
+            # permisoUserLogin = Permisos()
+            # permisoUserLogin.permiso = "DEL"
+            # permisoUserLogin.tipoObjeto = "item"
+            # permisoUserLogin.id_fk = 3
+            # permisoUserLogin.usuario = userRegistrado
+            # permisoUserLogin.save()
 
 
     def test_details(self):

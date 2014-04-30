@@ -33,8 +33,14 @@ class TestCrearFase(unittest.TestCase):
             proyectoRegistrado.fechaFinR = "2014-10-04"
             proyectoRegistrado.presupuesto=1500
             proyectoRegistrado.penalizacion=350
-
             proyectoRegistrado.save()
+
+            # Asignacion del permiso ADD para userRegistrado, a fin de poder crear una fase
+            # permisoUserLogin = Permisos()
+            # permisoUserLogin.permiso = "ADD"
+            # permisoUserLogin.tipoObjeto = "fases"
+            # permisoUserLogin.usuario = userRegistrado
+            # permisoUserLogin.save()
 
 
 
@@ -103,16 +109,22 @@ class TestModificarFase(unittest.TestCase):
             faseRegistrada.estado = "creado"
             faseRegistrada.cantItems = 6
             faseRegistrada.fechaInicio = "2014-03-24"
-
             faseRegistrada.fechaInicioP = "2014-03-05"
             faseRegistrada.fechaInicioR = "2014-03-06"
             faseRegistrada.presupuesto=100000000
-
             faseRegistrada.save()
 
+            # Asignacion del permiso MOD para userRegistrado, a fin de poder modificar una fase
+            # permisoUserLogin = Permisos()
+            # permisoUserLogin.permiso = "MOD"
+            # permisoUserLogin.tipoObjeto = "fases"
+            # permisoUserLogin.id_fk = 2
+            # permisoUserLogin.usuario = userRegistrado
+            # permisoUserLogin.save()
 
 
     def test_details(self):
+
         # Cliente es autenticado como el usuario 'fulano Login'
         b = self.cliente.login(username='fulano Login2', password='123')
 
@@ -173,6 +185,14 @@ class TestEliminarFase(unittest.TestCase):
             faseRegistrada.fechaInicioR = "2014-03-24"
             faseRegistrada.presupuesto = 1000
             faseRegistrada.save()
+
+            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar una fase
+            # permisoUserLogin = Permisos()
+            # permisoUserLogin.permiso = "DEL"
+            # permisoUserLogin.tipoObjeto = "fases"
+            # permisoUserLogin.id_fk = 3
+            # permisoUserLogin.usuario = userRegistrado
+            # permisoUserLogin.save()
 
 
     def test_details(self):
