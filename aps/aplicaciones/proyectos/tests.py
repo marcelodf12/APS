@@ -105,7 +105,7 @@ class TestModificarProyecto(unittest.TestCase):
                                                             'presupuesto':'3500'
                                                             })
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
         # Se consulta por el proyecto modificado en la tabla de proyectos
         consultaInstancia = Proyectos.objects.get(nombre="proyecto modificado",
@@ -138,9 +138,8 @@ class TestEliminarProyecto(unittest.TestCase):
             userLogin = User.objects.create_user(pk=1, username="fulano Login", password="123")
 
             # Asignacion del permiso MOD para userLogin, a fin de poder modificar un proyecto
-            # VER QUE AQUI TIENE SOLO PERMISO 'MOD'
             permisoUserLogin = Permisos()
-            permisoUserLogin.permiso = "MOD"
+            permisoUserLogin.permiso = "DEL"
             permisoUserLogin.tipoObjeto = "proyecto"
             permisoUserLogin.id_fk = 3
             permisoUserLogin.usuario = userLogin
@@ -167,7 +166,6 @@ class TestEliminarProyecto(unittest.TestCase):
         response = self.cliente.post("/proyectos/eliminar/3",data={'comentario':'prueba eliminacion logica de proyectos'
                                                             })
 
-        #AQUI NO MUESTRA ERROR DE PERMISOS, SINO REDIRECCIONA A LISTAR PROYECTOS
         print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'eliminar'
 
         # Se consulta por el proyecto borrado en la tabla de proyectos
@@ -176,7 +174,7 @@ class TestEliminarProyecto(unittest.TestCase):
                             fechaFinP="2014-04-04",
                             presupuesto="3000",
                             penalizacion="600",
-                            estado="creado"         # EL ESTADO NO SE MODIFICA INCLUSO CAMBIANDO EL PERMISO A 'DEL'
+                            estado="eliminado"
                             )
 
         #print "\nNombre del proyecto: ", consultaInstancia.nombre              # Nombre del proyecto eliminado
