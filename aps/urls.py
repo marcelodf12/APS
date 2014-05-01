@@ -10,9 +10,9 @@ from django.contrib.auth.forms import AdminPasswordChangeForm
 #admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    #url(r'^', include('aplicaciones.inicio.urls')),
-    #url(r'^items/', include('aplicaciones.items.urls')),
-    #url(r'^proyectos/', include('aplicaciones.proyectos.urls')),
-    #url(r'^fases/', include('aplicaciones.fases.urls')),
-    #url(r'^permisos/', include('aplicaciones.permisos.urls')),
+    url(r'^', include('aplicaciones.inicio.urls')),
+    url(r'^items/', include('aplicaciones.items.urls')),
+    url(r'^proyectos/', include('aplicaciones.proyectos.urls')),
+    url(r'^fases/', include('aplicaciones.fases.urls')),
+    url(r'^permisos/', include('aplicaciones.permisos.urls')),
 )
