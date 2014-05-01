@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>aps.aplicaciones.inicio.urls</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="aps.aplicaciones-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;aps ::
+        <a href="aps.aplicaciones-module.html">Package&nbsp;aplicaciones</a> ::
+        <a href="aps.aplicaciones.inicio-module.html">Package&nbsp;inicio</a> ::
+        Module&nbsp;urls
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="aps.aplicaciones.inicio.urls-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="aps.aplicaciones.inicio.urls-module.html">Module aps.aplicaciones.inicio.urls</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">    Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">     de la aplicacion 'inicio'.</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">     Todas las urls definidas aqui esta relacionadas con el inicio de sesion</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">conf</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Module aps.aplicaciones.fases.urls=aps.aplicaciones.fases.urls-module.html,Module aps.aplicaciones.inicio.urls=aps.aplicaciones.inicio.urls-module.html,Module aps.aplicaciones.items.urls=aps.aplicaciones.items.urls-module.html,Module aps.aplicaciones.permisos.urls=aps.aplicaciones.permisos.urls-module.html,Module aps.aplicaciones.proyectos.urls=aps.aplicaciones.proyectos.urls-module.html"><a title="aps.aplicaciones.fases.urls
+aps.aplicaciones.inicio.urls
+aps.aplicaciones.items.urls
+aps.aplicaciones.permisos.urls
+aps.aplicaciones.proyectos.urls" class="py-name" href="#" onclick="return doclink('link-0', 'urls', 'link-0');">urls</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">patterns</tt><tt class="py-op">,</tt> <tt class="py-name">url</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package aps.aplicaciones=aps.aplicaciones-module.html"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-1', 'aplicaciones', 'link-1');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Package aps.aplicaciones.inicio=aps.aplicaciones.inicio-module.html"><a title="aps.aplicaciones.inicio" class="py-name" href="#" onclick="return doclink('link-2', 'inicio', 'link-2');">inicio</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module aps.aplicaciones.fases.views=aps.aplicaciones.fases.views-module.html,Module aps.aplicaciones.inicio.views=aps.aplicaciones.inicio.views-module.html,Module aps.aplicaciones.items.views=aps.aplicaciones.items.views-module.html,Module aps.aplicaciones.permisos.views=aps.aplicaciones.permisos.views-module.html,Module aps.aplicaciones.proyectos.views=aps.aplicaciones.proyectos.views-module.html"><a title="aps.aplicaciones.fases.views
+aps.aplicaciones.inicio.views
+aps.aplicaciones.items.views
+aps.aplicaciones.permisos.views
+aps.aplicaciones.proyectos.views" class="py-name" href="#" onclick="return doclink('link-3', 'views', 'link-3');">views</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class aps.aplicaciones.inicio.views.home=aps.aplicaciones.inicio.views.home-class.html"><a title="aps.aplicaciones.inicio.views.home" class="py-name" href="#" onclick="return doclink('link-4', 'home', 'link-4');">home</a></tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Class aps.aplicaciones.inicio.views.Registrarse=aps.aplicaciones.inicio.views.Registrarse-class.html"><a title="aps.aplicaciones.inicio.views.Registrarse" class="py-name" href="#" onclick="return doclink('link-5', 'Registrarse', 'link-5');">Registrarse</a></tt><tt class="py-op">,</tt> <tt id="link-6" class="py-name" targets="Class aps.aplicaciones.inicio.views.UpdateUser=aps.aplicaciones.inicio.views.UpdateUser-class.html"><a title="aps.aplicaciones.inicio.views.UpdateUser" class="py-name" href="#" onclick="return doclink('link-6', 'UpdateUser', 'link-6');">UpdateUser</a></tt><tt class="py-op">,</tt> <tt id="link-7" class="py-name" targets="Class aps.aplicaciones.inicio.views.ActualizarPassView=aps.aplicaciones.inicio.views.ActualizarPassView-class.html"><a title="aps.aplicaciones.inicio.views.ActualizarPassView" class="py-name" href="#" onclick="return doclink('link-7', 'ActualizarPassView', 'link-7');">ActualizarPassView</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-8', 'aplicaciones', 'link-1');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="aps.aplicaciones.inicio" class="py-name" href="#" onclick="return doclink('link-9', 'inicio', 'link-2');">inicio</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="aps.aplicaciones.fases.views
+aps.aplicaciones.inicio.views
+aps.aplicaciones.items.views
+aps.aplicaciones.permisos.views
+aps.aplicaciones.proyectos.views" class="py-name" href="#" onclick="return doclink('link-10', 'views', 'link-3');">views</a></tt> <tt class="py-keyword">import</tt> <tt id="link-11" class="py-name" targets="Class aps.aplicaciones.inicio.views.CrearGrupo=aps.aplicaciones.inicio.views.CrearGrupo-class.html"><a title="aps.aplicaciones.inicio.views.CrearGrupo" class="py-name" href="#" onclick="return doclink('link-11', 'CrearGrupo', 'link-11');">CrearGrupo</a></tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name" targets="Class aps.aplicaciones.inicio.views.adminGrupos=aps.aplicaciones.inicio.views.adminGrupos-class.html"><a title="aps.aplicaciones.inicio.views.adminGrupos" class="py-name" href="#" onclick="return doclink('link-12', 'adminGrupos', 'link-12');">adminGrupos</a></tt><tt class="py-op">,</tt> <tt id="link-13" class="py-name" targets="Class aps.aplicaciones.inicio.views.listarGrupos=aps.aplicaciones.inicio.views.listarGrupos-class.html,Class aps.aplicaciones.permisos.views.listarGrupos=aps.aplicaciones.permisos.views.listarGrupos-class.html"><a title="aps.aplicaciones.inicio.views.listarGrupos
+aps.aplicaciones.permisos.views.listarGrupos" class="py-name" href="#" onclick="return doclink('link-13', 'listarGrupos', 'link-13');">listarGrupos</a></tt><tt class="py-op">,</tt> <tt id="link-14" class="py-name" targets="Class aps.aplicaciones.inicio.views.eliminarGrupo=aps.aplicaciones.inicio.views.eliminarGrupo-class.html"><a title="aps.aplicaciones.inicio.views.eliminarGrupo" class="py-name" href="#" onclick="return doclink('link-14', 'eliminarGrupo', 'link-14');">eliminarGrupo</a></tt><tt class="py-op">,</tt> <tt id="link-15" class="py-name" targets="Class aps.aplicaciones.inicio.views.listarUsuarios=aps.aplicaciones.inicio.views.listarUsuarios-class.html"><a title="aps.aplicaciones.inicio.views.listarUsuarios" class="py-name" href="#" onclick="return doclink('link-15', 'listarUsuarios', 'link-15');">listarUsuarios</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-16', 'aplicaciones', 'link-1');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="aps.aplicaciones.inicio" class="py-name" href="#" onclick="return doclink('link-17', 'inicio', 'link-2');">inicio</a></tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="aps.aplicaciones.fases.views
+aps.aplicaciones.inicio.views
+aps.aplicaciones.items.views
+aps.aplicaciones.permisos.views
+aps.aplicaciones.proyectos.views" class="py-name" href="#" onclick="return doclink('link-18', 'views', 'link-3');">views</a></tt> <tt class="py-keyword">import</tt> <tt id="link-19" class="py-name" targets="Class aps.aplicaciones.inicio.views.asignarGrupo=aps.aplicaciones.inicio.views.asignarGrupo-class.html"><a title="aps.aplicaciones.inicio.views.asignarGrupo" class="py-name" href="#" onclick="return doclink('link-19', 'asignarGrupo', 'link-19');">asignarGrupo</a></tt><tt class="py-op">,</tt> <tt id="link-20" class="py-name" targets="Class aps.aplicaciones.inicio.views.listarUsuariosDeGrupo=aps.aplicaciones.inicio.views.listarUsuariosDeGrupo-class.html"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo" class="py-name" href="#" onclick="return doclink('link-20', 'listarUsuariosDeGrupo', 'link-20');">listarUsuariosDeGrupo</a></tt><tt class="py-op">,</tt> <tt id="link-21" class="py-name" targets="Class aps.aplicaciones.inicio.views.eliminarUser=aps.aplicaciones.inicio.views.eliminarUser-class.html"><a title="aps.aplicaciones.inicio.views.eliminarUser" class="py-name" href="#" onclick="return doclink('link-21', 'eliminarUser', 'link-21');">eliminarUser</a></tt><tt class="py-op">,</tt> <tt id="link-22" class="py-name" targets="Class aps.aplicaciones.inicio.views.errorPermiso=aps.aplicaciones.inicio.views.errorPermiso-class.html"><a title="aps.aplicaciones.inicio.views.errorPermiso" class="py-name" href="#" onclick="return doclink('link-22', 'errorPermiso', 'link-22');">errorPermiso</a></tt><tt class="py-op">,</tt> <tt id="link-23" class="py-name" targets="Class aps.aplicaciones.inicio.views.error=aps.aplicaciones.inicio.views.error-class.html"><a title="aps.aplicaciones.inicio.views.error" class="py-name" href="#" onclick="return doclink('link-23', 'error', 'link-23');">error</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt id="link-24" class="py-name" targets="Variable aps.aplicaciones.fases.urls.urlpatterns=aps.aplicaciones.fases.urls-module.html#urlpatterns,Variable aps.aplicaciones.inicio.urls.urlpatterns=aps.aplicaciones.inicio.urls-module.html#urlpatterns,Variable aps.aplicaciones.items.urls.urlpatterns=aps.aplicaciones.items.urls-module.html#urlpatterns,Variable aps.aplicaciones.permisos.urls.urlpatterns=aps.aplicaciones.permisos.urls-module.html#urlpatterns,Variable aps.aplicaciones.proyectos.urls.urlpatterns=aps.aplicaciones.proyectos.urls-module.html#urlpatterns"><a title="aps.aplicaciones.fases.urls.urlpatterns
+aps.aplicaciones.inicio.urls.urlpatterns
+aps.aplicaciones.items.urls.urlpatterns
+aps.aplicaciones.permisos.urls.urlpatterns
+aps.aplicaciones.proyectos.urls.urlpatterns" class="py-name" href="#" onclick="return doclink('link-24', 'urlpatterns', 'link-24');">urlpatterns</a></tt> <tt class="py-op">=</tt> <tt class="py-name">patterns</tt><tt class="py-op">(</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^$'</tt><tt class="py-op">,</tt><tt class="py-string">'django.contrib.auth.views.login'</tt><tt class="py-op">,</tt><tt class="py-op">{</tt><tt class="py-string">'template_name'</tt><tt class="py-op">:</tt><tt class="py-string">'inicio/index.html'</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'login'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^cerrar/$'</tt><tt class="py-op">,</tt><tt class="py-string">'django.contrib.auth.views.logout_then_login'</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'logout'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^inicio/$'</tt><tt class="py-op">,</tt> <tt id="link-25" class="py-name"><a title="aps.aplicaciones.inicio.views.home" class="py-name" href="#" onclick="return doclink('link-25', 'home', 'link-4');">home</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'home'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^registrarse/$'</tt><tt class="py-op">,</tt> <tt id="link-26" class="py-name"><a title="aps.aplicaciones.inicio.views.Registrarse" class="py-name" href="#" onclick="return doclink('link-26', 'Registrarse', 'link-5');">Registrarse</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'registrarse'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^modificar/(?P&lt;id&gt;\d+)$'</tt><tt class="py-op">,</tt> <tt id="link-27" class="py-name"><a title="aps.aplicaciones.inicio.views.UpdateUser" class="py-name" href="#" onclick="return doclink('link-27', 'UpdateUser', 'link-6');">UpdateUser</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'updateUser'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^modificar/password/$'</tt><tt class="py-op">,</tt> <tt id="link-28" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView" class="py-name" href="#" onclick="return doclink('link-28', 'ActualizarPassView', 'link-7');">ActualizarPassView</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'updatePassword'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^Grupos/admin/$'</tt><tt class="py-op">,</tt> <tt id="link-29" class="py-name"><a title="aps.aplicaciones.inicio.views.adminGrupos" class="py-name" href="#" onclick="return doclink('link-29', 'adminGrupos', 'link-12');">adminGrupos</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'admin_grupos'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^Grupos/crear/$'</tt><tt class="py-op">,</tt> <tt id="link-30" class="py-name"><a title="aps.aplicaciones.inicio.views.CrearGrupo" class="py-name" href="#" onclick="return doclink('link-30', 'CrearGrupo', 'link-11');">CrearGrupo</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'crear_grupos'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^Grupos/listar/$'</tt><tt class="py-op">,</tt> <tt id="link-31" class="py-name"><a title="aps.aplicaciones.inicio.views.listarGrupos
+aps.aplicaciones.permisos.views.listarGrupos" class="py-name" href="#" onclick="return doclink('link-31', 'listarGrupos', 'link-13');">listarGrupos</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'listar_grupos'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^Grupos/eliminar/(?P&lt;id&gt;[\w]+)$'</tt><tt class="py-op">,</tt> <tt id="link-32" class="py-name"><a title="aps.aplicaciones.inicio.views.eliminarGrupo" class="py-name" href="#" onclick="return doclink('link-32', 'eliminarGrupo', 'link-14');">eliminarGrupo</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'delete_grupo'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^Grupos/asignar/(?P&lt;id&gt;[\w]+)$'</tt><tt class="py-op">,</tt> <tt id="link-33" class="py-name"><a title="aps.aplicaciones.inicio.views.asignarGrupo" class="py-name" href="#" onclick="return doclink('link-33', 'asignarGrupo', 'link-19');">asignarGrupo</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'asignar_grupo'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^usuarios/eliminar/(?P&lt;id&gt;[\w]+)$'</tt><tt class="py-op">,</tt> <tt id="link-34" class="py-name"><a title="aps.aplicaciones.inicio.views.eliminarUser" class="py-name" href="#" onclick="return doclink('link-34', 'eliminarUser', 'link-21');">eliminarUser</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'eliminar_usuarios_de_grupo'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^usuarios/listar/'</tt><tt class="py-op">,</tt> <tt id="link-35" class="py-name"><a title="aps.aplicaciones.inicio.views.listarUsuarios" class="py-name" href="#" onclick="return doclink('link-35', 'listarUsuarios', 'link-15');">listarUsuarios</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'listar_usuarios'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^error/permisos/'</tt><tt class="py-op">,</tt> <tt id="link-36" class="py-name"><a title="aps.aplicaciones.inicio.views.errorPermiso" class="py-name" href="#" onclick="return doclink('link-36', 'errorPermiso', 'link-22');">errorPermiso</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'error_permiso'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^error/'</tt><tt class="py-op">,</tt> <tt id="link-37" class="py-name"><a title="aps.aplicaciones.inicio.views.error" class="py-name" href="#" onclick="return doclink('link-37', 'error', 'link-23');">error</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'error'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-name">url</tt><tt class="py-op">(</tt><tt class="py-string">r'^Grupos/listarUsuarios/(?P&lt;id&gt;[\w]+)$'</tt><tt class="py-op">,</tt> <tt id="link-38" class="py-name"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo" class="py-name" href="#" onclick="return doclink('link-38', 'listarUsuariosDeGrupo', 'link-20');">listarUsuariosDeGrupo</a></tt><tt class="py-op">.</tt><tt class="py-name">as_view</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'listar_usuarios_de_grupo'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="aps.aplicaciones-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu May  1 10:25:34 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
