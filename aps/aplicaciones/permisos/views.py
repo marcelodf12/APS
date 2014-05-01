@@ -1,12 +1,13 @@
 from django.views.generic import TemplateView, ListView, CreateView, DeleteView
-from aps.aplicaciones.permisos.models import Permisos
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import User, Group
-from django.core import serializers
 from django.http import HttpResponse
+
+from aps.aplicaciones.permisos.models import Permisos
 from aps.aplicaciones.proyectos.models import Proyectos
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.items.models import items
+
 
 
 # Create your views here.

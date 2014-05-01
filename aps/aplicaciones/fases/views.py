@@ -1,9 +1,9 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView
 from django.core.urlresolvers import reverse_lazy
+
 from .models import fases
 from aps.aplicaciones.proyectos.forms import ComentariosLog
-from aps.aplicaciones.proyectos.models import Proyectos
+
 
 
 # Create your views here.

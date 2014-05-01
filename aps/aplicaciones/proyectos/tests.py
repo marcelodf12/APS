@@ -4,8 +4,10 @@
 from django.utils import unittest
 from django.contrib.auth.models import User
 from django.test.client import Client
+
 from aps.aplicaciones.permisos.models import Permisos
 from aps.aplicaciones.proyectos.models import Proyectos
+
 
 class TestCrearProyecto(unittest.TestCase):
     """

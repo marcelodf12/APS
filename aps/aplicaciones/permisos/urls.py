@@ -4,7 +4,9 @@
 """
 
 from django.conf.urls import patterns, url
+
 from aps.aplicaciones.permisos.views import admin, crear, listar, permisos_ajax, eliminar, listarGrupos, permisos_grupos_ajax
+
 urlpatterns = patterns('',
 
     url(r'^crear/$', crear.as_view(), name='crear_permisos'),

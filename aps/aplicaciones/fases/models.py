@@ -1,5 +1,7 @@
 from django.db import models
+
 from aps.aplicaciones.proyectos.models import Proyectos
+
 
 # Create your models here.
 class fases(models.Model):

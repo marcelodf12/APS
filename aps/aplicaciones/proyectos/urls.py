@@ -4,6 +4,7 @@
 """
 
 from django.conf.urls import patterns, url
+
 from .views import \
     crearProyecto, \
     adminProyecto, \
@@ -11,6 +12,7 @@ from .views import \
     eliminarProyectos, \
     listarProyectosNoIniciados, \
     iniciarProyecto, listarProyectosAJAX, proyectos_ajax, detallesProyecto
+
 
 urlpatterns = patterns('',
 

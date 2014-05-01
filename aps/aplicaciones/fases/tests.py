@@ -1,8 +1,9 @@
-from django.test import TestCase
 from django.utils import unittest
 from django.test.client import Client
 from django.contrib.auth.models import User
+
 from aps.aplicaciones.fases.models import fases, Proyectos
+
 
 
 # Create your tests here.
