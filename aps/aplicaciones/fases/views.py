@@ -27,7 +27,7 @@ class crearFaseEnProyecto(CreateView):
              fase.estado = 'creado'
              fase.proyecto = p
              fase.save()
-             print fase
+             #print fase
              return super(crearFaseEnProyecto, self).form_valid(form)
          else:
              return render(self.request, 'error/general.html', {'mensaje':'Ya no se pueden agregar fases'})
