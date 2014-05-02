@@ -133,7 +133,14 @@ class proyectos_ajax(TemplateView):
     """ Vista que responde a una solicitud AJAX con los detalles de un proyecto encapsulados en JSON"""
     def get(self, request, *args, **kwargs):
         estado_proyecto = request.GET['estado']
-        proyectos = Proyectos.objects.filter(estado=estado_proyecto)
+        usuario = request.user
+        miembros= Miembros.objects.filter(miembro=usuario)
+        x = []
+        for m in miembros:
+            if not (m.proyecto in x):
+                x.append(m.proyecto.id)
+        print x
+        proyectos = Proyectos.objects.filter(estado=estado_proyecto, lider=usuario) | Proyectos.objects.filter(estado=estado_proyecto, id__in=x)
         data = serializers.serialize('json',proyectos,fields=('nombre','fechaInicio','cantFases'))
         return HttpResponse(data, content_type='application/json')
 
