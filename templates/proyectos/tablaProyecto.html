@@ -123,7 +123,10 @@
                                                                                             <!-- ITEMS -->
                                                                                             {% for i in items %}
                                                                                             {% if i.fase_id == f.pk %}
-                                                                                                <a href='#'><img src='/static/images/Fases.png' width='24' height='24'></a>  {{i.nombre}}<br>
+                                                                                                <a href='/items/modificar/{{i.id}}'><img src='/static/images/Edit.png' width='24' height='24'></a>
+                                                                                                <a href='/items/eliminar/{{i.id}}'><img src='/static/images/Delete.png' width='24' height='24'></a>
+                                                                                                <a href='#'><img src='/static/images/Detalles.png' width='24' height='24'></a>
+                                                                                                {{i.nombre}}<br>
                                                                                             {% endif %}
                                                                                             {% endfor %}
                                                                                         </th>

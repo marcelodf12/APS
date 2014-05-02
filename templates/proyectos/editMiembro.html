@@ -1,20 +1,16 @@
 {% extends "base.html" %}
 {% block title %}
-      Crear Fase
+     Editar Miembro
 {% endblock %}
 
 {% block menu1 %}
 
 {% endblock %}
 
-{% block menu2 %}
-
-{% endblock %}
-
 {% block contenido %}
-     <h1>Nueva Fase</h1>
+      <h1>Comite</h1>
         <form method="post">{% csrf_token %}
             {{form.as_p}}
-            <input type="submit" value="Crear">
+            <input type="submit" value="Confirmar">
         </form>
- {% endblock %}
+{% endblock %}

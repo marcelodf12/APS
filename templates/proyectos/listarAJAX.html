@@ -37,20 +37,50 @@
           type : 'get',
           success : function(data){
             var html="";
+            var html="<br><table id='tablaDatos' border='0' cellpadding='0' cellspacing='0'> <tbody>";
+                html+="<tr>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Proyecto </td>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Cant. Fases </td>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Acciones </td>";
+                html+="</tr>";
             for(i=0;i<data.length;i++){
-                html+="<ul><h1><img src='/static/images/Proyecto.png' width='32' height='32'> (" + data[i].pk + ')  ' + data[i].fields.nombre + "</h1>";
-                html+="<li><b>Fecha de Inicio: </b>" + data[i].fields.fechaInicio + "</li>";
-                html+="<li><b>Cantidad de Fases: </b>" + data[i].fields.cantFases+ "</li>";
-                if(valor!='eliminado'){
-                    if(valor=='creado'){
-                        html+="<a href='/proyectos/modificar/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a>";
-                        html+="<a href='/fases/crearEnProyecto/" + data[i].pk + "'><img src='/static/images/Add.png' width='24' height='24'></a>";
+                if(i%2==0){
+                    html+="<tr>";
+                    html+="<td style='vertical-align: top;'>" + data[i].fields.nombre + "</td>";
+                    html+="<td style='vertical-align: top;'>" + data[i].fields.cantFases + "</td>";
+                    html+="<td style='vertical-align: top;'>"
+                    if(valor!='eliminado'){
+                        if(valor=='creado'){
+                            html+="<a href='/proyectos/modificar/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a>";
+                            html+="<a href='/fases/crearEnProyecto/" + data[i].pk + "'><img src='/static/images/Add.png' width='24' height='24'></a>";
+                        }
+                        html+="<a href='/proyectos/detalles/" + data[i].pk + "'><img src='/static/images/Resumen.png' width='24' height='24'></a>";
+                        html+=" <a href='/proyectos/eliminar/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a>";
+                    }else{
+                        html+="Ninguna Accion";
                     }
-                    html+="<a href='/proyectos/detalles/" + data[i].pk + "'><img src='/static/images/Resumen.png' width='24' height='24'></a>";
-                    html+=" <a href='/proyectos/eliminar/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a>";
+                    html+="</td>";
+                    html+="</tr>";
+                }else{
+                    html+="<tr>";
+                    html+="<th style='vertical-align: top;'>" + data[i].fields.nombre + "</th>";
+                    html+="<th style='vertical-align: top;'>" + data[i].fields.cantFases + "</th>";
+                    html+="<th style='vertical-align: top;'>"
+                    if(valor!='eliminado'){
+                        if(valor=='creado'){
+                            html+="<a href='/proyectos/modificar/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a>";
+                            html+="<a href='/fases/crearEnProyecto/" + data[i].pk + "'><img src='/static/images/Add.png' width='24' height='24'></a>";
+                        }
+                        html+="<a href='/proyectos/detalles/" + data[i].pk + "'><img src='/static/images/Resumen.png' width='24' height='24'></a>";
+                        html+=" <a href='/proyectos/eliminar/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a>";
+                    }else{
+                        html+="Ninguna Accion";
+                    }
+                    html+="</th>";
+                    html+="</tr>";
                 }
-                html+="</ul><br><br>";
             }
+            html+="</tbody></table><br>";
             $('#datos').html(html);
           }
         });
