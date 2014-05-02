@@ -50,7 +50,7 @@ class TestCrearFase(unittest.TestCase):
 
         # Peticion POST para crear una fase
         # FALTA DEFINIR LO DEL ID DEL PROYECTO EN LA URL
-        response = self.cliente.post("/fases/crearEnProyecto/",data={'nombre':'fase prueba',
+        response = self.cliente.post("/fases/crearEnProyecto/1",data={'nombre':'fase prueba',
                                                            'fechaInicioP':'2014-04-03',
                                                            'fechaInicioR':'2014-04-03',
                                                            'estado':'creado',
