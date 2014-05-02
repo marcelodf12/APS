@@ -1,5 +1,5 @@
 """
-    Modulo de Test para el Modelo Permiso
+    Modulo de Test para el Modelo Permisos
 """
 from django.utils import unittest
 from django.contrib.auth.models import User

@@ -6,7 +6,7 @@ from aps.aplicaciones.fases.models import fases, Proyectos
 
 
 
-# Create your tests here
+# Create your tests here.
 class TestCrearFase(unittest.TestCase):
     """ Prueba para comprobar la creacion de fases """
 

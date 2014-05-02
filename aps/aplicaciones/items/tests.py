@@ -7,7 +7,7 @@ from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.items.models import items
 
 
-# Create your tests here
+# Create your tests here.
 class TestCrearItem(unittest.TestCase):
     """ Prueba para comprobar la creacion de items """
 
