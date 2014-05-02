@@ -36,13 +36,6 @@ class TestCrearFase(unittest.TestCase):
             proyectoRegistrado.penalizacion=350
             proyectoRegistrado.save()
 
-            # Asignacion del permiso ADD para userRegistrado, a fin de poder crear una fase
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "ADD"
-            # permisoUserLogin.tipoObjeto = "fases"
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
-
 
 
     def test_details(self):
@@ -50,8 +43,7 @@ class TestCrearFase(unittest.TestCase):
         b = self.cliente.login(username='fulano Login', password='123')
 
         # Peticion POST para crear una fase
-        # FALTA DEFINIR LO DEL ID DEL PROYECTO EN LA URL
-        response = self.cliente.post("/fases/crearEnProyecto/",data={'nombre':'fase prueba',
+        response = self.cliente.post("/fases/crearEnProyecto/1",data={'nombre':'fase prueba',
                                                            'fechaInicioP':'2014-04-03',
                                                            'fechaInicioR':'2014-04-03',
                                                            'estado':'creado',
@@ -186,14 +178,6 @@ class TestEliminarFase(unittest.TestCase):
             faseRegistrada.fechaInicioR = "2014-03-24"
             faseRegistrada.presupuesto = 1000
             faseRegistrada.save()
-
-            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar una fase
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "DEL"
-            # permisoUserLogin.tipoObjeto = "fases"
-            # permisoUserLogin.id_fk = 3
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
 
 
     def test_details(self):

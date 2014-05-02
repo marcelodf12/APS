@@ -49,26 +49,18 @@ class TestCrearItem(unittest.TestCase):
             faseRegistrada.presupuesto=100000000
             faseRegistrada.save()
 
-            # Asignacion del permiso ADD para userRegistrado, a fin de poder crear un item
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "ADD"
-            # permisoUserLogin.tipoObjeto = "item"
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
-
 
     def test_details(self):
         # Cliente es autenticado como el usuario 'fulano Login'
         b = self.cliente.login(username='fulano Login', password='123')
 
         # Peticion POST para crear un item con id=1
-        # FALTA DEFINIR LO DEL ID DE LA FASE (URL)
         response = self.cliente.post("/items/crear/1",data={'nombre':'item prueba',
                                                             'complejidad':'5',
                                                             'costo':'2000'
                                                             })
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         # Se consulta por el item creado en la tabla de items
         consultaInstancia = items.objects.get(nombre="item prueba",
@@ -134,14 +126,6 @@ class TestModificarItem(unittest.TestCase):
             itemRegistrado.complejidad = 10
             itemRegistrado.costo = 2000
             itemRegistrado.save()
-
-            # Asignacion del permiso MOD para userRegistrado, a fin de poder modificar un item
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "MOD"
-            # permisoUserLogin.tipoObjeto = "item"
-            # permisoUserLogin.id_fk = 1
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
 
 
     def test_details(self):
