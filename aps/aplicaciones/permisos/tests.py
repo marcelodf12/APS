@@ -47,7 +47,6 @@ class TestCrearPermiso(unittest.TestCase):
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         # Se consulta por el permiso creado en la tabla de permiso
-        #PROBLEMA CUANDO SE TIENE MUCHOS REGISTROS QUE CUMPLEN
         consultaInstancia = Permisos.objects.get(permiso="ADD",
                             tipoObjeto="permiso",
                             usuario="2",
@@ -105,7 +104,7 @@ class TestEliminarPermiso(unittest.TestCase):
         # Peticion POST para eliminar un permiso
         response = self.cliente.post("/permisos/eliminar/3")
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'eliminar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'eliminar'
 
 
         # Creamos un permiso con el mismo id del permiso anteriormente eliminado. La idea es demostrar que el permiso
