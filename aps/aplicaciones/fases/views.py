@@ -16,21 +16,21 @@ class crearFaseEnProyecto(CreateView):
     success_url = reverse_lazy("admin_fases")
     fields = ['nombre', 'fechaInicioP', 'fechaInicioR','presupuesto']
 
-    # def form_valid(self, form):
-    #     p=Proyectos.objects.get(id=self.kwargs['id'])
-    #     fas=fases.objects.filter(proyecto=p)
-    #     cant_act=0
-    #     for f in fas:
-    #         cant_act+=1
-    #     if(p.cantFases>cant_act):
-    #         fase = form.save()
-    #         fase.estado = 'creado'
-    #         fase.proyecto = p
-    #         fase.save()
-    #         print fase
-    #         return super(crearFaseEnProyecto, self).form_valid(form)
-    #     else:
-    #         return render(self.request, 'error/general.html', {'mensaje':'Ya no se pueden agregar fases'})
+    def form_valid(self, form):
+         p=Proyectos.objects.get(id=self.kwargs['id'])
+         fas=fases.objects.filter(proyecto=p)
+         cant_act=0
+         for f in fas:
+             cant_act+=1
+         if(p.cantFases>cant_act):
+             fase = form.save()
+             fase.estado = 'creado'
+             fase.proyecto = p
+             fase.save()
+             print fase
+             return super(crearFaseEnProyecto, self).form_valid(form)
+         else:
+             return render(self.request, 'error/general.html', {'mensaje':'Ya no se pueden agregar fases'})
 
 class listarFases(ListView):
     model = fases
