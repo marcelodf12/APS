@@ -49,7 +49,6 @@ class TestCrearFase(unittest.TestCase):
         b = self.cliente.login(username='fulano Login', password='123')
 
         # Peticion POST para crear una fase
-        # FALTA DEFINIR LO DEL ID DEL PROYECTO EN LA URL
         response = self.cliente.post("/fases/crearEnProyecto/1",data={'nombre':'fase prueba',
                                                            'fechaInicioP':'2014-04-03',
                                                            'fechaInicioR':'2014-04-03',
