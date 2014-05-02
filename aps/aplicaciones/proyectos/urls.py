@@ -4,13 +4,9 @@
 """
 
 from django.conf.urls import patterns, url
-from .views import \
-    crearProyecto, \
-    adminProyecto, \
-    modificarProyectos, \
-    eliminarProyectos, \
-    listarProyectosNoIniciados, \
-    iniciarProyecto, listarProyectosAJAX, proyectos_ajax, detallesProyecto
+
+from .views import *
+
 
 urlpatterns = patterns('',
 
@@ -23,4 +19,9 @@ urlpatterns = patterns('',
     url(r'^iniciar/(?P<id>\d+)$', iniciarProyecto.as_view(), name='iniciar_proyecto'),
     url(r'^noIniciados/$', listarProyectosNoIniciados.as_view(), name='listar_proyectos_no_iniciados'),
     url(r'^detalles/(?P<id>\d+)$', detallesProyecto.as_view(), name='detalle_proyecto'),
+    url(r'^miembros/$', adminComite.as_view(), name='admin_comite'),
+    url(r'^listarMiembros_ajax/$', miembrosAJAX.as_view(), name='miembros_ajax'),
+    url(r'^editMiembro/(?P<id>\d+)$', editMiembro.as_view(), name='editar_miembro'),
+    url(r'^agregarMiembro/(?P<id>\d+)$', editMiembro.as_view(), name='agregar_miembro'),
+
 )

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+     Editar Miembro
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block contenido %}
+      <h1>Comite</h1>
+        <form method="post">{% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Confirmar">
+        </form>
+{% endblock %}

@@ -21,3 +21,18 @@ class Proyectos(models.Model):
         """ Metodo llamado para visualizar objetos. En este caso se mostrara el valor del atributo
         'nombre' para cada instancia del modelo Proyectos  """
         return self.nombre
+
+class Miembros(models.Model):
+    """
+        Este modelo 'Miembros' define los integrantes que administran el proyecto
+        El atributo comite define si el usuario puede o no votar para las solicitudes de cambio
+    """
+    proyecto = models.ForeignKey(Proyectos)
+    miembro = models.ForeignKey(User)
+    comite = models.BooleanField()
+
+    def __unicode__(self):
+        """
+            Metodo que es invocado para mostrar el objeto como una cadena
+        """
+        return 'Comite del proyecto ' + str(self.proyecto)

@@ -2,9 +2,11 @@
      la aplicacion 'items'.
      Todas las urls definidas aqui esta relacionadas con la administracion de items
 """
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
 from django.contrib import admin
+
 from .views import adminItems, crearItem, listarItems, modificarItems, eliminarItems, listarItemsEliminados, crearItemEnFase
+
 
 admin.autodiscover()
 

@@ -1,7 +1,6 @@
 """
     Modulo de pruebas para la aplicacion inicio
 """
-from django.test import TestCase
 from django.utils import unittest
 from django.contrib.auth.models import User
 from django.test.client import Client

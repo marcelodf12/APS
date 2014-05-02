@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}
+      Administrar Miembros
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+<h1>Proyecto</h1>
+<select onchange="inicio(this.value);">
+    <option>Seleccione el Filtro</option>
+    {% for p in proyectos %}
+        <option value="{{p.pk}}">{{p.nombre}}</option>
+    {% endfor %}
+</select><br><br>
+<div id="datos">
+
+</div>
+<br><br>
+{% endblock %}
+
+{% block js %}
+<script>
+    function inicio(valor){
+        $.ajax({
+          data : {'id' : valor},
+          url : '/proyectos/listarMiembros_ajax/',
+          type : 'get',
+          success : function(data){
+            console.log(data);
+            var html="<table id='tablaDatos' border='0' cellpadding='0' cellspacing='0'> <tbody>";
+            html+="<a href='/proyectos/agregarMiembro/" + valor + "'><img src='/static/images/Add.png' width='24' height='24'></a>Nuevo Miembro<br>";
+                html+="<tr>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> User </td>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Nombre </td>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Apellido </td>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Comite </td>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> . </td>";
+                html+="</tr>";
+            for(i=0;i<data.length;i++){
+                if(i%2==0){
+                    html+="<tr>";
+                    html+="<td style='vertical-align: top;'>" + data[i].fields.username + "</td>";
+                    html+="<td style='vertical-align: top;'>" + data[i].fields.first_name + "</td>";
+                    html+="<td style='vertical-align: top;'>" + data[i].fields.last_name + "</td>";
+                    html+="<td style='vertical-align: top;'>" + data[i].fields.comite + "</td>";
+                    html+="<td style='vertical-align: top;'> <a href='/proyectos/editMiembro/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a></td>";
+                    html+="</tr>";
+                }else{
+                    html+="<tr>";
+                    html+="<th style='vertical-align: top;'>" + data[i].fields.username + "</th>";
+                    html+="<th style='vertical-align: top;'>" + data[i].fields.first_name + "</th>";
+                    html+="<th style='vertical-align: top;'>" + data[i].fields.last_name + "</th>";
+                    html+="<th style='vertical-align: top;'>" + data[i].fields.comite + "</th>";
+                    html+="<th style='vertical-align: top;'> <a href='/proyectos/editMiembro/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a></th>";
+                    html+="</tr>";
+                }
+            }
+            console.log(html);
+            $('#datos').html(html);
+          }
+        });
+    }
+
+</script>
+{% endblock %}
