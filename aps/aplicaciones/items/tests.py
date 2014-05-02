@@ -49,13 +49,6 @@ class TestCrearItem(unittest.TestCase):
             faseRegistrada.presupuesto=100000000
             faseRegistrada.save()
 
-            # Asignacion del permiso ADD para userRegistrado, a fin de poder crear un item
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "ADD"
-            # permisoUserLogin.tipoObjeto = "item"
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
-
 
     def test_details(self):
         # Cliente es autenticado como el usuario 'fulano Login'

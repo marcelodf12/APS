@@ -36,13 +36,6 @@ class TestCrearFase(unittest.TestCase):
             proyectoRegistrado.penalizacion=350
             proyectoRegistrado.save()
 
-            # Asignacion del permiso ADD para userRegistrado, a fin de poder crear una fase
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "ADD"
-            # permisoUserLogin.tipoObjeto = "fases"
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
-
 
 
     def test_details(self):
