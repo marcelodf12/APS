@@ -127,7 +127,6 @@ class TestModificarProyecto(unittest.TestCase):
 class TestEliminarProyecto(unittest.TestCase):
     """
         Prueba para comprobar la eliminacion logica de proyectos
-        OBS: Al probar eliminar el proyecto en el navegador funciona bien, pero no es lo mismo en la prueba...
     """
     def setUp(self):
 
@@ -166,7 +165,7 @@ class TestEliminarProyecto(unittest.TestCase):
         response = self.cliente.post("/proyectos/eliminar/3",data={'comentario':'prueba eliminacion logica de proyectos'
                                                             })
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'eliminar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'eliminar'
 
         # Se consulta por el proyecto borrado en la tabla de proyectos
         consultaInstancia = Proyectos.objects.get(nombre="proyecto creado3",
