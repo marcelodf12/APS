@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     url(r'^miembros/$', adminComite.as_view(), name='admin_comite'),
     url(r'^listarMiembros_ajax/$', miembrosAJAX.as_view(), name='miembros_ajax'),
     url(r'^editMiembro/(?P<id>\d+)$', editMiembro.as_view(), name='editar_miembro'),
-    url(r'^agregarMiembro/(?P<id>\d+)$', editMiembro.as_view(), name='agregar_miembro'),
+    url(r'^agregarMiembro/(?P<id>\d+)$', agregarMiembro.as_view(), name='agregar_miembro'),
+    url(r'^eliminarMiembro/(?P<id>\d+)$', eliminarMiembro.as_view(), name='eliminar_miembro'),
 
 )

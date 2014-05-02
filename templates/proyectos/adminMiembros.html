@@ -41,7 +41,7 @@
                 html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Nombre </td>";
                 html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Apellido </td>";
                 html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Comite </td>";
-                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> . </td>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;' colspan=2> Acciones </td>";
                 html+="</tr>";
             for(i=0;i<data.length;i++){
                 if(i%2==0){
@@ -51,6 +51,7 @@
                     html+="<td style='vertical-align: top;'>" + data[i].fields.last_name + "</td>";
                     html+="<td style='vertical-align: top;'>" + data[i].fields.comite + "</td>";
                     html+="<td style='vertical-align: top;'> <a href='/proyectos/editMiembro/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a></td>";
+                    html+="<td style='vertical-align: top;'> <a href='/proyectos/eliminarMiembro/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a></td>";
                     html+="</tr>";
                 }else{
                     html+="<tr>";
@@ -59,6 +60,7 @@
                     html+="<th style='vertical-align: top;'>" + data[i].fields.last_name + "</th>";
                     html+="<th style='vertical-align: top;'>" + data[i].fields.comite + "</th>";
                     html+="<th style='vertical-align: top;'> <a href='/proyectos/editMiembro/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a></th>";
+                    html+="<th style='vertical-align: top;'> <a href='/proyectos/eliminarMiembro/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a></th>";
                     html+="</tr>";
                 }
             }

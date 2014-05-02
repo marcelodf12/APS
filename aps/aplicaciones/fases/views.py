@@ -45,7 +45,7 @@ class listarFases(ListView):
 class modificarFases(UpdateView):
     """ Vista de modificacion de fases, hereda atributos y metodos de la clase UpdateView """
     model = fases
-    fields = ['nombre']     # Permite modificar solo el campo 'nombre'
+    fields = ['nombre', 'presupuesto']     # Permite modificar solo el campo 'nombre'
     template_name = 'fases/update.html'
     success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyectos' en el caso de modificacion exitosa
 

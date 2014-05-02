@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+      Eliminar Miembro del proyecto
+{% endblock %}
+
+{% block menu1 %}
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+    <h1>Altualizar Proyectos</h1>
+    <form action="" method="post">{% csrf_token %}
+        <p>Esta seguro que desea eliminar a {{ object }}</p>
+        <input type="submit" value="Confirmar" />
+    </form>
+{% endblock %}

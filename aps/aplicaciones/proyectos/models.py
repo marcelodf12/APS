@@ -27,7 +27,7 @@ class Miembros(models.Model):
         Este modelo 'Miembros' define los integrantes que administran el proyecto
         El atributo comite define si el usuario puede o no votar para las solicitudes de cambio
     """
-    proyecto = models.ForeignKey(Proyectos)
+    proyecto = models.ForeignKey(Proyectos, null='True')
     miembro = models.ForeignKey(User)
     comite = models.BooleanField()
 
@@ -35,4 +35,4 @@ class Miembros(models.Model):
         """
             Metodo que es invocado para mostrar el objeto como una cadena
         """
-        return 'Comite del proyecto ' + str(self.proyecto)
+        return str(self.miembro)+ ' del proyecto ' + str(self.proyecto)

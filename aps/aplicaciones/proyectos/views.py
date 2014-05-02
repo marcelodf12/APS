@@ -3,7 +3,7 @@ Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py
 """
 import datetime
 
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import HttpResponseRedirect, render
 from django.template.response import TemplateResponse
@@ -221,5 +221,23 @@ class agregarMiembro(CreateView):
     template_name = 'proyectos/agregarMiembro.html'
     model = Miembros
     fields = ['miembro', 'comite']
+    success_url = reverse_lazy('admin_comite')
     def form_valid(self, form):
-        proyecto = Proyectos.objects.get(id=self.request.GET['id'])
+        print self.kwargs['id']
+        proyecto = Proyectos.objects.get(id=self.kwargs['id'])
+        existente = Miembros.objects.filter(proyecto=proyecto, miembro=form.cleaned_data['miembro'])
+        if existente:
+            return render(self.request, 'error/general.html', {'mensaje':'El usuario ya es miembro'})
+        else:
+            comite = form.save()
+            comite.proyecto = proyecto
+            comite.save()
+            return super(agregarMiembro, self).form_valid(form)
+
+class eliminarMiembro(DeleteView):
+    model = Miembros
+    success_url = reverse_lazy('admin_comite')
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = Miembros.objects.get(id=self.kwargs['id'])
+        return obj
