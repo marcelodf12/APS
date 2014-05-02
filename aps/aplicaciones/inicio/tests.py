@@ -65,7 +65,6 @@ class TestCrearUser(unittest.TestCase):
 
 
         #Se consulta por el usuario creado en la tabla User
-        # El password esta cifrado en la tabla y al comparar con el texto 'pass' no concuerda
         consultaInstancia = User.objects.get(username="nickPrueba", first_name="nombre prueba",
                              last_name="apellido prueba", email="correo prueba")
 
