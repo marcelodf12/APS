@@ -134,14 +134,6 @@ class TestModificarItem(unittest.TestCase):
             itemRegistrado.costo = 2000
             itemRegistrado.save()
 
-            # Asignacion del permiso MOD para userRegistrado, a fin de poder modificar un item
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "MOD"
-            # permisoUserLogin.tipoObjeto = "item"
-            # permisoUserLogin.id_fk = 1
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
-
 
     def test_details(self):
         # Cliente es autenticado como el usuario 'fulano Login'

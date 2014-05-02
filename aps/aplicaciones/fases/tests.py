@@ -186,14 +186,6 @@ class TestEliminarFase(unittest.TestCase):
             faseRegistrada.presupuesto = 1000
             faseRegistrada.save()
 
-            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar una fase
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "DEL"
-            # permisoUserLogin.tipoObjeto = "fases"
-            # permisoUserLogin.id_fk = 3
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
-
 
     def test_details(self):
 
