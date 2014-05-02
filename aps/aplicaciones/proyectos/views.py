@@ -63,10 +63,10 @@ class modificarProyectos(UpdateView):
         p=Proyectos.objects.get(id=self.kwargs['id'])
         if(p.estado == 'creado'):
             if(Permisos.valido(usuario=self.request.user,tipoObjeto='proyecto',id=self.kwargs['id'],permiso='MOD')):
-                print 'tiene permiso'
+                #print 'tiene permiso'
                 return super(modificarProyectos, self).form_valid(form)
             else:
-                print 'no tiene permiso'
+                #print 'no tiene permiso'
                 return HttpResponseRedirect('/error/permisos/')
         else:
             return render(self.request, 'error/general.html', {'mensaje':'Solo puede modificar un proyecto No iniciado'})
