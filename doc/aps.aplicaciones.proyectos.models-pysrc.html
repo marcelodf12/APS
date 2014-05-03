@@ -138,7 +138,36 @@ aps.aplicaciones.proyectos.models" class="py-name" href="#" onclick="return docl
 aps.aplicaciones.inicio.forms.UserForm.nombre
 aps.aplicaciones.items.models.items.nombre
 aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-22', 'nombre', 'link-2');">nombre</a></tt> </tt>
-</div></div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+</div></div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="Miembros"></a><div id="Miembros-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="Miembros-toggle" onclick="return toggle('Miembros');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.models.Miembros-class.html">Miembros</a><tt class="py-op">(</tt><tt class="py-base-class">models</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Miembros-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Miembros-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">        Este modelo 'Miembros' define los integrantes que administran el proyecto</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">        El atributo comite define si el usuario puede o no votar para las solicitudes de cambio</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">    <tt id="link-23" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.proyecto=aps.aplicaciones.fases.models.fases-class.html#proyecto,Variable aps.aplicaciones.proyectos.models.Miembros.proyecto=aps.aplicaciones.proyectos.models.Miembros-class.html#proyecto"><a title="aps.aplicaciones.fases.models.fases.proyecto
+aps.aplicaciones.proyectos.models.Miembros.proyecto" class="py-name" href="#" onclick="return doclink('link-23', 'proyecto', 'link-23');">proyecto</a></tt> <tt class="py-op">=</tt> <tt id="link-24" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models" class="py-name" href="#" onclick="return doclink('link-24', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">ForeignKey</tt><tt class="py-op">(</tt><tt id="link-25" class="py-name" targets="Class aps.aplicaciones.proyectos.models.Proyectos=aps.aplicaciones.proyectos.models.Proyectos-class.html"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-25', 'Proyectos', 'link-25');">Proyectos</a></tt><tt class="py-op">,</tt> <tt class="py-name">null</tt><tt class="py-op">=</tt><tt class="py-string">'True'</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt id="link-26" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Miembros.miembro=aps.aplicaciones.proyectos.models.Miembros-class.html#miembro"><a title="aps.aplicaciones.proyectos.models.Miembros.miembro" class="py-name" href="#" onclick="return doclink('link-26', 'miembro', 'link-26');">miembro</a></tt> <tt class="py-op">=</tt> <tt id="link-27" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models" class="py-name" href="#" onclick="return doclink('link-27', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">ForeignKey</tt><tt class="py-op">(</tt><tt class="py-name">User</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">    <tt id="link-28" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Miembros.comite=aps.aplicaciones.proyectos.models.Miembros-class.html#comite"><a title="aps.aplicaciones.proyectos.models.Miembros.comite" class="py-name" href="#" onclick="return doclink('link-28', 'comite', 'link-28');">comite</a></tt> <tt class="py-op">=</tt> <tt id="link-29" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models" class="py-name" href="#" onclick="return doclink('link-29', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">BooleanField</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="Miembros.__unicode__"></a><div id="Miembros.__unicode__-def"><a name="L34"></a><tt class="py-lineno">34</tt> <a class="py-toggle" href="#" id="Miembros.__unicode__-toggle" onclick="return toggle('Miembros.__unicode__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.proyectos.models.Miembros-class.html#__unicode__">__unicode__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Miembros.__unicode__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Miembros.__unicode__-expanded"><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">            Metodo que es invocado para mostrar el objeto como una cadena</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="aps.aplicaciones.proyectos.models.Miembros.miembro" class="py-name" href="#" onclick="return doclink('link-30', 'miembro', 'link-26');">miembro</a></tt><tt class="py-op">)</tt><tt class="py-op">+</tt> <tt class="py-string">' del proyecto '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="aps.aplicaciones.fases.models.fases.proyecto
+aps.aplicaciones.proyectos.models.Miembros.proyecto" class="py-name" href="#" onclick="return doclink('link-31', 'proyecto', 'link-23');">proyecto</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -171,7 +200,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Thu May  1 10:25:34 2014
+    Generated by Epydoc 3.0.1 on Fri May  2 23:02:40 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
