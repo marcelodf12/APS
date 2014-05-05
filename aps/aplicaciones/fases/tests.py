@@ -1,7 +1,6 @@
 from django.utils import unittest
 from django.test.client import Client
 from django.contrib.auth.models import User
-
 from aps.aplicaciones.fases.models import fases, Proyectos
 
 
@@ -122,12 +121,14 @@ class TestModificarFase(unittest.TestCase):
         b = self.cliente.login(username='fulano Login2', password='123')
 
         # Peticion POST para modificar la fase con id=2
-        response = self.cliente.post("/fases/modificar/2",data={'nombre':'fase Registrada modificada'})
+        response = self.cliente.post("/fases/modificar/2",data={'nombre':'fase Registrada modificada',
+                                                                'presupuesto':'20000000'
+                                                          })
 
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
         # Se consulta por el item modificado en la tabla items
-        consultaInstancia = fases.objects.get(nombre="fase Registrada modificada")
+        consultaInstancia = fases.objects.get(nombre="fase Registrada modificada", presupuesto="20000000")
 
         #print "\nNombre de la fase: ", consultaInstancia.nombre                  # Nombre de la fase modificada
         #print "Estado de la fase: ", consultaInstancia.estado                    # Estado de la fase modificada
