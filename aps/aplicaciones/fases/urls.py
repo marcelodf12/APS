@@ -1,3 +1,8 @@
+"""
+    Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py
+    de la aplicacion 'fases'.
+"""
+
 from django.conf.urls import patterns, url
 from django.contrib import admin
 

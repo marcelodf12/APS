@@ -1,5 +1,5 @@
 """
-    Modulo de Test para el Modelo  Proyecto
+    Modulo de Pruebas Unitarias para la aplicacion proyectos
 """
 from django.utils import unittest
 from django.contrib.auth.models import User
@@ -14,6 +14,10 @@ class TestCrearProyecto(unittest.TestCase):
         Prueba para comprobar la creacion de proyectos
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
+
             # Creacion de un cliente
             self.cliente = Client()
 
@@ -30,6 +34,9 @@ class TestCrearProyecto(unittest.TestCase):
 
 
     def test_details(self):
+        """
+            Metodo pprincipal
+        """
 
         # Cliente es autenticado como el usuario 'fulano Login'
         b = self.cliente.login(username='fulano Login', password='123')
@@ -51,7 +58,7 @@ class TestCrearProyecto(unittest.TestCase):
                              fechaFinP="2014-04-04",
                              cantFases="5",
                              presupuesto="2500",
-                             penalizacion="250",
+                             penalizacion="250"
                              )
 
         #print "\nNombre del proyecto: ", consultaInstancia.nombre              # Nombre del proyecto creado

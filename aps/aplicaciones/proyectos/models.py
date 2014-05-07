@@ -1,3 +1,7 @@
+"""
+    Modelos definidos para la aplicacion proyectos
+"""
+
 from django.db import models
 from django.contrib.auth.models import User
 

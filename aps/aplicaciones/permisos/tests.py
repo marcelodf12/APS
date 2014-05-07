@@ -1,5 +1,5 @@
 """
-    Modulo de Test para el Modelo Permisos
+    Modulo de Pruebas Unitarias para la aplicacion permisos
 """
 from django.utils import unittest
 from django.contrib.auth.models import User
@@ -12,6 +12,9 @@ class TestCrearPermiso(unittest.TestCase):
         Prueba para comprobar la creacion de permisos
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
 
             # Creacion de un cliente
             self.cliente = Client()

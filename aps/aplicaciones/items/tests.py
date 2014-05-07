@@ -1,3 +1,7 @@
+"""
+    Modulo de Pruebas Unitarias para la aplicacion items
+"""
+
 from django.utils import unittest
 from django.contrib.auth.models import User
 from django.test.client import Client
@@ -12,6 +16,10 @@ class TestCrearItem(unittest.TestCase):
     """ Prueba para comprobar la creacion de items """
 
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
+
             # Creacion de un cliente
             self.cliente = Client()
 

@@ -1,6 +1,6 @@
-""" Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py de
-    la aplicacion 'proyectos'.
-    Todas las urls definidas aqui esta relacionadas con la administracion de proyectos
+"""
+    Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py
+    de la aplicacion 'permisos'.
 """
 
 from django.conf.urls import patterns, url

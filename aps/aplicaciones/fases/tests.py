@@ -1,3 +1,7 @@
+"""
+    Modulo de Pruebas Unitarias para la aplicacion fases
+"""
+
 from django.utils import unittest
 from django.test.client import Client
 from django.contrib.auth.models import User
@@ -10,7 +14,11 @@ class TestCrearFase(unittest.TestCase):
     """ Prueba para comprobar la creacion de fases """
 
     def setUp(self):
-        # Creacion de un cliente
+            """
+                Metodo de inicializacion
+            """
+
+            # Creacion de un cliente
             self.cliente = Client()
 
             # Creacion de un usuario para la autenticacion

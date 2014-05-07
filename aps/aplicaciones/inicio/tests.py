@@ -1,5 +1,5 @@
 """
-    Modulo de pruebas para la aplicacion inicio
+    Modulo de Pruebas Unitarias para la aplicacion inicio
 """
 from django.utils import unittest
 from django.contrib.auth.models import User
@@ -126,6 +126,9 @@ class TestEliminarUser(unittest.TestCase):
         Prueba para comprobar la eliminacion logica de usuarios
     """
     def setUp(self):
+        """
+            Metodo de inicializacion
+        """
 
         # Creacion de un cliente
         self.client = Client()
