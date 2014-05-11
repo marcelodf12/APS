@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}
+      Versionado
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+        <img src='/static/images/Detalles.png' width='24' height='24'><a href="#">  Ver Detalles</a><br><br>
+		<img src='/static/images/Add.png' width='24' height='24'><a href="#"> Reversionar </a><br><br>
+        <br><br>
+
+
+{% endblock %}
+
+{% block contenido %}
+<h1>Seleccione tipo Objeto</h1>
+<select onchange="inicio(this.value);">  <!-- No es necesario llamar a la funcion inicio, recien cuando seleccionamos reversionar-->
+    <option>Seleccione el Filtro</option>
+    <option value="creado">Proyectos</option>
+    <option value="activo">Fases</option>
+    <option value="eliminado">Items</option>
+</select>
+<h1>Seleccione el Objeto especifico</h1>
+<select onchange="inicio(this.value);">  <!-- No es necesario llamar a la funcion inicio, recien cuando seleccionamos reversionar-->
+                <option>Seleccione el Filtro</option>
+                    {% for u in proyectos %}    <!-- Aqui se debe generalizar 'proyectos' (puede ser fase, items tambien) -->
+                        <option value="{{u.id}}">{{u.nombre}}</option>
+                    {% endfor %}
+            </select><br><br>
+<h1>Versiones del objeto</h1>
+<select onchange="proyectos(this.value);">  <!-- No es necesario llamar a la funcion inicio, recien cuando seleccionamos reversionar-->
+                <option>Seleccione el Filtro</option>
+                    {% for u in proyectos %} <!-- Aqui se debe buscar en una tabla especifica para versiones -->
+                        <option value="{{u.id}}">{{u.version}}</option>
+                    {% endfor %}
+            </select><br><br>
+<div id="datos">
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    function inicio(valor){
+        $.ajax({
+          data : {'estado' : valor},
+          url : '/proyectos/listar_ajax/',
+          type : 'get',
+          success : function(data){
+            var html="";
+            var html="<br><table id='tablaDatos' border='0' cellpadding='0' cellspacing='0'> <tbody>";
+                html+="<tr>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Proyecto </td>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Cant. Fases </td>";
+                html+="<td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'> Acciones </td>";
+                html+="</tr>";
+            for(i=0;i<data.length;i++){
+                if(i%2==0){
+                    html+="<tr>";
+                    html+="<td style='vertical-align: top;'>" + data[i].fields.nombre + "</td>";
+                    html+="<td style='vertical-align: top;'>" + data[i].fields.cantFases + "</td>";
+                    html+="<td style='vertical-align: top;'>"
+                    if(valor!='eliminado'){
+                        if(valor=='creado'){
+                            html+="<a href='/proyectos/modificar/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a>";
+                            html+="<a href='/fases/crearEnProyecto/" + data[i].pk + "'><img src='/static/images/Add.png' width='24' height='24'></a>";
+                        }
+                        html+="<a href='/proyectos/detalles/" + data[i].pk + "'><img src='/static/images/Resumen.png' width='24' height='24'></a>";
+                        html+=" <a href='/proyectos/eliminar/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a>";
+                    }else{
+                        html+="Ninguna Accion";
+                    }
+                    html+="</td>";
+                    html+="</tr>";
+                }else{
+                    html+="<tr>";
+                    html+="<th style='vertical-align: top;'>" + data[i].fields.nombre + "</th>";
+                    html+="<th style='vertical-align: top;'>" + data[i].fields.cantFases + "</th>";
+                    html+="<th style='vertical-align: top;'>"
+                    if(valor!='eliminado'){
+                        if(valor=='creado'){
+                            html+="<a href='/proyectos/modificar/" + data[i].pk + "'><img src='/static/images/Edit.png' width='24' height='24'></a>";
+                            html+="<a href='/fases/crearEnProyecto/" + data[i].pk + "'><img src='/static/images/Add.png' width='24' height='24'></a>";
+                        }
+                        html+="<a href='/proyectos/detalles/" + data[i].pk + "'><img src='/static/images/Resumen.png' width='24' height='24'></a>";
+                        html+=" <a href='/proyectos/eliminar/" + data[i].pk + "'><img src='/static/images/Delete.png' width='24' height='24'></a>";
+                    }else{
+                        html+="Ninguna Accion";
+                    }
+                    html+="</th>";
+                    html+="</tr>";
+                }
+            }
+            html+="</tbody></table><br>";
+            $('#datos').html(html);
+          }
+        });
+    }
+
+</script>
+{% endblock %}
+

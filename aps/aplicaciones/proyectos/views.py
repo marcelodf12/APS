@@ -13,7 +13,6 @@ from .forms import ComentariosLog
 from aps.aplicaciones.permisos.models import Permisos
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.items.models import items
-from django.contrib.auth.models import User
 
 
 # Create your views here.
