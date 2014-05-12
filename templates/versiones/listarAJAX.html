@@ -8,9 +8,6 @@
 {% endblock %}
 
 {% block menu2 %}
-        <img src='/static/images/Detalles.png' width='24' height='24'><a href="#">  Ver Detalles</a><br><br>
-		<img src='/static/images/Add.png' width='24' height='24'><a href="#"> Reversionar </a><br><br>
-        <br><br>
 
 
 {% endblock %}
@@ -29,17 +26,18 @@
                     {% for u in proyectos %}    <!-- Aqui se debe generalizar 'proyectos' (puede ser fase, items tambien) -->
                         <option value="{{u.id}}">{{u.nombre}}</option>
                     {% endfor %}
-            </select><br><br>
+            </select>
 <h1>Versiones del objeto</h1>
-<select onchange="proyectos(this.value);">  <!-- No es necesario llamar a la funcion inicio, recien cuando seleccionamos reversionar-->
+<select onchange="inicio(this.value);">  <!-- No es necesario llamar a la funcion inicio, recien cuando seleccionamos reversionar-->
                 <option>Seleccione el Filtro</option>
-                    {% for u in proyectos %} <!-- Aqui se debe buscar en una tabla especifica para versiones -->
-                        <option value="{{u.id}}">{{u.version}}</option>
+                    {% for u in versiones %} <!-- Aqui se debe buscar en una tabla especifica para versiones -->
+                        <option value="{{u.id}}">{{u.versionObjeto}}</option>
                     {% endfor %}
             </select><br><br>
 <div id="datos">
 
 </div>
+<input type="submit" value="Reversionar">
 {% endblock %}
 
 {% block js %}
@@ -101,5 +99,6 @@
     }
 
 </script>
+
 {% endblock %}
 
