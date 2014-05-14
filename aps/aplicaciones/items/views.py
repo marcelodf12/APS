@@ -1,7 +1,7 @@
 
 """ Los nombres de clases son los nombres de las vistas que posteriormente son invocadas en el archivo URLS.py
 Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py """
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, HttpResponseRedirect
 
@@ -116,3 +116,12 @@ class listarRelaciones(TemplateView):
         queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id'])
         proyecto = Proyectos.objects.get(id=kwargs['id'])
         return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre})
+
+class eliminarRelacion(DeleteView):
+    model = relacion
+    template_name = 'relaciones/delete.html'
+    success_url = reverse_lazy('listar_proyectos')
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = relacion.objects.get(id=self.kwargs['id'])
+        return obj

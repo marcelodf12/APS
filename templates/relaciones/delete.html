@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+      Eliminar Relacion
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+<form action="" method="post">{% csrf_token %}
+    <p>Esta seguro que desea eliminar la relación</p>
+    <input type="submit" value="Confirm" />
+</form>
+{% endblock %}

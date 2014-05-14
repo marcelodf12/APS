@@ -22,4 +22,5 @@ urlpatterns = patterns('',
     url(r'^relaciones/listarParaCrear/(?P<id>\d+)$', listarItemParaCrearRelacion.as_view(), name='listarItemParaCrearRelacion'),
     url(r'^relaciones/crear/$', crearRelacion.as_view(), name='crear_relacion'),
     url(r'^relaciones/listar/(?P<id>\d+)$', listarRelaciones.as_view(), name='listar_relaciones'),
+    url(r'^relaciones/eliminar/(?P<id>\d+)$', eliminarRelacion.as_view(), name='eliminar_relaciones'),
 )
