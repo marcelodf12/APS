@@ -8,6 +8,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from .models import *
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
+from aps.aplicaciones.proyectos.models import Proyectos
 
 # Create your views here.
 class adminItems(TemplateView):
@@ -107,9 +108,11 @@ class crearRelacion(TemplateView):
             r.estado=True
             r.save()
             print 'se creo'
-        return HttpResponseRedirect('/items/relaciones/listar/')
+        return HttpResponseRedirect('/inicio/')
 
 
-class listarRelaciones(ListView):
-    model = relacion
-    template_name = 'relaciones/listar.html'
+class listarRelaciones(TemplateView):
+    def get(self, request, *args, **kwargs):
+        queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id'])
+        proyecto = Proyectos.objects.get(id=kwargs['id'])
+        return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre})
