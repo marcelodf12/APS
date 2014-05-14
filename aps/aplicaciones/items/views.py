@@ -3,11 +3,11 @@
 Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py """
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView
 from django.core.urlresolvers import reverse_lazy
+from django.shortcuts import render, HttpResponseRedirect
 
-from .models import items
+from .models import *
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
-
 
 # Create your views here.
 class adminItems(TemplateView):
@@ -81,3 +81,35 @@ class eliminarItems(FormView):
         item.estado='eliminado'
         item.save()
         return super(eliminarItems, self).form_valid(form)
+
+class listarItemParaCrearRelacion(TemplateView):
+    def get(self, request, *args, **kwargs):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        itemHijo = items.objects.get(id=kwargs['id'])
+        faseAct = itemHijo.fase
+        listaItems=items.objects.filter(fase=faseAct).exclude(id=itemHijo.id)
+        if(faseAct.orden>1):
+            proyecto = faseAct.proyecto
+            faseAnt = fases.objects.get(proyecto=proyecto, orden=faseAct.orden-1)
+            listaItems=(items.objects.filter(fase=faseAct).exclude(id=itemHijo.id) | items.objects.filter(fase=faseAnt))
+        return render(self.request, 'relaciones/crearRelacion.html', {'items':listaItems, 'id':itemHijo.id})
+
+class crearRelacion(TemplateView):
+    def post(self, request, *args, **kwargs):
+        Padre=items.objects.get(id=request.POST['itemPadre'])
+        Hijo=items.objects.get(id=request.POST['itemHijo'])
+        if(relacion.objects.filter(itemHijo=Hijo, itemPadre=Padre)==[]):
+            print 'no se creo'
+        else:
+            r = relacion()
+            r.itemHijo=Hijo
+            r.itemPadre=Padre
+            r.estado=True
+            r.save()
+            print 'se creo'
+        return HttpResponseRedirect('/items/relaciones/listar/')
+
+
+class listarRelaciones(ListView):
+    model = relacion
+    template_name = 'relaciones/listar.html'

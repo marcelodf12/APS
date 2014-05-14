@@ -5,7 +5,7 @@
 from django.conf.urls import patterns, url
 from django.contrib import admin
 
-from .views import adminItems, crearItem, listarItems, modificarItems, eliminarItems, listarItemsEliminados, crearItemEnFase
+from .views import *
 
 
 admin.autodiscover()
@@ -19,4 +19,7 @@ urlpatterns = patterns('',
     url(r'^listar_eliminados/', listarItemsEliminados.as_view()),
     url(r'^modificar/(?P<id>\d+)$', modificarItems.as_view(), name='modificar_items'),
     url(r'^eliminar/(?P<id>\d+)$', eliminarItems.as_view(), name='eliminar_items'),
+    url(r'^relaciones/listar/(?P<id>\d+)$', listarItemParaCrearRelacion.as_view(), name='listarItemParaCrearRelacion'),
+    url(r'^relaciones/crear/$', crearRelacion.as_view(), name='crear_relacion'),
+    url(r'^relaciones/listar/$', listarRelaciones.as_view(), name='listar_relaciones'),
 )
