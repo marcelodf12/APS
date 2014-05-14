@@ -3,7 +3,10 @@ from django.db import models
 from aplicaciones.fases.models import fases
 
 
-# Create your models here.
+# ESTADOS = (
+#     ('activo','activo'),
+#     ('inactivo','inactivo'),
+# )
 class items(models.Model):
     """Este es el modelo 'items' con sus atributos, al sincronizar con la Base de Datos la clase se convertira
     en una tabla y sus atributos se traduciran en campos de la misma. """
@@ -19,3 +22,17 @@ class items(models.Model):
         """ Metodo llamado para visualizar objetos. En este caso se mostrara el valor del atributo 'nombre' para
          cada instancia del modelo items """
         return self.nombre
+
+class relacion(models.Model):
+    """
+    Este es el Modelo que define la relacion entre dos items
+    """
+    itemHijo = models.ForeignKey(items, null='True', related_name='hijo')
+    itemPadre = models.ForeignKey(items, null='True', related_name='padre')
+    estado = models.BooleanField()
+
+    def __unicode__(self):
+        """
+        Metodo llamado para visualizar relacion. Muestra el nombre del item hijo seguido del nombre del item padre
+        """
+        return self.itemHijo.nombre + '-->' + self.itemPadre.nombre
