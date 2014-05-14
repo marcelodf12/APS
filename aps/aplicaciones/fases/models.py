@@ -12,6 +12,7 @@ class fases(models.Model):
     proyecto = models.ForeignKey(Proyectos, null='True')
     costo = models.IntegerField(null='True')
     presupuesto = models.IntegerField()
+    orden = models.IntegerField()
 
     def __unicode__(self):
         return self.nombre

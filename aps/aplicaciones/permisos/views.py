@@ -37,10 +37,10 @@ class crear(CreateView):
 class permisos_ajax(TemplateView):
     def get(self, request, *args, **kwargs):
         id_usuario = request.GET['idusuario']
-        print 'id usuario: ' + str(id_usuario)
+        #print 'id usuario: ' + str(id_usuario)
         permisos = Permisos.objects.filter(usuario__id=id_usuario)
-        print 'permisos '
-        print permisos
+        #print 'permisos '
+        #print permisos
         datajson = '['
         c=1
         for p in permisos:
@@ -48,28 +48,28 @@ class permisos_ajax(TemplateView):
             c+=1
             proyecto=fase=item=atributo='none'
             tipo=p.tipoObjeto
-            print 'tipo objeto' + str(tipo)
+            #print 'tipo objeto' + str(tipo)
             pk_id=p.id_fk
             if tipo =='proyecto' and pk_id!=0:
                 proyecto=Proyectos.objects.get(id=pk_id).nombre
-                print 'entro por proyecto' + str(proyecto)
+                #print 'entro por proyecto' + str(proyecto)
             elif tipo =='fase':
                 fase=fases.objects.get(id=pk_id).nombre
-                print 'entro por fase' + str(fase)
+                #print 'entro por fase' + str(fase)
             elif tipo =='item':
                 item=items.objects.get(id=pk_id).nombre
-                print 'entro por item' + str(item)
+                #print 'entro por item' + str(item)
             datajson+='{"pk": ' + str(p.id) + ', "model": "permisos.permisos", "fields": {'
             datajson+='"permiso": "' + p.permiso + '", '
             datajson+='"tipoObjeto": "' + p.tipoObjeto + '", '
             datajson+='"proyecto": "' + proyecto + '", '
             datajson+='"fases": "' + fase + '", '
             datajson+='"items": "' + item + '"}},'
-            print 'json1--> ' + datajson
+            #print 'json1--> ' + datajson
         if (len(datajson)>1):
             datajson=datajson[:-1]
         datajson+=']'
-        print 'json2--> ' + datajson
+        #print 'json2--> ' + datajson
         # data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
         # print data
         return HttpResponse(datajson, content_type = 'application/json')
