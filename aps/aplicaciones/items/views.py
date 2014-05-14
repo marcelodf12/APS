@@ -7,7 +7,8 @@ from django.core.urlresolvers import reverse_lazy
 from .models import items
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
-
+from aps.aplicaciones.items.models import items_versiones
+from django.http import HttpResponse
 
 # Create your views here.
 class adminItems(TemplateView):
@@ -81,3 +82,53 @@ class eliminarItems(FormView):
         item.estado='eliminado'
         item.save()
         return super(eliminarItems, self).form_valid(form)
+
+class items_ajax(TemplateView):
+    def get(self, request, *args, **kwargs):
+        id_item = request.GET['iditems']
+        print 'id items: ' + str(id_item)
+        version = items_versiones.objects.filter(item_id=id_item)
+        print 'versiones '
+        print version
+        datajson = '['
+        c=1
+        for v in version:
+            print 'vuelta' + str(c)
+            c+=1
+            proyecto=fase=item=atributo='none'
+            tipo=v.version
+            print 'Version: ' + str(tipo)
+            #pk_id=v.id_fk
+            # if tipo =='proyecto' and pk_id!=0:
+            #     proyecto=items_versiones.objects.get(id=pk_id).nombre
+            #     print 'entro por proyecto' + str(proyecto)
+            # elif tipo =='fase':
+            #     fase=fases.objects.get(id=pk_id).nombre
+            #     print 'entro por fase' + str(fase)
+            # elif tipo =='item':
+            #     item=items.objects.get(id=pk_id).nombre
+            #     print 'entro por item' + str(item)
+            datajson+='{"pk": ' + str(v.id) + ', "model": "items.items.versiones", "fields": {'
+            # datajson+='"permiso": "' + v.permiso + '", '
+            # datajson+='"tipoObjeto": "' + v.tipoObjeto + '", '
+            # datajson+='"proyecto": "' + proyecto + '", '
+            # datajson+='"fases": "' + fase + '", '
+
+            datajson+='"version": "' + tipo + '"}},'
+
+            print 'HASTA AQUI ' + str(tipo)
+            print 'json1--> ' + datajson
+        if (len(datajson)>1):
+            datajson=datajson[:-1]
+        datajson+=']'
+        print 'json2--> ' + datajson
+        #data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
+        #print data
+        print 'LLEGUE AL FINAL'
+        return HttpResponse(datajson, content_type = 'application/json')
+
+class listarVersiones(ListView):
+    """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
+    template_name = 'items/listarAJAX.html'
+    model = items
+    context_object_name = 'items'

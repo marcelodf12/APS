@@ -6,7 +6,8 @@
 from django.conf.urls import patterns, url
 from django.contrib import admin
 
-from .views import adminItems, crearItem, listarItems, modificarItems, eliminarItems, listarItemsEliminados, crearItemEnFase
+from .views import adminItems, crearItem, listarItems, modificarItems, eliminarItems, listarItemsEliminados, \
+    crearItemEnFase, listarVersiones, items_ajax
 
 
 admin.autodiscover()
@@ -20,4 +21,6 @@ urlpatterns = patterns('',
     url(r'^listar_eliminados/', listarItemsEliminados.as_view()),
     url(r'^modificar/(?P<id>\d+)$', modificarItems.as_view(), name='modificar_items'),
     url(r'^eliminar/(?P<id>\d+)$', eliminarItems.as_view(), name='eliminar_items'),
+    url(r'^listar_versiones/$', listarVersiones.as_view(), name='listar_versiones'),
+    url(r'^listar_ajax/$', items_ajax.as_view(), name='listar_permisos_ajax'),
 )
