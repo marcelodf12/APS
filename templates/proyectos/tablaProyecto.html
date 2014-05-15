@@ -63,6 +63,14 @@
                                                         <th style="vertical-align: top;">{{penalizacion}}<br></th>
                                                     </tr>
                                                     <tr>
+                                                        <td style="vertical-align: top;">Lider<br></td>
+                                                        <td style="vertical-align: top;">{{proyecto.lider.first_name}} {{proyecto.lider.last_name}}<br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="vertical-align: top;">Contacto del lider<br></th>
+                                                        <th style="vertical-align: top;">{{proyecto.lider.email}}<br></th>
+                                                    </tr>
+                                                    <tr>
                                                         <td style="vertical-align: top;">Saldo<br></td>
                                                         {% if saldo < 0 %}
                                                             <td style="vertical-align: top; color:#F00;">{{saldo}}<br></td>
