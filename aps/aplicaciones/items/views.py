@@ -125,3 +125,41 @@ class eliminarRelacion(DeleteView):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = relacion.objects.get(id=self.kwargs['id'])
         return obj
+
+class agregarAtributo(CreateView):
+    template_name = 'items/agregarAtributo.html'
+    model = atributo
+    success_url = reverse_lazy('listar_proyectos')
+    fields = ['nombre','descripcion']
+
+    def form_valid(self, form):
+        item = items.objects.get(id=self.kwargs['id'])
+        versionNueva = item.versionAct + 1
+        atributosAnt = atributo.objects.filter(item=item, version=item.versionAct).order_by('pk')
+        for a in atributosAnt:
+            nuevo = atributo(nombre=a.nombre, descripcion=a.descripcion, item=item, version=versionNueva)
+            nuevo.save()
+        atrib = form.save()
+        atrib.item = item
+        atrib.version = versionNueva
+        item.versionAct = versionNueva
+        atrib.save()
+        item.save()
+        return super(agregarAtributo, self).form_valid(form)
+
+class mostrarDetalles(TemplateView):
+    def get(self, request, *args, **kwargs):
+        item = items.objects.get(id=kwargs['id'])
+        atributos = atributo.objects.filter(item=item, version=item.versionAct).order_by('pk')
+        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos})
+
+class mostrarDetallesV(TemplateView):
+    def get(self, request, *args, **kwargs):
+        item = items.objects.get(id=kwargs['id'])
+        atributos = atributo.objects.filter(item=item, version=kwargs['idV']).order_by('pk')
+        return render(self.request, 'items/listarOtrasVersiones.html',{'item':item, 'atributos':atributos, 'version':kwargs['idV']})
+
+class listarVersiones(TemplateView):
+    def get(self, request, *args, **kwargs):
+        item = items.objects.get(id=kwargs['id'])
+        return render(self.request, 'items/listarVersiones.html',{'item':item, 'range':range(1,item.versionAct+1)})

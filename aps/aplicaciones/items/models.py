@@ -1,6 +1,6 @@
 from django.db import models
 
-from aplicaciones.fases.models import fases
+from aps.aplicaciones.fases.models import fases
 
 
 # ESTADOS = (
