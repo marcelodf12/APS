@@ -108,7 +108,8 @@ class crearRelacion(TemplateView):
             r.estado=True
             r.save()
             print 'se creo'
-        return HttpResponseRedirect('/inicio/')
+        url = '/items/relaciones/listar/' + str(Padre.fase.proyecto.id)
+        return HttpResponseRedirect(url)
 
 
 class listarRelaciones(TemplateView):
@@ -163,3 +164,23 @@ class listarVersiones(TemplateView):
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
         return render(self.request, 'items/listarVersiones.html',{'item':item, 'range':range(1,item.versionAct+1)})
+
+class ReversionVersiones(TemplateView):
+    def get(self, request, *args, **kwargs):
+        item = items.objects.get(id=kwargs['id'])
+        return render(self.request, 'items/reversion.html',{'item':item, 'range':range(1,item.versionAct+1)})
+
+
+class reversionar(TemplateView):
+    def post(self, request, *args, **kwargs):
+        item = items.objects.get(id=request.POST['idItem'])
+        versionVieja = request.POST['version']
+        atributos = atributo.objects.filter(item=item, version=versionVieja).order_by('pk')
+        versionNueva = item.versionAct + 1
+        for a in atributos:
+            nuevo = atributo(nombre=a.nombre, descripcion=a.descripcion, item=item, version=versionNueva)
+            nuevo.save()
+        item.versionAct = versionNueva
+        item.save()
+        url = '/items/atributos/listar/' + str(item.id)
+        return HttpResponseRedirect(url)

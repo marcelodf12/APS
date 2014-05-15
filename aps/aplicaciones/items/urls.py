@@ -27,4 +27,6 @@ urlpatterns = patterns('',
     url(r'^atributos/listar/(?P<id>\d+)$', mostrarDetalles.as_view(), name='detalles_Item'),
     url(r'^atributos/listar/(?P<id>\d+)/(?P<idV>\d+)$', mostrarDetallesV.as_view(), name='detalles_Item'),
     url(r'^atributos/listarVersiones/(?P<id>\d+)$', listarVersiones.as_view(), name='listar_versiones'),
+    url(r'^reversionar/(?P<id>\d+)$', ReversionVersiones.as_view()),
+    url(r'^reversionar/$', reversionar.as_view()),
 )
