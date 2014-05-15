@@ -36,3 +36,12 @@ class relacion(models.Model):
         Metodo llamado para visualizar relacion. Muestra el nombre del item hijo seguido del nombre del item padre
         """
         return self.itemHijo.nombre + '-->' + self.itemPadre.nombre
+
+class atributo(models.Model):
+    """
+    Este modelo define los atributos de un items
+    """
+    nombre = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=512)
+    version = models.IntegerField(default='0')
+    item = models.ForeignKey(items, null='true')
