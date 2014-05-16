@@ -55,7 +55,6 @@ class TestCrearItem(unittest.TestCase):
             faseRegistrada.fechaInicioP = "2014-03-05"
             faseRegistrada.fechaInicioR = "2014-03-06"
             faseRegistrada.presupuesto=100000000
-            #???????????????????????????????????????????
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
@@ -125,7 +124,6 @@ class TestModificarItem(unittest.TestCase):
             faseRegistrada.fechaInicioP = "2014-03-24"
             faseRegistrada.fechaInicioR = "2014-03-24"
             faseRegistrada.presupuesto = 2500000
-            #???????????????????????????????????????????
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
@@ -204,7 +202,6 @@ class TestEliminarItem(unittest.TestCase):
             faseRegistrada.fechaInicioP = "2014-03-24"
             faseRegistrada.fechaInicioR = "2014-03-24"
             faseRegistrada.presupuesto = 2500000
-            #???????????????????????????????????????????
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
@@ -217,14 +214,6 @@ class TestEliminarItem(unittest.TestCase):
             itemRegistrado.complejidad = 10
             itemRegistrado.costo = 2000
             itemRegistrado.save()
-
-            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "DEL"
-            # permisoUserLogin.tipoObjeto = "item"
-            # permisoUserLogin.id_fk = 3
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
 
 
     def test_details(self):
@@ -287,7 +276,6 @@ class TestCrearAtributo(unittest.TestCase):
             faseRegistrada.fechaInicioP = "2014-03-24"
             faseRegistrada.fechaInicioR = "2014-03-24"
             faseRegistrada.presupuesto = 2500000
-            #???????????????????????????????????????????
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
@@ -300,14 +288,6 @@ class TestCrearAtributo(unittest.TestCase):
             itemRegistrado.complejidad = 10
             itemRegistrado.costo = 2000
             itemRegistrado.save()
-
-            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "DEL"
-            # permisoUserLogin.tipoObjeto = "item"
-            # permisoUserLogin.id_fk = 3
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
 
 
     def test_details(self):
@@ -455,7 +435,6 @@ class TestCrearRelacion(unittest.TestCase):
             faseRegistrada.fechaInicioP = "2014-03-24"
             faseRegistrada.fechaInicioR = "2014-03-24"
             faseRegistrada.presupuesto = 2500000
-            #???????????????????????????????????????????
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
@@ -478,14 +457,6 @@ class TestCrearRelacion(unittest.TestCase):
             itemRegistrado.complejidad = 10
             itemRegistrado.costo = 2000
             itemRegistrado.save()
-
-            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "DEL"
-            # permisoUserLogin.tipoObjeto = "item"
-            # permisoUserLogin.id_fk = 3
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
 
 
     def test_details(self):
@@ -548,7 +519,6 @@ class TestEliminarRelaciones(unittest.TestCase):
             faseRegistrada.fechaInicioP = "2014-03-24"
             faseRegistrada.fechaInicioR = "2014-03-24"
             faseRegistrada.presupuesto = 2500000
-            #???????????????????????????????????????????
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
@@ -579,14 +549,6 @@ class TestEliminarRelaciones(unittest.TestCase):
             relacionRegistrada.itemPadre_id = 6
             relacionRegistrada.estado = True
             relacionRegistrada.save()
-
-            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "DEL"
-            # permisoUserLogin.tipoObjeto = "item"
-            # permisoUserLogin.id_fk = 3
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
 
 
     def test_details(self):
@@ -658,7 +620,6 @@ class Reversionar(unittest.TestCase):
             faseRegistrada.fechaInicioP = "2014-03-24"
             faseRegistrada.fechaInicioR = "2014-03-24"
             faseRegistrada.presupuesto = 2500000
-            #???????????????????????????????????????????
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
@@ -680,14 +641,6 @@ class Reversionar(unittest.TestCase):
             atributoRegistrado.version = 1
             atributoRegistrado.item = itemRegistrado
             atributoRegistrado.save()
-
-            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
-            # permisoUserLogin = Permisos()
-            # permisoUserLogin.permiso = "DEL"
-            # permisoUserLogin.tipoObjeto = "item"
-            # permisoUserLogin.id_fk = 3
-            # permisoUserLogin.usuario = userRegistrado
-            # permisoUserLogin.save()
 
 
     def test_details(self):
