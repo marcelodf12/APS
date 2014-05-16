@@ -320,7 +320,7 @@ class TestCrearAtributo(unittest.TestCase):
                                                                         'descripcion':'creacion atributo de prueba'
                                                                 })
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         #Se consulta por el atributo creado
         consultaInstancia = atributo.objects.get(nombre="atributo de prueba", descripcion="creacion atributo de prueba")
@@ -459,9 +459,19 @@ class TestCrearRelacion(unittest.TestCase):
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
-            #Creacion de un item
+            #Creacion de un item (hijo)
             itemRegistrado = items()
             itemRegistrado.pk = 5
+            itemRegistrado.nombre = "item Registrado"
+            itemRegistrado.fase = faseRegistrada
+            itemRegistrado.versionAct = 1
+            itemRegistrado.complejidad = 10
+            itemRegistrado.costo = 2000
+            itemRegistrado.save()
+
+            #Creacion de un item (padre)
+            itemRegistrado = items()
+            itemRegistrado.pk = 8
             itemRegistrado.nombre = "item Registrado"
             itemRegistrado.fase = faseRegistrada
             itemRegistrado.versionAct = 1
@@ -484,12 +494,12 @@ class TestCrearRelacion(unittest.TestCase):
         b = self.cliente.login(username='fulano Login5', password='123')
 
         # Peticion POST para agregar una relacion al item con id=5
-        response = self.cliente.post("/items/relaciones/listarParaCrear/5")
+        response = self.cliente.get("/items/relaciones/listarParaCrear/5")
+        response = self.cliente.post("/items/relaciones/listarParaCrear/5",data={'itemPadre':'8'})
 
-        #AQUI SE TIENE EL COMBOBOX DE RELACIONES, NO ENTIENDO COMO CREA
         #NO SE COMO ELEGIR UNA OPCION DE UN COMBOBOX
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         #Se consulta por la relacion creada
         #consultaInstancia = relacion.objects.get(itemHijo_id="", itemPadre_id="", estado="")
@@ -640,7 +650,7 @@ class Reversionar(unittest.TestCase):
 
             #Creacion de un atributo
             atributoRegistrado = atributo()
-            atributoRegistrado.pk = 1
+            atributoRegistrado.pk = 2
             atributoRegistrado.nombre = "atributo Registrado"
             atributoRegistrado.descripcion = "dsecripcion 1"
             atributoRegistrado.version = 1
@@ -663,7 +673,7 @@ class Reversionar(unittest.TestCase):
 
         # NO SE TIENE OPCION PARA MODIFICAR ATRIBUTO AUN
 
-        # Peticion POST para modificar el atributo con id=1
+        # Peticion POST para modificar el atributo con id=2
         #response = self.cliente.post("",data={'nombre':'atributo modificado',
                                             #'descripcion':'modificacion atributo de prueba'
                                             #})
