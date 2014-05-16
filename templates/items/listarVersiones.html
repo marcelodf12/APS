@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+      Versiones de Item
+{% endblock %}
+
+
+{% block menu1 %}
+
+{% endblock %}
+
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+<h1>{{item.nombre}}</h1>
+<h2>Version Actual</h2> {{item.versionAct}}
+<h2>Proyecto</h2>{{item.fase.proyecto}}
+<h2>Fase</h2> {{item.fase.nombre}}
+<h2>Costo</h2> {{item.costo}}<br><br>
+<h2>Versiones</h2>
+    {% for n in range %}
+        <p><a href="/items/atributos/listar/{{item.id}}/{{n}}">Version {{n}}</a></p>
+    {% endfor %}
+<br>
+{% endblock %}

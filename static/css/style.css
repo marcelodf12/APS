@@ -68,7 +68,10 @@ option {
 #tablaDatos td, #tablaDatos2 td{
    background-image:url(/static/images/fondoBoton2.jpeg);
 }
-
+#tablaDatos th{
+	text-decoration: none;
+	font-weight:normal;
+}
 #tablaDatos2 {
 	text-align: center;
 	width: 100%;

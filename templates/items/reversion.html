@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+      Reversiones
+{% endblock %}
+
+
+{% block menu1 %}
+
+{% endblock %}
+
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+<form method="post" action="/items/reversionar/">{% csrf_token %}
+    <h1>Versiones</h1>
+    <input type="hidden" value="{{item.id}}" name="idItem">
+    <select name="version">
+    {% for n in range %}
+        <option value="{{n}}">Version {{n}}</option>
+    {% endfor %}
+    </select><br>
+    <input type="submit" value="Reversionar">
+</form>
+<br>
+{% endblock %}

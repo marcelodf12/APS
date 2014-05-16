@@ -31,7 +31,21 @@ class crearProyecto(CreateView):
             proyecto.estado ='creado'
             proyecto.lider = self.request.user
             proyecto.save()
-
+            cant_fases = proyecto.cantFases
+            print 'cantidad de fases ' + str(cant_fases)
+            while cant_fases > 0:
+                print '--cant de fases ' + str(cant_fases)
+                nf = proyecto.cantFases - cant_fases + 1
+                nuevaFase = fases()
+                nuevaFase.orden=nf
+                nuevaFase.nombre = 'Fase ' + str(nf)
+                nuevaFase.proyecto = proyecto
+                nuevaFase.costo=0
+                nuevaFase.estado='creado'
+                nuevaFase.presupuesto=0
+                nuevaFase.fechaInicioP=proyecto.fechaInicio
+                cant_fases = cant_fases - 1
+                nuevaFase.save()
             return super(crearProyecto, self).form_valid(form)
         else:
             return HttpResponseRedirect('/error/permisos/')

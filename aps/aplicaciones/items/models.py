@@ -1,13 +1,12 @@
-"""
-    Modelos definidos para la aplicacion items
-"""
-
 from django.db import models
 
-from aplicaciones.fases.models import fases
+from aps.aplicaciones.fases.models import fases
 
 
-# Create your models here.
+# ESTADOS = (
+#     ('activo','activo'),
+#     ('inactivo','inactivo'),
+# )
 class items(models.Model):
     """Este es el modelo 'items' con sus atributos, al sincronizar con la Base de Datos la clase se convertira
     en una tabla y sus atributos se traduciran en campos de la misma. """
@@ -24,21 +23,25 @@ class items(models.Model):
          cada instancia del modelo items """
         return self.nombre
 
+class relacion(models.Model):
+    """
+    Este es el Modelo que define la relacion entre dos items
+    """
+    itemHijo = models.ForeignKey(items, null='True', related_name='hijo')
+    itemPadre = models.ForeignKey(items, null='True', related_name='padre')
+    estado = models.BooleanField()
 
+    def __unicode__(self):
+        """
+        Metodo llamado para visualizar relacion. Muestra el nombre del item hijo seguido del nombre del item padre
+        """
+        return self.itemHijo.nombre + '-->' + self.itemPadre.nombre
 
-class items_versiones(models.Model):
-    """Este es el modelo 'items_versiones' con sus atributos, al sincronizar con la Base de Datos la clase se convertira
-    en una tabla y sus atributos se traduciran en campos de la misma. """
-
-    item = models.ForeignKey(items, null='True')
-    version = models.IntegerField(default='1')
-
-
-class atributo_version(models.Model):
-    """Este es el modelo 'atributo_version' con sus atributos, al sincronizar con la Base de Datos la clase se convertira
-    en una tabla y sus atributos se traduciran en campos de la misma. """
-
-    itemVersion = models.ForeignKey(items_versiones, null='True')
-    nombre = models.CharField(max_length=100)
-    descripcion = models.CharField(max_length=200)
-    estado = models.CharField(max_length=15, default='creado')
+class atributo(models.Model):
+    """
+    Este modelo define los atributos de un items
+    """
+    nombre = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=512)
+    version = models.IntegerField(default='0')
+    item = models.ForeignKey(items, null='true')

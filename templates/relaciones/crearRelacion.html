@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+      Crear Relacion
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+
+
+{% block contenido %}
+    <form action="/items/relaciones/crear/" method="post">{% csrf_token %}
+        <select name="itemPadre">
+        {% for i in items %}
+            <option value="{{i.id}}"> {{i.fase}}--> {{i.nombre}}</option>
+        {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Crear">
+        <input type="hidden" value="{{id}}" name="itemHijo">
+    </form>
+    <br>
+{% endblock %}

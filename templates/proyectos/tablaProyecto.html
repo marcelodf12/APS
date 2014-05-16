@@ -11,9 +11,10 @@
 
 {% block menu2 %}
         <img src='/static/images/Detalles.png' width='24' height='24'><a href="/proyectos/listar/">  Listar Proyectos</a><br><br>
-        <img src='/static/images/Add.png' width='24' height='24'><a href="/fases/crearEnProyecto/{{proyecto.pk}}">  Agregar Nueva Fase</a><br><br>
+        {% if proyecto.estado = 'creado' %}
         <img src='/static/images/star.png' width='24' height='24'><a href="/proyectos/iniciar/{{proyecto.pk}}">  Iniciar Este Proyecto</a><br><br>
-
+        {% endif %}
+        <img src='/static/images/relacion.png' width='24' height='24'><a href="/items/relaciones/listar/{{proyecto.pk}}">  Ver Relaciones </a><br><br>
         <br><br>
 
 {% endblock %}
@@ -60,6 +61,14 @@
                                                     <tr>
                                                         <th style="vertical-align: top;">Penalizacion por retraso<br></th>
                                                         <th style="vertical-align: top;">{{penalizacion}}<br></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align: top;">Lider<br></td>
+                                                        <td style="vertical-align: top;">{{proyecto.lider.first_name}} {{proyecto.lider.last_name}}<br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="vertical-align: top;">Contacto del lider<br></th>
+                                                        <th style="vertical-align: top;">{{proyecto.lider.email}}<br></th>
                                                     </tr>
                                                     <tr>
                                                         <td style="vertical-align: top;">Saldo<br></td>
@@ -123,9 +132,9 @@
                                                                                             <!-- ITEMS -->
                                                                                             {% for i in items %}
                                                                                             {% if i.fase_id == f.pk %}
+                                                                                                <a href='/items/atributos/listar/{{i.id}}'><img src='/static/images/Detalles.png' width='24' height='24'></a>
                                                                                                 <a href='/items/modificar/{{i.id}}'><img src='/static/images/Edit.png' width='24' height='24'></a>
                                                                                                 <a href='/items/eliminar/{{i.id}}'><img src='/static/images/Delete.png' width='24' height='24'></a>
-                                                                                                <a href='#'><img src='/static/images/Detalles.png' width='24' height='24'></a>
                                                                                                 {{i.nombre}}<br>
                                                                                             {% endif %}
                                                                                             {% endfor %}
