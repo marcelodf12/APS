@@ -1,14 +1,14 @@
 
 """ Los nombres de clases son los nombres de las vistas que posteriormente son invocadas en el archivo URLS.py
 Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py """
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+from django.shortcuts import render, HttpResponseRedirect
 
-from .models import items
+from .models import *
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
-from aps.aplicaciones.items.models import items_versiones
-from django.http import HttpResponse
+from aps.aplicaciones.proyectos.models import Proyectos
 
 # Create your views here.
 class adminItems(TemplateView):
@@ -83,52 +83,104 @@ class eliminarItems(FormView):
         item.save()
         return super(eliminarItems, self).form_valid(form)
 
-class items_ajax(TemplateView):
+class listarItemParaCrearRelacion(TemplateView):
     def get(self, request, *args, **kwargs):
-        id_item = request.GET['iditems']
-        print 'id items: ' + str(id_item)
-        version = items_versiones.objects.filter(item_id=id_item)
-        print 'versiones '
-        print version
-        datajson = '['
-        c=1
-        for v in version:
-            print 'vuelta' + str(c)
-            c+=1
-            proyecto=fase=item=atributo='none'
-            tipo=v.version
-            print 'Version: ' + str(tipo)
-            #pk_id=v.id_fk
-            # if tipo =='proyecto' and pk_id!=0:
-            #     proyecto=items_versiones.objects.get(id=pk_id).nombre
-            #     print 'entro por proyecto' + str(proyecto)
-            # elif tipo =='fase':
-            #     fase=fases.objects.get(id=pk_id).nombre
-            #     print 'entro por fase' + str(fase)
-            # elif tipo =='item':
-            #     item=items.objects.get(id=pk_id).nombre
-            #     print 'entro por item' + str(item)
-            datajson+='{"pk": ' + str(v.id) + ', "model": "items.items.versiones", "fields": {'
-            # datajson+='"permiso": "' + v.permiso + '", '
-            # datajson+='"tipoObjeto": "' + v.tipoObjeto + '", '
-            # datajson+='"proyecto": "' + proyecto + '", '
-            # datajson+='"fases": "' + fase + '", '
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        itemHijo = items.objects.get(id=kwargs['id'])
+        faseAct = itemHijo.fase
+        listaItems=items.objects.filter(fase=faseAct).exclude(id=itemHijo.id)
+        if(faseAct.orden>1):
+            proyecto = faseAct.proyecto
+            faseAnt = fases.objects.get(proyecto=proyecto, orden=faseAct.orden-1)
+            listaItems=(items.objects.filter(fase=faseAct).exclude(id=itemHijo.id) | items.objects.filter(fase=faseAnt))
+        return render(self.request, 'relaciones/crearRelacion.html', {'items':listaItems, 'id':itemHijo.id})
 
-            datajson+='"version": "' + tipo + '"}},'
+class crearRelacion(TemplateView):
+    def post(self, request, *args, **kwargs):
+        Padre=items.objects.get(id=request.POST['itemPadre'])
+        Hijo=items.objects.get(id=request.POST['itemHijo'])
+        if(relacion.objects.filter(itemHijo=Hijo, itemPadre=Padre)==[]):
+            print 'no se creo'
+        else:
+            r = relacion()
+            r.itemHijo=Hijo
+            r.itemPadre=Padre
+            r.estado=True
+            r.save()
+            print 'se creo'
+        url = '/items/relaciones/listar/' + str(Padre.fase.proyecto.id)
+        return HttpResponseRedirect(url)
 
-            print 'HASTA AQUI ' + str(tipo)
-            print 'json1--> ' + datajson
-        if (len(datajson)>1):
-            datajson=datajson[:-1]
-        datajson+=']'
-        print 'json2--> ' + datajson
-        #data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
-        #print data
-        print 'LLEGUE AL FINAL'
-        return HttpResponse(datajson, content_type = 'application/json')
 
-class listarVersiones(ListView):
-    """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
-    template_name = 'items/listarAJAX.html'
-    model = items
-    context_object_name = 'items'
+class listarRelaciones(TemplateView):
+    def get(self, request, *args, **kwargs):
+        queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id'])
+        proyecto = Proyectos.objects.get(id=kwargs['id'])
+        return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre})
+
+class eliminarRelacion(DeleteView):
+    model = relacion
+    template_name = 'relaciones/delete.html'
+    success_url = reverse_lazy('listar_proyectos')
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = relacion.objects.get(id=self.kwargs['id'])
+        return obj
+
+class agregarAtributo(CreateView):
+    template_name = 'items/agregarAtributo.html'
+    model = atributo
+    success_url = reverse_lazy('listar_proyectos')
+    fields = ['nombre','descripcion']
+
+    def form_valid(self, form):
+        item = items.objects.get(id=self.kwargs['id'])
+        versionNueva = item.versionAct + 1
+        atributosAnt = atributo.objects.filter(item=item, version=item.versionAct).order_by('pk')
+        for a in atributosAnt:
+            nuevo = atributo(nombre=a.nombre, descripcion=a.descripcion, item=item, version=versionNueva)
+            nuevo.save()
+        atrib = form.save()
+        atrib.item = item
+        atrib.version = versionNueva
+        item.versionAct = versionNueva
+        atrib.save()
+        item.save()
+        return super(agregarAtributo, self).form_valid(form)
+
+class mostrarDetalles(TemplateView):
+    def get(self, request, *args, **kwargs):
+        item = items.objects.get(id=kwargs['id'])
+        atributos = atributo.objects.filter(item=item, version=item.versionAct).order_by('pk')
+        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos})
+
+class mostrarDetallesV(TemplateView):
+    def get(self, request, *args, **kwargs):
+        item = items.objects.get(id=kwargs['id'])
+        atributos = atributo.objects.filter(item=item, version=kwargs['idV']).order_by('pk')
+        return render(self.request, 'items/listarOtrasVersiones.html',{'item':item, 'atributos':atributos, 'version':kwargs['idV']})
+
+class listarVersiones(TemplateView):
+    def get(self, request, *args, **kwargs):
+        item = items.objects.get(id=kwargs['id'])
+        return render(self.request, 'items/listarVersiones.html',{'item':item, 'range':range(1,item.versionAct+1)})
+
+class ReversionVersiones(TemplateView):
+    def get(self, request, *args, **kwargs):
+        item = items.objects.get(id=kwargs['id'])
+        return render(self.request, 'items/reversion.html',{'item':item, 'range':range(1,item.versionAct+1)})
+
+
+class reversionar(TemplateView):
+    def post(self, request, *args, **kwargs):
+        item = items.objects.get(id=request.POST['idItem'])
+        versionVieja = request.POST['version']
+        atributos = atributo.objects.filter(item=item, version=versionVieja).order_by('pk')
+        versionNueva = item.versionAct + 1
+        for a in atributos:
+            nuevo = atributo(nombre=a.nombre, descripcion=a.descripcion, item=item, version=versionNueva)
+            nuevo.save()
+        item.versionAct = versionNueva
+        item.save()
+        url = '/items/atributos/listar/' + str(item.id)
+        return HttpResponseRedirect(url)
