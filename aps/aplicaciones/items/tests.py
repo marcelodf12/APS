@@ -494,15 +494,14 @@ class TestCrearRelacion(unittest.TestCase):
         b = self.cliente.login(username='fulano Login5', password='123')
 
         # Peticion POST para agregar una relacion al item con id=5
-        response = self.cliente.get("/items/relaciones/listarParaCrear/5")
-        response = self.cliente.post("/items/relaciones/listarParaCrear/5",data={'itemPadre':'8'})
+        #response = self.cliente.post("/items/relaciones/listarParaCrear/5", data={'itemPadre':'8', 'itemHijo':'5'})
 
         #NO SE COMO ELEGIR UNA OPCION DE UN COMBOBOX
 
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         #Se consulta por la relacion creada
-        #consultaInstancia = relacion.objects.get(itemHijo_id="", itemPadre_id="", estado="")
+        #consultaInstancia = relacion.objects.get(itemHijo_id="5", itemPadre_id="8", estado="TRUE")
 
 
         #print "\nItem Hijo: ", consultaInstancia.itemHijo_id                    # ID del item hijo
@@ -553,7 +552,7 @@ class TestEliminarRelaciones(unittest.TestCase):
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
-            #Creacion de un item
+            #Creacion de un item (padre)
             itemRegistrado = items()
             itemRegistrado.pk = 6
             itemRegistrado.nombre = "item Registrado"
@@ -562,6 +561,24 @@ class TestEliminarRelaciones(unittest.TestCase):
             itemRegistrado.complejidad = 10
             itemRegistrado.costo = 2000
             itemRegistrado.save()
+
+            #Creacion de un item (hijo)
+            itemRegistrado = items()
+            itemRegistrado.pk = 9
+            itemRegistrado.nombre = "item Registrado2"
+            itemRegistrado.fase = faseRegistrada
+            itemRegistrado.versionAct = 1
+            itemRegistrado.complejidad = 10
+            itemRegistrado.costo = 2000
+            itemRegistrado.save()
+
+            #Creacion de una relacion
+            relacionRegistrada = relacion()
+            relacionRegistrada.id = 1
+            relacionRegistrada.itemHijo_id = 9
+            relacionRegistrada.itemPadre_id = 6
+            relacionRegistrada.estado = True
+            relacionRegistrada.save()
 
             # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
             # permisoUserLogin = Permisos()
@@ -577,22 +594,29 @@ class TestEliminarRelaciones(unittest.TestCase):
         # Cliente es autenticado como el usuario 'fulano Login'
         b = self.cliente.login(username='fulano Login6', password='123')
 
-        # Peticion POST para eliminar el item con id=3
-        # PRIMERO TENGO QUE SABER CREAR UNA RELACION
-        response = self.cliente.post("/items/relaciones/eliminar/",data={'comentario':'eliminacion item de prueba'})
+        #consultaInstancia = relacion.objects.get(itemHijo_id=9, itemPadre_id=6)
 
-        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+        # Peticion POST para eliminar la relacion
+        response = self.cliente.post("/items/relaciones/eliminar/1")
 
-        #Se consulta si el item fue borrado, si su estado fue cambiado a 'eliminado'
-        consultaInstancia = items.objects.get(nombre="item Registrado", complejidad=10, versionAct=1, estado="eliminado" )
+        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
 
+        # Creamos una relacion con el mismo id de la relacion anteriormente eliminada. La idea es demostrar que la relacion
+        # fue fisicamente eliminada, creando otra relacion con el mismo id (y los mismos datos)
+        relacionRestaurada = relacion()
+        relacionRestaurada.id = 3
+        relacionRestaurada.itemHijo_id = 9
+        relacionRestaurada.itemPadre_id = 6
+        relacionRestaurada.estado = True
+        relacionRestaurada.save()
 
-        # print "\nNombre del item: ", consultaInstancia.nombre                     # Nombre del item borrado
-        # print "Complejidad del item: ", consultaInstancia.complejidad             # Complejidad del item borrado
-        # print "Version actual:", consultaInstancia.versionAct                     # Version actual del item borrado
-        # print "Estado del item:", consultaInstancia.estado                        # Estado del item borrado
+        # Compara el valor del id de la relacion que volvimos a crear con el id de la relacion que fue eliminada
+        self.assertNotEqual(relacionRestaurada.pk,"3")
 
-        #self.assertNotEquals(consultaInstancia, None)
+        #print "Id del hijo restaurado: ", relacionRestaurada.itemHijo_id                      # Complejidad del item borrado
+        #print "Id del padre restaurado: ", relacionRestaurada.itemPadre_id                    # Complejidad del item borrado
+        #print "Estado de la relacion restaurada:", relacionRestaurada.estado                  # Estado del item borrado
+
 
 
 class Reversionar(unittest.TestCase):
