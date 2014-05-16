@@ -320,7 +320,7 @@ class TestCrearAtributo(unittest.TestCase):
                                                                         'descripcion':'creacion atributo de prueba'
                                                                 })
 
-        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
+        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         #Se consulta por el atributo creado
         consultaInstancia = atributo.objects.get(nombre="atributo de prueba", descripcion="creacion atributo de prueba")
@@ -569,12 +569,12 @@ class TestEliminarRelaciones(unittest.TestCase):
 
         # Peticion POST para eliminar el item con id=3
         # PRIMERO TENGO QUE SABER CREAR UNA RELACION
-        #response = self.cliente.post("/items/relaciones/eliminar/",data={'comentario':'eliminacion item de prueba'})
+        response = self.cliente.post("/items/relaciones/eliminar/",data={'comentario':'eliminacion item de prueba'})
 
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
 
         #Se consulta si el item fue borrado, si su estado fue cambiado a 'eliminado'
-        #consultaInstancia = items.objects.get(nombre="item Registrado", complejidad=10, versionAct=1, estado="eliminado" )
+        consultaInstancia = items.objects.get(nombre="item Registrado", complejidad=10, versionAct=1, estado="eliminado" )
 
 
         # print "\nNombre del item: ", consultaInstancia.nombre                     # Nombre del item borrado
@@ -583,6 +583,108 @@ class TestEliminarRelaciones(unittest.TestCase):
         # print "Estado del item:", consultaInstancia.estado                        # Estado del item borrado
 
         #self.assertNotEquals(consultaInstancia, None)
+
+
+class Reversionar(unittest.TestCase):
+    """
+        Prueba para comprobar la reversion de items
+    """
+    def setUp(self):
+
+            # Creacion de un cliente
+            self.cliente = Client()
+
+            # Creacion de un usuario para la autenticacion
+            self.userLogin = User.objects.create_user(username="fulano Login7", password="123")
+
+            #Creacion de un usuario Lider para instanciar un proyecto
+            userRegistrado = User()
+            userRegistrado.username = "fulano Lider7"
+            userRegistrado.password = "123"
+            userRegistrado.save()
+
+            #Creacion de un proyecto para instanciar una fase
+            proyectoRegistrado = Proyectos()
+            proyectoRegistrado.cantFases = 7
+            proyectoRegistrado.fechaInicio = "2014-03-03"
+            proyectoRegistrado.lider = userRegistrado
+            proyectoRegistrado.fechaFinP = "2014-10-03"
+            proyectoRegistrado.fechaFinR = "2014-10-04"
+            proyectoRegistrado.presupuesto=1500
+            proyectoRegistrado.penalizacion=350
+            proyectoRegistrado.save()
+
+            #Creacion de una fase para instanciar un item
+            faseRegistrada = fases()
+            faseRegistrada.nombre = "fase Registrada"
+            faseRegistrada.versionAct = 1
+            faseRegistrada.complejidad = 10
+            faseRegistrada.cantItems = 6
+            faseRegistrada.fechaInicio = "2014-03-24"
+            faseRegistrada.fechaInicioP = "2014-03-24"
+            faseRegistrada.fechaInicioR = "2014-03-24"
+            faseRegistrada.presupuesto = 2500000
+            #???????????????????????????????????????????
+            faseRegistrada.orden = 1
+            faseRegistrada.save()
+
+            #Creacion de un item
+            itemRegistrado = items()
+            itemRegistrado.pk = 7
+            itemRegistrado.nombre = "item Registrado"
+            itemRegistrado.fase = faseRegistrada
+            itemRegistrado.versionAct = 1
+            itemRegistrado.complejidad = 10
+            itemRegistrado.costo = 2000
+            itemRegistrado.save()
+
+            #Creacion de un atributo
+            atributoRegistrado = atributo()
+            atributoRegistrado.pk = 1
+            atributoRegistrado.nombre = "atributo Registrado"
+            atributoRegistrado.descripcion = "dsecripcion 1"
+            atributoRegistrado.version = 1
+            atributoRegistrado.item = itemRegistrado
+            atributoRegistrado.save()
+
+            # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
+            # permisoUserLogin = Permisos()
+            # permisoUserLogin.permiso = "DEL"
+            # permisoUserLogin.tipoObjeto = "item"
+            # permisoUserLogin.id_fk = 3
+            # permisoUserLogin.usuario = userRegistrado
+            # permisoUserLogin.save()
+
+
+    def test_details(self):
+
+        # Cliente es autenticado como el usuario 'fulano Login'
+        b = self.cliente.login(username='fulano Login7', password='123')
+
+        # NO SE TIENE OPCION PARA MODIFICAR ATRIBUTO AUN
+
+        # Peticion POST para modificar el atributo con id=1
+        #response = self.cliente.post("",data={'nombre':'atributo modificado',
+                                            #'descripcion':'modificacion atributo de prueba'
+                                            #})
+
+        # Peticion POST para visualizar las versiones del item con id=7
+        #response = self.cliente.post("/items/relaciones/listarParaCrear/7")
+
+        #NO SE COMO ELEGIR UNA OPCION DE UN COMBOBOX
+        #SE DEBE ELEGIR LA VERSION 1
+
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'versionar'
+
+        #Se consulta si el item volvio a su version anterior, la version 1
+        consultaInstancia = items.objects.get(nombre="item Registrado", versionAct=1)
+
+
+        #print "\nItem Hijo: ", consultaInstancia.itemHijo_id                    # ID del item hijo
+        #print "\nItem Padre: ", consultaInstancia.itemPadre_id                  # ID del item padre
+
+        #self.assertNotEquals(consultaInstancia, None)
+
 
 
 if __name__ == '__main__':
