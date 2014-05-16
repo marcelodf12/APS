@@ -184,3 +184,10 @@ class reversionar(TemplateView):
         item.save()
         url = '/items/atributos/listar/' + str(item.id)
         return HttpResponseRedirect(url)
+
+class crearTipoItem(CreateView):
+    model = tipoItem
+    fields = ['nombre']
+    success_url = reverse_lazy('inicio')
+    template_name = 'items/tipoItem/crear.html'
+
