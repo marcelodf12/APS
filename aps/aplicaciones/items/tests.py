@@ -291,7 +291,7 @@ class TestCrearAtributo(unittest.TestCase):
             faseRegistrada.orden = 1
             faseRegistrada.save()
 
-            #Creacion de un item para la eliminacion
+            #Creacion de un item para instanciar un atributo
             itemRegistrado = items()
             itemRegistrado.pk = 4
             itemRegistrado.nombre = "item Registrado"
@@ -320,7 +320,7 @@ class TestCrearAtributo(unittest.TestCase):
                                                                         'descripcion':'creacion atributo de prueba'
                                                                 })
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         #Se consulta si el item fue borrado, si su estado fue cambiado a 'eliminado'
         consultaInstancia = atributo.objects.get(nombre="atributo de prueba", descripcion="creacion atributo de prueba")
@@ -330,6 +330,92 @@ class TestCrearAtributo(unittest.TestCase):
         #print "Descripcion del Atributo: ", consultaInstancia.descripcion            # Descripcion del atributo creado
 
         self.assertNotEquals(consultaInstancia, None)
+
+
+# class TestModificarAtributo(unittest.TestCase):
+#     """
+#         Prueba para comprobar la modificacion de atributos
+#     """
+#     def setUp(self):
+#
+#             # Creacion de un cliente
+#             self.cliente = Client()
+#
+#             # Creacion de un usuario para la autenticacion
+#             self.userLogin = User.objects.create_user(username="fulano Login5", password="123")
+#
+#             #Creacion de un usuario Lider para instanciar un proyecto
+#             userRegistrado = User()
+#             userRegistrado.username = "fulano Lider5"
+#             userRegistrado.password = "123"
+#             userRegistrado.save()
+#
+#             #Creacion de un proyecto para instanciar una fase
+#             proyectoRegistrado = Proyectos()
+#             proyectoRegistrado.cantFases = 7
+#             proyectoRegistrado.fechaInicio = "2014-03-03"
+#             proyectoRegistrado.lider = userRegistrado
+#             proyectoRegistrado.fechaFinP = "2014-10-03"
+#             proyectoRegistrado.fechaFinR = "2014-10-04"
+#             proyectoRegistrado.presupuesto=1500
+#             proyectoRegistrado.penalizacion=350
+#             proyectoRegistrado.save()
+#
+#             #Creacion de una fase para instanciar un item
+#             faseRegistrada = fases()
+#             faseRegistrada.nombre = "fase Registrada"
+#             faseRegistrada.versionAct = 1
+#             faseRegistrada.complejidad = 10
+#             faseRegistrada.cantItems = 6
+#             faseRegistrada.fechaInicio = "2014-03-24"
+#             faseRegistrada.fechaInicioP = "2014-03-24"
+#             faseRegistrada.fechaInicioR = "2014-03-24"
+#             faseRegistrada.presupuesto = 2500000
+#             #???????????????????????????????????????????
+#             faseRegistrada.orden = 1
+#             faseRegistrada.save()
+#
+#             #Creacion de un item
+#             itemRegistrado = items()
+#             itemRegistrado.pk = 5
+#             itemRegistrado.nombre = "item Registrado"
+#             itemRegistrado.fase = faseRegistrada
+#             itemRegistrado.versionAct = 1
+#             itemRegistrado.complejidad = 10
+#             itemRegistrado.costo = 2000
+#             itemRegistrado.save()
+#
+#             # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
+#             # permisoUserLogin = Permisos()
+#             # permisoUserLogin.permiso = "DEL"
+#             # permisoUserLogin.tipoObjeto = "item"
+#             # permisoUserLogin.id_fk = 3
+#             # permisoUserLogin.usuario = userRegistrado
+#             # permisoUserLogin.save()
+#
+#
+#     def test_details(self):
+#
+#         # Cliente es autenticado como el usuario 'fulano Login'
+#         b = self.cliente.login(username='fulano Login3', password='123')
+#
+#         # Peticion POST para agregar un atributo con al item con id=1
+#         response = self.cliente.post("/items/atributos/agregar/5",data={'nombre':'atributo de prueba',
+#                                                                         'descripcion':'creacion atributo de prueba'
+#                                                                 })
+#
+#         print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+#
+#         #Se consulta si el item fue borrado, si su estado fue cambiado a 'eliminado'
+#         consultaInstancia = atributo.objects.get(nombre="atributo de prueba", descripcion="creacion atributo de prueba")
+#
+#
+#         #print "\nNombre del Atributo: ", consultaInstancia.nombre                    # Nombre del atributo creado
+#         #print "Descripcion del Atributo: ", consultaInstancia.descripcion            # Descripcion del atributo creado
+#
+#         self.assertNotEquals(consultaInstancia, None)
+
+
 
 if __name__ == '__main__':
 
