@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+      Detalles Tipo Item
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+    <H1>
+        Atributos del Tipo Item: {{ti.nombre}}
+    </H1>
+    {% for a in atributos %}
+        - {{a}}<br>
+    {% endfor %}
+ {% endblock %}

@@ -188,6 +188,44 @@ class reversionar(TemplateView):
 class crearTipoItem(CreateView):
     model = tipoItem
     fields = ['nombre']
-    success_url = reverse_lazy('inicio')
+    success_url = reverse_lazy('home')
     template_name = 'items/tipoItem/crear.html'
+    def form_valid(self, form):
+        import pickle
+        ti = form.save()
+        ti.atributos = pickle.dumps([])
+        ti.save()
+        return super(crearTipoItem, self).form_valid(form)
 
+class agregarAtributoAlTipoItem(TemplateView):
+    def post(self, request, *args, **kwargs):
+        import pickle
+        ti=tipoItem.objects.get(id=request.POST['id'])
+        listaAtributos = pickle.loads(ti.atributos)
+        for n in range(1, int(request.POST['cantidad'])+1):
+            listaAtributos.append(request.POST['a' + str(n)])
+        ti.atributos= pickle.dumps(listaAtributos)
+        ti.save()
+        return HttpResponseRedirect('/inicio/')
+
+class definirCantidadAtributos(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request,'items/tipoItem/agregarAtributo.html',{'tipos':tipoItem.objects.order_by('nombre')})
+
+class formularioAgregarAtributoAlTipoItem(TemplateView):
+    def post(self, request, *args, **kwargs):
+        ti=tipoItem.objects.get(id=request.POST['id'])
+        cant=int(request.POST['cantidad'])
+        return render(request,'items/tipoItem/agregarAtributosN.html',{'id':ti.id,'range':range(1,cant+1),'cantidad':cant})
+
+class verAtributosTipoItems(TemplateView):
+    def get(self, request, *args, **kwargs):
+        import pickle
+        ti = tipoItem.objects.get(id=kwargs['id'])
+        listaAt = pickle.loads(ti.atributos)
+        return render(request, 'items/tipoItem/mostrar.html', {'atributos':listaAt, 'tipo':ti})
+
+class verTipoItems(ListView):
+    model = tipoItem
+    context_object_name = 'tipos'
+    template_name = 'items/tipoItem/listar.html'
