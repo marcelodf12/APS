@@ -204,11 +204,12 @@ class modificarAtributo(UpdateView):
     """
     model = atributo
     template_name = 'items/updateAtributo.html'
-    fields = ['nombre','descripcion']
+    fields = ['descripcion']
     def get_object(self, queryset=None):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = atributo.objects.get(id=self.kwargs['id'])
-        return obj
+        nuevo = atributo(nombre=obj.nombre, descripcion=obj.descripcion, item=obj.item, version=obj.version)
+        return nuevo
 
     def form_valid(self, form):
         a=form.save()
