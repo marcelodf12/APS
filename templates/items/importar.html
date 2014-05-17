@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+      Importar
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+     <h1>Importar Item</h1>
+        <form method="post">{% csrf_token %}
+            <label data-name="nombre">Nombre</label><br>
+            <input name="nombre"><br>
+            <label data-name="complejidad">Complejidad</label><br>
+            <input name="complejidad"><br>
+            <label data-name="costo">Costo</label><br>
+            <input name="costo"><br>
+            <label data-name="tipo">Tipo Item</label><br>
+            <select name="tipo">
+                {% for t in tipos %}
+                    <option value="{{t.id}}"> {{t.nombre}} </option>
+                {% endfor %}
+            </select><br>
+            <input type="hidden" value="{{idFase}}" name="id">
+            <input type="submit" value="Crear">
+        </form><br>
+ {% endblock %}

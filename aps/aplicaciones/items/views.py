@@ -305,3 +305,19 @@ class eliminarTipoItem(DeleteView):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = tipoItem.objects.get(id=self.kwargs['id'])
         return obj
+
+class importar(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request,'items/importar.html',{'tipos':tipoItem.objects.order_by('id'),'idFase':kwargs['id']})
+
+    def post(self, request, *args, **kwargs):
+        fase=fases.objects.get(id=request.POST['id'])
+        ti = tipoItem.objects.get(id=request.POST['tipo'])
+        listaTipos= pickle.loads(ti.atributos)
+        item = items(nombre=request.POST['nombre'], complejidad=request.POST['complejidad'],costo=request.POST['costo'], fase=fase)
+        item.save()
+        for l in listaTipos:
+            nuevo = atributo(nombre=l,descripcion='',version=1,item=item)
+            nuevo.save()
+        url = '/items/atributos/listar/'+str(item.id)
+        return HttpResponseRedirect(url)
