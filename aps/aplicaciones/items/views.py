@@ -11,6 +11,7 @@ from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
 import pickle
 
+
 # Create your views here.
 class adminItems(TemplateView):
     """ Vista de administracion de items, hereda atributos y metodos de la clase TemplateView """
@@ -149,6 +150,8 @@ class agregarAtributo(CreateView):
         item.save()
         return super(agregarAtributo, self).form_valid(form)
 
+
+
 class mostrarDetalles(TemplateView):
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
@@ -160,6 +163,31 @@ class mostrarDetallesV(TemplateView):
         item = items.objects.get(id=kwargs['id'])
         atributos = atributo.objects.filter(item=item, version=kwargs['idV']).order_by('pk')
         return render(self.request, 'items/listarOtrasVersiones.html',{'item':item, 'atributos':atributos, 'version':kwargs['idV']})
+
+class modificarAtributo(UpdateView):
+    model = atributo
+    template_name = 'items/updateAtributo.html'
+    fields = ['nombre','descripcion']
+    success_url = reverse_lazy('listar_item')      # Se mostrara la vista 'listar_proyecto' en el caso de modificacion exitosa
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = atributo.objects.get(id=self.kwargs['id'])
+        return obj
+
+    def form_valid(self, form):
+        a=form.save()
+        item = a.item
+        atrib = atributo.objects.filter(item=item, version=item.versionAct).exclude(nombre=a.nombre).order_by('pk')
+        versionNueva = item.versionAct + 1
+        for i in atrib:
+            nuevo = atributo(nombre=i.nombre, descripcion=i.descripcion, item=item, version=versionNueva)
+            nuevo.save()
+        a.version = versionNueva
+        item.versionAct = versionNueva
+        a.save()
+        item.save()
+        return super(modificarAtributo, self).form_valid(form)
+
 
 class listarVersiones(TemplateView):
     def get(self, request, *args, **kwargs):

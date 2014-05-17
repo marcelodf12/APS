@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+      Crear Comite
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+     <ul>
+        <img src='/static/images/Detalles.png' width='24' height='24'><a href="/comite/listar/">  Listar Comites</a><br><br>
+     </ul>
+
+{% endblock %}
+
+{% block contenido %}
+     <h1>Nuevo Comitee</h1>
+        <form method="post">{% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Crear">
+        </form>
+ {% endblock %}
