@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import HttpResponseRedirect, render
 from django.template.response import TemplateResponse
 
-from .models import *
+from .models import Proyectos, Miembros
 from .forms import ComentariosLog
 from aps.aplicaciones.permisos.models import Permisos
 from aps.aplicaciones.fases.models import fases

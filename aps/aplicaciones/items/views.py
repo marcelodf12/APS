@@ -5,7 +5,7 @@ from django.views.generic import TemplateView, CreateView, ListView, UpdateView,
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, HttpResponseRedirect
 
-from .models import *
+from .models import items, atributo, relacion, tipoItem
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
@@ -86,6 +86,10 @@ class eliminarItems(FormView):
         return super(eliminarItems, self).form_valid(form)
 
 class listarItemParaCrearRelacion(TemplateView):
+    """
+    Vista para listar los item candidatos a ser padres y crear una Relacion
+    :param id: El identificador del item
+    """
     def get(self, request, *args, **kwargs):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         itemHijo = items.objects.get(id=kwargs['id'])
@@ -98,6 +102,12 @@ class listarItemParaCrearRelacion(TemplateView):
         return render(self.request, 'relaciones/crearRelacion.html', {'items':listaItems, 'id':itemHijo.id})
 
 class crearRelacion(TemplateView):
+    """
+    Vista para crear una relacion
+    :param itemPadre: Identificador el Item Padre
+    :param itemHijo: Identificador el Item Hijo
+    :return: Se redirecciona a la lista de relaciones del proyecto
+    """
     def post(self, request, *args, **kwargs):
         Padre=items.objects.get(id=request.POST['itemPadre'])
         Hijo=items.objects.get(id=request.POST['itemHijo'])
@@ -115,12 +125,20 @@ class crearRelacion(TemplateView):
 
 
 class listarRelaciones(TemplateView):
+    """
+    Vista que retorna una lista de relaciones
+    """
     def get(self, request, *args, **kwargs):
         queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id'])
         proyecto = Proyectos.objects.get(id=kwargs['id'])
         return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre})
 
 class eliminarRelacion(DeleteView):
+    """
+    Vista que elimina una relacion
+    :param id: El identificador de la relacion a eliminar
+    :return: Se redirecciona a la lista de relaciones del proyecto
+    """
     model = relacion
     template_name = 'relaciones/delete.html'
     success_url = reverse_lazy('listar_proyectos')
@@ -130,6 +148,11 @@ class eliminarRelacion(DeleteView):
         return obj
 
 class agregarAtributo(CreateView):
+    """
+        Vista para agregar un atributo
+        :param id: El identificador del item al que se quiere agregar un atributo
+        :return: Se redirecciona a la lista de atributos del item
+    """
     template_name = 'items/agregarAtributo.html'
     model = atributo
     success_url = reverse_lazy('listar_proyectos')
@@ -154,18 +177,31 @@ class agregarAtributo(CreateView):
 
 
 class mostrarDetalles(TemplateView):
+    """
+        Vista que muestra los detalles de un item
+        :param id: El identificador del item
+    """
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
         atributos = atributo.objects.filter(item=item, version=item.versionAct).order_by('pk')
         return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos})
 
 class mostrarDetallesV(TemplateView):
+    """
+        Vista que muestra los detalles de un item
+        :param id: El identificador del item
+    """
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
         atributos = atributo.objects.filter(item=item, version=kwargs['idV']).order_by('pk')
         return render(self.request, 'items/listarOtrasVersiones.html',{'item':item, 'atributos':atributos, 'version':kwargs['idV']})
 
 class modificarAtributo(UpdateView):
+    """
+        Vista que modifica un atributo y crea una nueva version del item
+        :param id: El identificador del item
+        :return: Se redirecciona a la lista de atributos del item
+    """
     model = atributo
     template_name = 'items/updateAtributo.html'
     fields = ['nombre','descripcion']
@@ -190,6 +226,9 @@ class modificarAtributo(UpdateView):
         return HttpResponseRedirect(url)
 
 class eliminarAtributo(TemplateView):
+    """
+        Vista para eliminar un atributo
+    """
     def get(self, request, *args, **kwargs):
         a = atributo.objects.get(id=kwargs['id'])
         item=a.item
@@ -204,17 +243,26 @@ class eliminarAtributo(TemplateView):
         return HttpResponseRedirect(url)
 
 class listarVersiones(TemplateView):
+    """
+        Vista para listar las versiones de un items
+    """
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
         return render(self.request, 'items/listarVersiones.html',{'item':item, 'range':range(1,item.versionAct+1)})
 
 class ReversionVersiones(TemplateView):
+    """
+        Vista muestra las posibles versiones para reversionar un item
+    """
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
         return render(self.request, 'items/reversion.html',{'item':item, 'range':range(1,item.versionAct+1)})
 
 
 class reversionar(TemplateView):
+    """
+        Vista para reversionar un item
+    """
     def post(self, request, *args, **kwargs):
         item = items.objects.get(id=request.POST['idItem'])
         versionVieja = request.POST['version']
@@ -229,6 +277,9 @@ class reversionar(TemplateView):
         return HttpResponseRedirect(url)
 
 class crearTipoItem(CreateView):
+    """
+        Vista para crear un nuevo tipo de items
+    """
     model = tipoItem
     fields = ['nombre']
     success_url = reverse_lazy('home')
@@ -240,6 +291,9 @@ class crearTipoItem(CreateView):
         return super(crearTipoItem, self).form_valid(form)
 
 class agregarAtributoAlTipoItem(TemplateView):
+    """
+        Vista que agrega un nuevo atributo al tipo de item
+    """
     def post(self, request, *args, **kwargs):
         ti=tipoItem.objects.get(id=request.POST['id'])
         listaAtributos = pickle.loads(ti.atributos)
@@ -251,27 +305,42 @@ class agregarAtributoAlTipoItem(TemplateView):
         return HttpResponseRedirect(url)
 
 class definirCantidadAtributos(TemplateView):
+    """
+        Vista que define la cantidad de atributos a agregar a un tipo de items
+    """
     def get(self, request, *args, **kwargs):
         return render(request,'items/tipoItem/agregarAtributo.html',{'tipos':tipoItem.objects.order_by('nombre')})
 
 class formularioAgregarAtributoAlTipoItem(TemplateView):
+    """
+        Vista que muestra un formulario con N atributos nuevos para agregar a un tipo de items
+    """
     def post(self, request, *args, **kwargs):
         ti=tipoItem.objects.get(id=request.POST['id'])
         cant=int(request.POST['cantidad'])
         return render(request,'items/tipoItem/agregarAtributosN.html',{'id':ti.id,'range':range(1,cant+1),'cantidad':cant})
 
 class verAtributosTipoItems(TemplateView):
+    """
+        Vista para ver los atributos de un tipo de items
+    """
     def get(self, request, *args, **kwargs):
         ti = tipoItem.objects.get(id=kwargs['id'])
         listaAt = pickle.loads(ti.atributos)
         return render(request, 'items/tipoItem/mostrar.html', {'atributos':listaAt, 'tipo':ti})
 
 class verTipoItems(ListView):
+    """
+        Ver los detalles de un tipo de items
+    """
     model = tipoItem
     context_object_name = 'tipos'
     template_name = 'items/tipoItem/listar.html'
 
 class modificarAtributoDeTipoItem(TemplateView):
+    """
+        Vista para modificar los atributos de un tipo de items
+    """
     def get(self, request, *args, **kwargs):
         ti=tipoItem.objects.get(id=kwargs['id'])
         listati = pickle.loads(ti.atributos)
@@ -298,6 +367,9 @@ class modificarAtributoDeTipoItem(TemplateView):
         return HttpResponseRedirect(url)
 
 class eliminarTipoItem(DeleteView):
+    """
+        Vista para eliminar un tipo de Items
+    """
     model = tipoItem
     template_name = 'items/tipoItem/delete.html'
     success_url = reverse_lazy('listar_tipoitem')
@@ -307,6 +379,14 @@ class eliminarTipoItem(DeleteView):
         return obj
 
 class importar(TemplateView):
+    """
+        Vista para importar un tipo de Items
+        :param id: Identificador de la fase
+        :param tipo: Identificador del tipo de items
+        :param nombre: Nombre para el nuevo items
+        :param complejidad: Valor que representa la complejidad del Items
+        :param costo: Valor que representa el costo del items
+    """
     def get(self, request, *args, **kwargs):
         return render(request,'items/importar.html',{'tipos':tipoItem.objects.order_by('id'),'idFase':kwargs['id']})
 
