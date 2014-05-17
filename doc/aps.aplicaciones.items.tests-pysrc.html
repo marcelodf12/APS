@@ -158,7 +158,14 @@ aps.aplicaciones.proyectos.models.Proyectos.presupuesto" class="py-name" href="#
 <a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">b</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt class="py-name">login</tt><tt class="py-op">(</tt><tt class="py-name">username</tt><tt class="py-op">=</tt><tt class="py-string">'fulano Login'</tt><tt class="py-op">,</tt> <tt class="py-name">password</tt><tt class="py-op">=</tt><tt class="py-string">'123'</tt><tt class="py-op">)</tt> </tt>
 <a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
 <a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-comment"># Peticion POST para crear un item con id=1</tt> </tt>
-<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method aps.aplicaciones.inicio.views.ActualizarPassView.post()=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#post"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post" class="py-name" href="#" onclick="return doclink('link-34', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/crear/1"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'item prueba'</tt><tt class="py-op">,</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method aps.aplicaciones.inicio.views.ActualizarPassView.post()=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#post,Method aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post()=aps.aplicaciones.items.views.agregarAtributoAlTipoItem-class.html#post,Method aps.aplicaciones.items.views.crearRelacion.post()=aps.aplicaciones.items.views.crearRelacion-class.html#post,Method aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post()=aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem-class.html#post,Method aps.aplicaciones.items.views.importar.post()=aps.aplicaciones.items.views.importar-class.html#post,Method aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post()=aps.aplicaciones.items.views.modificarAtributoDeTipoItem-class.html#post,Method aps.aplicaciones.items.views.reversionar.post()=aps.aplicaciones.items.views.reversionar-class.html#post,Method aps.aplicaciones.proyectos.views.eliminarProyectos.post()=aps.aplicaciones.proyectos.views.eliminarProyectos-class.html#post"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post
+aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.crearRelacion.post
+aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.importar.post
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post
+aps.aplicaciones.items.views.reversionar.post
+aps.aplicaciones.proyectos.views.eliminarProyectos.post" class="py-name" href="#" onclick="return doclink('link-34', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/crear/1"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'item prueba'</tt><tt class="py-op">,</tt> </tt>
 <a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                                                            <tt class="py-string">'complejidad'</tt><tt class="py-op">:</tt><tt class="py-string">'5'</tt><tt class="py-op">,</tt> </tt>
 <a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                                                            <tt class="py-string">'costo'</tt><tt class="py-op">:</tt><tt class="py-string">'2000'</tt> </tt>
 <a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                                                            <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
@@ -167,9 +174,25 @@ aps.aplicaciones.proyectos.models.Proyectos.presupuesto" class="py-name" href="#
 <a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
 <a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-comment"># Se consulta por el item creado en la tabla de items</tt> </tt>
 <a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">consultaInstancia</tt> <tt class="py-op">=</tt> <tt id="link-35" class="py-name"><a title="aps.aplicaciones.items
-aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-35', 'items', 'link-10');">items</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Method aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get()=aps.aplicaciones.inicio.views.listarUsuariosDeGrupo-class.html#get,Method aps.aplicaciones.permisos.views.permisos_ajax.get()=aps.aplicaciones.permisos.views.permisos_ajax-class.html#get,Method aps.aplicaciones.permisos.views.permisos_grupos_ajax.get()=aps.aplicaciones.permisos.views.permisos_grupos_ajax-class.html#get"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-35', 'items', 'link-10');">items</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Method aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get()=aps.aplicaciones.inicio.views.listarUsuariosDeGrupo-class.html#get,Method aps.aplicaciones.items.views.ReversionVersiones.get()=aps.aplicaciones.items.views.ReversionVersiones-class.html#get,Method aps.aplicaciones.items.views.definirCantidadAtributos.get()=aps.aplicaciones.items.views.definirCantidadAtributos-class.html#get,Method aps.aplicaciones.items.views.eliminarAtributo.get()=aps.aplicaciones.items.views.eliminarAtributo-class.html#get,Method aps.aplicaciones.items.views.importar.get()=aps.aplicaciones.items.views.importar-class.html#get,Method aps.aplicaciones.items.views.listarItemParaCrearRelacion.get()=aps.aplicaciones.items.views.listarItemParaCrearRelacion-class.html#get,Method aps.aplicaciones.items.views.listarRelaciones.get()=aps.aplicaciones.items.views.listarRelaciones-class.html#get,Method aps.aplicaciones.items.views.listarVersiones.get()=aps.aplicaciones.items.views.listarVersiones-class.html#get,Method aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get()=aps.aplicaciones.items.views.modificarAtributoDeTipoItem-class.html#get,Method aps.aplicaciones.items.views.mostrarDetalles.get()=aps.aplicaciones.items.views.mostrarDetalles-class.html#get,Method aps.aplicaciones.items.views.mostrarDetallesV.get()=aps.aplicaciones.items.views.mostrarDetallesV-class.html#get,Method aps.aplicaciones.items.views.verAtributosTipoItems.get()=aps.aplicaciones.items.views.verAtributosTipoItems-class.html#get,Method aps.aplicaciones.permisos.views.permisos_ajax.get()=aps.aplicaciones.permisos.views.permisos_ajax-class.html#get,Method aps.aplicaciones.permisos.views.permisos_grupos_ajax.get()=aps.aplicaciones.permisos.views.permisos_grupos_ajax-class.html#get,Method aps.aplicaciones.proyectos.views.adminComite.get()=aps.aplicaciones.proyectos.views.adminComite-class.html#get,Method aps.aplicaciones.proyectos.views.adminProyecto.get()=aps.aplicaciones.proyectos.views.adminProyecto-class.html#get,Method aps.aplicaciones.proyectos.views.detallesProyecto.get()=aps.aplicaciones.proyectos.views.detallesProyecto-class.html#get,Method aps.aplicaciones.proyectos.views.miembrosAJAX.get()=aps.aplicaciones.proyectos.views.miembrosAJAX-class.html#get,Method aps.aplicaciones.proyectos.views.proyectos_ajax.get()=aps.aplicaciones.proyectos.views.proyectos_ajax-class.html#get"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
 aps.aplicaciones.permisos.views.permisos_ajax.get
-aps.aplicaciones.permisos.views.permisos_grupos_ajax.get" class="py-name" href="#" onclick="return doclink('link-36', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt id="link-37" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get" class="py-name" href="#" onclick="return doclink('link-36', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt id="link-37" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
 aps.aplicaciones.inicio.forms.UserForm.nombre
 aps.aplicaciones.items.models.atributo.nombre
 aps.aplicaciones.items.models.items.nombre
@@ -266,7 +289,14 @@ aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="ret
 <a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-name">b</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt class="py-name">login</tt><tt class="py-op">(</tt><tt class="py-name">username</tt><tt class="py-op">=</tt><tt class="py-string">'fulano Login2'</tt><tt class="py-op">,</tt> <tt class="py-name">password</tt><tt class="py-op">=</tt><tt class="py-string">'123'</tt><tt class="py-op">)</tt> </tt>
 <a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"> </tt>
 <a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-comment"># Peticion POST para modificar el item con id=2</tt> </tt>
-<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post" class="py-name" href="#" onclick="return doclink('link-64', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/modificar/2"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'item prueba modificado'</tt><tt class="py-op">,</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post
+aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.crearRelacion.post
+aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.importar.post
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post
+aps.aplicaciones.items.views.reversionar.post
+aps.aplicaciones.proyectos.views.eliminarProyectos.post" class="py-name" href="#" onclick="return doclink('link-64', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/modificar/2"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'item prueba modificado'</tt><tt class="py-op">,</tt> </tt>
 <a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">                                                        <tt class="py-string">'complejidad'</tt><tt class="py-op">:</tt><tt class="py-string">'11'</tt><tt class="py-op">,</tt> </tt>
 <a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">                                                        <tt class="py-string">'costo'</tt><tt class="py-op">:</tt><tt class="py-string">'2100'</tt> </tt>
 <a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">                                                           <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
@@ -276,8 +306,24 @@ aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="ret
 <a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-comment"># Se consulta por el item modificado en la tabla items</tt> </tt>
 <a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-name">consultaInstancia</tt> <tt class="py-op">=</tt> <tt id="link-65" class="py-name"><a title="aps.aplicaciones.items
 aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-65', 'items', 'link-10');">items</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-66" class="py-name"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
 aps.aplicaciones.permisos.views.permisos_ajax.get
-aps.aplicaciones.permisos.views.permisos_grupos_ajax.get" class="py-name" href="#" onclick="return doclink('link-66', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt id="link-67" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get" class="py-name" href="#" onclick="return doclink('link-66', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt id="link-67" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
 aps.aplicaciones.inicio.forms.UserForm.nombre
 aps.aplicaciones.items.models.atributo.nombre
 aps.aplicaciones.items.models.items.nombre
@@ -370,15 +416,38 @@ aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="ret
 <a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-name">b</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt class="py-name">login</tt><tt class="py-op">(</tt><tt class="py-name">username</tt><tt class="py-op">=</tt><tt class="py-string">'fulano Login3'</tt><tt class="py-op">,</tt> <tt class="py-name">password</tt><tt class="py-op">=</tt><tt class="py-string">'123'</tt><tt class="py-op">)</tt> </tt>
 <a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line"> </tt>
 <a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt class="py-comment"># Peticion POST para eliminar el item con id=3</tt> </tt>
-<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-93" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post" class="py-name" href="#" onclick="return doclink('link-93', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/eliminar/3"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'comentario'</tt><tt class="py-op">:</tt><tt class="py-string">'eliminacion item de prueba'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-93" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post
+aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.crearRelacion.post
+aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.importar.post
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post
+aps.aplicaciones.items.views.reversionar.post
+aps.aplicaciones.proyectos.views.eliminarProyectos.post" class="py-name" href="#" onclick="return doclink('link-93', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/eliminar/3"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'comentario'</tt><tt class="py-op">:</tt><tt class="py-string">'eliminacion item de prueba'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
 <a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line"> </tt>
 <a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-comment">#print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'</tt> </tt>
 <a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"> </tt>
 <a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-comment">#Se consulta si el item fue borrado, si su estado fue cambiado a 'eliminado'</tt> </tt>
 <a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">        <tt class="py-name">consultaInstancia</tt> <tt class="py-op">=</tt> <tt id="link-94" class="py-name"><a title="aps.aplicaciones.items
 aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-94', 'items', 'link-10');">items</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-95" class="py-name"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
 aps.aplicaciones.permisos.views.permisos_ajax.get
-aps.aplicaciones.permisos.views.permisos_grupos_ajax.get" class="py-name" href="#" onclick="return doclink('link-95', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt id="link-96" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get" class="py-name" href="#" onclick="return doclink('link-95', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt id="link-96" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
 aps.aplicaciones.inicio.forms.UserForm.nombre
 aps.aplicaciones.items.models.atributo.nombre
 aps.aplicaciones.items.models.items.nombre
@@ -470,7 +539,14 @@ aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="ret
 <a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">        <tt class="py-name">b</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt class="py-name">login</tt><tt class="py-op">(</tt><tt class="py-name">username</tt><tt class="py-op">=</tt><tt class="py-string">'fulano Login4'</tt><tt class="py-op">,</tt> <tt class="py-name">password</tt><tt class="py-op">=</tt><tt class="py-string">'123'</tt><tt class="py-op">)</tt> </tt>
 <a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line"> </tt>
 <a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line">        <tt class="py-comment"># Peticion POST para agregar un atributo al item con id=4</tt> </tt>
-<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-123" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post" class="py-name" href="#" onclick="return doclink('link-123', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/atributos/agregar/4"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'atributo de prueba'</tt><tt class="py-op">,</tt> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-123" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post
+aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.crearRelacion.post
+aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.importar.post
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post
+aps.aplicaciones.items.views.reversionar.post
+aps.aplicaciones.proyectos.views.eliminarProyectos.post" class="py-name" href="#" onclick="return doclink('link-123', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/atributos/agregar/4"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'atributo de prueba'</tt><tt class="py-op">,</tt> </tt>
 <a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line">                                                                        <tt class="py-string">'descripcion'</tt><tt class="py-op">:</tt><tt class="py-string">'creacion atributo de prueba'</tt> </tt>
 <a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">                                                                <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
 <a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line"> </tt>
@@ -478,8 +554,24 @@ aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="ret
 <a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line"> </tt>
 <a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line">        <tt class="py-comment">#Se consulta por el atributo creado</tt> </tt>
 <a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line">        <tt class="py-name">consultaInstancia</tt> <tt class="py-op">=</tt> <tt id="link-124" class="py-name"><a title="aps.aplicaciones.items.models.atributo" class="py-name" href="#" onclick="return doclink('link-124', 'atributo', 'link-13');">atributo</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-125" class="py-name"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
 aps.aplicaciones.permisos.views.permisos_ajax.get
-aps.aplicaciones.permisos.views.permisos_grupos_ajax.get" class="py-name" href="#" onclick="return doclink('link-125', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt id="link-126" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get" class="py-name" href="#" onclick="return doclink('link-125', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt id="link-126" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
 aps.aplicaciones.inicio.forms.UserForm.nombre
 aps.aplicaciones.items.models.atributo.nombre
 aps.aplicaciones.items.models.items.nombre
@@ -577,8 +669,24 @@ aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onc
 <a name="TestModificarAtributo.test_details"></a><div id="TestModificarAtributo.test_details-def"><a name="L376"></a><tt class="py-lineno">376</tt> <a class="py-toggle" href="#" id="TestModificarAtributo.test_details-toggle" onclick="return toggle('TestModificarAtributo.test_details');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.items.tests.TestModificarAtributo-class.html#test_details">test_details</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="TestModificarAtributo.test_details-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestModificarAtributo.test_details-expanded"><a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line"> </tt>
 <a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line">        <tt class="py-name">consultaInstancia</tt> <tt class="py-op">=</tt> <tt id="link-156" class="py-name"><a title="aps.aplicaciones.items.models.atributo" class="py-name" href="#" onclick="return doclink('link-156', 'atributo', 'link-13');">atributo</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-157" class="py-name"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
 aps.aplicaciones.permisos.views.permisos_ajax.get
-aps.aplicaciones.permisos.views.permisos_grupos_ajax.get" class="py-name" href="#" onclick="return doclink('link-157', 'get', 'link-36');">get</a></tt> <tt class="py-op">(</tt> <tt id="link-158" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get" class="py-name" href="#" onclick="return doclink('link-157', 'get', 'link-36');">get</a></tt> <tt class="py-op">(</tt> <tt id="link-158" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
 aps.aplicaciones.inicio.forms.UserForm.nombre
 aps.aplicaciones.items.models.atributo.nombre
 aps.aplicaciones.items.models.items.nombre
@@ -591,7 +699,14 @@ aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onc
 <a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line">        <tt class="py-name">b</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt class="py-name">login</tt><tt class="py-op">(</tt><tt class="py-name">username</tt><tt class="py-op">=</tt><tt class="py-string">'fulano Login10'</tt><tt class="py-op">,</tt> <tt class="py-name">password</tt><tt class="py-op">=</tt><tt class="py-string">'123'</tt><tt class="py-op">)</tt> </tt>
 <a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line"> </tt>
 <a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line">        <tt class="py-comment"># Peticion POST para modificar el atributo del item con id=10</tt> </tt>
-<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-161" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post" class="py-name" href="#" onclick="return doclink('link-161', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/atributos/modificar/10"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'atributo modificado'</tt><tt class="py-op">,</tt> </tt>
+<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-161" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post
+aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.crearRelacion.post
+aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.importar.post
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post
+aps.aplicaciones.items.views.reversionar.post
+aps.aplicaciones.proyectos.views.eliminarProyectos.post" class="py-name" href="#" onclick="return doclink('link-161', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/atributos/modificar/10"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'atributo modificado'</tt><tt class="py-op">,</tt> </tt>
 <a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line">                                              <tt class="py-string">'descripcion'</tt><tt class="py-op">:</tt><tt class="py-string">'modificacion de atributo de prueba'</tt> </tt>
 <a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line">                                         <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
 <a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line"> </tt>
@@ -599,8 +714,24 @@ aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onc
 <a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line"> </tt>
 <a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line">        <tt class="py-comment">#Se consulta por el atributo cuyos datos han sido modificados</tt> </tt>
 <a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line">        <tt class="py-name">consultaInstancia</tt> <tt class="py-op">=</tt> <tt id="link-162" class="py-name"><a title="aps.aplicaciones.items.models.atributo" class="py-name" href="#" onclick="return doclink('link-162', 'atributo', 'link-13');">atributo</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-163" class="py-name"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
 aps.aplicaciones.permisos.views.permisos_ajax.get
-aps.aplicaciones.permisos.views.permisos_grupos_ajax.get" class="py-name" href="#" onclick="return doclink('link-163', 'get', 'link-36');">get</a></tt> <tt class="py-op">(</tt> <tt id="link-164" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get" class="py-name" href="#" onclick="return doclink('link-163', 'get', 'link-36');">get</a></tt> <tt class="py-op">(</tt> <tt id="link-164" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
 aps.aplicaciones.inicio.forms.UserForm.nombre
 aps.aplicaciones.items.models.atributo.nombre
 aps.aplicaciones.items.models.items.nombre
@@ -796,15 +927,38 @@ aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="ret
 <a name="L558"></a><tt class="py-lineno">558</tt>  <tt class="py-line"> </tt>
 <a name="L559"></a><tt class="py-lineno">559</tt>  <tt class="py-line">        <tt class="py-comment"># Peticion POST para agregar una relacion al item con id=5</tt> </tt>
 <a name="L560"></a><tt class="py-lineno">560</tt>  <tt class="py-line">        <tt class="py-comment">#response = self.cliente.post("/items/relaciones/listarParaCrear/5", data={'itemPadre':'8', 'itemHijo':'5'})</tt> </tt>
-<a name="L561"></a><tt class="py-lineno">561</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-197" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post" class="py-name" href="#" onclick="return doclink('link-197', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/relaciones/crear/"</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'itemPadre'</tt><tt class="py-op">:</tt><tt class="py-string">'8'</tt><tt class="py-op">,</tt> <tt class="py-string">'itemHijo'</tt><tt class="py-op">:</tt><tt class="py-string">'5'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L561"></a><tt class="py-lineno">561</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-197" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post
+aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.crearRelacion.post
+aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.importar.post
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post
+aps.aplicaciones.items.views.reversionar.post
+aps.aplicaciones.proyectos.views.eliminarProyectos.post" class="py-name" href="#" onclick="return doclink('link-197', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/relaciones/crear/"</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'itemPadre'</tt><tt class="py-op">:</tt><tt class="py-string">'8'</tt><tt class="py-op">,</tt> <tt class="py-string">'itemHijo'</tt><tt class="py-op">:</tt><tt class="py-string">'5'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
 <a name="L562"></a><tt class="py-lineno">562</tt>  <tt class="py-line"> </tt>
 <a name="L563"></a><tt class="py-lineno">563</tt>  <tt class="py-line"> </tt>
 <a name="L564"></a><tt class="py-lineno">564</tt>  <tt class="py-line">        <tt class="py-comment">#print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'</tt> </tt>
 <a name="L565"></a><tt class="py-lineno">565</tt>  <tt class="py-line"> </tt>
 <a name="L566"></a><tt class="py-lineno">566</tt>  <tt class="py-line">        <tt class="py-comment">#Se consulta por la relacion creada</tt> </tt>
 <a name="L567"></a><tt class="py-lineno">567</tt>  <tt class="py-line">        <tt class="py-name">consultaInstancia</tt> <tt class="py-op">=</tt> <tt id="link-198" class="py-name"><a title="aps.aplicaciones.items.models.relacion" class="py-name" href="#" onclick="return doclink('link-198', 'relacion', 'link-14');">relacion</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-199" class="py-name"><a title="aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
 aps.aplicaciones.permisos.views.permisos_ajax.get
-aps.aplicaciones.permisos.views.permisos_grupos_ajax.get" class="py-name" href="#" onclick="return doclink('link-199', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">itemHijo_id</tt><tt class="py-op">=</tt><tt class="py-string">"5"</tt><tt class="py-op">,</tt> <tt class="py-name">itemPadre_id</tt><tt class="py-op">=</tt><tt class="py-string">"8"</tt><tt class="py-op">,</tt> <tt id="link-200" class="py-name"><a title="aps.aplicaciones.fases.models.fases.estado
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get" class="py-name" href="#" onclick="return doclink('link-199', 'get', 'link-36');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">itemHijo_id</tt><tt class="py-op">=</tt><tt class="py-string">"5"</tt><tt class="py-op">,</tt> <tt class="py-name">itemPadre_id</tt><tt class="py-op">=</tt><tt class="py-string">"8"</tt><tt class="py-op">,</tt> <tt id="link-200" class="py-name"><a title="aps.aplicaciones.fases.models.fases.estado
 aps.aplicaciones.items.models.items.estado
 aps.aplicaciones.items.models.relacion.estado
 aps.aplicaciones.proyectos.models.Proyectos.estado" class="py-name" href="#" onclick="return doclink('link-200', 'estado', 'link-99');">estado</a></tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
@@ -918,7 +1072,14 @@ aps.aplicaciones.proyectos.models.Proyectos.estado" class="py-name" href="#" onc
 <a name="L650"></a><tt class="py-lineno">650</tt>  <tt class="py-line">        <tt class="py-comment">#consultaInstancia = relacion.objects.get(itemHijo_id=9, itemPadre_id=6)</tt> </tt>
 <a name="L651"></a><tt class="py-lineno">651</tt>  <tt class="py-line"> </tt>
 <a name="L652"></a><tt class="py-lineno">652</tt>  <tt class="py-line">        <tt class="py-comment"># Peticion POST para eliminar la relacion</tt> </tt>
-<a name="L653"></a><tt class="py-lineno">653</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-232" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post" class="py-name" href="#" onclick="return doclink('link-232', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/relaciones/eliminar/1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L653"></a><tt class="py-lineno">653</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-232" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post
+aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.crearRelacion.post
+aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.importar.post
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post
+aps.aplicaciones.items.views.reversionar.post
+aps.aplicaciones.proyectos.views.eliminarProyectos.post" class="py-name" href="#" onclick="return doclink('link-232', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/relaciones/eliminar/1"</tt><tt class="py-op">)</tt> </tt>
 <a name="L654"></a><tt class="py-lineno">654</tt>  <tt class="py-line"> </tt>
 <a name="L655"></a><tt class="py-lineno">655</tt>  <tt class="py-line">        <tt class="py-comment">#print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'</tt> </tt>
 <a name="L656"></a><tt class="py-lineno">656</tt>  <tt class="py-line"> </tt>
@@ -1033,7 +1194,14 @@ aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onc
 <a name="L742"></a><tt class="py-lineno">742</tt>  <tt class="py-line">        <tt class="py-comment"># NO SE TIENE OPCION PARA MODIFICAR ATRIBUTO AUN</tt> </tt>
 <a name="L743"></a><tt class="py-lineno">743</tt>  <tt class="py-line"> </tt>
 <a name="L744"></a><tt class="py-lineno">744</tt>  <tt class="py-line">        <tt class="py-comment"># Peticion POST para modificar el atributo con id=2</tt> </tt>
-<a name="L745"></a><tt class="py-lineno">745</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-263" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post" class="py-name" href="#" onclick="return doclink('link-263', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/atributos/modificar/2"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'atributo modificado'</tt><tt class="py-op">,</tt> </tt>
+<a name="L745"></a><tt class="py-lineno">745</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-263" class="py-name"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post
+aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.crearRelacion.post
+aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.importar.post
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post
+aps.aplicaciones.items.views.reversionar.post
+aps.aplicaciones.proyectos.views.eliminarProyectos.post" class="py-name" href="#" onclick="return doclink('link-263', 'post', 'link-34');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/items/atributos/modificar/2"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'atributo modificado'</tt><tt class="py-op">,</tt> </tt>
 <a name="L746"></a><tt class="py-lineno">746</tt>  <tt class="py-line">                                            <tt class="py-string">'descripcion'</tt><tt class="py-op">:</tt><tt class="py-string">'modificacion atributo de prueba'</tt> </tt>
 <a name="L747"></a><tt class="py-lineno">747</tt>  <tt class="py-line">                                            <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
 </div></div><a name="L748"></a><tt class="py-lineno">748</tt>  <tt class="py-line"> </tt>
@@ -1095,7 +1263,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri May 16 22:18:28 2014
+    Generated by Epydoc 3.0.1 on Fri May 16 23:11:57 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

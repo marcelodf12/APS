@@ -5,7 +5,7 @@
 from django.conf.urls import patterns, url
 from django.contrib import admin
 
-from .views import *
+from .views import adminItems, crearItem, crearItemEnFase, listarItems, listarItemsEliminados, modificarItems, eliminarItems, listarItemParaCrearRelacion, crearRelacion, listarRelaciones, eliminarRelacion, agregarAtributo, mostrarDetalles, mostrarDetallesV, modificarAtributo, eliminarAtributo, listarVersiones, ReversionVersiones, reversionar, crearTipoItem, agregarAtributoAlTipoItem, definirCantidadAtributos, formularioAgregarAtributoAlTipoItem, verAtributosTipoItems, verTipoItems, modificarAtributoDeTipoItem, eliminarTipoItem, importar
 
 
 admin.autodiscover()

@@ -5,7 +5,7 @@
 
 from django.conf.urls import patterns, url
 
-from .views import *
+from .views import crearProyecto, adminProyecto, listarProyectosNoIniciados, modificarProyectos, eliminarProyectos, iniciarProyecto, listarProyectosAJAX, proyectos_ajax, detallesProyecto, adminComite, miembrosAJAX, editMiembro, agregarMiembro, eliminarMiembro
 
 
 urlpatterns = patterns('',
