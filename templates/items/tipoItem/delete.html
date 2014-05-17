@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+      Eliminar Tipo Item
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+<form action="" method="post">{% csrf_token %}
+    <p>Esta seguro que desea eliminar el tipo Item</p>
+    <input type="submit" value="Confirm" />
+</form>
+{% endblock %}

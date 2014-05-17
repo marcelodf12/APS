@@ -21,10 +21,11 @@
                 <tr>
                     <th>{{t.nombre}}</th>
                     <th>
+                        <a href='/items/tipoItem/mostrar/{{t.id}}'><img src='/static/images/Detalles.png' width='24' height='24'></a>
                         <a href='/items/tipoItem/modificar/{{t.id}}'><img src='/static/images/Edit.png' width='24' height='24'></a>
                         <a href='/items/tipoItem/eliminar/{{t.id}}'><img src='/static/images/Delete.png' width='24' height='24'></a>
                     </th>
                 </tr>
              {% endfor %}
-        </table>
+        </table><br>
  {% endblock %}

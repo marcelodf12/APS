@@ -35,5 +35,8 @@ urlpatterns = patterns('',
     url(r'^tipoItem/addAtrib/$', formularioAgregarAtributoAlTipoItem.as_view()),
     url(r'^tipoItem/definir/$', definirCantidadAtributos.as_view()),
     url(r'^tipoItem/mostrar/(?P<id>\d+)$', verAtributosTipoItems.as_view()),
-    url(r'^tipoItem/listar/$', verTipoItems.as_view()),
+    url(r'^tipoItem/listar/$', verTipoItems.as_view(), name='listar_tipoitem'),
+    url(r'^tipoItem/modificar/(?P<id>\d+)$', modificarAtributoDeTipoItem.as_view(), name=''),
+    url(r'^tipoItem/eliminar/(?P<id>\d+)$', eliminarTipoItem.as_view()),
+
 )

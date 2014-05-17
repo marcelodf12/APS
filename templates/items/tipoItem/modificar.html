@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+      Modificar Tipo Item
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+        <h1>Tipo Item {{ti.nombre}}</h1>
+        <form method="post" action="/items/tipoItem/modificar/{{tipo.id}}">{% csrf_token %}
+            <label data-name="nombre">Nombre</label>
+            <input type="text" name="nombre" value="{{tipo.nombre}}"><br>
+            {% for t in lista %}
+                <label data-name="{{t.0}}">Atributo {{t.0}}</label>
+                <input name="{{t.0}}" type="text" value="{{t.1}}"><br>
+            {% endfor %}
+            <input type="submit" value="Modificar">
+            <input type="hidden" value="{{tipo.id}}" name="id">
+        </form>
+ {% endblock %}

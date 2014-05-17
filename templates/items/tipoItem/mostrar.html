@@ -15,7 +15,11 @@
     <H1>
         Atributos del Tipo Item: {{ti.nombre}}
     </H1>
+    <table id="tablaDatos">
     {% for a in atributos %}
-        - {{a}}<br>
+        <tr>
+            <td>{{a}}</td>
+        </tr>
     {% endfor %}
+    </table><br>
  {% endblock %}
