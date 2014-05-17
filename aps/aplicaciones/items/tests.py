@@ -322,11 +322,11 @@ class TestCrearAtributo(unittest.TestCase):
 #             self.cliente = Client()
 #
 #             # Creacion de un usuario para la autenticacion
-#             self.userLogin = User.objects.create_user(username="fulano Login5", password="123")
+#             self.userLogin = User.objects.create_user(username="fulano Login10", password="123")
 #
 #             #Creacion de un usuario Lider para instanciar un proyecto
 #             userRegistrado = User()
-#             userRegistrado.username = "fulano Lider5"
+#             userRegistrado.username = "fulano Lider10"
 #             userRegistrado.password = "123"
 #             userRegistrado.save()
 #
@@ -351,13 +351,12 @@ class TestCrearAtributo(unittest.TestCase):
 #             faseRegistrada.fechaInicioP = "2014-03-24"
 #             faseRegistrada.fechaInicioR = "2014-03-24"
 #             faseRegistrada.presupuesto = 2500000
-#             #???????????????????????????????????????????
 #             faseRegistrada.orden = 1
 #             faseRegistrada.save()
 #
 #             #Creacion de un item
 #             itemRegistrado = items()
-#             itemRegistrado.pk = 5
+#             itemRegistrado.pk = 10
 #             itemRegistrado.nombre = "item Registrado"
 #             itemRegistrado.fase = faseRegistrada
 #             itemRegistrado.versionAct = 1
@@ -365,35 +364,120 @@ class TestCrearAtributo(unittest.TestCase):
 #             itemRegistrado.costo = 2000
 #             itemRegistrado.save()
 #
-#             # Asignacion del permiso DEL para userRegistrado, a fin de poder eliminar un item
-#             # permisoUserLogin = Permisos()
-#             # permisoUserLogin.permiso = "DEL"
-#             # permisoUserLogin.tipoObjeto = "item"
-#             # permisoUserLogin.id_fk = 3
-#             # permisoUserLogin.usuario = userRegistrado
-#             # permisoUserLogin.save()
+#             #Creacion del atributo a modificar
+#             atributoRegistrado = atributo()
+#             atributoRegistrado.pk = 10
+#             atributoRegistrado.nombre = "atributo Registrado"
+#             atributoRegistrado.descripcion = "descripcion registrada"
+#             atributoRegistrado.version = 1
+#
+#     def test_details(self):
+#
+#         # Cliente es autenticado como el usuario 'fulano Login'
+#         b = self.cliente.login(username='fulano Login10', password='123')
+#
+#         # Peticion POST para modificar el atributo del item con id=10
+#         response = self.cliente.post("",data={'nombre':'atributo modificado',
+#                                               'descripcion':'modificacion de atributo de prueba'
+#                                          })
+#
+#         print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+#
+#         #Se consulta por el atributo cuyos datos han sido modificados
+#         consultaInstancia = atributo.objects.get ( nombre = "atributo modificado",
+#                                                    descripcion = "modificacion de atributo de prueba",
+#                                                    version = 2
+#                                                  )
+#
+#         #print "\nNombre del Atributo modificado: ", consultaInstancia.nombre                    # Nombre del atributo modificado
+#         #print "Descripcion del Atributo modificado: ", consultaInstancia.descripcion            # Descripcion del atributo modificado
+#         #print "Version del Atributo modificado: ", consultaInstancia.descripcion                # Version del atributo modificado
+#
+#         self.assertNotEquals(consultaInstancia, None)
+
+
+# class TestEliminarAtributo(unittest.TestCase):
+#     """
+#         Prueba para comprobar la eliminacion fisica de atributos
+#     """
+#     def setUp(self):
+#
+#             # Creacion de un cliente
+#             self.cliente = Client()
+#
+#             # Creacion de un usuario para la autenticacion
+#             self.userLogin = User.objects.create_user(username="fulano Login11", password="123")
+#
+#             #Creacion de un usuario Lider para instanciar un proyecto
+#             userRegistrado = User()
+#             userRegistrado.username = "fulano Lider11"
+#             userRegistrado.password = "123"
+#             userRegistrado.save()
+#
+#             #Creacion de un proyecto para instanciar una fase
+#             proyectoRegistrado = Proyectos()
+#             proyectoRegistrado.cantFases = 7
+#             proyectoRegistrado.fechaInicio = "2014-03-03"
+#             proyectoRegistrado.lider = userRegistrado
+#             proyectoRegistrado.fechaFinP = "2014-10-03"
+#             proyectoRegistrado.fechaFinR = "2014-10-04"
+#             proyectoRegistrado.presupuesto=1500
+#             proyectoRegistrado.penalizacion=350
+#             proyectoRegistrado.save()
+#
+#             #Creacion de una fase para instanciar un item
+#             faseRegistrada = fases()
+#             faseRegistrada.nombre = "fase Registrada"
+#             faseRegistrada.versionAct = 1
+#             faseRegistrada.complejidad = 10
+#             faseRegistrada.cantItems = 6
+#             faseRegistrada.fechaInicio = "2014-03-24"
+#             faseRegistrada.fechaInicioP = "2014-03-24"
+#             faseRegistrada.fechaInicioR = "2014-03-24"
+#             faseRegistrada.presupuesto = 2500000
+#             faseRegistrada.orden = 1
+#             faseRegistrada.save()
+#
+#             #Creacion de un item
+#             itemRegistrado = items()
+#             itemRegistrado.pk = 11
+#             itemRegistrado.nombre = "item Registrado"
+#             itemRegistrado.fase = faseRegistrada
+#             itemRegistrado.versionAct = 1
+#             itemRegistrado.complejidad = 10
+#             itemRegistrado.costo = 2000
+#             itemRegistrado.save()
+#
+#             #Creacion del atributo a eliminar
+#             atributoRegistrado = atributo()
+#             atributoRegistrado.pk = 11
+#             atributoRegistrado.nombre = "atributo Registrado"
+#             atributoRegistrado.descripcion = "descripcion registrada"
+#             atributoRegistrado.version = 1
 #
 #
 #     def test_details(self):
 #
 #         # Cliente es autenticado como el usuario 'fulano Login'
-#         b = self.cliente.login(username='fulano Login3', password='123')
+#         b = self.cliente.login(username='fulano Login11', password='123')
 #
-#         # Peticion POST para agregar un atributo con al item con id=1
-#         response = self.cliente.post("/items/atributos/agregar/5",data={'nombre':'atributo de prueba',
-#                                                                         'descripcion':'creacion atributo de prueba'
-#                                                                 })
+#         # Peticion POST para eliminar el atributo del item con id=11
+#         response = self.cliente.post("",data={'nombre':'atributo de prueba',
+#                                               'descripcion':'creacion atributo de prueba'
+#                                               })
 #
-#         print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
-#
-#         #Se consulta si el item fue borrado, si su estado fue cambiado a 'eliminado'
-#         consultaInstancia = atributo.objects.get(nombre="atributo de prueba", descripcion="creacion atributo de prueba")
+#         print response.__str__()                            # Muestra la URL a la que se redirecciona luego de 'borrar'
 #
 #
-#         #print "\nNombre del Atributo: ", consultaInstancia.nombre                    # Nombre del atributo creado
-#         #print "Descripcion del Atributo: ", consultaInstancia.descripcion            # Descripcion del atributo creado
+#         #Se consulta por el atributo cuyo estado ha sido cambiado a eliminado
+#         consultaInstancia = atributo.objects.get ( nombre = "atributo Registrado",
+#                                                    descripcion = "descripcion registrada",
+#                                                    version = 2
+#                                                  )
 #
-#         self.assertNotEquals(consultaInstancia, None)
+#         #print "\nNombre del Atributo eliminado: ", consultaInstancia.nombre                    # Nombre del atributo eliminado
+#         #print "Descripcion del Atributo eliminado: ", consultaInstancia.descripcion            # Descripcion del atributo eliminado
+#         #print "Version del Atributo eliminado: ", consultaInstancia.descripcion                # Version del atributo eliminado
 
 
 class TestCrearRelacion(unittest.TestCase):
@@ -467,13 +551,11 @@ class TestCrearRelacion(unittest.TestCase):
         # Peticion POST para agregar una relacion al item con id=5
         #response = self.cliente.post("/items/relaciones/listarParaCrear/5", data={'itemPadre':'8', 'itemHijo':'5'})
 
-        #NO SE COMO ELEGIR UNA OPCION DE UN COMBOBOX
 
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         #Se consulta por la relacion creada
         #consultaInstancia = relacion.objects.get(itemHijo_id="5", itemPadre_id="8", estado="TRUE")
-
 
         #print "\nItem Hijo: ", consultaInstancia.itemHijo_id                    # ID del item hijo
         #print "\nItem Padre: ", consultaInstancia.itemPadre_id                  # ID del item padre
@@ -655,16 +737,18 @@ class Reversionar(unittest.TestCase):
                                             #'descripcion':'modificacion atributo de prueba'
                                             #})
 
-        # Peticion POST para visualizar las versiones del item con id=7
-        #response = self.cliente.post("/items/relaciones/listarParaCrear/7")
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
-        #NO SE COMO ELEGIR UNA OPCION DE UN COMBOBOX
-        #SE DEBE ELEGIR LA VERSION 1
+        #Peticion POST para reversionar el item con id=7
+        #MISMA SITUACION HAY QUE SELECCIONAR DE UN COMBOBOX
+        #response = self.cliente.post("/items/reversionar/4", data={'nombre':'atributo modificado',
+                                            #'descripcion':'modificacion atributo de prueba'
+                                            #})
 
-        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'versionar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
         #Se consulta si el item volvio a su version anterior, la version 1
-        consultaInstancia = items.objects.get(nombre="item Registrado", versionAct=1)
+        #consultaInstancia = atributo.objects.get(id=2, version=2)
 
 
         #print "\nItem Hijo: ", consultaInstancia.itemHijo_id                    # ID del item hijo
