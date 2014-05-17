@@ -168,7 +168,6 @@ class modificarAtributo(UpdateView):
     model = atributo
     template_name = 'items/updateAtributo.html'
     fields = ['nombre','descripcion']
-    success_url = reverse_lazy('listar_item')      # Se mostrara la vista 'listar_proyecto' en el caso de modificacion exitosa
     def get_object(self, queryset=None):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = atributo.objects.get(id=self.kwargs['id'])
@@ -186,7 +185,8 @@ class modificarAtributo(UpdateView):
         item.versionAct = versionNueva
         a.save()
         item.save()
-        return super(modificarAtributo, self).form_valid(form)
+        url = '/items/atributos/listar/'+str(item.id)
+        return HttpResponseRedirect(url)
 
 
 class listarVersiones(TemplateView):
