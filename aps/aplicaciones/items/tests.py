@@ -312,88 +312,94 @@ class TestCrearAtributo(unittest.TestCase):
         self.assertNotEquals(consultaInstancia, None)
 
 
-# class TestModificarAtributo(unittest.TestCase):
-#     """
-#         Prueba para comprobar la modificacion de atributos
-#     """
-#     def setUp(self):
-#
-#             # Creacion de un cliente
-#             self.cliente = Client()
-#
-#             # Creacion de un usuario para la autenticacion
-#             self.userLogin = User.objects.create_user(username="fulano Login10", password="123")
-#
-#             #Creacion de un usuario Lider para instanciar un proyecto
-#             userRegistrado = User()
-#             userRegistrado.username = "fulano Lider10"
-#             userRegistrado.password = "123"
-#             userRegistrado.save()
-#
-#             #Creacion de un proyecto para instanciar una fase
-#             proyectoRegistrado = Proyectos()
-#             proyectoRegistrado.cantFases = 7
-#             proyectoRegistrado.fechaInicio = "2014-03-03"
-#             proyectoRegistrado.lider = userRegistrado
-#             proyectoRegistrado.fechaFinP = "2014-10-03"
-#             proyectoRegistrado.fechaFinR = "2014-10-04"
-#             proyectoRegistrado.presupuesto=1500
-#             proyectoRegistrado.penalizacion=350
-#             proyectoRegistrado.save()
-#
-#             #Creacion de una fase para instanciar un item
-#             faseRegistrada = fases()
-#             faseRegistrada.nombre = "fase Registrada"
-#             faseRegistrada.versionAct = 1
-#             faseRegistrada.complejidad = 10
-#             faseRegistrada.cantItems = 6
-#             faseRegistrada.fechaInicio = "2014-03-24"
-#             faseRegistrada.fechaInicioP = "2014-03-24"
-#             faseRegistrada.fechaInicioR = "2014-03-24"
-#             faseRegistrada.presupuesto = 2500000
-#             faseRegistrada.orden = 1
-#             faseRegistrada.save()
-#
-#             #Creacion de un item
-#             itemRegistrado = items()
-#             itemRegistrado.pk = 10
-#             itemRegistrado.nombre = "item Registrado"
-#             itemRegistrado.fase = faseRegistrada
-#             itemRegistrado.versionAct = 1
-#             itemRegistrado.complejidad = 10
-#             itemRegistrado.costo = 2000
-#             itemRegistrado.save()
-#
-#             #Creacion del atributo a modificar
-#             atributoRegistrado = atributo()
-#             atributoRegistrado.pk = 10
-#             atributoRegistrado.nombre = "atributo Registrado"
-#             atributoRegistrado.descripcion = "descripcion registrada"
-#             atributoRegistrado.version = 1
-#
-#     def test_details(self):
-#
-#         # Cliente es autenticado como el usuario 'fulano Login'
-#         b = self.cliente.login(username='fulano Login10', password='123')
-#
-#         # Peticion POST para modificar el atributo del item con id=10
-#         response = self.cliente.post("",data={'nombre':'atributo modificado',
-#                                               'descripcion':'modificacion de atributo de prueba'
-#                                          })
-#
-#         print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
-#
-#         #Se consulta por el atributo cuyos datos han sido modificados
-#         consultaInstancia = atributo.objects.get ( nombre = "atributo modificado",
-#                                                    descripcion = "modificacion de atributo de prueba",
-#                                                    version = 2
-#                                                  )
-#
-#         #print "\nNombre del Atributo modificado: ", consultaInstancia.nombre                    # Nombre del atributo modificado
-#         #print "Descripcion del Atributo modificado: ", consultaInstancia.descripcion            # Descripcion del atributo modificado
-#         #print "Version del Atributo modificado: ", consultaInstancia.descripcion                # Version del atributo modificado
-#
-#         self.assertNotEquals(consultaInstancia, None)
+class TestModificarAtributo(unittest.TestCase):
+    """
+        Prueba para comprobar la modificacion de atributos
+    """
+    def setUp(self):
+
+            # Creacion de un cliente
+            self.cliente = Client()
+
+            # Creacion de un usuario para la autenticacion
+            self.userLogin = User.objects.create_user(username="fulano Login10", password="123")
+
+            #Creacion de un usuario Lider para instanciar un proyecto
+            userRegistrado = User()
+            userRegistrado.username = "fulano Lider10"
+            userRegistrado.password = "123"
+            userRegistrado.save()
+
+            #Creacion de un proyecto para instanciar una fase
+            proyectoRegistrado = Proyectos()
+            proyectoRegistrado.cantFases = 7
+            proyectoRegistrado.fechaInicio = "2014-03-03"
+            proyectoRegistrado.lider = userRegistrado
+            proyectoRegistrado.fechaFinP = "2014-10-03"
+            proyectoRegistrado.fechaFinR = "2014-10-04"
+            proyectoRegistrado.presupuesto=1500
+            proyectoRegistrado.penalizacion=350
+            proyectoRegistrado.save()
+
+            #Creacion de una fase para instanciar un item
+            faseRegistrada = fases()
+            faseRegistrada.nombre = "fase Registrada"
+            faseRegistrada.versionAct = 1
+            faseRegistrada.complejidad = 10
+            faseRegistrada.cantItems = 6
+            faseRegistrada.fechaInicio = "2014-03-24"
+            faseRegistrada.fechaInicioP = "2014-03-24"
+            faseRegistrada.fechaInicioR = "2014-03-24"
+            faseRegistrada.presupuesto = 2500000
+            faseRegistrada.orden = 1
+            faseRegistrada.save()
+
+            #Creacion de un item
+            itemRegistrado = items()
+            itemRegistrado.pk = 10
+            itemRegistrado.nombre = "item Registrado"
+            itemRegistrado.fase = faseRegistrada
+            itemRegistrado.versionAct = 1
+            itemRegistrado.complejidad = 10
+            itemRegistrado.costo = 2000
+            itemRegistrado.save()
+
+            #Creacion del atributo a modificar
+            atributoRegistrado = atributo()
+            atributoRegistrado.pk = 10
+            atributoRegistrado.nombre = "atributo Registrado"
+            atributoRegistrado.descripcion = "descripcion registrada"
+            atributoRegistrado.version = 1
+            atributoRegistrado.item = itemRegistrado
+            atributoRegistrado.save()
+
+    def test_details(self):
+
+        consultaInstancia = atributo.objects.get ( nombre = "atributo Registrado",
+                                                   descripcion = "descripcion registrada",
+                                                   version = 1
+                                                 )
+        # Cliente es autenticado como el usuario 'fulano Login'
+        b = self.cliente.login(username='fulano Login10', password='123')
+
+        # Peticion POST para modificar el atributo del item con id=10
+        response = self.cliente.post("/items/atributos/modificar/10",data={'nombre':'atributo modificado',
+                                              'descripcion':'modificacion de atributo de prueba'
+                                         })
+
+        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+
+        #Se consulta por el atributo cuyos datos han sido modificados
+        consultaInstancia = atributo.objects.get ( nombre = "atributo modificado",
+                                                   descripcion = "modificacion de atributo de prueba",
+                                                   version = 2
+                                                 )
+
+        #print "\nNombre del Atributo modificado: ", consultaInstancia.nombre                    # Nombre del atributo modificado
+        #print "Descripcion del Atributo modificado: ", consultaInstancia.descripcion            # Descripcion del atributo modificado
+        #print "Version del Atributo modificado: ", consultaInstancia.descripcion                # Version del atributo modificado
+
+        self.assertNotEquals(consultaInstancia, None)
 
 
 # class TestEliminarAtributo(unittest.TestCase):
@@ -454,6 +460,7 @@ class TestCrearAtributo(unittest.TestCase):
 #             atributoRegistrado.nombre = "atributo Registrado"
 #             atributoRegistrado.descripcion = "descripcion registrada"
 #             atributoRegistrado.version = 1
+#             atributoRegistrado.save()
 #
 #
 #     def test_details(self):
