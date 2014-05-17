@@ -568,6 +568,7 @@ class TestCrearRelacion(unittest.TestCase):
 
         #print "\nItem Hijo: ", consultaInstancia.itemHijo_id                    # ID del item hijo
         #print "\nItem Padre: ", consultaInstancia.itemPadre_id                  # ID del item padre
+        #print "\nEstado: ", consultaInstancia.estado                  # estado de la relacion
 
         #self.assertNotEquals(consultaInstancia, None)
 
