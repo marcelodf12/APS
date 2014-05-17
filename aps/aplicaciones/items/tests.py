@@ -387,7 +387,7 @@ class TestModificarAtributo(unittest.TestCase):
                                               'descripcion':'modificacion de atributo de prueba'
                                          })
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
 
         #Se consulta por el atributo cuyos datos han sido modificados
         consultaInstancia = atributo.objects.get ( nombre = "atributo modificado",
@@ -519,6 +519,7 @@ class TestCrearRelacion(unittest.TestCase):
             #Creacion de una fase para instanciar un item
             faseRegistrada = fases()
             faseRegistrada.nombre = "fase Registrada"
+            faseRegistrada.proyecto = proyectoRegistrado
             faseRegistrada.versionAct = 1
             faseRegistrada.complejidad = 10
             faseRegistrada.cantItems = 6
@@ -557,12 +558,13 @@ class TestCrearRelacion(unittest.TestCase):
 
         # Peticion POST para agregar una relacion al item con id=5
         #response = self.cliente.post("/items/relaciones/listarParaCrear/5", data={'itemPadre':'8', 'itemHijo':'5'})
+        response = self.cliente.post("/items/relaciones/crear/", data={'itemPadre':'8', 'itemHijo':'5'})
 
 
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
         #Se consulta por la relacion creada
-        #consultaInstancia = relacion.objects.get(itemHijo_id="5", itemPadre_id="8", estado="TRUE")
+        consultaInstancia = relacion.objects.get(itemHijo_id="5", itemPadre_id="8", estado=True)
 
         #print "\nItem Hijo: ", consultaInstancia.itemHijo_id                    # ID del item hijo
         #print "\nItem Padre: ", consultaInstancia.itemPadre_id                  # ID del item padre
@@ -650,7 +652,7 @@ class TestEliminarRelaciones(unittest.TestCase):
         # Peticion POST para eliminar la relacion
         response = self.cliente.post("/items/relaciones/eliminar/1")
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
 
         # Creamos una relacion con el mismo id de la relacion anteriormente eliminada. La idea es demostrar que la relacion
         # fue fisicamente eliminada, creando otra relacion con el mismo id (y los mismos datos)
@@ -740,9 +742,9 @@ class Reversionar(unittest.TestCase):
         # NO SE TIENE OPCION PARA MODIFICAR ATRIBUTO AUN
 
         # Peticion POST para modificar el atributo con id=2
-        #response = self.cliente.post("",data={'nombre':'atributo modificado',
-                                            #'descripcion':'modificacion atributo de prueba'
-                                            #})
+        response = self.cliente.post("/items/atributos/modificar/2",data={'nombre':'atributo modificado',
+                                            'descripcion':'modificacion atributo de prueba'
+                                            })
 
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
