@@ -148,7 +148,8 @@ class agregarAtributo(CreateView):
         item.versionAct = versionNueva
         atrib.save()
         item.save()
-        return super(agregarAtributo, self).form_valid(form)
+        url = '/items/atributos/listar/'+str(item.id)
+        return HttpResponseRedirect(url)
 
 
 
@@ -233,7 +234,8 @@ class agregarAtributoAlTipoItem(TemplateView):
             listaAtributos.append(request.POST['a' + str(n)])
         ti.atributos= pickle.dumps(listaAtributos)
         ti.save()
-        return HttpResponseRedirect('/inicio/')
+        url = '/items/tipoItem/mostrar/' + str(ti.id)
+        return HttpResponseRedirect(url)
 
 class definirCantidadAtributos(TemplateView):
     def get(self, request, *args, **kwargs):
