@@ -58,9 +58,8 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="aps.aplicaciones.fases.views-module.html">Module aps.aplicaciones.fases.views</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Module aps.aplicaciones.fases.views=aps.aplicaciones.fases.views-module.html,Module aps.aplicaciones.inicio.views=aps.aplicaciones.inicio.views-module.html,Module aps.aplicaciones.items.views=aps.aplicaciones.items.views-module.html,Module aps.aplicaciones.permisos.views=aps.aplicaciones.permisos.views-module.html"><a title="aps.aplicaciones.fases.views
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Module aps.aplicaciones.fases.views=aps.aplicaciones.fases.views-module.html,Module aps.aplicaciones.inicio.views=aps.aplicaciones.inicio.views-module.html,Module aps.aplicaciones.permisos.views=aps.aplicaciones.permisos.views-module.html"><a title="aps.aplicaciones.fases.views
 aps.aplicaciones.inicio.views
-aps.aplicaciones.items.views
 aps.aplicaciones.permisos.views" class="py-name" href="#" onclick="return doclink('link-0', 'views', 'link-0');">views</a></tt><tt class="py-op">.</tt><tt class="py-name">generic</tt> <tt class="py-keyword">import</tt> <tt class="py-name">TemplateView</tt><tt class="py-op">,</tt> <tt class="py-name">CreateView</tt><tt class="py-op">,</tt> <tt class="py-name">ListView</tt><tt class="py-op">,</tt> <tt class="py-name">UpdateView</tt><tt class="py-op">,</tt> <tt class="py-name">FormView</tt> </tt>
 <a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">core</tt><tt class="py-op">.</tt><tt class="py-name">urlresolvers</tt> <tt class="py-keyword">import</tt> <tt class="py-name">reverse_lazy</tt> </tt>
 <a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
@@ -88,7 +87,7 @@ aps.aplicaciones.proyectos.models" class="py-name" href="#" onclick="return docl
 <a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
 <a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-comment"># Create your views here.</tt> </tt>
 <a name="adminFases"></a><div id="adminFases-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="adminFases-toggle" onclick="return toggle('adminFases');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.fases.views.adminFases-class.html">adminFases</a><tt class="py-op">(</tt><tt class="py-base-class">TemplateView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="adminFases-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="adminFases-expanded"><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt id="link-11" class="py-name" targets="Variable aps.aplicaciones.fases.views.adminFases.template_name=aps.aplicaciones.fases.views.adminFases-class.html#template_name,Variable aps.aplicaciones.fases.views.crearFaseEnProyecto.template_name=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#template_name,Variable aps.aplicaciones.fases.views.eliminarFase.template_name=aps.aplicaciones.fases.views.eliminarFase-class.html#template_name,Variable aps.aplicaciones.fases.views.listarFases.template_name=aps.aplicaciones.fases.views.listarFases-class.html#template_name,Variable aps.aplicaciones.fases.views.modificarFases.template_name=aps.aplicaciones.fases.views.modificarFases-class.html#template_name,Variable aps.aplicaciones.inicio.views.ActualizarPassView.template_name=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#template_name,Variable aps.aplicaciones.inicio.views.CrearGrupo.template_name=aps.aplicaciones.inicio.views.CrearGrupo-class.html#template_name,Variable aps.aplicaciones.inicio.views.Registrarse.template_name=aps.aplicaciones.inicio.views.Registrarse-class.html#template_name,Variable aps.aplicaciones.inicio.views.UpdateUser.template_name=aps.aplicaciones.inicio.views.UpdateUser-class.html#template_name,Variable aps.aplicaciones.inicio.views.adminGrupos.template_name=aps.aplicaciones.inicio.views.adminGrupos-class.html#template_name,Variable aps.aplicaciones.inicio.views.asignarGrupo.template_name=aps.aplicaciones.inicio.views.asignarGrupo-class.html#template_name,Variable aps.aplicaciones.inicio.views.eliminarGrupo.template_name=aps.aplicaciones.inicio.views.eliminarGrupo-class.html#template_name,Variable aps.aplicaciones.inicio.views.eliminarUser.template_name=aps.aplicaciones.inicio.views.eliminarUser-class.html#template_name,Variable aps.aplicaciones.inicio.views.error.template_name=aps.aplicaciones.inicio.views.error-class.html#template_name,Variable aps.aplicaciones.inicio.views.errorPermiso.template_name=aps.aplicaciones.inicio.views.errorPermiso-class.html#template_name,Variable aps.aplicaciones.inicio.views.home.template_name=aps.aplicaciones.inicio.views.home-class.html#template_name,Variable aps.aplicaciones.inicio.views.listarGrupos.template_name=aps.aplicaciones.inicio.views.listarGrupos-class.html#template_name,Variable aps.aplicaciones.inicio.views.listarUsuarios.template_name=aps.aplicaciones.inicio.views.listarUsuarios-class.html#template_name,Variable aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name=aps.aplicaciones.inicio.views.listarUsuariosDeGrupo-class.html#template_name,Variable aps.aplicaciones.items.views.adminItems.template_name=aps.aplicaciones.items.views.adminItems-class.html#template_name,Variable aps.aplicaciones.items.views.crearItem.template_name=aps.aplicaciones.items.views.crearItem-class.html#template_name,Variable aps.aplicaciones.items.views.crearItemEnFase.template_name=aps.aplicaciones.items.views.crearItemEnFase-class.html#template_name,Variable aps.aplicaciones.items.views.eliminarItems.template_name=aps.aplicaciones.items.views.eliminarItems-class.html#template_name,Variable aps.aplicaciones.items.views.listarItems.template_name=aps.aplicaciones.items.views.listarItems-class.html#template_name,Variable aps.aplicaciones.items.views.listarItemsEliminados.template_name=aps.aplicaciones.items.views.listarItemsEliminados-class.html#template_name,Variable aps.aplicaciones.items.views.modificarItems.template_name=aps.aplicaciones.items.views.modificarItems-class.html#template_name,Variable aps.aplicaciones.permisos.views.admin.template_name=aps.aplicaciones.permisos.views.admin-class.html#template_name,Variable aps.aplicaciones.permisos.views.crear.template_name=aps.aplicaciones.permisos.views.crear-class.html#template_name,Variable aps.aplicaciones.permisos.views.eliminar.template_name=aps.aplicaciones.permisos.views.eliminar-class.html#template_name,Variable aps.aplicaciones.permisos.views.listar.template_name=aps.aplicaciones.permisos.views.listar-class.html#template_name,Variable aps.aplicaciones.permisos.views.listarGrupos.template_name=aps.aplicaciones.permisos.views.listarGrupos-class.html#template_name"><a title="aps.aplicaciones.fases.views.adminFases.template_name
+</div><div id="adminFases-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="adminFases-expanded"><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt id="link-11" class="py-name" targets="Variable aps.aplicaciones.fases.views.adminFases.template_name=aps.aplicaciones.fases.views.adminFases-class.html#template_name,Variable aps.aplicaciones.fases.views.crearFaseEnProyecto.template_name=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#template_name,Variable aps.aplicaciones.fases.views.eliminarFase.template_name=aps.aplicaciones.fases.views.eliminarFase-class.html#template_name,Variable aps.aplicaciones.fases.views.listarFases.template_name=aps.aplicaciones.fases.views.listarFases-class.html#template_name,Variable aps.aplicaciones.fases.views.modificarFases.template_name=aps.aplicaciones.fases.views.modificarFases-class.html#template_name,Variable aps.aplicaciones.inicio.views.ActualizarPassView.template_name=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#template_name,Variable aps.aplicaciones.inicio.views.CrearGrupo.template_name=aps.aplicaciones.inicio.views.CrearGrupo-class.html#template_name,Variable aps.aplicaciones.inicio.views.Registrarse.template_name=aps.aplicaciones.inicio.views.Registrarse-class.html#template_name,Variable aps.aplicaciones.inicio.views.UpdateUser.template_name=aps.aplicaciones.inicio.views.UpdateUser-class.html#template_name,Variable aps.aplicaciones.inicio.views.adminGrupos.template_name=aps.aplicaciones.inicio.views.adminGrupos-class.html#template_name,Variable aps.aplicaciones.inicio.views.asignarGrupo.template_name=aps.aplicaciones.inicio.views.asignarGrupo-class.html#template_name,Variable aps.aplicaciones.inicio.views.eliminarGrupo.template_name=aps.aplicaciones.inicio.views.eliminarGrupo-class.html#template_name,Variable aps.aplicaciones.inicio.views.eliminarUser.template_name=aps.aplicaciones.inicio.views.eliminarUser-class.html#template_name,Variable aps.aplicaciones.inicio.views.error.template_name=aps.aplicaciones.inicio.views.error-class.html#template_name,Variable aps.aplicaciones.inicio.views.errorPermiso.template_name=aps.aplicaciones.inicio.views.errorPermiso-class.html#template_name,Variable aps.aplicaciones.inicio.views.home.template_name=aps.aplicaciones.inicio.views.home-class.html#template_name,Variable aps.aplicaciones.inicio.views.listarGrupos.template_name=aps.aplicaciones.inicio.views.listarGrupos-class.html#template_name,Variable aps.aplicaciones.inicio.views.listarUsuarios.template_name=aps.aplicaciones.inicio.views.listarUsuarios-class.html#template_name,Variable aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name=aps.aplicaciones.inicio.views.listarUsuariosDeGrupo-class.html#template_name,Variable aps.aplicaciones.permisos.views.admin.template_name=aps.aplicaciones.permisos.views.admin-class.html#template_name,Variable aps.aplicaciones.permisos.views.crear.template_name=aps.aplicaciones.permisos.views.crear-class.html#template_name,Variable aps.aplicaciones.permisos.views.eliminar.template_name=aps.aplicaciones.permisos.views.eliminar-class.html#template_name,Variable aps.aplicaciones.permisos.views.listar.template_name=aps.aplicaciones.permisos.views.listar-class.html#template_name,Variable aps.aplicaciones.permisos.views.listarGrupos.template_name=aps.aplicaciones.permisos.views.listarGrupos-class.html#template_name"><a title="aps.aplicaciones.fases.views.adminFases.template_name
 aps.aplicaciones.fases.views.crearFaseEnProyecto.template_name
 aps.aplicaciones.fases.views.eliminarFase.template_name
 aps.aplicaciones.fases.views.listarFases.template_name
@@ -107,13 +106,6 @@ aps.aplicaciones.inicio.views.home.template_name
 aps.aplicaciones.inicio.views.listarGrupos.template_name
 aps.aplicaciones.inicio.views.listarUsuarios.template_name
 aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name
-aps.aplicaciones.items.views.adminItems.template_name
-aps.aplicaciones.items.views.crearItem.template_name
-aps.aplicaciones.items.views.crearItemEnFase.template_name
-aps.aplicaciones.items.views.eliminarItems.template_name
-aps.aplicaciones.items.views.listarItems.template_name
-aps.aplicaciones.items.views.listarItemsEliminados.template_name
-aps.aplicaciones.items.views.modificarItems.template_name
 aps.aplicaciones.permisos.views.admin.template_name
 aps.aplicaciones.permisos.views.crear.template_name
 aps.aplicaciones.permisos.views.eliminar.template_name
@@ -121,7 +113,7 @@ aps.aplicaciones.permisos.views.listar.template_name
 aps.aplicaciones.permisos.views.listarGrupos.template_name" class="py-name" href="#" onclick="return doclink('link-11', 'template_name', 'link-11');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'fases/admin.html'</tt> </tt>
 </div><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
 <a name="crearFaseEnProyecto"></a><div id="crearFaseEnProyecto-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="crearFaseEnProyecto-toggle" onclick="return toggle('crearFaseEnProyecto');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html">crearFaseEnProyecto</a><tt class="py-op">(</tt><tt class="py-base-class">CreateView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="crearFaseEnProyecto-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="crearFaseEnProyecto-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt id="link-12" class="py-name" targets="Variable aps.aplicaciones.fases.views.crearFaseEnProyecto.model=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#model,Variable aps.aplicaciones.fases.views.listarFases.model=aps.aplicaciones.fases.views.listarFases-class.html#model,Variable aps.aplicaciones.fases.views.modificarFases.model=aps.aplicaciones.fases.views.modificarFases-class.html#model,Variable aps.aplicaciones.inicio.views.CrearGrupo.model=aps.aplicaciones.inicio.views.CrearGrupo-class.html#model,Variable aps.aplicaciones.inicio.views.UpdateUser.model=aps.aplicaciones.inicio.views.UpdateUser-class.html#model,Variable aps.aplicaciones.inicio.views.eliminarGrupo.model=aps.aplicaciones.inicio.views.eliminarGrupo-class.html#model,Variable aps.aplicaciones.inicio.views.listarGrupos.model=aps.aplicaciones.inicio.views.listarGrupos-class.html#model,Variable aps.aplicaciones.inicio.views.listarUsuarios.model=aps.aplicaciones.inicio.views.listarUsuarios-class.html#model,Variable aps.aplicaciones.items.views.crearItem.model=aps.aplicaciones.items.views.crearItem-class.html#model,Variable aps.aplicaciones.items.views.crearItemEnFase.model=aps.aplicaciones.items.views.crearItemEnFase-class.html#model,Variable aps.aplicaciones.items.views.listarItems.model=aps.aplicaciones.items.views.listarItems-class.html#model,Variable aps.aplicaciones.items.views.listarItemsEliminados.model=aps.aplicaciones.items.views.listarItemsEliminados-class.html#model,Variable aps.aplicaciones.items.views.modificarItems.model=aps.aplicaciones.items.views.modificarItems-class.html#model,Variable aps.aplicaciones.permisos.views.crear.model=aps.aplicaciones.permisos.views.crear-class.html#model,Variable aps.aplicaciones.permisos.views.eliminar.model=aps.aplicaciones.permisos.views.eliminar-class.html#model,Variable aps.aplicaciones.permisos.views.listar.model=aps.aplicaciones.permisos.views.listar-class.html#model,Variable aps.aplicaciones.permisos.views.listarGrupos.model=aps.aplicaciones.permisos.views.listarGrupos-class.html#model,Variable django.contrib.auth.forms.UserCreationForm.Meta.model=django.contrib.auth.forms.UserCreationForm.Meta-class.html#model"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto.model
+</div><div id="crearFaseEnProyecto-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="crearFaseEnProyecto-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt id="link-12" class="py-name" targets="Variable aps.aplicaciones.fases.views.crearFaseEnProyecto.model=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#model,Variable aps.aplicaciones.fases.views.listarFases.model=aps.aplicaciones.fases.views.listarFases-class.html#model,Variable aps.aplicaciones.fases.views.modificarFases.model=aps.aplicaciones.fases.views.modificarFases-class.html#model,Variable aps.aplicaciones.inicio.views.CrearGrupo.model=aps.aplicaciones.inicio.views.CrearGrupo-class.html#model,Variable aps.aplicaciones.inicio.views.UpdateUser.model=aps.aplicaciones.inicio.views.UpdateUser-class.html#model,Variable aps.aplicaciones.inicio.views.eliminarGrupo.model=aps.aplicaciones.inicio.views.eliminarGrupo-class.html#model,Variable aps.aplicaciones.inicio.views.listarGrupos.model=aps.aplicaciones.inicio.views.listarGrupos-class.html#model,Variable aps.aplicaciones.inicio.views.listarUsuarios.model=aps.aplicaciones.inicio.views.listarUsuarios-class.html#model,Variable aps.aplicaciones.permisos.views.crear.model=aps.aplicaciones.permisos.views.crear-class.html#model,Variable aps.aplicaciones.permisos.views.eliminar.model=aps.aplicaciones.permisos.views.eliminar-class.html#model,Variable aps.aplicaciones.permisos.views.listar.model=aps.aplicaciones.permisos.views.listar-class.html#model,Variable aps.aplicaciones.permisos.views.listarGrupos.model=aps.aplicaciones.permisos.views.listarGrupos-class.html#model,Variable django.contrib.auth.forms.UserCreationForm.Meta.model=django.contrib.auth.forms.UserCreationForm.Meta-class.html#model"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto.model
 aps.aplicaciones.fases.views.listarFases.model
 aps.aplicaciones.fases.views.modificarFases.model
 aps.aplicaciones.inicio.views.CrearGrupo.model
@@ -129,11 +121,6 @@ aps.aplicaciones.inicio.views.UpdateUser.model
 aps.aplicaciones.inicio.views.eliminarGrupo.model
 aps.aplicaciones.inicio.views.listarGrupos.model
 aps.aplicaciones.inicio.views.listarUsuarios.model
-aps.aplicaciones.items.views.crearItem.model
-aps.aplicaciones.items.views.crearItemEnFase.model
-aps.aplicaciones.items.views.listarItems.model
-aps.aplicaciones.items.views.listarItemsEliminados.model
-aps.aplicaciones.items.views.modificarItems.model
 aps.aplicaciones.permisos.views.crear.model
 aps.aplicaciones.permisos.views.eliminar.model
 aps.aplicaciones.permisos.views.listar.model
@@ -159,19 +146,12 @@ aps.aplicaciones.inicio.views.home.template_name
 aps.aplicaciones.inicio.views.listarGrupos.template_name
 aps.aplicaciones.inicio.views.listarUsuarios.template_name
 aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name
-aps.aplicaciones.items.views.adminItems.template_name
-aps.aplicaciones.items.views.crearItem.template_name
-aps.aplicaciones.items.views.crearItemEnFase.template_name
-aps.aplicaciones.items.views.eliminarItems.template_name
-aps.aplicaciones.items.views.listarItems.template_name
-aps.aplicaciones.items.views.listarItemsEliminados.template_name
-aps.aplicaciones.items.views.modificarItems.template_name
 aps.aplicaciones.permisos.views.admin.template_name
 aps.aplicaciones.permisos.views.crear.template_name
 aps.aplicaciones.permisos.views.eliminar.template_name
 aps.aplicaciones.permisos.views.listar.template_name
 aps.aplicaciones.permisos.views.listarGrupos.template_name" class="py-name" href="#" onclick="return doclink('link-14', 'template_name', 'link-11');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'fases/crear.html'</tt> </tt>
-<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt id="link-15" class="py-name" targets="Variable aps.aplicaciones.fases.views.crearFaseEnProyecto.success_url=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#success_url,Variable aps.aplicaciones.fases.views.eliminarFase.success_url=aps.aplicaciones.fases.views.eliminarFase-class.html#success_url,Variable aps.aplicaciones.fases.views.modificarFases.success_url=aps.aplicaciones.fases.views.modificarFases-class.html#success_url,Variable aps.aplicaciones.inicio.views.ActualizarPassView.success_url=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#success_url,Variable aps.aplicaciones.inicio.views.CrearGrupo.success_url=aps.aplicaciones.inicio.views.CrearGrupo-class.html#success_url,Variable aps.aplicaciones.inicio.views.Registrarse.success_url=aps.aplicaciones.inicio.views.Registrarse-class.html#success_url,Variable aps.aplicaciones.inicio.views.UpdateUser.success_url=aps.aplicaciones.inicio.views.UpdateUser-class.html#success_url,Variable aps.aplicaciones.inicio.views.eliminarGrupo.success_url=aps.aplicaciones.inicio.views.eliminarGrupo-class.html#success_url,Variable aps.aplicaciones.inicio.views.eliminarUser.success_url=aps.aplicaciones.inicio.views.eliminarUser-class.html#success_url,Variable aps.aplicaciones.items.views.crearItem.success_url=aps.aplicaciones.items.views.crearItem-class.html#success_url,Variable aps.aplicaciones.items.views.crearItemEnFase.success_url=aps.aplicaciones.items.views.crearItemEnFase-class.html#success_url,Variable aps.aplicaciones.items.views.eliminarItems.success_url=aps.aplicaciones.items.views.eliminarItems-class.html#success_url,Variable aps.aplicaciones.items.views.modificarItems.success_url=aps.aplicaciones.items.views.modificarItems-class.html#success_url,Variable aps.aplicaciones.permisos.views.crear.success_url=aps.aplicaciones.permisos.views.crear-class.html#success_url,Variable aps.aplicaciones.permisos.views.eliminar.success_url=aps.aplicaciones.permisos.views.eliminar-class.html#success_url"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto.success_url
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt id="link-15" class="py-name" targets="Variable aps.aplicaciones.fases.views.crearFaseEnProyecto.success_url=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#success_url,Variable aps.aplicaciones.fases.views.eliminarFase.success_url=aps.aplicaciones.fases.views.eliminarFase-class.html#success_url,Variable aps.aplicaciones.fases.views.modificarFases.success_url=aps.aplicaciones.fases.views.modificarFases-class.html#success_url,Variable aps.aplicaciones.inicio.views.ActualizarPassView.success_url=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#success_url,Variable aps.aplicaciones.inicio.views.CrearGrupo.success_url=aps.aplicaciones.inicio.views.CrearGrupo-class.html#success_url,Variable aps.aplicaciones.inicio.views.Registrarse.success_url=aps.aplicaciones.inicio.views.Registrarse-class.html#success_url,Variable aps.aplicaciones.inicio.views.UpdateUser.success_url=aps.aplicaciones.inicio.views.UpdateUser-class.html#success_url,Variable aps.aplicaciones.inicio.views.eliminarGrupo.success_url=aps.aplicaciones.inicio.views.eliminarGrupo-class.html#success_url,Variable aps.aplicaciones.inicio.views.eliminarUser.success_url=aps.aplicaciones.inicio.views.eliminarUser-class.html#success_url,Variable aps.aplicaciones.permisos.views.crear.success_url=aps.aplicaciones.permisos.views.crear-class.html#success_url,Variable aps.aplicaciones.permisos.views.eliminar.success_url=aps.aplicaciones.permisos.views.eliminar-class.html#success_url"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto.success_url
 aps.aplicaciones.fases.views.eliminarFase.success_url
 aps.aplicaciones.fases.views.modificarFases.success_url
 aps.aplicaciones.inicio.views.ActualizarPassView.success_url
@@ -180,20 +160,13 @@ aps.aplicaciones.inicio.views.Registrarse.success_url
 aps.aplicaciones.inicio.views.UpdateUser.success_url
 aps.aplicaciones.inicio.views.eliminarGrupo.success_url
 aps.aplicaciones.inicio.views.eliminarUser.success_url
-aps.aplicaciones.items.views.crearItem.success_url
-aps.aplicaciones.items.views.crearItemEnFase.success_url
-aps.aplicaciones.items.views.eliminarItems.success_url
-aps.aplicaciones.items.views.modificarItems.success_url
 aps.aplicaciones.permisos.views.crear.success_url
 aps.aplicaciones.permisos.views.eliminar.success_url" class="py-name" href="#" onclick="return doclink('link-15', 'success_url', 'link-15');">success_url</a></tt> <tt class="py-op">=</tt> <tt class="py-name">reverse_lazy</tt><tt class="py-op">(</tt><tt class="py-string">"listar_proyectos"</tt><tt class="py-op">)</tt> </tt>
-<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt id="link-16" class="py-name" targets="Variable aps.aplicaciones.fases.views.crearFaseEnProyecto.fields=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#fields,Variable aps.aplicaciones.fases.views.modificarFases.fields=aps.aplicaciones.fases.views.modificarFases-class.html#fields,Variable aps.aplicaciones.inicio.views.CrearGrupo.fields=aps.aplicaciones.inicio.views.CrearGrupo-class.html#fields,Variable aps.aplicaciones.inicio.views.UpdateUser.fields=aps.aplicaciones.inicio.views.UpdateUser-class.html#fields,Variable aps.aplicaciones.inicio.views.asignarGrupo.fields=aps.aplicaciones.inicio.views.asignarGrupo-class.html#fields,Variable aps.aplicaciones.items.views.crearItem.fields=aps.aplicaciones.items.views.crearItem-class.html#fields,Variable aps.aplicaciones.items.views.crearItemEnFase.fields=aps.aplicaciones.items.views.crearItemEnFase-class.html#fields,Variable aps.aplicaciones.items.views.modificarItems.fields=aps.aplicaciones.items.views.modificarItems-class.html#fields,Variable django.contrib.auth.forms.UserCreationForm.Meta.fields=django.contrib.auth.forms.UserCreationForm.Meta-class.html#fields"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto.fields
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt id="link-16" class="py-name" targets="Variable aps.aplicaciones.fases.views.crearFaseEnProyecto.fields=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#fields,Variable aps.aplicaciones.fases.views.modificarFases.fields=aps.aplicaciones.fases.views.modificarFases-class.html#fields,Variable aps.aplicaciones.inicio.views.CrearGrupo.fields=aps.aplicaciones.inicio.views.CrearGrupo-class.html#fields,Variable aps.aplicaciones.inicio.views.UpdateUser.fields=aps.aplicaciones.inicio.views.UpdateUser-class.html#fields,Variable aps.aplicaciones.inicio.views.asignarGrupo.fields=aps.aplicaciones.inicio.views.asignarGrupo-class.html#fields,Variable django.contrib.auth.forms.UserCreationForm.Meta.fields=django.contrib.auth.forms.UserCreationForm.Meta-class.html#fields"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto.fields
 aps.aplicaciones.fases.views.modificarFases.fields
 aps.aplicaciones.inicio.views.CrearGrupo.fields
 aps.aplicaciones.inicio.views.UpdateUser.fields
 aps.aplicaciones.inicio.views.asignarGrupo.fields
-aps.aplicaciones.items.views.crearItem.fields
-aps.aplicaciones.items.views.crearItemEnFase.fields
-aps.aplicaciones.items.views.modificarItems.fields
 django.contrib.auth.forms.UserCreationForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-16', 'fields', 'link-16');">fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'nombre'</tt><tt class="py-op">,</tt> <tt class="py-string">'fechaInicioP'</tt><tt class="py-op">,</tt><tt class="py-string">'presupuesto'</tt><tt class="py-op">]</tt> </tt>
 <a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
 <a name="crearFaseEnProyecto.form_valid"></a><div id="crearFaseEnProyecto.form_valid-def"><a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="crearFaseEnProyecto.form_valid-toggle" onclick="return toggle('crearFaseEnProyecto.form_valid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#form_valid">form_valid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
@@ -209,21 +182,19 @@ aps.aplicaciones.proyectos.models.Miembros.proyecto" class="py-name" href="#" on
 <a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">         <tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.cantFases=aps.aplicaciones.proyectos.models.Proyectos-class.html#cantFases"><a title="aps.aplicaciones.proyectos.models.Proyectos.cantFases" class="py-name" href="#" onclick="return doclink('link-21', 'cantFases', 'link-21');">cantFases</a></tt><tt class="py-op">&gt;</tt><tt class="py-name">cant_act</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 <a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">             <tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.fechaInicio=aps.aplicaciones.proyectos.models.Proyectos-class.html#fechaInicio"><a title="aps.aplicaciones.proyectos.models.Proyectos.fechaInicio" class="py-name" href="#" onclick="return doclink('link-22', 'fechaInicio', 'link-22');">fechaInicio</a></tt><tt class="py-op">&lt;</tt><tt class="py-name">form</tt><tt class="py-op">.</tt><tt class="py-name">cleaned_data</tt><tt class="py-op">[</tt><tt class="py-string">'fechaInicioP'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 <a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">                 <tt id="link-23" class="py-name" targets="Variable aps.aplicaciones.items.models.items.fase=aps.aplicaciones.items.models.items-class.html#fase"><a title="aps.aplicaciones.items.models.items.fase" class="py-name" href="#" onclick="return doclink('link-23', 'fase', 'link-23');">fase</a></tt> <tt class="py-op">=</tt> <tt class="py-name">form</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">                 <tt id="link-24" class="py-name"><a title="aps.aplicaciones.items.models.items.fase" class="py-name" href="#" onclick="return doclink('link-24', 'fase', 'link-23');">fase</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.estado=aps.aplicaciones.fases.models.fases-class.html#estado,Variable aps.aplicaciones.items.models.items.estado=aps.aplicaciones.items.models.items-class.html#estado,Variable aps.aplicaciones.proyectos.models.Proyectos.estado=aps.aplicaciones.proyectos.models.Proyectos-class.html#estado"><a title="aps.aplicaciones.fases.models.fases.estado
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">                 <tt id="link-24" class="py-name"><a title="aps.aplicaciones.items.models.items.fase" class="py-name" href="#" onclick="return doclink('link-24', 'fase', 'link-23');">fase</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.estado=aps.aplicaciones.fases.models.fases-class.html#estado,Variable aps.aplicaciones.items.models.items.estado=aps.aplicaciones.items.models.items-class.html#estado,Variable aps.aplicaciones.items.models.relacion.estado=aps.aplicaciones.items.models.relacion-class.html#estado,Variable aps.aplicaciones.proyectos.models.Proyectos.estado=aps.aplicaciones.proyectos.models.Proyectos-class.html#estado"><a title="aps.aplicaciones.fases.models.fases.estado
 aps.aplicaciones.items.models.items.estado
+aps.aplicaciones.items.models.relacion.estado
 aps.aplicaciones.proyectos.models.Proyectos.estado" class="py-name" href="#" onclick="return doclink('link-25', 'estado', 'link-25');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'creado'</tt> </tt>
 <a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">                 <tt id="link-26" class="py-name"><a title="aps.aplicaciones.items.models.items.fase" class="py-name" href="#" onclick="return doclink('link-26', 'fase', 'link-23');">fase</a></tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="aps.aplicaciones.fases.models.fases.proyecto
 aps.aplicaciones.proyectos.models.Miembros.proyecto" class="py-name" href="#" onclick="return doclink('link-27', 'proyecto', 'link-20');">proyecto</a></tt> <tt class="py-op">=</tt> <tt class="py-name">p</tt> </tt>
 <a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">                 <tt id="link-28" class="py-name"><a title="aps.aplicaciones.items.models.items.fase" class="py-name" href="#" onclick="return doclink('link-28', 'fase', 'link-23');">fase</a></tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">                 <tt class="py-keyword">print</tt> <tt id="link-29" class="py-name"><a title="aps.aplicaciones.items.models.items.fase" class="py-name" href="#" onclick="return doclink('link-29', 'fase', 'link-23');">fase</a></tt> </tt>
-<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">                 <tt class="py-keyword">return</tt> <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-30" class="py-name" targets="Class aps.aplicaciones.fases.views.crearFaseEnProyecto=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto" class="py-name" href="#" onclick="return doclink('link-30', 'crearFaseEnProyecto', 'link-30');">crearFaseEnProyecto</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Method aps.aplicaciones.fases.views.crearFaseEnProyecto.form_valid()=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#form_valid,Method aps.aplicaciones.fases.views.eliminarFase.form_valid()=aps.aplicaciones.fases.views.eliminarFase-class.html#form_valid,Method aps.aplicaciones.inicio.views.ActualizarPassView.form_valid()=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#form_valid,Method aps.aplicaciones.inicio.views.Registrarse.form_valid()=aps.aplicaciones.inicio.views.Registrarse-class.html#form_valid,Method aps.aplicaciones.inicio.views.eliminarUser.form_valid()=aps.aplicaciones.inicio.views.eliminarUser-class.html#form_valid,Method aps.aplicaciones.items.views.crearItem.form_valid()=aps.aplicaciones.items.views.crearItem-class.html#form_valid,Method aps.aplicaciones.items.views.crearItemEnFase.form_valid()=aps.aplicaciones.items.views.crearItemEnFase-class.html#form_valid,Method aps.aplicaciones.items.views.eliminarItems.form_valid()=aps.aplicaciones.items.views.eliminarItems-class.html#form_valid,Method aps.aplicaciones.permisos.views.crear.form_valid()=aps.aplicaciones.permisos.views.crear-class.html#form_valid"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto.form_valid
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">                 <tt class="py-keyword">return</tt> <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-30" class="py-name" targets="Class aps.aplicaciones.fases.views.crearFaseEnProyecto=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto" class="py-name" href="#" onclick="return doclink('link-30', 'crearFaseEnProyecto', 'link-30');">crearFaseEnProyecto</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Method aps.aplicaciones.fases.views.crearFaseEnProyecto.form_valid()=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#form_valid,Method aps.aplicaciones.fases.views.eliminarFase.form_valid()=aps.aplicaciones.fases.views.eliminarFase-class.html#form_valid,Method aps.aplicaciones.inicio.views.ActualizarPassView.form_valid()=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#form_valid,Method aps.aplicaciones.inicio.views.Registrarse.form_valid()=aps.aplicaciones.inicio.views.Registrarse-class.html#form_valid,Method aps.aplicaciones.inicio.views.eliminarUser.form_valid()=aps.aplicaciones.inicio.views.eliminarUser-class.html#form_valid,Method aps.aplicaciones.permisos.views.crear.form_valid()=aps.aplicaciones.permisos.views.crear-class.html#form_valid"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto.form_valid
 aps.aplicaciones.fases.views.eliminarFase.form_valid
 aps.aplicaciones.inicio.views.ActualizarPassView.form_valid
 aps.aplicaciones.inicio.views.Registrarse.form_valid
 aps.aplicaciones.inicio.views.eliminarUser.form_valid
-aps.aplicaciones.items.views.crearItem.form_valid
-aps.aplicaciones.items.views.crearItemEnFase.form_valid
-aps.aplicaciones.items.views.eliminarItems.form_valid
 aps.aplicaciones.permisos.views.crear.form_valid" class="py-name" href="#" onclick="return doclink('link-31', 'form_valid', 'link-31');">form_valid</a></tt><tt class="py-op">(</tt><tt class="py-name">form</tt><tt class="py-op">)</tt> </tt>
 <a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">             <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
 <a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">                 <tt class="py-keyword">return</tt> <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-32" class="py-name"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto" class="py-name" href="#" onclick="return doclink('link-32', 'crearFaseEnProyecto', 'link-30');">crearFaseEnProyecto</a></tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">form_invalid</tt><tt class="py-op">(</tt><tt class="py-name">form</tt><tt class="py-op">)</tt> </tt>
@@ -239,11 +210,6 @@ aps.aplicaciones.inicio.views.UpdateUser.model
 aps.aplicaciones.inicio.views.eliminarGrupo.model
 aps.aplicaciones.inicio.views.listarGrupos.model
 aps.aplicaciones.inicio.views.listarUsuarios.model
-aps.aplicaciones.items.views.crearItem.model
-aps.aplicaciones.items.views.crearItemEnFase.model
-aps.aplicaciones.items.views.listarItems.model
-aps.aplicaciones.items.views.listarItemsEliminados.model
-aps.aplicaciones.items.views.modificarItems.model
 aps.aplicaciones.permisos.views.crear.model
 aps.aplicaciones.permisos.views.eliminar.model
 aps.aplicaciones.permisos.views.listar.model
@@ -269,23 +235,14 @@ aps.aplicaciones.inicio.views.home.template_name
 aps.aplicaciones.inicio.views.listarGrupos.template_name
 aps.aplicaciones.inicio.views.listarUsuarios.template_name
 aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name
-aps.aplicaciones.items.views.adminItems.template_name
-aps.aplicaciones.items.views.crearItem.template_name
-aps.aplicaciones.items.views.crearItemEnFase.template_name
-aps.aplicaciones.items.views.eliminarItems.template_name
-aps.aplicaciones.items.views.listarItems.template_name
-aps.aplicaciones.items.views.listarItemsEliminados.template_name
-aps.aplicaciones.items.views.modificarItems.template_name
 aps.aplicaciones.permisos.views.admin.template_name
 aps.aplicaciones.permisos.views.crear.template_name
 aps.aplicaciones.permisos.views.eliminar.template_name
 aps.aplicaciones.permisos.views.listar.template_name
 aps.aplicaciones.permisos.views.listarGrupos.template_name" class="py-name" href="#" onclick="return doclink('link-35', 'template_name', 'link-11');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'fases/listar.html'</tt> </tt>
-<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">    <tt id="link-36" class="py-name" targets="Variable aps.aplicaciones.fases.views.listarFases.context_object_name=aps.aplicaciones.fases.views.listarFases-class.html#context_object_name,Variable aps.aplicaciones.inicio.views.listarGrupos.context_object_name=aps.aplicaciones.inicio.views.listarGrupos-class.html#context_object_name,Variable aps.aplicaciones.inicio.views.listarUsuarios.context_object_name=aps.aplicaciones.inicio.views.listarUsuarios-class.html#context_object_name,Variable aps.aplicaciones.items.views.listarItems.context_object_name=aps.aplicaciones.items.views.listarItems-class.html#context_object_name,Variable aps.aplicaciones.items.views.listarItemsEliminados.context_object_name=aps.aplicaciones.items.views.listarItemsEliminados-class.html#context_object_name,Variable aps.aplicaciones.permisos.views.listar.context_object_name=aps.aplicaciones.permisos.views.listar-class.html#context_object_name,Variable aps.aplicaciones.permisos.views.listarGrupos.context_object_name=aps.aplicaciones.permisos.views.listarGrupos-class.html#context_object_name"><a title="aps.aplicaciones.fases.views.listarFases.context_object_name
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">    <tt id="link-36" class="py-name" targets="Variable aps.aplicaciones.fases.views.listarFases.context_object_name=aps.aplicaciones.fases.views.listarFases-class.html#context_object_name,Variable aps.aplicaciones.inicio.views.listarGrupos.context_object_name=aps.aplicaciones.inicio.views.listarGrupos-class.html#context_object_name,Variable aps.aplicaciones.inicio.views.listarUsuarios.context_object_name=aps.aplicaciones.inicio.views.listarUsuarios-class.html#context_object_name,Variable aps.aplicaciones.permisos.views.listar.context_object_name=aps.aplicaciones.permisos.views.listar-class.html#context_object_name,Variable aps.aplicaciones.permisos.views.listarGrupos.context_object_name=aps.aplicaciones.permisos.views.listarGrupos-class.html#context_object_name"><a title="aps.aplicaciones.fases.views.listarFases.context_object_name
 aps.aplicaciones.inicio.views.listarGrupos.context_object_name
 aps.aplicaciones.inicio.views.listarUsuarios.context_object_name
-aps.aplicaciones.items.views.listarItems.context_object_name
-aps.aplicaciones.items.views.listarItemsEliminados.context_object_name
 aps.aplicaciones.permisos.views.listar.context_object_name
 aps.aplicaciones.permisos.views.listarGrupos.context_object_name" class="py-name" href="#" onclick="return doclink('link-36', 'context_object_name', 'link-36');">context_object_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'fases'</tt> </tt>
 </div><a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"> </tt>
@@ -299,11 +256,6 @@ aps.aplicaciones.inicio.views.UpdateUser.model
 aps.aplicaciones.inicio.views.eliminarGrupo.model
 aps.aplicaciones.inicio.views.listarGrupos.model
 aps.aplicaciones.inicio.views.listarUsuarios.model
-aps.aplicaciones.items.views.crearItem.model
-aps.aplicaciones.items.views.crearItemEnFase.model
-aps.aplicaciones.items.views.listarItems.model
-aps.aplicaciones.items.views.listarItemsEliminados.model
-aps.aplicaciones.items.views.modificarItems.model
 aps.aplicaciones.permisos.views.crear.model
 aps.aplicaciones.permisos.views.eliminar.model
 aps.aplicaciones.permisos.views.listar.model
@@ -315,9 +267,6 @@ aps.aplicaciones.fases.views.modificarFases.fields
 aps.aplicaciones.inicio.views.CrearGrupo.fields
 aps.aplicaciones.inicio.views.UpdateUser.fields
 aps.aplicaciones.inicio.views.asignarGrupo.fields
-aps.aplicaciones.items.views.crearItem.fields
-aps.aplicaciones.items.views.crearItemEnFase.fields
-aps.aplicaciones.items.views.modificarItems.fields
 django.contrib.auth.forms.UserCreationForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-39', 'fields', 'link-16');">fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'nombre'</tt><tt class="py-op">,</tt> <tt class="py-string">'presupuesto'</tt><tt class="py-op">]</tt>     <tt class="py-comment"># Permite modificar solo el campo 'nombre'</tt> </tt>
 <a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">    <tt id="link-40" class="py-name"><a title="aps.aplicaciones.fases.views.adminFases.template_name
 aps.aplicaciones.fases.views.crearFaseEnProyecto.template_name
@@ -338,13 +287,6 @@ aps.aplicaciones.inicio.views.home.template_name
 aps.aplicaciones.inicio.views.listarGrupos.template_name
 aps.aplicaciones.inicio.views.listarUsuarios.template_name
 aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name
-aps.aplicaciones.items.views.adminItems.template_name
-aps.aplicaciones.items.views.crearItem.template_name
-aps.aplicaciones.items.views.crearItemEnFase.template_name
-aps.aplicaciones.items.views.eliminarItems.template_name
-aps.aplicaciones.items.views.listarItems.template_name
-aps.aplicaciones.items.views.listarItemsEliminados.template_name
-aps.aplicaciones.items.views.modificarItems.template_name
 aps.aplicaciones.permisos.views.admin.template_name
 aps.aplicaciones.permisos.views.crear.template_name
 aps.aplicaciones.permisos.views.eliminar.template_name
@@ -359,10 +301,6 @@ aps.aplicaciones.inicio.views.Registrarse.success_url
 aps.aplicaciones.inicio.views.UpdateUser.success_url
 aps.aplicaciones.inicio.views.eliminarGrupo.success_url
 aps.aplicaciones.inicio.views.eliminarUser.success_url
-aps.aplicaciones.items.views.crearItem.success_url
-aps.aplicaciones.items.views.crearItemEnFase.success_url
-aps.aplicaciones.items.views.eliminarItems.success_url
-aps.aplicaciones.items.views.modificarItems.success_url
 aps.aplicaciones.permisos.views.crear.success_url
 aps.aplicaciones.permisos.views.eliminar.success_url" class="py-name" href="#" onclick="return doclink('link-41', 'success_url', 'link-15');">success_url</a></tt> <tt class="py-op">=</tt> <tt class="py-name">reverse_lazy</tt><tt class="py-op">(</tt><tt class="py-string">'listar_proyectos'</tt><tt class="py-op">)</tt>      <tt class="py-comment"># Se mostrara la vista 'listar_proyectos' en el caso de modificacion exitosa</tt> </tt>
 <a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"> </tt>
@@ -376,11 +314,10 @@ aps.aplicaciones.permisos.views.permisos_grupos_ajax.get" class="py-name" href="
 </div></div><a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"> </tt>
 <a name="eliminarFase"></a><div id="eliminarFase-def"><a name="L57"></a><tt class="py-lineno">57</tt> <a class="py-toggle" href="#" id="eliminarFase-toggle" onclick="return toggle('eliminarFase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.fases.views.eliminarFase-class.html">eliminarFase</a><tt class="py-op">(</tt><tt class="py-base-class">FormView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="eliminarFase-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="eliminarFase-expanded"><a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">    <tt class="py-docstring">""" Vista de eliminacion de fases, hereda atributos y metodos de la clase FormView """</tt> </tt>
-<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">    <tt id="link-44" class="py-name" targets="Variable aps.aplicaciones.fases.views.eliminarFase.form_class=aps.aplicaciones.fases.views.eliminarFase-class.html#form_class,Variable aps.aplicaciones.inicio.views.ActualizarPassView.form_class=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#form_class,Variable aps.aplicaciones.inicio.views.Registrarse.form_class=aps.aplicaciones.inicio.views.Registrarse-class.html#form_class,Variable aps.aplicaciones.inicio.views.eliminarUser.form_class=aps.aplicaciones.inicio.views.eliminarUser-class.html#form_class,Variable aps.aplicaciones.items.views.eliminarItems.form_class=aps.aplicaciones.items.views.eliminarItems-class.html#form_class"><a title="aps.aplicaciones.fases.views.eliminarFase.form_class
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">    <tt id="link-44" class="py-name" targets="Variable aps.aplicaciones.fases.views.eliminarFase.form_class=aps.aplicaciones.fases.views.eliminarFase-class.html#form_class,Variable aps.aplicaciones.inicio.views.ActualizarPassView.form_class=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#form_class,Variable aps.aplicaciones.inicio.views.Registrarse.form_class=aps.aplicaciones.inicio.views.Registrarse-class.html#form_class,Variable aps.aplicaciones.inicio.views.eliminarUser.form_class=aps.aplicaciones.inicio.views.eliminarUser-class.html#form_class"><a title="aps.aplicaciones.fases.views.eliminarFase.form_class
 aps.aplicaciones.inicio.views.ActualizarPassView.form_class
 aps.aplicaciones.inicio.views.Registrarse.form_class
-aps.aplicaciones.inicio.views.eliminarUser.form_class
-aps.aplicaciones.items.views.eliminarItems.form_class" class="py-name" href="#" onclick="return doclink('link-44', 'form_class', 'link-44');">form_class</a></tt> <tt class="py-op">=</tt> <tt id="link-45" class="py-name"><a title="aps.aplicaciones.fases.forms.ComentariosLog
+aps.aplicaciones.inicio.views.eliminarUser.form_class" class="py-name" href="#" onclick="return doclink('link-44', 'form_class', 'link-44');">form_class</a></tt> <tt class="py-op">=</tt> <tt id="link-45" class="py-name"><a title="aps.aplicaciones.fases.forms.ComentariosLog
 aps.aplicaciones.inicio.forms.ComentariosLog
 aps.aplicaciones.items.forms.ComentariosLog
 aps.aplicaciones.proyectos.forms.ComentariosLog" class="py-name" href="#" onclick="return doclink('link-45', 'ComentariosLog', 'link-6');">ComentariosLog</a></tt> </tt>
@@ -403,13 +340,6 @@ aps.aplicaciones.inicio.views.home.template_name
 aps.aplicaciones.inicio.views.listarGrupos.template_name
 aps.aplicaciones.inicio.views.listarUsuarios.template_name
 aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name
-aps.aplicaciones.items.views.adminItems.template_name
-aps.aplicaciones.items.views.crearItem.template_name
-aps.aplicaciones.items.views.crearItemEnFase.template_name
-aps.aplicaciones.items.views.eliminarItems.template_name
-aps.aplicaciones.items.views.listarItems.template_name
-aps.aplicaciones.items.views.listarItemsEliminados.template_name
-aps.aplicaciones.items.views.modificarItems.template_name
 aps.aplicaciones.permisos.views.admin.template_name
 aps.aplicaciones.permisos.views.crear.template_name
 aps.aplicaciones.permisos.views.eliminar.template_name
@@ -424,10 +354,6 @@ aps.aplicaciones.inicio.views.Registrarse.success_url
 aps.aplicaciones.inicio.views.UpdateUser.success_url
 aps.aplicaciones.inicio.views.eliminarGrupo.success_url
 aps.aplicaciones.inicio.views.eliminarUser.success_url
-aps.aplicaciones.items.views.crearItem.success_url
-aps.aplicaciones.items.views.crearItemEnFase.success_url
-aps.aplicaciones.items.views.eliminarItems.success_url
-aps.aplicaciones.items.views.modificarItems.success_url
 aps.aplicaciones.permisos.views.crear.success_url
 aps.aplicaciones.permisos.views.eliminar.success_url" class="py-name" href="#" onclick="return doclink('link-47', 'success_url', 'link-15');">success_url</a></tt> <tt class="py-op">=</tt> <tt class="py-name">reverse_lazy</tt><tt class="py-op">(</tt><tt class="py-string">'listar_proyectos'</tt><tt class="py-op">)</tt>      <tt class="py-comment"># Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa</tt> </tt>
 <a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"> </tt>
@@ -439,6 +365,7 @@ aps.aplicaciones.permisos.views.permisos_ajax.get
 aps.aplicaciones.permisos.views.permisos_grupos_ajax.get" class="py-name" href="#" onclick="return doclink('link-50', 'get', 'link-18');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">kwargs</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
 <a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt id="link-51" class="py-name"><a title="aps.aplicaciones.items.models.items.fase" class="py-name" href="#" onclick="return doclink('link-51', 'fase', 'link-23');">fase</a></tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="aps.aplicaciones.fases.models.fases.estado
 aps.aplicaciones.items.models.items.estado
+aps.aplicaciones.items.models.relacion.estado
 aps.aplicaciones.proyectos.models.Proyectos.estado" class="py-name" href="#" onclick="return doclink('link-52', 'estado', 'link-25');">estado</a></tt><tt class="py-op">=</tt><tt class="py-string">'eliminado'</tt> </tt>
 <a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">        <tt id="link-53" class="py-name"><a title="aps.aplicaciones.items.models.items.fase" class="py-name" href="#" onclick="return doclink('link-53', 'fase', 'link-23');">fase</a></tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-54" class="py-name" targets="Class aps.aplicaciones.fases.views.eliminarFase=aps.aplicaciones.fases.views.eliminarFase-class.html"><a title="aps.aplicaciones.fases.views.eliminarFase" class="py-name" href="#" onclick="return doclink('link-54', 'eliminarFase', 'link-54');">eliminarFase</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name"><a title="aps.aplicaciones.fases.views.crearFaseEnProyecto.form_valid
@@ -446,9 +373,6 @@ aps.aplicaciones.fases.views.eliminarFase.form_valid
 aps.aplicaciones.inicio.views.ActualizarPassView.form_valid
 aps.aplicaciones.inicio.views.Registrarse.form_valid
 aps.aplicaciones.inicio.views.eliminarUser.form_valid
-aps.aplicaciones.items.views.crearItem.form_valid
-aps.aplicaciones.items.views.crearItemEnFase.form_valid
-aps.aplicaciones.items.views.eliminarItems.form_valid
 aps.aplicaciones.permisos.views.crear.form_valid" class="py-name" href="#" onclick="return doclink('link-55', 'form_valid', 'link-31');">form_valid</a></tt><tt class="py-op">(</tt><tt class="py-name">form</tt><tt class="py-op">)</tt> </tt>
 </div></div><a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
@@ -483,7 +407,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon May  5 18:23:32 2014
+    Generated by Epydoc 3.0.1 on Fri May 16 22:18:28 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
