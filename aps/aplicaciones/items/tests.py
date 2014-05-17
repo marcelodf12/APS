@@ -281,7 +281,7 @@ class TestCrearAtributo(unittest.TestCase):
 
             #Creacion de un item para instanciar el atributo
             itemRegistrado = items()
-            itemRegistrado.pk = 4
+            itemRegistrado.pk = 5
             itemRegistrado.nombre = "item Registrado"
             itemRegistrado.fase = faseRegistrada
             itemRegistrado.versionAct = 1
@@ -296,7 +296,7 @@ class TestCrearAtributo(unittest.TestCase):
         b = self.cliente.login(username='fulano Login4', password='123')
 
         # Peticion POST para agregar un atributo al item con id=4
-        response = self.cliente.post("/items/atributos/agregar/4",data={'nombre':'atributo de prueba',
+        response = self.cliente.post("/items/atributos/agregar/5",data={'nombre':'atributo de prueba',
                                                                         'descripcion':'creacion atributo de prueba'
                                                                 })
 
@@ -383,21 +383,18 @@ class TestModificarAtributo(unittest.TestCase):
         b = self.cliente.login(username='fulano Login10', password='123')
 
         # Peticion POST para modificar el atributo del item con id=10
-        response = self.cliente.post("/items/atributos/modificar/10",data={'nombre':'atributo modificado',
-                                              'descripcion':'modificacion de atributo de prueba'
-                                         })
+        response = self.cliente.post("/items/atributos/modificar/10",data={'descripcion':'modificacion de atributo de prueba'})
 
-        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
         #Se consulta por el atributo cuyos datos han sido modificados
-        consultaInstancia = atributo.objects.get ( nombre = "atributo modificado",
-                                                   descripcion = "modificacion de atributo de prueba",
+        consultaInstancia = atributo.objects.get (descripcion = "modificacion de atributo de prueba",
                                                    version = 2
                                                  )
 
-        #print "\nNombre del Atributo modificado: ", consultaInstancia.nombre                    # Nombre del atributo modificado
-        #print "Descripcion del Atributo modificado: ", consultaInstancia.descripcion            # Descripcion del atributo modificado
-        #print "Version del Atributo modificado: ", consultaInstancia.descripcion                # Version del atributo modificado
+        #print "\nNombre del Atributo modificado: ", consultaInstancia.nombre                # Nombre del atributo modificado
+        #print "Descripcion del Atributo modificado: ", consultaInstancia.descripcion        # Descripcion del atributo modificado
+        #print "Version del Atributo modificado: ", consultaInstancia.version                # Version del atributo modificado
 
         self.assertNotEquals(consultaInstancia, None)
 
@@ -469,7 +466,7 @@ class TestModificarAtributo(unittest.TestCase):
 #         b = self.cliente.login(username='fulano Login11', password='123')
 #
 #         # Peticion POST para eliminar el atributo del item con id=11
-#         response = self.cliente.post("",data={'nombre':'atributo de prueba',
+#         response = self.cliente.post("/items/atributos/eliminar/",data={'nombre':'atributo de prueba',
 #                                               'descripcion':'creacion atributo de prueba'
 #                                               })
 #
@@ -705,6 +702,7 @@ class Reversionar(unittest.TestCase):
             #Creacion de una fase para instanciar un item
             faseRegistrada = fases()
             faseRegistrada.nombre = "fase Registrada"
+            faseRegistrada.proyecto = proyectoRegistrado
             faseRegistrada.versionAct = 1
             faseRegistrada.complejidad = 10
             faseRegistrada.cantItems = 6
@@ -727,9 +725,9 @@ class Reversionar(unittest.TestCase):
 
             #Creacion de un atributo
             atributoRegistrado = atributo()
-            atributoRegistrado.pk = 2
+            atributoRegistrado.pk = 9
             atributoRegistrado.nombre = "atributo Registrado"
-            atributoRegistrado.descripcion = "dsecripcion 1"
+            atributoRegistrado.descripcion = "descripcion 1"
             atributoRegistrado.version = 1
             atributoRegistrado.item = itemRegistrado
             atributoRegistrado.save()
@@ -741,30 +739,39 @@ class Reversionar(unittest.TestCase):
         b = self.cliente.login(username='fulano Login7', password='123')
 
         # NO SE TIENE OPCION PARA MODIFICAR ATRIBUTO AUN
+        consultaInstancia = atributo.objects.get(item_id=7)
+        print consultaInstancia.pk
 
-        # Peticion POST para modificar el atributo con id=2
-        response = self.cliente.post("/items/atributos/modificar/2",data={'nombre':'atributo modificado',
+        # Peticion POST para modificar el atributo con id=9
+        response = self.cliente.post("/items/atributos/modificar/9",data={'nombre':'atributo modificado',
                                             'descripcion':'modificacion atributo de prueba'
                                             })
-
+        consultaInstancia = atributo.objects.get(version=2)
+        print consultaInstancia.pk
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
         #Peticion POST para reversionar el item con id=7
-        #MISMA SITUACION HAY QUE SELECCIONAR DE UN COMBOBOX
-        #response = self.cliente.post("/items/reversionar/4", data={'nombre':'atributo modificado',
-                                            #'descripcion':'modificacion atributo de prueba'
-                                            #})
+        response = self.cliente.post("/items/reversionar/", data={'idItem':'7',
+                                            'version':'1'
+                                            })
 
-        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'reversionar'
 
-        #Se consulta si el item volvio a su version anterior, la version 1
-        #consultaInstancia = atributo.objects.get(id=2, version=2)
+        #Se consulta si el item volvio a su version anterior, la version 1 (en realidad queda con una version 3, el item)
+        consultaInstancia = items.objects.get(id=7, versionAct=3)
+        consultaInstancia2 = atributo.objects.get(descripcion="descripcion 1", version=3)
 
 
-        #print "\nItem Hijo: ", consultaInstancia.itemHijo_id                    # ID del item hijo
-        #print "\nItem Padre: ", consultaInstancia.itemPadre_id                  # ID del item padre
+        #print "\nId del item: ", consultaInstancia.id                       # Id del item
+        #print "Nombre: ", consultaInstancia.nombre                          # Descripcion del item
+        #print "Version actual: ", consultaInstancia.versionAct              # Estado del item
+        #
+        #print "\nId del atributo: ", consultaInstancia2.id                   # Id del atributo
+        #print "Nombre: ", consultaInstancia2.nombre                          # Nombre del atributo
+        #print "Descripcion: ", consultaInstancia2.descripcion                # Descripcion del atributo
 
-        #self.assertNotEquals(consultaInstancia, None)
+        self.assertNotEquals(consultaInstancia, None)           # Se verifica la modificacion de version del item
+        self.assertNotEquals(consultaInstancia2, None)          # Se verifica los cambios de reversion del atributo
 
 
 
