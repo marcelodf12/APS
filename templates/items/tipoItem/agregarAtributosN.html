@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+      Agregar Atributo
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+     <form method="post" action="/items/tipoItem/add/">{% csrf_token %}
+         {% for i in range %}
+                <label data-name="a{{i}}">Atributo {{i}}</label>
+                <input type="text" name="a{{i}}"><br>
+         {% endfor %}
+         <input type="hidden" value="{{cantidad}}" name="cantidad">
+         <input type="hidden" value="{{id}}" name="id">
+         <input type="submit" value="Agregar">
+     </form>
+ {% endblock %}

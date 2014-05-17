@@ -27,7 +27,18 @@ urlpatterns = patterns('',
     url(r'^atributos/listar/(?P<id>\d+)$', mostrarDetalles.as_view(), name='detalles_Item'),
     url(r'^atributos/listar/(?P<id>\d+)/(?P<idV>\d+)$', mostrarDetallesV.as_view(), name='detalles_Item'),
     url(r'^atributos/listarVersiones/(?P<id>\d+)$', listarVersiones.as_view(), name='listar_versiones'),
+    url(r'^atributos/modificar/(?P<id>\d+)$', modificarAtributo.as_view(), name='modificar_atributo'),
+
     url(r'^reversionar/(?P<id>\d+)$', ReversionVersiones.as_view()),
     url(r'^reversionar/$', reversionar.as_view()),
     url(r'^tipoItem/crear/$', crearTipoItem.as_view(), name='crearTipoItem'),
+    #url(r'^$', .as_view(), name=''),
+    url(r'^tipoItem/add/$', agregarAtributoAlTipoItem.as_view()),
+    url(r'^tipoItem/addAtrib/$', formularioAgregarAtributoAlTipoItem.as_view()),
+    url(r'^tipoItem/definir/$', definirCantidadAtributos.as_view()),
+    url(r'^tipoItem/mostrar/(?P<id>\d+)$', verAtributosTipoItems.as_view()),
+    url(r'^tipoItem/listar/$', verTipoItems.as_view(), name='listar_tipoitem'),
+    url(r'^tipoItem/modificar/(?P<id>\d+)$', modificarAtributoDeTipoItem.as_view(), name=''),
+    url(r'^tipoItem/eliminar/(?P<id>\d+)$', eliminarTipoItem.as_view()),
+
 )

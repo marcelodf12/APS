@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+      Agregar Atributo
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+     <form method="post" action="/items/tipoItem/addAtrib/">{% csrf_token %}
+         <label data-name="id">Lista de Atributos</label>
+         <select name="id">
+             {% for t in tipos %}
+                <option value="{{t.id}}">{{t.nombre}}</option>
+             {% endfor %}
+         </select><br>
+         <label data-name="cantidad">Cantidad de Atributos</label>
+         <br><input type="text" name="cantidad">
+         <br><input type="submit" value="Agregar">
+         <br>
+     </form>
+ {% endblock %}

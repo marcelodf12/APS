@@ -44,7 +44,7 @@ class atributo(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=512)
     version = models.IntegerField(default='0')
-    item = models.ForeignKey(items, null='true')
+    item = models.ForeignKey(items, null='true', default='')
 
 class tipoItem(models.Model):
     """

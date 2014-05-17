@@ -9,6 +9,8 @@ from .models import *
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
+import pickle
+
 
 # Create your views here.
 class adminItems(TemplateView):
@@ -148,6 +150,8 @@ class agregarAtributo(CreateView):
         item.save()
         return super(agregarAtributo, self).form_valid(form)
 
+
+
 class mostrarDetalles(TemplateView):
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
@@ -159,6 +163,31 @@ class mostrarDetallesV(TemplateView):
         item = items.objects.get(id=kwargs['id'])
         atributos = atributo.objects.filter(item=item, version=kwargs['idV']).order_by('pk')
         return render(self.request, 'items/listarOtrasVersiones.html',{'item':item, 'atributos':atributos, 'version':kwargs['idV']})
+
+class modificarAtributo(UpdateView):
+    model = atributo
+    template_name = 'items/updateAtributo.html'
+    fields = ['nombre','descripcion']
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = atributo.objects.get(id=self.kwargs['id'])
+        return obj
+
+    def form_valid(self, form):
+        a=form.save()
+        item = a.item
+        atrib = atributo.objects.filter(item=item, version=item.versionAct).exclude(nombre=a.nombre).order_by('pk')
+        versionNueva = item.versionAct + 1
+        for i in atrib:
+            nuevo = atributo(nombre=i.nombre, descripcion=i.descripcion, item=item, version=versionNueva)
+            nuevo.save()
+        a.version = versionNueva
+        item.versionAct = versionNueva
+        a.save()
+        item.save()
+        url = '/items/atributos/listar/'+str(item.id)
+        return HttpResponseRedirect(url)
+
 
 class listarVersiones(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -188,6 +217,76 @@ class reversionar(TemplateView):
 class crearTipoItem(CreateView):
     model = tipoItem
     fields = ['nombre']
-    success_url = reverse_lazy('inicio')
+    success_url = reverse_lazy('home')
     template_name = 'items/tipoItem/crear.html'
+    def form_valid(self, form):
+        ti = form.save()
+        ti.atributos = pickle.dumps([])
+        ti.save()
+        return super(crearTipoItem, self).form_valid(form)
 
+class agregarAtributoAlTipoItem(TemplateView):
+    def post(self, request, *args, **kwargs):
+        ti=tipoItem.objects.get(id=request.POST['id'])
+        listaAtributos = pickle.loads(ti.atributos)
+        for n in range(1, int(request.POST['cantidad'])+1):
+            listaAtributos.append(request.POST['a' + str(n)])
+        ti.atributos= pickle.dumps(listaAtributos)
+        ti.save()
+        return HttpResponseRedirect('/inicio/')
+
+class definirCantidadAtributos(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request,'items/tipoItem/agregarAtributo.html',{'tipos':tipoItem.objects.order_by('nombre')})
+
+class formularioAgregarAtributoAlTipoItem(TemplateView):
+    def post(self, request, *args, **kwargs):
+        ti=tipoItem.objects.get(id=request.POST['id'])
+        cant=int(request.POST['cantidad'])
+        return render(request,'items/tipoItem/agregarAtributosN.html',{'id':ti.id,'range':range(1,cant+1),'cantidad':cant})
+
+class verAtributosTipoItems(TemplateView):
+    def get(self, request, *args, **kwargs):
+        ti = tipoItem.objects.get(id=kwargs['id'])
+        listaAt = pickle.loads(ti.atributos)
+        return render(request, 'items/tipoItem/mostrar.html', {'atributos':listaAt, 'tipo':ti})
+
+class verTipoItems(ListView):
+    model = tipoItem
+    context_object_name = 'tipos'
+    template_name = 'items/tipoItem/listar.html'
+
+class modificarAtributoDeTipoItem(TemplateView):
+    def get(self, request, *args, **kwargs):
+        ti=tipoItem.objects.get(id=kwargs['id'])
+        listati = pickle.loads(ti.atributos)
+        listaTupla = []
+        c = 0
+        for l in listati:
+            listaTupla.append((c,l))
+            c+=1
+        print listaTupla
+        return render(request, 'items/tipoItem/modificar.html', {'tipo':ti,'lista':listaTupla})
+
+    def post(self, request, *args, **kwargs):
+        id=request.POST['id']
+        ti=tipoItem.objects.get(id=id)
+        listati = pickle.loads(ti.atributos)
+        listaN = []
+        c = 0
+        for l in listati:
+            listaN.append(request.POST[str(c)])
+            c+=1
+        ti.atributos = pickle.dumps(listaN)
+        ti.save()
+        url = '/items/tipoItem/mostrar/' + str(id)
+        return HttpResponseRedirect(url)
+
+class eliminarTipoItem(DeleteView):
+    model = tipoItem
+    template_name = 'items/tipoItem/delete.html'
+    success_url = reverse_lazy('listar_tipoitem')
+    def get_object(self, queryset=None):
+        """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
+        obj = tipoItem.objects.get(id=self.kwargs['id'])
+        return obj
