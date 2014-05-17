@@ -189,6 +189,19 @@ class modificarAtributo(UpdateView):
         url = '/items/atributos/listar/'+str(item.id)
         return HttpResponseRedirect(url)
 
+class eliminarAtributo(TemplateView):
+    def get(self, request, *args, **kwargs):
+        a = atributo.objects.get(id=kwargs['id'])
+        item=a.item
+        atributos = atributo.objects.filter(item=item, version=item.versionAct).exclude(id=a.id).order_by('pk')
+        versionNueva = item.versionAct + 1
+        for i in atributos:
+            nuevo = atributo(nombre=i.nombre, descripcion=i.descripcion, item=item, version=versionNueva)
+            nuevo.save()
+        item.versionAct = versionNueva
+        item.save()
+        url = '/items/atributos/listar/' + str(item.id)
+        return HttpResponseRedirect(url)
 
 class listarVersiones(TemplateView):
     def get(self, request, *args, **kwargs):

@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^atributos/listar/(?P<id>\d+)/(?P<idV>\d+)$', mostrarDetallesV.as_view(), name='detalles_Item'),
     url(r'^atributos/listarVersiones/(?P<id>\d+)$', listarVersiones.as_view(), name='listar_versiones'),
     url(r'^atributos/modificar/(?P<id>\d+)$', modificarAtributo.as_view(), name='modificar_atributo'),
+    url(r'^atributos/eliminar/(?P<id>\d+)$', eliminarAtributo.as_view(), name='eliminar_atributo'),
 
     url(r'^reversionar/(?P<id>\d+)$', ReversionVersiones.as_view()),
     url(r'^reversionar/$', reversionar.as_view()),
