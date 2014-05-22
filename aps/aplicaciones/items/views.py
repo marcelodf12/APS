@@ -33,20 +33,37 @@ class crearItem(CreateView):
         item.save()
         return super(crearItem, self).form_valid(form)
 
-class crearItemEnFase(CreateView):
-    model = items
-    template_name = 'items/crear.html'
-    success_url = reverse_lazy('listar_proyectos')
-    fields = ['nombre', 'complejidad', 'costo']
+class crearItemEnFase(TemplateView):
+    def get(self, request, *args, **kwargs):
+        faseAct = fases.objects.get(id=kwargs['id'])
+        listaItems=items.objects.filter(fase=faseAct)
+        if(faseAct.orden>1):
+            proyecto = faseAct.proyecto
+            faseAnt = fases.objects.get(proyecto=proyecto, orden=faseAct.orden-1)
+            listaItems=(items.objects.filter(fase=faseAct) | items.objects.filter(fase=faseAnt))
+        return render(request, 'items/crear.html', {'listaItems':listaItems})
 
-    def form_valid(self, form):
+    def post(self, request, *args, **kwargs):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         f= fases.objects.get(id=self.kwargs['id'])
-        item=form.save()        # Se guardan los datos del formulario en 'item'????????
+        item=items(\
+            nombre=request.POST['nombre'],\
+            complejidad=request.POST['complejidad'],\
+            costo=request.POST['costo']\
+        )
         item.versionAct = 1     # Se define un valor predeterminado para la version del item
         item.estado = 'creado'
         item.fase = f
-        item.save()
+        padre=request.POST['padre']
+        if(int(padre)>0):
+            item.save()
+            itemPadre = items.objects.get(id=padre)
+            NuevaRelacion = relacion(itemHijo=item, itemPadre=itemPadre, estado=True)
+            NuevaRelacion.save()
+        elif(f.orden==1):
+            item.save()
+        else:
+            return render(request, 'error/general.html', {'mensaje':'No puede crear un item en esta fase sin asignarle un padre'})
         return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
 
 class listarItems(ListView):
