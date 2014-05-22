@@ -2,6 +2,7 @@ from django.views.generic import TemplateView, CreateView, ListView, UpdateView,
 from django.core.urlresolvers import reverse_lazy
 
 from .models import fases
+from aps.aplicaciones.items.models import items
 from aps.aplicaciones.proyectos.forms import ComentariosLog
 from aps.aplicaciones.proyectos.models import Proyectos
 from django.shortcuts import render
@@ -64,6 +65,7 @@ class eliminarFase(FormView):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         fase = fases.objects.get(id=self.kwargs['id'])
         fase.estado='eliminado'
+        print fase.estado
         fase.save()
         return super(eliminarFase, self).form_valid(form)
 
@@ -72,12 +74,17 @@ class finalizarFase(TemplateView):
     #queryset = fases.objects.filter(estado='finalizada')    # Se usa un filtro para mostrar las fases con estado 'finalizada'
     template_name = 'fases/listar.html'
     context_object_name = 'fases'
-    success_url = reverse_lazy('listar_fases')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
+    success_url = reverse_lazy('listar_fases')      # Se mostrara la vista 'listar_fases' en el caso de eliminacion exitosa
 
     def form_valid(self, form):
-        #id_fase = request.GET['id']
-        #fase = fases.objects.get(id=id_fase)
+        """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         fase = fases.objects.get(id=self.kwargs['id'])
+        item=items.objects.filter(fase=fase)
+        for i in item:
+            if(i.estado != 'finalizado'):
+                print 'Hay un item no finalizado'
+                return render(self.request, 'error/general.html', {'mensaje':'La Fase posee un item no finalizado'})
+        print 'Todos los items estan finalizados'
         fase.estado = 'finalizada'
         fase.save()
         return super(finalizarFase, self).form_valid(form)
