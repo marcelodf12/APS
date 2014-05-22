@@ -69,11 +69,10 @@ class eliminarFase(FormView):
         fase.save()
         return super(eliminarFase, self).form_valid(form)
 
-class finalizarFase(TemplateView):
-    model = fases
+class finalizarFase(FormView):
+    form_class = ComentariosLog
     #queryset = fases.objects.filter(estado='finalizada')    # Se usa un filtro para mostrar las fases con estado 'finalizada'
-    template_name = 'fases/listar.html'
-    context_object_name = 'fases'
+    template_name = 'fases/finalizar.html'
     success_url = reverse_lazy('listar_fases')      # Se mostrara la vista 'listar_fases' en el caso de eliminacion exitosa
 
     def form_valid(self, form):

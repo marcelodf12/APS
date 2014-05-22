@@ -404,12 +404,11 @@ class importar(TemplateView):
         return HttpResponseRedirect(url)
 
 
-class finalizarItem(TemplateView):
-    model = fases
-    #queryset = items.objects.filter(estado='finalizada')    # Se usa un filtro para mostrar los items con estado 'finalizado'
-    template_name = 'items/listar.html'
-    context_object_name = 'items'
-    success_url = reverse_lazy('listar_items')      # Se mostrara la vista 'listar_items' en el caso de eliminacion exitosa
+class finalizarItem(FormView):
+    form_class = ComentariosLog
+    queryset = items.objects.filter(estado='finalizado')    # Se usa un filtro para mostrar los items con estado 'finalizado'
+    template_name = 'items/finalizar.html'
+    success_url = reverse_lazy('listar_item')      # Se mostrara la vista 'listar_items' en el caso de eliminacion exitosa
 
     def form_valid(self, form):
         #id_fase = request.GET['id']
