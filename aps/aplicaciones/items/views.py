@@ -402,3 +402,35 @@ class importar(TemplateView):
             nuevo.save()
         url = '/items/atributos/listar/'+str(item.id)
         return HttpResponseRedirect(url)
+
+class graficar(TemplateView):
+    def get(self, request, *args, **kwargs):
+        cadena = 'digraph A {\n'
+        proyecto = Proyectos.objects.get(id=kwargs['id'])
+        listaFases = fases.objects.filter(proyecto=proyecto)
+        c = 0
+        for fase in listaFases:
+            cadena += '\tsubgraph cluster' + str(c) + '{\n'
+            c+=1
+            cadena += '\tnode [style=filled,color=black];\n'
+            cadena += '\tcolor=lightgrey;\n'
+            listaitems = items.objects.filter(fase=fase)
+            for item in listaitems:
+                cadena += '\t\t' + str(item.id) + ' [style=bold,label="'+ item.nombre + '"];\n'
+            cadena += '\t\tlabel="'+fase.nombre+'";\n'
+            cadena += '\t}\n'
+        listaRelaciones = relacion.objects.filter(itemHijo__fase__proyecto=proyecto)
+        for r in listaRelaciones:
+            cadena += '\t' + str(r.itemPadre.id) + '->' + str(r.itemHijo.id) + ';\n'
+        cadena += '}'
+        import os
+        archivo = 'diagrama'+ str(proyecto.id)
+        url = '../static/images/' + archivo + '.dot'
+        diagrama = open(url,'w')
+        diagrama.write(cadena)
+        diagrama.close()
+        comando = 'cd ../static/images/;dot -Tpng ' + archivo +'.dot -o '+archivo+'.png'
+        os.system(comando)
+        comando = 'cd ../static/images/;rm ' + archivo + '.dot'
+        os.system(comando)
+        return render(request,'relaciones/graficar.html', {'proyecto': proyecto.nombre, 'archivo':archivo})
