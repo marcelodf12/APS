@@ -72,11 +72,12 @@ class finalizarFase(TemplateView):
     #queryset = fases.objects.filter(estado='finalizada')    # Se usa un filtro para mostrar las fases con estado 'finalizada'
     template_name = 'fases/listar.html'
     context_object_name = 'fases'
+    success_url = reverse_lazy('listar_fases')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
 
     def form_valid(self, form):
         #id_fase = request.GET['id']
-        fase = fases.objects.get(id=self.kwargs['id'])
         #fase = fases.objects.get(id=id_fase)
+        fase = fases.objects.get(id=self.kwargs['id'])
         fase.estado = 'finalizada'
         fase.save()
         return super(finalizarFase, self).form_valid(form)

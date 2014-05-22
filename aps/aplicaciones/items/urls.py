@@ -5,7 +5,11 @@
 from django.conf.urls import patterns, url
 from django.contrib import admin
 
-from .views import adminItems, crearItem, crearItemEnFase, listarItems, listarItemsEliminados, modificarItems, eliminarItems, listarItemParaCrearRelacion, crearRelacion, listarRelaciones, eliminarRelacion, agregarAtributo, mostrarDetalles, mostrarDetallesV, modificarAtributo, eliminarAtributo, listarVersiones, ReversionVersiones, reversionar, crearTipoItem, agregarAtributoAlTipoItem, definirCantidadAtributos, formularioAgregarAtributoAlTipoItem, verAtributosTipoItems, verTipoItems, modificarAtributoDeTipoItem, eliminarTipoItem, importar
+from .views import adminItems, crearItem, crearItemEnFase, listarItems, listarItemsEliminados, modificarItems, eliminarItems, \
+    listarItemParaCrearRelacion, crearRelacion, listarRelaciones, eliminarRelacion, agregarAtributo, mostrarDetalles, mostrarDetallesV, \
+    modificarAtributo, eliminarAtributo, listarVersiones, ReversionVersiones, reversionar, crearTipoItem, agregarAtributoAlTipoItem, \
+    definirCantidadAtributos, formularioAgregarAtributoAlTipoItem, verAtributosTipoItems, verTipoItems, modificarAtributoDeTipoItem, \
+    eliminarTipoItem, importar, finalizarItem
 
 
 admin.autodiscover()
@@ -42,5 +46,6 @@ urlpatterns = patterns('',
     url(r'^tipoItem/listar/$', verTipoItems.as_view(), name='listar_tipoitem'),
     url(r'^tipoItem/modificar/(?P<id>\d+)$', modificarAtributoDeTipoItem.as_view(), name=''),
     url(r'^tipoItem/eliminar/(?P<id>\d+)$', eliminarTipoItem.as_view()),
+    url(r'^finalizar/(?P<id>\d+)$', finalizarItem.as_view()),
 
 )
