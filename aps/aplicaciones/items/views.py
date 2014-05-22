@@ -425,12 +425,12 @@ class graficar(TemplateView):
         cadena += '}'
         import os
         archivo = 'diagrama'+ str(proyecto.id)
-        url = '../static/images/' + archivo + '.dot'
+        url = '../media/' + archivo + '.dot'
         diagrama = open(url,'w')
         diagrama.write(cadena)
         diagrama.close()
-        comando = 'cd ../static/images/;dot -Tpng ' + archivo +'.dot -o '+archivo+'.png'
+        comando = 'cd ../media/;dot -Tpng ' + archivo +'.dot -o '+archivo+'.png'
         os.system(comando)
-        comando = 'cd ../static/images/;rm ' + archivo + '.dot'
+        comando = 'cd ../media/;rm ' + archivo + '.dot'
         os.system(comando)
         return render(request,'relaciones/graficar.html', {'proyecto': proyecto.nombre, 'archivo':archivo})
