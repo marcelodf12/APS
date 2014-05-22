@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, HttpResponseRedirect
 
 from .models import items, atributo, relacion, tipoItem
+from aps.aplicaciones.lineasBase.models import relacionItemLineaBase
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
@@ -46,7 +47,7 @@ class crearItemEnFase(CreateView):
         item.estado = 'creado'
         item.fase = f
         item.save()
-        return super(crearItemEnFase, self).form_valid(form)
+        return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
 
 class listarItems(ListView):
     """ Vista de listado de items, hereda atributos y metodos de la clase ListView """
@@ -131,7 +132,7 @@ class listarRelaciones(TemplateView):
     def get(self, request, *args, **kwargs):
         queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id'])
         proyecto = Proyectos.objects.get(id=kwargs['id'])
-        return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre})
+        return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre, 'idProyecto':proyecto.id})
 
 class eliminarRelacion(DeleteView):
     """
@@ -184,7 +185,12 @@ class mostrarDetalles(TemplateView):
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
         atributos = atributo.objects.filter(item=item, version=item.versionAct).order_by('pk')
-        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos})
+        listaItems = relacionItemLineaBase.objects.filter(item=item)
+        if listaItems:
+            tieneHijos=True
+        else:
+            tieneHijos=False
+        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos,'tieneHijos':tieneHijos})
 
 class mostrarDetallesV(TemplateView):
     """
@@ -400,8 +406,7 @@ class importar(TemplateView):
         for l in listaTipos:
             nuevo = atributo(nombre=l,descripcion='',version=1,item=item)
             nuevo.save()
-        url = '/items/atributos/listar/'+str(item.id)
-        return HttpResponseRedirect(url)
+        return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
 
 class graficar(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -433,4 +438,4 @@ class graficar(TemplateView):
         os.system(comando)
         comando = 'cd ../media/;rm ' + archivo + '.dot'
         os.system(comando)
-        return render(request,'relaciones/graficar.html', {'proyecto': proyecto.nombre, 'archivo':archivo})
+        return render(request,'relaciones/graficar.html', {'proyecto': proyecto.nombre, 'archivo':archivo, 'idProyecto':proyecto.id})

@@ -27,7 +27,7 @@ class relacion(models.Model):
     """
     Este es el Modelo que define la relacion entre dos items
     """
-    itemHijo = models.ForeignKey(items, null='True', related_name='hijo')
+    itemHijo = models.OneToOneField(items, null='True', related_name='hijo')
     itemPadre = models.ForeignKey(items, null='True', related_name='padre')
     estado = models.BooleanField()
 

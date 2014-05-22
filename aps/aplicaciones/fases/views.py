@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 from .models import fases
 from aps.aplicaciones.proyectos.forms import ComentariosLog
 from aps.aplicaciones.proyectos.models import Proyectos
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 
 
 
@@ -47,12 +47,19 @@ class modificarFases(UpdateView):
     model = fases
     fields = ['nombre', 'presupuesto']     # Permite modificar solo el campo 'nombre'
     template_name = 'fases/update.html'
-    success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyectos' en el caso de modificacion exitosa
 
     def get_object(self, queryset=None):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = fases.objects.get(id=self.kwargs['id'])
+        self.fase = obj
         return obj
+
+    def form_valid(self, form):
+        self.fase.nombre = form.cleaned_data['nombre']
+        self.fase.presupuesto = form.cleaned_data['presupuesto']
+        self.fase.save()
+        return HttpResponseRedirect('/proyectos/detalles/'+str(self.fase.proyecto.id))
+
 
 class eliminarFase(FormView):
     """ Vista de eliminacion de fases, hereda atributos y metodos de la clase FormView """
