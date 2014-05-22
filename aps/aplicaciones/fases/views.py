@@ -64,16 +64,15 @@ class eliminarFase(FormView):
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         fase = fases.objects.get(id=self.kwargs['id'])
-        fase.estado='eliminado'
+        #fase.estado='eliminado'
         print fase.estado
         fase.save()
         return super(eliminarFase, self).form_valid(form)
 
 class finalizarFase(FormView):
     form_class = ComentariosLog
-    #queryset = fases.objects.filter(estado='finalizada')    # Se usa un filtro para mostrar las fases con estado 'finalizada'
     template_name = 'fases/finalizar.html'
-    success_url = reverse_lazy('listar_fasesFinalizadas')      # Se mostrara la vista 'listar_fases' en el caso de eliminacion exitosa
+    success_url = reverse_lazy('listar_fasesFinalizadas')      # Se mostrara la vista 'listar_fasesFinalizadas' en el caso de eliminacion exitosa
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
