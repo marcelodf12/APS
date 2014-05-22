@@ -2,7 +2,7 @@ from django.views.generic import TemplateView, CreateView, ListView, UpdateView,
 from django.core.urlresolvers import reverse_lazy
 
 from .models import fases
-from aps.aplicaciones.items.models import items
+from aps.aplicaciones.items.models import items, relacion
 from aps.aplicaciones.proyectos.forms import ComentariosLog
 from aps.aplicaciones.proyectos.models import Proyectos
 from django.shortcuts import render
@@ -80,8 +80,16 @@ class finalizarFase(FormView):
         item=items.objects.filter(fase=fase)
         for i in item:
             if(i.estado != 'finalizada'):
-                #print 'Hay un fase no finalizada'
-                return render(self.request, 'error/general.html', {'mensaje':'Se ha encontrado una fase no finalizada'})
+                #print 'Hay un item no finalizado'
+                return render(self.request, 'error/general.html', {'mensaje':'Se ha encontrado un item no finalizado'})
+            #else:
+                #se verifica que no sea la primera fase (orden)
+                #if(fase.orden != 1):
+                    #se verifica si tiene relacion antecesor
+                    #se busca en la tabla items_relacion un registro con el id del item
+                    #itemAntecesor = relacion.objects.get(itemHijo_id=i.id)
+                    #if(itemAntecesor != None):
+                    #    print 'Tiene Antecesor'
         #print 'Todos las fases estan finalizadas'
         fase.estado = 'finalizada'
         fase.save()

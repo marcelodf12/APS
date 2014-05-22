@@ -415,6 +415,12 @@ class finalizarItem(FormView):
         item.save()
         return super(finalizarItem, self).form_valid(form)
 
+    #si es el primer item de la primera fase
+            #se valida
+    #else
+            #si tiene un padre o un antecesor
+    #que no este aislado
+
 class listarItemsFinalizados(ListView):
     """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
     model = items
