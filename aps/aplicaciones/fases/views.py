@@ -73,17 +73,23 @@ class finalizarFase(FormView):
     form_class = ComentariosLog
     #queryset = fases.objects.filter(estado='finalizada')    # Se usa un filtro para mostrar las fases con estado 'finalizada'
     template_name = 'fases/finalizar.html'
-    success_url = reverse_lazy('listar_fases')      # Se mostrara la vista 'listar_fases' en el caso de eliminacion exitosa
+    success_url = reverse_lazy('listar_fasesFinalizadas')      # Se mostrara la vista 'listar_fases' en el caso de eliminacion exitosa
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         fase = fases.objects.get(id=self.kwargs['id'])
         item=items.objects.filter(fase=fase)
         for i in item:
-            if(i.estado != 'finalizado'):
-                print 'Hay un item no finalizado'
-                return render(self.request, 'error/general.html', {'mensaje':'La Fase posee un item no finalizado'})
-        print 'Todos los items estan finalizados'
+            if(i.estado != 'finalizada'):
+                #print 'Hay un fase no finalizada'
+                return render(self.request, 'error/general.html', {'mensaje':'Se ha encontrado una fase no finalizada'})
+        #print 'Todos las fases estan finalizadas'
         fase.estado = 'finalizada'
         fase.save()
         return super(finalizarFase, self).form_valid(form)
+
+class listarFasesFinalizadas(ListView):
+    """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
+    model = fases
+    template_name = 'fases/listarFinalizadas.html'  #no carga este template
+    context_object_name = 'fases'

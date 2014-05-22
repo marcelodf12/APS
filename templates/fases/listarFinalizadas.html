@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+      Lista de Fases Finalizadas
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+
+{% endblock %}
+
+{% block contenido %}
+     <h1>Lista de Fases Finalizadas</h1>
+      {% for f in fases %}
+          {% if f.estado == 'finalizada' %}
+                <h2>{{f.nombre}}</h2>
+                <ul>
+                    <li><b>Estado</b> {{f.estado}}</li>
+                    <li><b>Complejidad</b> {{f.complejidad}}</li>
+                    <li><b>Version Actual</b> {{f.versionAct}}</li>
+                </ul>
+                <br><br>
+          {% endif %}
+      {% endfor %}
+{% endblock %}

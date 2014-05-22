@@ -406,14 +406,17 @@ class importar(TemplateView):
 
 class finalizarItem(FormView):
     form_class = ComentariosLog
-    queryset = items.objects.filter(estado='finalizado')    # Se usa un filtro para mostrar los items con estado 'finalizado'
     template_name = 'items/finalizar.html'
-    success_url = reverse_lazy('listar_item')      # Se mostrara la vista 'listar_items' en el caso de eliminacion exitosa
+    success_url = reverse_lazy('listar_itemsFinalizados')      # Se mostrara la vista 'listar_items' en el caso de eliminacion exitosa
 
     def form_valid(self, form):
-        #id_fase = request.GET['id']
-        #fase = fases.objects.get(id=id_fase)
         item = items.objects.get(id=self.kwargs['id'])
         item.estado = 'finalizado'
         item.save()
         return super(finalizarItem, self).form_valid(form)
+
+class listarItemsFinalizados(ListView):
+    """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
+    model = items
+    template_name = 'items/listarFinalizados.html'  #no carga este template
+    context_object_name = 'items'
