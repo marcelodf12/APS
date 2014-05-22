@@ -66,3 +66,14 @@ class eliminarFase(FormView):
         fase.estado='eliminado'
         fase.save()
         return super(eliminarFase, self).form_valid(form)
+
+class finalizarFase(TemplateView):
+    model = fases
+    queryset = fases.objects.filter(estado='finalizada')    # Se usa un filtro para mostrar las fases con estado 'finalizada'
+    template_name = 'fases/listar.html'
+    context_object_name = 'fases'
+
+    def get(self, request, *args, **kwargs):
+        id_fase = request.GET['id']
+        fase = fases.objects.get(id=id_fase)
+        fase.estado = 'finalizada'
