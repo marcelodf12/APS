@@ -511,7 +511,7 @@ class finalizarItem(FormView):
              relacionPadreAntecesor = relacion.objects.get(itemHijo_id=item.id)
 
              #se busca el item padre en el modelo items
-             padreAntecesor = items.objects.get(id=relacionPadreAntecesor.itemPadre_id)
+             padreAntecesor = relacionPadreAntecesor.itemPadre
              if(padreAntecesor.estado != 'finalizado'):
                 return render(self.request, 'error/general.html', {'mensaje':'El item padre aun no ha sido finalizado'})
         except:

@@ -71,7 +71,7 @@ class eliminarFase(FormView):
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         fase = fases.objects.get(id=self.kwargs['id'])
-        #fase.estado='eliminado'
+        fase.estado='eliminado'
         print fase.estado
         fase.save()
         return super(eliminarFase, self).form_valid(form)
