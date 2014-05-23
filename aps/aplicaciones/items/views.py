@@ -441,42 +441,27 @@ class finalizarItem(FormView):
         fase = fases.objects.get(id=item.fase_id)
         nroFase = fase.orden
 
-        #SE DEBE TENER UNA RELACION existente al crear el item, no puede estar aislado, ya que si se consulta
-        #por un item que no tiene una relaicon
+        padreAntecesor = None
 
         try:
-             relacionesPadreAntecesor = relacion.objects.get(itemHijo_id=item.fase_id)
-             padreAntecesor = relacionesPadreAntecesor.itemPadre_id
-        #catch:
-            #return render(self.request, 'error/general.html', {'mensaje':'El item no posee un padre (aislado)'})
+             print 'ENTRO'
+             #se busca una relacion padre-hijo o antecesor-sucesor
+             relacionPadreAntecesor = relacion.objects.get(itemHijo_id=item.id)
+             print 'Tiene relacion'
+             #se busca el item padre en el modelo items
+             padreAntecesor = items.objects.get(id=relacionPadreAntecesor.itemPadre_id)
+             print 'Tiene padre'
+             if(padreAntecesor.estado != 'finalizado'):
+                return render(self.request, 'error/general.html', {'mensaje':'El item padre aun no ha sido finalizado'})
+        except:
+             #si no se trata de la 1ra fase no puede estar aislado, informar
+             if(nroFase!=1):
+                return render(self.request, 'error/general.html', {'mensaje':'El item no es de la fase 1 y no posee un padre (aislado)'})
 
-        if(padreAntecesor.estado != 'finalizado'):
-             return render(self.request, 'error/general.html', {'mensaje':'El Padre del item no se ha finalizado'})
+        item.estado = 'finalizado'
+        item.save()
+        return super(finalizarItem, self).form_valid(form)
 
-
-        #si es el primer item de la primera fase PENDIENTE
-        # if(nroFase==1):
-        #     #se finaliza sin controles
-        #     item.estado = 'finalizado'
-        # else:
-        #     b=0
-        #     for r in relacion:
-        #         if(r.itemHijo_id == item.id):
-        #             padreAntecesor = r.itemPadre_id
-        #             b=1
-        #
-        #     #si no se encontro un padre o antecesor
-        #     if(b==0):
-        #         return render(self.request, 'error/general.html', {'mensaje':'El item no posee un padre (aislado)'})
-        #
-        #     # si el padre o antecesor no esta finalizado
-        #     if (padreAntecesor.estado != 'finalizado'):
-        #         return render(self.request, 'error/general.html', {'mensaje':'El Padre del item no se ha finalizado'})
-        #
-        #     #se finaliza el item
-        #     item.estado = 'finalizado'
-        # item.save()
-        # return super(finalizarItem, self).form_valid(form)
 
 class listarItemsFinalizados(ListView):
     """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
