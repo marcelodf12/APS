@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, HttpResponseRedirect
 
 from .models import items, atributo, relacion, tipoItem
-from aps.aplicaciones.lineasBase.models import relacionItemLineaBase
+from aps.aplicaciones.lineasBase.models import relacionItemLineaBase, lineasBase
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
@@ -433,20 +433,41 @@ class graficar(TemplateView):
         proyecto = Proyectos.objects.get(id=kwargs['id'])
         listaFases = fases.objects.filter(proyecto=proyecto)
         c = 0
-        for fase in listaFases:
+        for f in listaFases:
             cadena += '\tsubgraph cluster' + str(c) + '{\n'
             c+=1
+            n=0
             cadena += '\tnode [style=filled,color=black];\n'
             cadena += '\tcolor=lightgrey;\n'
-            listaitems = items.objects.filter(fase=fase)
-            for item in listaitems:
+            listaitems = items.objects.filter(fase=f)
+            listaRelitemsEnLB=relacionItemLineaBase.objects.filter(item__in=listaitems)
+            listaItemEnLB = []
+            for r in listaRelitemsEnLB:
+                listaItemEnLB.append(r.item)
+            conItems=set(listaitems)
+            conItemsEnLB=set(listaItemEnLB)
+            conItemsNoLB=conItems-conItemsEnLB
+            lineaBase = lineasBase.objects.filter(fase=f)
+
+            for l in lineaBase:
+                cadena += '\t\tsubgraph cluster' + str(n) + '{\n'
+                cadena += '\t\tnode [style=filled,color=black];\n'
+                cadena += '\t\tcolor=lightgrey;\n'
+                n+=1
+                listaRelEnLB = relacionItemLineaBase.objects.filter(linea=l)
+                for a in listaRelEnLB:
+                    cadena += '\t\t' + str(a.item.id) + ' [style=bold,label="'+ a.item.nombre + '"];\n'
+                cadena += '\t\t\tlabel="'+l.nombre+'";\n'
+                cadena += '\t}\n'
+            for item in conItemsNoLB:
                 cadena += '\t\t' + str(item.id) + ' [style=bold,label="'+ item.nombre + '"];\n'
-            cadena += '\t\tlabel="'+fase.nombre+'";\n'
+            cadena += '\t\tlabel="'+f.nombre+'";\n'
             cadena += '\t}\n'
         listaRelaciones = relacion.objects.filter(itemHijo__fase__proyecto=proyecto)
         for r in listaRelaciones:
             cadena += '\t' + str(r.itemPadre.id) + '->' + str(r.itemHijo.id) + ';\n'
         cadena += '}'
+        print cadena
         import os
         archivo = 'diagrama'+ str(proyecto.id)
         url = '../media/' + archivo + '.dot'
