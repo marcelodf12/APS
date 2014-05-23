@@ -54,6 +54,7 @@ INSTALLED_APPS = (
     'aplicaciones.fases',
     'aplicaciones.permisos',
     'aplicaciones.lineasBase',
+    'aplicaciones.solicitudCambio',
 
 )
 

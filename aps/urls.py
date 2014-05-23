@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^fases/', include('aplicaciones.fases.urls')),
     url(r'^permisos/', include('aplicaciones.permisos.urls')),
     url(r'^lineasBase/', include('aplicaciones.lineasBase.urls')),
+    url(r'^solicitudCambio/', include('aplicaciones.solicitudCambio.urls'))
 
 )
