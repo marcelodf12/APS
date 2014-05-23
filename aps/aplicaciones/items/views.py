@@ -274,7 +274,7 @@ class listarVersiones(TemplateView):
     """
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
-        return render(self.request, 'items/listarVersiones.html',{'item':item, 'range':range(1,item.versionAct+1)})
+        return render(self.request, 'items/listarVersiones.html',{'item':item, 'range':range(1,item.versionAct+1), 'nombreProyecto':item.fase.proyecto.nombre,'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
 
 class ReversionVersiones(TemplateView):
     """

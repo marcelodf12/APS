@@ -35,7 +35,7 @@ class crearFaseEnProyecto(CreateView):
              else:
                  return super(crearFaseEnProyecto,self).form_invalid(form)
          else:
-             return render(self.request, 'error/general.html', {'mensaje':'Ya no se pueden agregar fases'})
+             return render(self.request, 'error/general.html', {'mensaje':'Ya no se pueden agregar fases','nombreProyecto':p.nombre,'url':'/proyectos/detalles/'+str(p.id)})
 
 class listarFases(ListView):
     model = fases
