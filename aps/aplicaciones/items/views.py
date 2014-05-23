@@ -441,16 +441,14 @@ class finalizarItem(FormView):
         fase = fases.objects.get(id=item.fase_id)
         nroFase = fase.orden
 
-        padreAntecesor = None
+        padreAntecesor = None       #inicializacion
 
         try:
-             print 'ENTRO'
              #se busca una relacion padre-hijo o antecesor-sucesor
              relacionPadreAntecesor = relacion.objects.get(itemHijo_id=item.id)
-             print 'Tiene relacion'
+
              #se busca el item padre en el modelo items
              padreAntecesor = items.objects.get(id=relacionPadreAntecesor.itemPadre_id)
-             print 'Tiene padre'
              if(padreAntecesor.estado != 'finalizado'):
                 return render(self.request, 'error/general.html', {'mensaje':'El item padre aun no ha sido finalizado'})
         except:
