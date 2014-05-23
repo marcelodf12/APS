@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+      Finalizar Item
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+        <img src='/static/images/Detalles.png' width='24' height='24'><a href="/items/listar/"> Listar Items</a><br><br>
+        <br><br>
+
+{% endblock %}
+
+{% block contenido %}
+      <h1>Esta seguro que desea Finalizar el Item?</h1>
+        <form method="post">{% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Confirmar">
+        </form>
+{% endblock %}

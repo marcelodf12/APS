@@ -5,7 +5,11 @@
 from django.conf.urls import patterns, url
 from django.contrib import admin
 
-from .views import adminItems, crearItem, crearItemEnFase, listarItems, listarItemsEliminados, modificarItems, eliminarItems, listarItemParaCrearRelacion, crearRelacion, listarRelaciones, eliminarRelacion, agregarAtributo, mostrarDetalles, mostrarDetallesV, modificarAtributo, eliminarAtributo, listarVersiones, ReversionVersiones, reversionar, crearTipoItem, agregarAtributoAlTipoItem, definirCantidadAtributos, formularioAgregarAtributoAlTipoItem, verAtributosTipoItems, verTipoItems, modificarAtributoDeTipoItem, eliminarTipoItem, importar, graficar
+from .views import adminItems, crearItem, crearItemEnFase, listarItems, listarItemsEliminados, modificarItems, eliminarItems, \
+    listarItemParaCrearRelacion, crearRelacion, listarRelaciones, eliminarRelacion, agregarAtributo, mostrarDetalles, mostrarDetallesV, \
+    modificarAtributo, eliminarAtributo, listarVersiones, ReversionVersiones, reversionar, crearTipoItem, agregarAtributoAlTipoItem, \
+    definirCantidadAtributos, formularioAgregarAtributoAlTipoItem, verAtributosTipoItems, verTipoItems, modificarAtributoDeTipoItem, \
+    eliminarTipoItem, importar, finalizarItem, listarItemsFinalizados, graficar
 
 
 admin.autodiscover()
@@ -16,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^crear/', crearItem.as_view(), name='crear_item'),
     url(r'^crearEnFase/(?P<id>\d+)$', crearItemEnFase.as_view(), name='crear_item_en_fase'),
     url(r'^importar/(?P<id>\d+)$', importar.as_view(), name='crear_item_en_fase'),
+    url(r'^listar/finalizados/', listarItemsFinalizados.as_view(), name='listar_itemsFinalizados'),
     url(r'^listar/', listarItems.as_view(), name='listar_item'),
     url(r'^listar_eliminados/', listarItemsEliminados.as_view()),
     url(r'^modificar/(?P<id>\d+)$', modificarItems.as_view(), name='modificar_items'),
@@ -43,5 +48,7 @@ urlpatterns = patterns('',
     url(r'^tipoItem/modificar/(?P<id>\d+)$', modificarAtributoDeTipoItem.as_view(), name=''),
     url(r'^tipoItem/eliminar/(?P<id>\d+)$', eliminarTipoItem.as_view()),
     url(r'^relaciones/graficar/(?P<id>\d+)$', graficar.as_view()),
+    url(r'^finalizar/(?P<id>\d+)$', finalizarItem.as_view()),
+
 
 )

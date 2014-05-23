@@ -25,7 +25,10 @@ class crear(TemplateView):
             nuevaLineaBase.save()
             lista = request.POST.getlist('idItems')
             for l in lista:
-                elementoNuevo = relacionItemLineaBase(item=items.objects.get(id=l), linea=nuevaLineaBase)
+                item=items.objects.get(id=l)
+                elementoNuevo = relacionItemLineaBase(item=item, linea=nuevaLineaBase)
+                item.estado='finalizado'
+                item.save()
                 elementoNuevo.save()
             url = '/proyectos/detalles/' + str(proyecto.id)
             return HttpResponseRedirect(url)

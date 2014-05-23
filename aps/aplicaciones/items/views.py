@@ -491,3 +491,41 @@ class graficar(TemplateView):
         comando = 'cd ../media/;rm ' + archivo + '.dot'
         os.system(comando)
         return render(request,'relaciones/graficar.html', {'proyecto': proyecto.nombre, 'archivo':archivo, 'idProyecto':proyecto.id, 'nombreProyecto':proyecto.nombre, 'url':'/proyectos/detalles/'+str(proyecto.id)})
+
+class finalizarItem(FormView):
+    form_class = ComentariosLog
+    template_name = 'items/finalizar.html'
+    success_url = reverse_lazy('listar_itemsFinalizados')      # Se mostrara la vista 'listar_items' en el caso de eliminacion exitosa
+
+    def form_valid(self, form):
+        item = items.objects.get(id=self.kwargs['id'])
+
+        #se encuentra la fase que contiene al item
+        fase = item.fase
+        nroFase = fase.orden
+
+        padreAntecesor = None       #inicializacion
+
+        try:
+             #se busca una relacion padre-hijo o antecesor-sucesor
+             relacionPadreAntecesor = relacion.objects.get(itemHijo_id=item.id)
+
+             #se busca el item padre en el modelo items
+             padreAntecesor = items.objects.get(id=relacionPadreAntecesor.itemPadre_id)
+             if(padreAntecesor.estado != 'finalizado'):
+                return render(self.request, 'error/general.html', {'mensaje':'El item padre aun no ha sido finalizado'})
+        except:
+             #si no se trata de la 1ra fase no puede estar aislado, informar
+             if(nroFase!=1):
+                return render(self.request, 'error/general.html', {'mensaje':'El item no es de la fase 1 y no posee un padre (aislado)'})
+
+        item.estado = 'finalizado'
+        item.save()
+        return super(finalizarItem, self).form_valid(form)
+
+
+class listarItemsFinalizados(ListView):
+    """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
+    model = items
+    template_name = 'items/listarFinalizados.html'
+    context_object_name = 'items'
