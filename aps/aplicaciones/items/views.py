@@ -90,6 +90,7 @@ class modificarItems(UpdateView):
     def get_object(self, queryset=None):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = items.objects.get(id=self.kwargs['id'])
+        self.success_url='/proyectos/detalles/'+str(obj.fase.proyecto.id)
         return obj
 
 class eliminarItems(FormView):
@@ -101,9 +102,21 @@ class eliminarItems(FormView):
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         item = items.objects.get(id=self.kwargs['id'])
-        item.estado='eliminado'
-        item.save()
-        return super(eliminarItems, self).form_valid(form)
+        rel = relacion.objects.filter(itemPadre=item).exclude(estado=False)
+        lb = relacionItemLineaBase.objects.filter(item=item)
+        if lb:
+            return render(self.request, 'error/general.html', {'mensaje':'No puede eliminar este items porque esta en una linea base','url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+        elif rel:
+            return render(self.request, 'error/general.html', {'mensaje':'No puede eliminar este items porque otros depende del el','url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+        else:
+            item.estado='eliminado'
+            item.save()
+            rel = relacion.objects.filter(itemHijo=item)
+            for r in rel:
+                r.estado=False
+                r.save()
+            url='/proyectos/detalles/'+str(item.fase.proyecto.id)
+            return HttpResponseRedirect(url)
 
 class listarItemParaCrearRelacion(TemplateView):
     """
@@ -114,7 +127,7 @@ class listarItemParaCrearRelacion(TemplateView):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         itemHijo = items.objects.get(id=kwargs['id'])
         faseAct = itemHijo.fase
-        listaItems=items.objects.filter(fase=faseAct).exclude(id=itemHijo.id)
+        listaItems=items.objects.filter(fase=faseAct).exclude(id=itemHijo.id).exclude(estado='eliminado')
         if(faseAct.orden>1):
             proyecto = faseAct.proyecto
             faseAnt = fases.objects.get(proyecto=proyecto, orden=faseAct.orden-1)
@@ -149,7 +162,7 @@ class listarRelaciones(TemplateView):
     Vista que retorna una lista de relaciones
     """
     def get(self, request, *args, **kwargs):
-        queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id'])
+        queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id']).exclude(estado=False)
         proyecto = Proyectos.objects.get(id=kwargs['id'])
         return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre, 'idProyecto':proyecto.id})
 
@@ -439,8 +452,8 @@ class graficar(TemplateView):
             n=0
             cadena += '\t\tnode [style=filled,color=black];\n'
             cadena += '\t\tcolor=lightgrey;\n'
-            listaitems = items.objects.filter(fase=f)
-            listaRelitemsEnLB=relacionItemLineaBase.objects.filter(item__in=listaitems)
+            listaitems = items.objects.filter(fase=f).exclude(estado='eliminado')
+            listaRelitemsEnLB=relacionItemLineaBase.objects.filter(item__in=listaitems).exclude(item__estado='eliminado')
             listaItemEnLB = []
             for r in listaRelitemsEnLB:
                 listaItemEnLB.append(r.item)
@@ -463,11 +476,10 @@ class graficar(TemplateView):
                 cadena += '\t\t' + str(item.id) + ' [style=bold,label="'+ item.nombre + '"];\n'
             cadena += '\t\tlabel="'+f.nombre+'";\n'
             cadena += '\t}\n'
-        listaRelaciones = relacion.objects.filter(itemHijo__fase__proyecto=proyecto)
+        listaRelaciones = relacion.objects.filter(itemHijo__fase__proyecto=proyecto).exclude(itemHijo__estado='eliminado').exclude(itemPadre__estado='eliminado')
         for r in listaRelaciones:
             cadena += '\t' + str(r.itemPadre.id) + '->' + str(r.itemHijo.id) + ';\n'
         cadena += '}'
-        print cadena
         import os
         archivo = 'diagrama'+ str(proyecto.id)
         url = '../media/' + archivo + '.dot'
