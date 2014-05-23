@@ -14,6 +14,7 @@
 {% block contenido %}
      <h1>Nuevo Item</h1>
         <form method="post">{% csrf_token %}
+            <font color="red">{{error}}</font>
             <p><label for="id_nombre">Nombre:</label> <input id="id_nombre" maxlength="100" name="nombre" type="text"></p>
             <p><label for="id_complejidad">Complejidad:</label> <input id="id_complejidad" name="complejidad" type="number"></p>
             <p><label for="id_costo">Costo:</label> <input id="id_costo" name="costo" type="number"></p>

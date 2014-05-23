@@ -41,15 +41,17 @@ class crearItemEnFase(TemplateView):
             proyecto = faseAct.proyecto
             faseAnt = fases.objects.get(proyecto=proyecto, orden=faseAct.orden-1)
             listaItems=(items.objects.filter(fase=faseAct) | items.objects.filter(fase=faseAnt))
-        return render(request, 'items/crear.html', {'listaItems':listaItems})
+        return render(request, 'items/crear.html', {'listaItems':listaItems, 'nombreProyecto':faseAct.proyecto.nombre,'url':'/proyectos/detalles/'+str(faseAct.proyecto.id)})
 
     def post(self, request, *args, **kwargs):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         f= fases.objects.get(id=self.kwargs['id'])
+        if(request.POST['nombre']=='' or request.POST['complejidad']=='' or request.POST['costo']==''):
+            return render(request, 'items/crear.html', {'error':'Todos los campos son requeridos', 'nombreProyecto':f.proyecto.nombre,'url':'/proyectos/detalles/'+str(f.proyecto.id)})
         item=items(\
             nombre=request.POST['nombre'],\
-            complejidad=request.POST['complejidad'],\
-            costo=request.POST['costo']\
+            complejidad=int(request.POST['complejidad']),\
+            costo=int(request.POST['costo'])\
         )
         item.versionAct = 1     # Se define un valor predeterminado para la version del item
         item.estado = 'creado'
@@ -63,7 +65,7 @@ class crearItemEnFase(TemplateView):
         elif(f.orden==1):
             item.save()
         else:
-            return render(request, 'error/general.html', {'mensaje':'No puede crear un item en esta fase sin asignarle un padre'})
+            return render(request, 'error/general.html', {'mensaje':'No puede crear un item en esta fase sin asignarle un padre', 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
         return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
 
 class listarItems(ListView):
@@ -117,7 +119,7 @@ class listarItemParaCrearRelacion(TemplateView):
             proyecto = faseAct.proyecto
             faseAnt = fases.objects.get(proyecto=proyecto, orden=faseAct.orden-1)
             listaItems=(items.objects.filter(fase=faseAct).exclude(id=itemHijo.id) | items.objects.filter(fase=faseAnt))
-        return render(self.request, 'relaciones/crearRelacion.html', {'items':listaItems, 'id':itemHijo.id})
+        return render(self.request, 'relaciones/crearRelacion.html', {'items':listaItems, 'id':itemHijo.id, 'nombreProyecto':itemHijo.fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(itemHijo.fase.proyecto.id)})
 
 class crearRelacion(TemplateView):
     """
@@ -207,7 +209,7 @@ class mostrarDetalles(TemplateView):
             tieneHijos=True
         else:
             tieneHijos=False
-        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos,'tieneHijos':tieneHijos})
+        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos,'tieneHijos':tieneHijos, 'nombreProyecto':item.fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
 
 class mostrarDetallesV(TemplateView):
     """
@@ -217,7 +219,7 @@ class mostrarDetallesV(TemplateView):
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
         atributos = atributo.objects.filter(item=item, version=kwargs['idV']).order_by('pk')
-        return render(self.request, 'items/listarOtrasVersiones.html',{'item':item, 'atributos':atributos, 'version':kwargs['idV']})
+        return render(self.request, 'items/listarOtrasVersiones.html',{'item':item, 'atributos':atributos, 'version':kwargs['idV'], 'nombreProyecto':item.fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
 
 class modificarAtributo(UpdateView):
     """
@@ -280,7 +282,7 @@ class ReversionVersiones(TemplateView):
     """
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
-        return render(self.request, 'items/reversion.html',{'item':item, 'range':range(1,item.versionAct+1)})
+        return render(self.request, 'items/reversion.html',{'item':item, 'range':range(1,item.versionAct+1), 'nombreProyecto':item.fase.proyecto.nombre,'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
 
 
 class reversionar(TemplateView):
@@ -455,4 +457,4 @@ class graficar(TemplateView):
         os.system(comando)
         comando = 'cd ../media/;rm ' + archivo + '.dot'
         os.system(comando)
-        return render(request,'relaciones/graficar.html', {'proyecto': proyecto.nombre, 'archivo':archivo, 'idProyecto':proyecto.id})
+        return render(request,'relaciones/graficar.html', {'proyecto': proyecto.nombre, 'archivo':archivo, 'idProyecto':proyecto.id, 'nombreProyecto':proyecto.nombre, 'url':'/proyectos/detalles/'+str(proyecto.id)})
