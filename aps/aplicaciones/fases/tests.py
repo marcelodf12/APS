@@ -242,7 +242,7 @@ class TestFinalizarFase(unittest.TestCase):
             proyectoRegistrado.penalizacion=500
             proyectoRegistrado.save()
 
-            #Creacion de una fase con orden = 2
+            #Creacion de una fase con orden = 1
             faseRegistrada = fases()
             faseRegistrada.pk=4
             faseRegistrada.nombre = "fase prueba terminar"
