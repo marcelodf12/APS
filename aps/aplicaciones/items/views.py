@@ -436,21 +436,55 @@ class finalizarItem(FormView):
 
     def form_valid(self, form):
         item = items.objects.get(id=self.kwargs['id'])
-        item.estado = 'finalizado'
-        item.save()
-        return super(finalizarItem, self).form_valid(form)
 
-    #si es el primer item de la primera fase
-            #se valida
-    #else
-            #si tiene un padre o un antecesor
-    #que no este aislado
+        #se encuentra la fase que contiene al item
+        fase = fases.objects.get(id=item.fase_id)
+        nroFase = fase.orden
+
+        #SE DEBE TENER UNA RELACION existente al crear el item, no puede estar aislado, ya que si se consulta
+        #por un item que no tiene una relaicon
+
+        try:
+             relacionesPadreAntecesor = relacion.objects.get(itemHijo_id=item.fase_id)
+             padreAntecesor = relacionesPadreAntecesor.itemPadre_id
+        #catch:
+            #return render(self.request, 'error/general.html', {'mensaje':'El item no posee un padre (aislado)'})
+
+        if(padreAntecesor.estado != 'finalizado'):
+             return render(self.request, 'error/general.html', {'mensaje':'El Padre del item no se ha finalizado'})
+
+
+        #si es el primer item de la primera fase PENDIENTE
+        # if(nroFase==1):
+        #     #se finaliza sin controles
+        #     item.estado = 'finalizado'
+        # else:
+        #     b=0
+        #     for r in relacion:
+        #         if(r.itemHijo_id == item.id):
+        #             padreAntecesor = r.itemPadre_id
+        #             b=1
+        #
+        #     #si no se encontro un padre o antecesor
+        #     if(b==0):
+        #         return render(self.request, 'error/general.html', {'mensaje':'El item no posee un padre (aislado)'})
+        #
+        #     # si el padre o antecesor no esta finalizado
+        #     if (padreAntecesor.estado != 'finalizado'):
+        #         return render(self.request, 'error/general.html', {'mensaje':'El Padre del item no se ha finalizado'})
+        #
+        #     #se finaliza el item
+        #     item.estado = 'finalizado'
+        # item.save()
+        # return super(finalizarItem, self).form_valid(form)
 
 class listarItemsFinalizados(ListView):
     """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
     model = items
-    template_name = 'items/listarFinalizados.html'  #no carga este template
-    context_object_name = 'items'        return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
+    template_name = 'items/listarFinalizados.html'
+    context_object_name = 'items'
+    #????????????????????????????????????????????????????????
+    #return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
 
 class graficar(TemplateView):
     def get(self, request, *args, **kwargs):
