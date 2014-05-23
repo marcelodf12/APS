@@ -2,6 +2,7 @@ from django.views.generic import TemplateView, CreateView, ListView, UpdateView,
 from django.core.urlresolvers import reverse_lazy
 
 from .models import fases
+from aps.aplicaciones.items.models import items, relacion
 from aps.aplicaciones.proyectos.forms import ComentariosLog
 from aps.aplicaciones.proyectos.models import Proyectos
 from django.shortcuts import render, HttpResponseRedirect
@@ -70,6 +71,40 @@ class eliminarFase(FormView):
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         fase = fases.objects.get(id=self.kwargs['id'])
-        fase.estado='eliminado'
+        #fase.estado='eliminado'
+        print fase.estado
         fase.save()
         return super(eliminarFase, self).form_valid(form)
+
+class finalizarFase(FormView):
+    form_class = ComentariosLog
+    template_name = 'fases/finalizar.html'
+    success_url = reverse_lazy('listar_fasesFinalizadas')      # Se mostrara la vista 'listar_fasesFinalizadas' en el caso de eliminacion exitosa
+
+    def form_valid(self, form):
+        """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
+        fase = fases.objects.get(id=self.kwargs['id'])
+        item=items.objects.filter(fase=fase).exclude(estado='eliminado')
+
+        for i in item:
+            #Consultamos si el item ya fue finalizado
+            if(i.estado != 'finalizado'):
+                return render(self.request, 'error/general.html', {'mensaje':'Se ha encontrado un item no finalizado'})
+
+        #Buscamos la Fase anterior
+        ordenAnterior=fase.orden-1
+        faseAnterior = fases.objects.get(orden=ordenAnterior)
+
+        #Consultamos el estado de la fase anterior
+        if(faseAnterior.estado != 'finalizada'):
+            return render(self.request, 'error/general.html', {'mensaje':'La fase anterior no ha sido finalizada aun'})
+
+        fase.estado = 'finalizada'
+        fase.save()
+        return super(finalizarFase, self).form_valid(form)
+
+class listarFasesFinalizadas(ListView):
+    """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
+    model = fases
+    template_name = 'fases/listarFinalizadas.html'  #no carga este template
+    context_object_name = 'fases'

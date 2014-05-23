@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-      Lista de Fases
+      Lista de Fases Finalizadas
 {% endblock %}
 
 {% block menu1 %}
@@ -8,15 +8,14 @@
 {% endblock %}
 
 {% block menu2 %}
-     <ul>
-        <img src='/static/images/Detalles.png' width='24' height='24'><a href="/fases/listar/">Listar Fases</a><br><br>
-     </ul>
+
 
 {% endblock %}
 
 {% block contenido %}
-     <h1>Lista de fases</h1>
-        {% for f in fases %}
+     <h1>Lista de Fases Finalizadas</h1>
+      {% for f in fases %}
+          {% if f.estado == 'finalizada' %}
             <h2>{{f.nombre}}</h2>
             <ul>
                 <li><b>Fecha de InicioP: </b>{{f.fechaInicioP}}</li>
@@ -24,11 +23,8 @@
                 <li><b>Estado:</b> {{f.estado}}</li>
                 <li><b>Proyecto:</b> {{f.proyecto}}</li>
                 <li><b>Presupuesto: </b>{{f.presupuesto}}</li>
-            <a href='/fases/modificar/{{f.id}}'><img src='/static/images/Edit.png' width='24' height='24'></a>
-            <a href='/fases/eliminar/{{f.id}}'><img src='/static/images/Delete.png' width='24' height='24'></a>
             </ul>
             <br><br>
-
-        {% endfor %}
- {% endblock %}
-
+          {% endif %}
+      {% endfor %}
+{% endblock %}
