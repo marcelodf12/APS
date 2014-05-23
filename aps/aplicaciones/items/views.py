@@ -501,7 +501,7 @@ class finalizarItem(FormView):
         item = items.objects.get(id=self.kwargs['id'])
 
         #se encuentra la fase que contiene al item
-        fase = fases.objects.get(id=item.fase_id)
+        fase = item.fase
         nroFase = fase.orden
 
         padreAntecesor = None       #inicializacion
