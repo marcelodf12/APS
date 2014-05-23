@@ -429,6 +429,7 @@ class importar(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request,'items/importar.html',{'tipos':tipoItem.objects.order_by('id'),'idFase':kwargs['id']})
 
+
     def post(self, request, *args, **kwargs):
         fase=fases.objects.get(id=request.POST['id'])
         ti = tipoItem.objects.get(id=request.POST['tipo'])
