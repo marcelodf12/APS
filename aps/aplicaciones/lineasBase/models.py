@@ -10,6 +10,9 @@ class lineasBase(models.Model):
     estado = models.CharField(max_length=20)
     fase = models.ForeignKey(fases)
 
+    def __unicode__(self):
+        return self.nombre
+
 class relacionItemLineaBase(models.Model):
     item = models.OneToOneField(items)
     linea = models.ForeignKey(lineasBase)
