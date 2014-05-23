@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+
+9{% extends "base.html" %}
 {% block title %}
       Crear Fase
 {% endblock %}
@@ -8,7 +9,9 @@
 {% endblock %}
 
 {% block menu2 %}
-
+<img src='/static/images/Proyecto.png' width='24' height='24'><a href="/proyectos/detalles/{{proyecto.pk}}">  Seguir Administrando</a><br><br>
+<img src='/static/images/lineaBase.png' width='24' height='24'><a href="/lineasBase/listar/{{proyecto.pk}}">  Listar Lineas Base</a><br><br>
+<img src='/static/images/graficar.png' width='24' height='24'><a href="/items/relaciones/graficar/{{proyecto.pk}}">  Grafico Resumen </a><br><br>
 {% endblock %}
 
 {% block contenido %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
 from aps.aplicaciones.items.models import items
@@ -13,7 +13,7 @@ class crear(TemplateView):
         idProyecto = kwargs['id']
         proyecto = Proyectos.objects.get(id=idProyecto)
         listaFases = fases.objects.filter(proyecto=proyecto)
-        return render(request, 'lineaBase/crear.html',{'fases':listaFases})
+        return render(request, 'lineaBase/crear.html',{'fases':listaFases, 'nombreProyecto':proyecto.nombre, 'proyecto':proyecto})
 
     def post(self, request, *args, **kwargs):
         idFase = request.POST['idFase']
@@ -44,3 +44,22 @@ class retornarItemsDeFaseAJAX(TemplateView):
         i = items.objects.filter(fase__id=idFase).exclude(pk__in=itemsEnlb)
         data = serializers.serialize('json',i,fields=('nombre','id'))
         return HttpResponse(data, content_type='application/json')
+
+class listarLineasBase(TemplateView):
+    def get(self, request, *args, **kwargs):
+        proyecto=Proyectos.objects.get(id=kwargs['id'])
+        listaLineasBase=lineasBase.objects.filter(fase__proyecto=proyecto)
+        print listaLineasBase
+        return render(request, 'lineaBase/listar.html', {'lineasBase': listaLineasBase,\
+                                                         'url':'/proyectos/detalles/'+str(kwargs['id']),\
+                                                         'nombreProyecto':proyecto.nombre,\
+                                                         'proyecto':proyecto})
+
+class listarDetallesLineasBase(TemplateView):
+    def get(self, request, *args, **kwargs):
+        lb = lineasBase.objects.get(id=kwargs['id'])
+        proyecto = lb.fase.proyecto
+        listaDetalles=relacionItemLineaBase.objects.filter(linea__id=kwargs['id'])
+        return render(request, 'lineaBase/listarDetalles.html', {'detalles':listaDetalles,\
+                                                         'url':'/proyectos/detalles/'+str(proyecto.id),\
+                                                         'nombreProyecto':proyecto.nombre, 'lineaBase':lb})

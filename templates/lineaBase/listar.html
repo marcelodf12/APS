@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+      Lista de Lineas Base
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+<img src='/static/images/Proyecto.png' width='24' height='24'><a href="{{url}}">  Seguir Administrando</a><br><br>
+<img src='/static/images/relacion.png' width='24' height='24'><a href="/items/relaciones/listar/{{proyecto.pk}}">  Ver Relaciones </a><br><br>
+<img src='/static/images/graficar.png' width='24' height='24'><a href="/items/relaciones/graficar/{{proyecto.pk}}">  Grafico Resumen </a><br><br>
+{% endblock %}
+
+{% block contenido %}
+     <h1>Lista de Lineas Base</h1>
+     <br><br>
+     {% for lb in lineasBase %}
+        {% if lb.estado = 'cerrado' %}
+            <img src='/static/images/cerrado.png' width='32' height='32'>
+        {% endif %}
+        {% if lb.estado = 'abierto' %}
+            <img src='/static/images/abierto.png' width='32' height='32'>
+        {% endif %}
+          <a href="/lineasBase/listarDetalles/{{lb.id}}">{{lb.nombre}}</a><br><br>
+     {% endfor %}<br>
+{% endblock %}

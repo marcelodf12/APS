@@ -162,7 +162,7 @@ class detallesProyecto(TemplateView):
     def get(self, request, *args, **kwargs):
         p=Proyectos.objects.get(id=self.kwargs['id'])
         f=fases.objects.filter(proyecto=p).order_by('pk')
-        i=items.objects.filter(fase__proyecto=p)
+        i=items.objects.filter(fase__proyecto=p).exclude(estado='eliminado')
         costo_total=0
         for fas in f:
             cos_fas = 0

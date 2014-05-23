@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, HttpResponseRedirect
 
 from .models import items, atributo, relacion, tipoItem
-from aps.aplicaciones.lineasBase.models import relacionItemLineaBase
+from aps.aplicaciones.lineasBase.models import relacionItemLineaBase, lineasBase
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
@@ -90,6 +90,7 @@ class modificarItems(UpdateView):
     def get_object(self, queryset=None):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = items.objects.get(id=self.kwargs['id'])
+        self.success_url='/proyectos/detalles/'+str(obj.fase.proyecto.id)
         return obj
 
 class eliminarItems(FormView):
@@ -101,9 +102,21 @@ class eliminarItems(FormView):
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         item = items.objects.get(id=self.kwargs['id'])
-        item.estado='eliminado'
-        item.save()
-        return super(eliminarItems, self).form_valid(form)
+        rel = relacion.objects.filter(itemPadre=item).exclude(estado=False)
+        lb = relacionItemLineaBase.objects.filter(item=item)
+        if lb:
+            return render(self.request, 'error/general.html', {'mensaje':'No puede eliminar este items porque esta en una linea base','url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+        elif rel:
+            return render(self.request, 'error/general.html', {'mensaje':'No puede eliminar este items porque otros depende del el','url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+        else:
+            item.estado='eliminado'
+            item.save()
+            rel = relacion.objects.filter(itemHijo=item)
+            for r in rel:
+                r.estado=False
+                r.save()
+            url='/proyectos/detalles/'+str(item.fase.proyecto.id)
+            return HttpResponseRedirect(url)
 
 class listarItemParaCrearRelacion(TemplateView):
     """
@@ -114,7 +127,7 @@ class listarItemParaCrearRelacion(TemplateView):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         itemHijo = items.objects.get(id=kwargs['id'])
         faseAct = itemHijo.fase
-        listaItems=items.objects.filter(fase=faseAct).exclude(id=itemHijo.id)
+        listaItems=items.objects.filter(fase=faseAct).exclude(id=itemHijo.id).exclude(estado='eliminado')
         if(faseAct.orden>1):
             proyecto = faseAct.proyecto
             faseAnt = fases.objects.get(proyecto=proyecto, orden=faseAct.orden-1)
@@ -149,7 +162,7 @@ class listarRelaciones(TemplateView):
     Vista que retorna una lista de relaciones
     """
     def get(self, request, *args, **kwargs):
-        queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id'])
+        queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id']).exclude(estado=False)
         proyecto = Proyectos.objects.get(id=kwargs['id'])
         return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre, 'idProyecto':proyecto.id})
 
@@ -475,17 +488,37 @@ class graficar(TemplateView):
         proyecto = Proyectos.objects.get(id=kwargs['id'])
         listaFases = fases.objects.filter(proyecto=proyecto)
         c = 0
-        for fase in listaFases:
+        for f in listaFases:
             cadena += '\tsubgraph cluster' + str(c) + '{\n'
             c+=1
-            cadena += '\tnode [style=filled,color=black];\n'
-            cadena += '\tcolor=lightgrey;\n'
-            listaitems = items.objects.filter(fase=fase)
-            for item in listaitems:
+            n=0
+            cadena += '\t\tnode [style=filled,color=black];\n'
+            cadena += '\t\tcolor=lightgrey;\n'
+            listaitems = items.objects.filter(fase=f).exclude(estado='eliminado')
+            listaRelitemsEnLB=relacionItemLineaBase.objects.filter(item__in=listaitems).exclude(item__estado='eliminado')
+            listaItemEnLB = []
+            for r in listaRelitemsEnLB:
+                listaItemEnLB.append(r.item)
+            conItems=set(listaitems)
+            conItemsEnLB=set(listaItemEnLB)
+            conItemsNoLB=conItems-conItemsEnLB
+            lineaBase = lineasBase.objects.filter(fase=f)
+
+            for l in lineaBase:
+                cadena += '\t\tsubgraph cluster' + str(n) + '{\n'
+                cadena += '\t\t\tnode [style=filled,color=black];\n'
+                cadena += '\t\t\tcolor=lightgrey;\n'
+                n+=1
+                listaRelEnLB = relacionItemLineaBase.objects.filter(linea=l)
+                for a in listaRelEnLB:
+                    cadena += '\t\t\t' + str(a.item.id) + ' [style=bold,label="'+ a.item.nombre + '"];\n'
+                cadena += '\t\t\tlabel="'+l.nombre+'";\n'
+                cadena += '\t\t}\n'
+            for item in conItemsNoLB:
                 cadena += '\t\t' + str(item.id) + ' [style=bold,label="'+ item.nombre + '"];\n'
-            cadena += '\t\tlabel="'+fase.nombre+'";\n'
+            cadena += '\t\tlabel="'+f.nombre+'";\n'
             cadena += '\t}\n'
-        listaRelaciones = relacion.objects.filter(itemHijo__fase__proyecto=proyecto)
+        listaRelaciones = relacion.objects.filter(itemHijo__fase__proyecto=proyecto).exclude(itemHijo__estado='eliminado').exclude(itemPadre__estado='eliminado')
         for r in listaRelaciones:
             cadena += '\t' + str(r.itemPadre.id) + '->' + str(r.itemHijo.id) + ';\n'
         cadena += '}'
