@@ -437,8 +437,8 @@ class graficar(TemplateView):
             cadena += '\tsubgraph cluster' + str(c) + '{\n'
             c+=1
             n=0
-            cadena += '\tnode [style=filled,color=black];\n'
-            cadena += '\tcolor=lightgrey;\n'
+            cadena += '\t\tnode [style=filled,color=black];\n'
+            cadena += '\t\tcolor=lightgrey;\n'
             listaitems = items.objects.filter(fase=f)
             listaRelitemsEnLB=relacionItemLineaBase.objects.filter(item__in=listaitems)
             listaItemEnLB = []
@@ -451,14 +451,14 @@ class graficar(TemplateView):
 
             for l in lineaBase:
                 cadena += '\t\tsubgraph cluster' + str(n) + '{\n'
-                cadena += '\t\tnode [style=filled,color=black];\n'
-                cadena += '\t\tcolor=lightgrey;\n'
+                cadena += '\t\t\tnode [style=filled,color=black];\n'
+                cadena += '\t\t\tcolor=lightgrey;\n'
                 n+=1
                 listaRelEnLB = relacionItemLineaBase.objects.filter(linea=l)
                 for a in listaRelEnLB:
-                    cadena += '\t\t' + str(a.item.id) + ' [style=bold,label="'+ a.item.nombre + '"];\n'
+                    cadena += '\t\t\t' + str(a.item.id) + ' [style=bold,label="'+ a.item.nombre + '"];\n'
                 cadena += '\t\t\tlabel="'+l.nombre+'";\n'
-                cadena += '\t}\n'
+                cadena += '\t\t}\n'
             for item in conItemsNoLB:
                 cadena += '\t\t' + str(item.id) + ' [style=bold,label="'+ item.nombre + '"];\n'
             cadena += '\t\tlabel="'+f.nombre+'";\n'

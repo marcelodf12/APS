@@ -14,6 +14,9 @@
         {% if proyecto.estado = 'creado' %}
         <img src='/static/images/star.png' width='24' height='24'><a href="/proyectos/iniciar/{{proyecto.pk}}">  Iniciar Este Proyecto</a><br><br>
         {% endif %}
+        {% if proyecto.estado = 'activo' %}
+        <img src='/static/images/Cambio.png' width='24' height='24'><a href="/lineasBase/crear/{{proyecto.pk}}">  Crear Linea Base</a><br><br>
+        {% endif %}
         <img src='/static/images/relacion.png' width='24' height='24'><a href="/items/relaciones/listar/{{proyecto.pk}}">  Ver Relaciones </a><br><br>
         <img src='/static/images/graficar.png' width='24' height='24'><a href="/items/relaciones/graficar/{{proyecto.pk}}">  Grafico Resumen </a><br><br>
         <br><br>
