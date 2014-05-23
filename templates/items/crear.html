@@ -14,7 +14,19 @@
 {% block contenido %}
      <h1>Nuevo Item</h1>
         <form method="post">{% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Crear">
+            <font color="red">{{error}}</font>
+            <p><label for="id_nombre">Nombre:</label> <input id="id_nombre" maxlength="100" name="nombre" type="text"></p>
+            <p><label for="id_complejidad">Complejidad:</label> <input id="id_complejidad" name="complejidad" type="number"></p>
+            <p><label for="id_costo">Costo:</label> <input id="id_costo" name="costo" type="number"></p>
+            <p>
+                <label for="id_padre">Padre:</label>
+                <select id="id_padre" name="padre">
+                    <option value="0">Seleccione un padre</option>
+                    {% for i in listaItems %}
+                        <option value="{{i.id}}">{{i.fase.nombre}} --> {{i.nombre}}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <input value="Crear" type="submit">
         </form>
  {% endblock %}

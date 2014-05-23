@@ -10,6 +10,7 @@ from .views import adminItems, crearItem, crearItemEnFase, listarItems, listarIt
     modificarAtributo, eliminarAtributo, listarVersiones, ReversionVersiones, reversionar, crearTipoItem, agregarAtributoAlTipoItem, \
     definirCantidadAtributos, formularioAgregarAtributoAlTipoItem, verAtributosTipoItems, verTipoItems, modificarAtributoDeTipoItem, \
     eliminarTipoItem, importar, finalizarItem, listarItemsFinalizados
+from .views import adminItems, crearItem, crearItemEnFase, listarItems, listarItemsEliminados, modificarItems, eliminarItems, listarItemParaCrearRelacion, crearRelacion, listarRelaciones, eliminarRelacion, agregarAtributo, mostrarDetalles, mostrarDetallesV, modificarAtributo, eliminarAtributo, listarVersiones, ReversionVersiones, reversionar, crearTipoItem, agregarAtributoAlTipoItem, definirCantidadAtributos, formularioAgregarAtributoAlTipoItem, verAtributosTipoItems, verTipoItems, modificarAtributoDeTipoItem, eliminarTipoItem, importar, graficar
 
 
 admin.autodiscover()
@@ -35,6 +36,7 @@ urlpatterns = patterns('',
     url(r'^atributos/listarVersiones/(?P<id>\d+)$', listarVersiones.as_view(), name='listar_versiones'),
     url(r'^atributos/modificar/(?P<id>\d+)$', modificarAtributo.as_view(), name='modificar_atributo'),
     url(r'^atributos/eliminar/(?P<id>\d+)$', eliminarAtributo.as_view(), name='eliminar_atributo'),
+
     url(r'^reversionar/(?P<id>\d+)$', ReversionVersiones.as_view()),
     url(r'^reversionar/$', reversionar.as_view()),
     url(r'^tipoItem/crear/$', crearTipoItem.as_view(), name='crearTipoItem'),
@@ -46,6 +48,7 @@ urlpatterns = patterns('',
     url(r'^tipoItem/listar/$', verTipoItems.as_view(), name='listar_tipoitem'),
     url(r'^tipoItem/modificar/(?P<id>\d+)$', modificarAtributoDeTipoItem.as_view(), name=''),
     url(r'^tipoItem/eliminar/(?P<id>\d+)$', eliminarTipoItem.as_view()),
+    url(r'^relaciones/graficar/(?P<id>\d+)$', graficar.as_view()),
     url(r'^finalizar/(?P<id>\d+)$', finalizarItem.as_view()),
 
 

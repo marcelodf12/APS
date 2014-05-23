@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, HttpResponseRedirect
 
 from .models import items, atributo, relacion, tipoItem
+from aps.aplicaciones.lineasBase.models import relacionItemLineaBase
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
@@ -32,21 +33,40 @@ class crearItem(CreateView):
         item.save()
         return super(crearItem, self).form_valid(form)
 
-class crearItemEnFase(CreateView):
-    model = items
-    template_name = 'items/crear.html'
-    success_url = reverse_lazy('listar_proyectos')
-    fields = ['nombre', 'complejidad', 'costo']
+class crearItemEnFase(TemplateView):
+    def get(self, request, *args, **kwargs):
+        faseAct = fases.objects.get(id=kwargs['id'])
+        listaItems=items.objects.filter(fase=faseAct)
+        if(faseAct.orden>1):
+            proyecto = faseAct.proyecto
+            faseAnt = fases.objects.get(proyecto=proyecto, orden=faseAct.orden-1)
+            listaItems=(items.objects.filter(fase=faseAct) | items.objects.filter(fase=faseAnt))
+        return render(request, 'items/crear.html', {'listaItems':listaItems, 'nombreProyecto':faseAct.proyecto.nombre,'url':'/proyectos/detalles/'+str(faseAct.proyecto.id)})
 
-    def form_valid(self, form):
+    def post(self, request, *args, **kwargs):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         f= fases.objects.get(id=self.kwargs['id'])
-        item=form.save()        # Se guardan los datos del formulario en 'item'????????
+        if(request.POST['nombre']=='' or request.POST['complejidad']=='' or request.POST['costo']==''):
+            return render(request, 'items/crear.html', {'error':'Todos los campos son requeridos', 'nombreProyecto':f.proyecto.nombre,'url':'/proyectos/detalles/'+str(f.proyecto.id)})
+        item=items(\
+            nombre=request.POST['nombre'],\
+            complejidad=int(request.POST['complejidad']),\
+            costo=int(request.POST['costo'])\
+        )
         item.versionAct = 1     # Se define un valor predeterminado para la version del item
         item.estado = 'creado'
         item.fase = f
-        item.save()
-        return super(crearItemEnFase, self).form_valid(form)
+        padre=request.POST['padre']
+        if(int(padre)>0):
+            item.save()
+            itemPadre = items.objects.get(id=padre)
+            NuevaRelacion = relacion(itemHijo=item, itemPadre=itemPadre, estado=True)
+            NuevaRelacion.save()
+        elif(f.orden==1):
+            item.save()
+        else:
+            return render(request, 'error/general.html', {'mensaje':'No puede crear un item en esta fase sin asignarle un padre', 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+        return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
 
 class listarItems(ListView):
     """ Vista de listado de items, hereda atributos y metodos de la clase ListView """
@@ -99,7 +119,7 @@ class listarItemParaCrearRelacion(TemplateView):
             proyecto = faseAct.proyecto
             faseAnt = fases.objects.get(proyecto=proyecto, orden=faseAct.orden-1)
             listaItems=(items.objects.filter(fase=faseAct).exclude(id=itemHijo.id) | items.objects.filter(fase=faseAnt))
-        return render(self.request, 'relaciones/crearRelacion.html', {'items':listaItems, 'id':itemHijo.id})
+        return render(self.request, 'relaciones/crearRelacion.html', {'items':listaItems, 'id':itemHijo.id, 'nombreProyecto':itemHijo.fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(itemHijo.fase.proyecto.id)})
 
 class crearRelacion(TemplateView):
     """
@@ -131,7 +151,7 @@ class listarRelaciones(TemplateView):
     def get(self, request, *args, **kwargs):
         queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id'])
         proyecto = Proyectos.objects.get(id=kwargs['id'])
-        return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre})
+        return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre, 'idProyecto':proyecto.id})
 
 class eliminarRelacion(DeleteView):
     """
@@ -184,7 +204,12 @@ class mostrarDetalles(TemplateView):
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
         atributos = atributo.objects.filter(item=item, version=item.versionAct).order_by('pk')
-        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos})
+        listaItems = relacionItemLineaBase.objects.filter(item=item)
+        if listaItems:
+            tieneHijos=True
+        else:
+            tieneHijos=False
+        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos,'tieneHijos':tieneHijos, 'nombreProyecto':item.fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
 
 class mostrarDetallesV(TemplateView):
     """
@@ -194,7 +219,7 @@ class mostrarDetallesV(TemplateView):
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
         atributos = atributo.objects.filter(item=item, version=kwargs['idV']).order_by('pk')
-        return render(self.request, 'items/listarOtrasVersiones.html',{'item':item, 'atributos':atributos, 'version':kwargs['idV']})
+        return render(self.request, 'items/listarOtrasVersiones.html',{'item':item, 'atributos':atributos, 'version':kwargs['idV'], 'nombreProyecto':item.fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
 
 class modificarAtributo(UpdateView):
     """
@@ -249,7 +274,7 @@ class listarVersiones(TemplateView):
     """
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
-        return render(self.request, 'items/listarVersiones.html',{'item':item, 'range':range(1,item.versionAct+1)})
+        return render(self.request, 'items/listarVersiones.html',{'item':item, 'range':range(1,item.versionAct+1), 'nombreProyecto':item.fase.proyecto.nombre,'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
 
 class ReversionVersiones(TemplateView):
     """
@@ -257,7 +282,7 @@ class ReversionVersiones(TemplateView):
     """
     def get(self, request, *args, **kwargs):
         item = items.objects.get(id=kwargs['id'])
-        return render(self.request, 'items/reversion.html',{'item':item, 'range':range(1,item.versionAct+1)})
+        return render(self.request, 'items/reversion.html',{'item':item, 'range':range(1,item.versionAct+1), 'nombreProyecto':item.fase.proyecto.nombre,'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
 
 
 class reversionar(TemplateView):
@@ -425,4 +450,36 @@ class listarItemsFinalizados(ListView):
     """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
     model = items
     template_name = 'items/listarFinalizados.html'  #no carga este template
-    context_object_name = 'items'
+    context_object_name = 'items'        return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
+
+class graficar(TemplateView):
+    def get(self, request, *args, **kwargs):
+        cadena = 'digraph A {\n'
+        proyecto = Proyectos.objects.get(id=kwargs['id'])
+        listaFases = fases.objects.filter(proyecto=proyecto)
+        c = 0
+        for fase in listaFases:
+            cadena += '\tsubgraph cluster' + str(c) + '{\n'
+            c+=1
+            cadena += '\tnode [style=filled,color=black];\n'
+            cadena += '\tcolor=lightgrey;\n'
+            listaitems = items.objects.filter(fase=fase)
+            for item in listaitems:
+                cadena += '\t\t' + str(item.id) + ' [style=bold,label="'+ item.nombre + '"];\n'
+            cadena += '\t\tlabel="'+fase.nombre+'";\n'
+            cadena += '\t}\n'
+        listaRelaciones = relacion.objects.filter(itemHijo__fase__proyecto=proyecto)
+        for r in listaRelaciones:
+            cadena += '\t' + str(r.itemPadre.id) + '->' + str(r.itemHijo.id) + ';\n'
+        cadena += '}'
+        import os
+        archivo = 'diagrama'+ str(proyecto.id)
+        url = '../media/' + archivo + '.dot'
+        diagrama = open(url,'w')
+        diagrama.write(cadena)
+        diagrama.close()
+        comando = 'cd ../media/;dot -Tpng ' + archivo +'.dot -o '+archivo+'.png'
+        os.system(comando)
+        comando = 'cd ../media/;rm ' + archivo + '.dot'
+        os.system(comando)
+        return render(request,'relaciones/graficar.html', {'proyecto': proyecto.nombre, 'archivo':archivo, 'idProyecto':proyecto.id, 'nombreProyecto':proyecto.nombre, 'url':'/proyectos/detalles/'+str(proyecto.id)})

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}
+      Crear Fase
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+     <h1>Nueva Linea Base</h1>
+        <form method="post">{% csrf_token %}
+            <label data-name="nombre"> Nombre:</label>
+            <input name="nombre"><br>
+            <select name="idFase" onchange="inicio(this.value);">
+            <option>Seleccione la fase </option>
+            {% for f in fases %}
+                <option value="{{f.id}}">{{f.nombre}}</option>
+            {% endfor %}
+            </select><br>
+            <div id="datos">
+            </div><br>
+
+            <input type="submit" value="Crear">
+        </form>
+ {% endblock %}
+
+ {% block js %}
+ <script>
+    function inicio(valor){
+        $.ajax({
+          data : {'idFase' : valor},
+          url : '/lineasBase/listaItems/',
+          type : 'get',
+          success : function(data){
+            var html="";
+            html+="<h2>Items candidatos</h2>";
+            html+="<table>";
+            for(i=0;i<data.length;i++){
+                html+="<TR>";
+                html+="    <TD><input type='checkbox' name='idItems' value='"+ data[i].pk +"'></TD>";
+                html+="    <TD>"+data[i].fields.nombre+"</TD>";
+                html+="</TR>";
+            }
+            html+="</table>";
+            $('#datos').html(html);
+          }
+        });
+    }
+
+</script>
+{% endblock %}

@@ -218,6 +218,9 @@ aps.aplicaciones.items.tests.TestCrearItem.test_details	aps.aplicaciones.items.t
 aps.aplicaciones.items.tests.TestCrearRelacion	aps.aplicaciones.items.tests.TestCrearRelacion-class.html
 aps.aplicaciones.items.tests.TestCrearRelacion.setUp	aps.aplicaciones.items.tests.TestCrearRelacion-class.html#setUp
 aps.aplicaciones.items.tests.TestCrearRelacion.test_details	aps.aplicaciones.items.tests.TestCrearRelacion-class.html#test_details
+aps.aplicaciones.items.tests.TestEliminarAtributo	aps.aplicaciones.items.tests.TestEliminarAtributo-class.html
+aps.aplicaciones.items.tests.TestEliminarAtributo.setUp	aps.aplicaciones.items.tests.TestEliminarAtributo-class.html#setUp
+aps.aplicaciones.items.tests.TestEliminarAtributo.test_details	aps.aplicaciones.items.tests.TestEliminarAtributo-class.html#test_details
 aps.aplicaciones.items.tests.TestEliminarItem	aps.aplicaciones.items.tests.TestEliminarItem-class.html
 aps.aplicaciones.items.tests.TestEliminarItem.setUp	aps.aplicaciones.items.tests.TestEliminarItem-class.html#setUp
 aps.aplicaciones.items.tests.TestEliminarItem.test_details	aps.aplicaciones.items.tests.TestEliminarItem-class.html#test_details
