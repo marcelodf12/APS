@@ -93,15 +93,16 @@ class finalizarFase(FormView):
 
         #Buscamos la Fase anterior
         ordenAnterior=fase.orden-1
-        faseAnterior = fases.objects.get(orden=ordenAnterior)
+        if ordenAnterior>0:
+            faseAnterior = fases.objects.get(orden=ordenAnterior)
 
-        #Consultamos el estado de la fase anterior
-        if(faseAnterior.estado != 'finalizada'):
-            return render(self.request, 'error/general.html', {'mensaje':'La fase anterior no ha sido finalizada aun'})
+            #Consultamos el estado de la fase anterior
+            if(faseAnterior.estado != 'finalizada'):
+                return render(self.request, 'error/general.html', {'mensaje':'La fase anterior no ha sido finalizada aun'})
 
         fase.estado = 'finalizada'
         fase.save()
-        return super(finalizarFase, self).form_valid(form)
+        return render(self.request, 'fases/listarFinalizadas.html', {'nombreProyecto':fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(fase.proyecto.id), 'idProyecto':fase.proyecto.id})
 
 class listarFasesFinalizadas(ListView):
     """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
