@@ -84,20 +84,21 @@ class finalizarFase(FormView):
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         fase = fases.objects.get(id=self.kwargs['id'])
-        item=items.objects.filter(fase=fase)
+        item=items.objects.filter(fase=fase).exclude(estado='eliminado')
+
         for i in item:
-            if(i.estado != 'finalizada'):
-                #print 'Hay un item no finalizado'
+            #Consultamos si el item ya fue finalizado
+            if(i.estado != 'finalizado'):
                 return render(self.request, 'error/general.html', {'mensaje':'Se ha encontrado un item no finalizado'})
-            #else:
-                #se verifica que no sea la primera fase (orden)
-                #if(fase.orden != 1):
-                    #se verifica si tiene relacion antecesor
-                    #se busca en la tabla items_relacion un registro con el id del item
-                    #itemAntecesor = relacion.objects.get(itemHijo_id=i.id)
-                    #if(itemAntecesor != None):
-                    #    print 'Tiene Antecesor'
-        #print 'Todos las fases estan finalizadas'
+
+        #Buscamos la Fase anterior
+        ordenAnterior=fase.orden-1
+        faseAnterior = fases.objects.get(orden=ordenAnterior)
+
+        #Consultamos el estado de la fase anterior
+        if(faseAnterior.estado != 'finalizada'):
+            return render(self.request, 'error/general.html', {'mensaje':'La fase anterior no ha sido finalizada aun'})
+
         fase.estado = 'finalizada'
         fase.save()
         return super(finalizarFase, self).form_valid(form)
