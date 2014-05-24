@@ -9,6 +9,9 @@ from django.http import HttpResponse
 # Create your views here.
 
 class crear(TemplateView):
+    """
+        Vista para crear una Linea Base, hereda metodos y atributos de la clase TemplateView
+    """
     def get(self, request, *args, **kwargs):
         idProyecto = kwargs['id']
         proyecto = Proyectos.objects.get(id=idProyecto)
@@ -42,6 +45,9 @@ class crear(TemplateView):
 
 
 class retornarItemsDeFaseAJAX(TemplateView):
+    """
+        Vista que permite el retorno de una lista de items que pertenecen a una fase especifica, hereda metodos y atributos de la clase TemplateView
+    """
     def get(self, request, *args, **kwargs):
         idFase=request.GET['idFase']
         rel = relacionItemLineaBase.objects.filter(linea__fase__id = idFase)
@@ -54,6 +60,9 @@ class retornarItemsDeFaseAJAX(TemplateView):
         return HttpResponse(data, content_type='application/json')
 
 class listarLineasBase(TemplateView):
+    """
+        Vista que permite listar todas las Lineas Base, hereda metodos y atributos de la clase TemplateView
+    """
     def get(self, request, *args, **kwargs):
         proyecto=Proyectos.objects.get(id=kwargs['id'])
         listaLineasBase=lineasBase.objects.filter(fase__proyecto=proyecto)
@@ -64,6 +73,9 @@ class listarLineasBase(TemplateView):
                                                          'proyecto':proyecto})
 
 class listarDetallesLineasBase(TemplateView):
+    """
+        Vista que permite visualizar en detalle los datos asociados a una Linea Base en particular, hereda metodos y atributos de la clase TemplateView
+    """
     def get(self, request, *args, **kwargs):
         lb = lineasBase.objects.get(id=kwargs['id'])
         proyecto = lb.fase.proyecto
