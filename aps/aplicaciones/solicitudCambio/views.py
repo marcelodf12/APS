@@ -47,6 +47,10 @@ class votar(TemplateView):
                     print 'lider voto rechazar'
                     voto.solicitud.estado = 'rechazada'
             voto.solicitud.save()
+            if voto.solicitud.estado == 'aceptada':
+                lb = relacionItemLineaBase.objects.get(item=voto.solicitud.item).linea
+                lb.estado = 'abierto'
+                lb.save()
         else:
             print 'falta todavia'
         usuario = request.user
