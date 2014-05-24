@@ -45,6 +45,10 @@ COPY django_content_type (id, name, app_label, model) FROM stdin;
 12	tipo item	items	tipoitem
 13	fases	fases	fases
 14	permisos	permisos	permisos
+15	lineas base	lineasBase	lineasbase
+16	relacion item linea base	lineasBase	relacionitemlineabase
+17	solicitud cambio	solicitudCambio	solicitudcambio
+18	votos	solicitudCambio	votos
 \.
 
 
@@ -95,6 +99,18 @@ COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
 40	Can add permisos	14	add_permisos
 41	Can change permisos	14	change_permisos
 42	Can delete permisos	14	delete_permisos
+43	Can add lineas base	15	add_lineasbase
+44	Can change lineas base	15	change_lineasbase
+45	Can delete lineas base	15	delete_lineasbase
+46	Can add relacion item linea base	16	add_relacionitemlineabase
+47	Can change relacion item linea base	16	change_relacionitemlineabase
+48	Can delete relacion item linea base	16	delete_relacionitemlineabase
+49	Can add solicitud cambio	17	add_solicitudcambio
+50	Can change solicitud cambio	17	change_solicitudcambio
+51	Can delete solicitud cambio	17	delete_solicitudcambio
+52	Can add votos	18	add_votos
+53	Can change votos	18	change_votos
+54	Can delete votos	18	delete_votos
 \.
 
 
@@ -117,7 +133,7 @@ SELECT pg_catalog.setval('auth_group_permissions_id_seq', 1, false);
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('auth_permission_id_seq', 42, true);
+SELECT pg_catalog.setval('auth_permission_id_seq', 54, true);
 
 
 --
@@ -125,8 +141,8 @@ SELECT pg_catalog.setval('auth_permission_id_seq', 42, true);
 --
 
 COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-1	pbkdf2_sha256$12000$hVuMqX9bgF7t$oZ8/Y/P9MAybnfCme6Mz8oXyF/JIy5TVm0mgCYQV/PQ=	2014-05-17 00:34:06.030321-04	t	root	Marcelo Daniel	Franco	marcelodf12@gmail.com	t	t	2014-05-17 00:33:53.23172-04
-2	pbkdf2_sha256$12000$Z30I6NYNvGjs$FEnQNv7NjOPWdAysQFPIDURs//Qyvb9Zr01YJDwRNKk=	2014-05-17 00:57:10.10983-04	f	carol	Carolina	Arguello	carol@is2.aps.py	f	t	2014-05-17 00:57:02.107976-04
+2	pbkdf2_sha256$12000$Z30I6NYNvGjs$FEnQNv7NjOPWdAysQFPIDURs//Qyvb9Zr01YJDwRNKk=	2014-05-23 22:58:28.609299-04	f	carol	Carolina	Arguello	carol@is2.aps.py	f	t	2014-05-17 00:57:02.107976-04
+1	pbkdf2_sha256$12000$hVuMqX9bgF7t$oZ8/Y/P9MAybnfCme6Mz8oXyF/JIy5TVm0mgCYQV/PQ=	2014-05-23 23:28:00.321927-04	t	root	Marcelo Daniel	Franco	marcelodf12@gmail.com	t	t	2014-05-17 00:33:53.23172-04
 \.
 
 
@@ -187,7 +203,7 @@ SELECT pg_catalog.setval('django_admin_log_id_seq', 1, false);
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('django_content_type_id_seq', 14, true);
+SELECT pg_catalog.setval('django_content_type_id_seq', 18, true);
 
 
 --
@@ -196,6 +212,8 @@ SELECT pg_catalog.setval('django_content_type_id_seq', 14, true);
 
 COPY django_session (session_key, session_data, expire_date) FROM stdin;
 8fmcbu3a3s7eg2tgkz0qq3m0zv0h8co6	NGFlZDE5ZmI1NWI4NDAyMTRhODQyMjJlM2IxYjZmYWM3ZGI5MDVjNTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6Mn0=	2014-05-31 00:57:10.122-04
+evzc4sqypflum6piywcubdtihvbisy4f	ZDRjNjYzN2NmMWJhMjNiYTBjZjZhODgwMmU2MmIzZDE0YWRjMDFiOTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0=	2014-06-03 08:24:25.638827-04
+leehpvn109pza20j3durkh6e22ukt1fr	ZDRjNjYzN2NmMWJhMjNiYTBjZjZhODgwMmU2MmIzZDE0YWRjMDFiOTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0=	2014-06-06 23:28:00.333838-04
 \.
 
 
@@ -204,10 +222,10 @@ COPY django_session (session_key, session_data, expire_date) FROM stdin;
 --
 
 COPY proyectos_proyectos (id, nombre, "fechaInicio", "fechaFinP", "fechaFinR", "cantFases", estado, presupuesto, penalizacion, saldo, lider_id) FROM stdin;
-2	Proyecto 2	2014-05-12	2014-10-30	\N	3	creado	5000	25	\N	1
-3	Proyecto 3	2014-04-12	2013-05-10	\N	4	creado	5000	10	\N	1
-1	Proyecto 1	2014-06-16	2014-12-30	\N	4	activo	10000	100	\N	1
-4	Proyecto Carol	2014-05-12	2014-11-30	\N	3	creado	3000	10	\N	2
+7	Proyecto 2	2014-05-12	2015-12-12	\N	6	creado	3000	10	\N	2
+6	Proyecto 1	2014-05-12	2014-12-12	\N	4	activo	10000	100	\N	2
+8	Proyecto 3	2013-03-10	2015-12-12	\N	3	creado	5000	6	\N	1
+9	Proyecto 5	2013-03-10	2013-03-21	\N	4	activo	5000	10	\N	1
 \.
 
 
@@ -216,20 +234,23 @@ COPY proyectos_proyectos (id, nombre, "fechaInicio", "fechaFinP", "fechaFinR", "
 --
 
 COPY fases_fases (id, nombre, "fechaInicioP", "fechaInicioR", estado, proyecto_id, costo, presupuesto, orden) FROM stdin;
-12	Fase 1	2014-05-12	\N	creado	4	0	0	1
-13	Fase 2	2014-05-12	\N	creado	4	0	0	2
-14	Fase 3	2014-05-12	\N	creado	4	0	0	3
-8	Fase 1	2014-04-12	\N	creado	3	0	0	1
-9	Fase 2	2014-04-12	\N	creado	3	0	0	2
-10	Fase 3	2014-04-12	\N	creado	3	0	0	3
-11	Fase 4	2014-04-12	\N	creado	3	0	0	4
-5	Fase 1	2014-05-12	\N	creado	2	0	0	1
-6	Fase 2	2014-05-12	\N	creado	2	0	0	2
-7	Fase 3	2014-05-12	\N	creado	2	0	0	3
-1	Fase 1	2014-06-16	\N	creado	1	30	0	1
-2	Fase 2	2014-06-16	\N	creado	1	85	0	2
-3	Fase 3	2014-06-16	\N	creado	1	40	0	3
-4	Fase 4	2014-06-16	\N	creado	1	0	0	4
+23	Fase 1	2014-05-12	\N	creado	7	0	0	1
+24	Fase 2	2014-05-12	\N	creado	7	0	0	2
+25	Fase 3	2014-05-12	\N	creado	7	0	0	3
+26	Fase 4	2014-05-12	\N	creado	7	0	0	4
+27	Fase 5	2014-05-12	\N	creado	7	0	0	5
+28	Fase 6	2014-05-12	\N	creado	7	0	0	6
+19	Fase 1	2014-05-12	\N	creado	6	30	0	1
+20	Fase 2	2014-05-12	\N	creado	6	10	0	2
+21	Fase 3	2014-05-12	\N	creado	6	10	0	3
+22	Fase 4	2014-05-12	\N	creado	6	0	0	4
+29	Fase 1	2013-03-10	\N	creado	8	0	0	1
+30	Fase 2	2013-03-10	\N	creado	8	0	0	2
+31	Fase 3	2013-03-10	\N	creado	8	0	0	3
+32	Fase 1	2013-03-10	\N	creado	9	0	0	1
+33	Fase 2	2013-03-10	\N	creado	9	0	0	2
+34	Fase 3	2013-03-10	\N	creado	9	0	0	3
+35	Fase 4	2013-03-10	\N	creado	9	0	0	4
 \.
 
 
@@ -237,7 +258,7 @@ COPY fases_fases (id, nombre, "fechaInicioP", "fechaInicioR", estado, proyecto_i
 -- Name: fases_fases_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('fases_fases_id_seq', 14, true);
+SELECT pg_catalog.setval('fases_fases_id_seq', 35, true);
 
 
 --
@@ -245,14 +266,11 @@ SELECT pg_catalog.setval('fases_fases_id_seq', 14, true);
 --
 
 COPY items_items (id, nombre, "versionAct", estado, complejidad, fase_id, costo) FROM stdin;
-3	R3	1	creado	1	1	10
-5	Diagrama 2	1	creado	3	2	30
-6	Diagrama 3	1	creado	3	2	35
-4	Diagrama 1	2	creado	2	2	20
-1	R1	2	creado	1	1	10
-2	R2	2	creado	1	1	10
-7	Clase A	4	creado	3	3	40
-8	Diagrama Final	4	creado	4	4	200
+15	Item 2	1	creado	1	19	10
+17	Item 4	1	creado	1	20	10
+18	Item 5	1	creado	3	21	10
+16	Item 3	1	finalizado	1	19	10
+14	Item 1	1	finalizado	1	19	10
 \.
 
 
@@ -261,36 +279,6 @@ COPY items_items (id, nombre, "versionAct", estado, complejidad, fase_id, costo)
 --
 
 COPY items_atributo (id, nombre, descripcion, version, item_id) FROM stdin;
-1	Descripcion		1	1
-2	Descripcion		1	2
-3	Descripcion		1	3
-4	Titulo		1	7
-5	Responsable		1	7
-6	Paquete		1	7
-7	Atributo 1	Este es la descripcion	2	4
-8	Descripcion	Este es otra descripcion	2	1
-9	Descripcion	Esta es la descripcion del primer atributo del item 2	2	2
-11	Responsable		2	7
-12	Paquete		2	7
-10	Titulo	Diagrama Uno	2	7
-14	Titulo	Diagrama Uno	3	7
-15	Paquete		3	7
-13	Responsable	Julio	3	7
-17	Responsable	Julio	4	7
-18	Titulo	Diagrama Uno	4	7
-16	Paquete	Administracion	4	7
-19	Titulo		1	8
-20	Responsable		1	8
-21	Tiempo		1	8
-23	Titulo		2	8
-24	Responsable		2	8
-22	Tiempo	5	2	8
-26	Tiempo	5	3	8
-27	Responsable		3	8
-25	Titulo	Final	3	8
-29	Titulo	Final	4	8
-30	Tiempo	5	4	8
-28	Responsable	Pedro	4	8
 \.
 
 
@@ -298,14 +286,14 @@ COPY items_atributo (id, nombre, descripcion, version, item_id) FROM stdin;
 -- Name: items_atributo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('items_atributo_id_seq', 30, true);
+SELECT pg_catalog.setval('items_atributo_id_seq', 1, false);
 
 
 --
 -- Name: items_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('items_items_id_seq', 8, true);
+SELECT pg_catalog.setval('items_items_id_seq', 18, true);
 
 
 --
@@ -313,10 +301,9 @@ SELECT pg_catalog.setval('items_items_id_seq', 8, true);
 --
 
 COPY items_relacion (id, "itemHijo_id", "itemPadre_id", estado) FROM stdin;
-2	5	2	t
-3	4	3	t
-4	6	1	t
-5	7	5	t
+10	16	14	t
+11	17	15	t
+12	18	17	t
 \.
 
 
@@ -324,7 +311,7 @@ COPY items_relacion (id, "itemHijo_id", "itemPadre_id", estado) FROM stdin;
 -- Name: items_relacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('items_relacion_id_seq', 5, true);
+SELECT pg_catalog.setval('items_relacion_id_seq', 12, true);
 
 
 --
@@ -332,10 +319,6 @@ SELECT pg_catalog.setval('items_relacion_id_seq', 5, true);
 --
 
 COPY items_tipoitem (id, nombre, atributos) FROM stdin;
-1	Requerimiento Funcional	(lp0\nVDescripcion\np1\na.
-2	Requerimiento No Funcional	(lp0\nVDescripcion\np1\na.
-3	Diagrama de Caso de Uso	(lp0\nVTitulo\np1\naVResponsable\np2\naVTiempo\np3\na.
-4	Diagrama de Clases	(lp0\nVTitulo\np1\naVResponsable\np2\naVPaquete\np3\na.
 \.
 
 
@@ -347,14 +330,48 @@ SELECT pg_catalog.setval('items_tipoitem_id_seq', 4, true);
 
 
 --
+-- Data for Name: lineasBase_lineasbase; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "lineasBase_lineasbase" (id, nombre, estado, fase_id) FROM stdin;
+8	L1	cerrado	19
+\.
+
+
+--
+-- Name: lineasBase_lineasbase_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"lineasBase_lineasbase_id_seq"', 8, true);
+
+
+--
+-- Data for Name: lineasBase_relacionitemlineabase; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "lineasBase_relacionitemlineabase" (id, item_id, linea_id) FROM stdin;
+8	16	8
+9	14	8
+\.
+
+
+--
+-- Name: lineasBase_relacionitemlineabase_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"lineasBase_relacionitemlineabase_id_seq"', 9, true);
+
+
+--
 -- Data for Name: permisos_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY permisos_permisos (id, permiso, "tipoObjeto", usuario_id, grupo_id, id_fk) FROM stdin;
-1	VER	proyecto	1	\N	0
-2	ADD	proyecto	1	\N	0
-3	VER	proyecto	\N	1	0
-4	ADD	proyecto	2	\N	0
+6	VER	proyecto	\N	\N	0
+7	ADD	proyecto	1	\N	0
+8	VER	proyecto	1	\N	0
+9	VER	proyecto	2	\N	0
+10	ADD	proyecto	2	\N	0
 \.
 
 
@@ -362,7 +379,7 @@ COPY permisos_permisos (id, permiso, "tipoObjeto", usuario_id, grupo_id, id_fk) 
 -- Name: permisos_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('permisos_permisos_id_seq', 4, true);
+SELECT pg_catalog.setval('permisos_permisos_id_seq', 10, true);
 
 
 --
@@ -370,6 +387,7 @@ SELECT pg_catalog.setval('permisos_permisos_id_seq', 4, true);
 --
 
 COPY proyectos_miembros (id, proyecto_id, miembro_id, comite) FROM stdin;
+3	6	1	t
 \.
 
 
@@ -377,14 +395,44 @@ COPY proyectos_miembros (id, proyecto_id, miembro_id, comite) FROM stdin;
 -- Name: proyectos_miembros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('proyectos_miembros_id_seq', 1, false);
+SELECT pg_catalog.setval('proyectos_miembros_id_seq', 3, true);
 
 
 --
 -- Name: proyectos_proyectos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('proyectos_proyectos_id_seq', 4, true);
+SELECT pg_catalog.setval('proyectos_proyectos_id_seq', 9, true);
+
+
+--
+-- Data for Name: solicitudCambio_solicitudcambio; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "solicitudCambio_solicitudcambio" (id, descripcion, "fechaExpiracion", "lineaBase_id", item_id, "costoAdicional", estado, orden, usuario_id) FROM stdin;
+\.
+
+
+--
+-- Name: solicitudCambio_solicitudcambio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"solicitudCambio_solicitudcambio_id_seq"', 3, true);
+
+
+--
+-- Data for Name: solicitudCambio_votos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "solicitudCambio_votos" (id, solicitud_id, estado, usuario_id, aceptar) FROM stdin;
+\.
+
+
+--
+-- Name: solicitudCambio_votos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"solicitudCambio_votos_id_seq"', 4, true);
 
 
 --
