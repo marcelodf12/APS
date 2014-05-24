@@ -9,12 +9,19 @@ from django.core import serializers
 from django.http import HttpResponse
 # Create your views here.
 class listarVotaciones(TemplateView):
+    """
+       Vista que lista todas las votaciones pendientes
+    """
     def get(self, request, *args, **kwargs):
         usuario = request.user
         votaciones = votos.objects.filter(usuario=usuario, estado='pendiente')
         return render(request, 'solicitudCambio/listarVotaciones.html',{'votaciones':votaciones})
 
 class votar(TemplateView):
+    """
+        Vista que Muestra los detalles de una solicitud, permite votar para aceptar o rechazar una solicitud, y abre la linea base en caso que ya no haya votos pendientes y se haya mayoria de votos en aceptado
+        Si hay un empate el voto del lider desempata
+    """
     def get(self, request, *args, **kwargs):
         voto = votos.objects.get(id=kwargs['id'])
         return render(request, 'solicitudCambio/votar.html', {'voto':voto})
@@ -59,6 +66,9 @@ class votar(TemplateView):
 
 
 class crearSolicitudCambio(TemplateView):
+    """
+    Vista que permite crear una nueva solicitud de cambio
+    """
     def get(self, request,*args, **kwargs):
         item = items.objects.get(id= kwargs ['id'])
         return render(request, 'solicitudCambio/crear.html',{'item':item})
