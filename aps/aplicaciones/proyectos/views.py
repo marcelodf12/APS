@@ -127,6 +127,7 @@ class iniciarProyecto(FormView):
         for f in fas:
             cant_act+=1
         if(proyecto.cantFases==cant_act):
+            proyecto.estado='activo'
             proyecto.save()
             return super(iniciarProyecto, self).form_valid(form)
         else:
