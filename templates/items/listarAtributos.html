@@ -13,6 +13,7 @@
         {% if tieneHijos = False %}
         <img src='/static/images/relacion.png' width='24' height='24'><a id='relacion'>  Crear Padre </a><br><br>
         {% endif %}
+        {% if item.estado != "finalizado" %}
         <img src='/static/images/atributo.png' width='24' height='24'><a id='atributo'>  Nuevo Atributo</a><br><br>
         <img src='/static/images/versiones.png' width='24' height='24'><a id='version' href="/items/atributos/listarVersiones/{{item.id}}">  Ver otras versiones</a><br><br>
         <img src='/static/images/reversionar.png' width='24' height='24'><a id='reversion' href="/items/reversionar/{{item.id}}">  Reversionar </a><br><br>
@@ -25,6 +26,9 @@
             }
             atributo.href = "/items/atributos/agregar/" + idItem;
         </script>
+        {% else %}
+        <img src='/static/images/solicitud.png' width='24' height='24'><a href="/solicitudCambio/crear/{{item.id}}">  Solicitar Cambio </a><br><br>
+        {% endif %}
 {% endblock %}
 
 {% block contenido %}
