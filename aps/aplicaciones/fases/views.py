@@ -102,10 +102,16 @@ class finalizarFase(FormView):
 
         fase.estado = 'finalizada'
         fase.save()
-        return render(self.request, 'fases/listarFinalizadas.html', {'nombreProyecto':fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(fase.proyecto.id), 'idProyecto':fase.proyecto.id})
+
+        #todas las fases de este proyecto
+        fasesR = fases.objects.filter(proyecto_id=fase.proyecto)
+        print fasesR
+
+        return render(self.request, 'fases/listarFinalizadas.html', {'nombreProyecto':fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(fase.proyecto.id), 'idProyecto':fase.proyecto.id,'fases':fasesR})
 
 class listarFasesFinalizadas(ListView):
     """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
     model = fases
-    template_name = 'fases/listarFinalizadas.html'  #no carga este template
+    template_name = 'fases/listarFinalizadas.html'
     context_object_name = 'fases'
+    print 'LLEGO'

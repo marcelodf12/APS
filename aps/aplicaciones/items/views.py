@@ -525,7 +525,7 @@ class finalizarItem(FormView):
 
 
 class listarItemsFinalizados(ListView):
-    """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
+    """ Vista de listado de items finalizados, hereda atributos y metodos de la clase ListView """
     model = items
     template_name = 'items/listarFinalizados.html'
     context_object_name = 'items'
