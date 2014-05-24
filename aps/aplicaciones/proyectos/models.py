@@ -22,8 +22,10 @@ class Proyectos(models.Model):
     lider = models.ForeignKey(User, null='True')
 
     def __unicode__(self):
-        """ Metodo llamado para visualizar objetos. En este caso se mostrara el valor del atributo
-        'nombre' para cada instancia del modelo Proyectos  """
+        """
+            Metodo que es invocado para mostrar el objeto como una cadena.En este caso se mostrara el valor del
+            atributo nombre para cada instancia del modelo Proyectos
+        """
         return self.nombre
 
 class Miembros(models.Model):
