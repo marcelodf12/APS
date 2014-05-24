@@ -13,7 +13,9 @@ from aps.aplicaciones.items.models import items, atributo, relacion
 
 # Create your tests here.
 class TestCrearItem(unittest.TestCase):
-    """ Prueba para comprobar la creacion de items """
+    """
+        Prueba para comprobar la creacion de items
+    """
 
     def setUp(self):
             """
@@ -86,9 +88,15 @@ class TestCrearItem(unittest.TestCase):
 
 
 class TestModificarItem(unittest.TestCase):
-    """Prueba para comprobar la modificacion de items"""
+    """
+        Prueba para comprobar la modificacion de items
+    """
 
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
+
             # Creacion de un cliente
             self.cliente = Client()
 
@@ -169,6 +177,9 @@ class TestEliminarItem(unittest.TestCase):
         Prueba para comprobar la eliminacion logica de items
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
 
             # Creacion de un cliente
             self.cliente = Client()
@@ -246,6 +257,9 @@ class TestCrearAtributo(unittest.TestCase):
         Prueba para comprobar la creacion de atributos
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
 
             # Creacion de un cliente
             self.cliente = Client()
@@ -321,6 +335,9 @@ class TestModificarAtributo(unittest.TestCase):
         Prueba para comprobar la modificacion de atributos
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
 
             # Creacion de un cliente
             self.cliente = Client()
@@ -404,6 +421,9 @@ class TestEliminarAtributo(unittest.TestCase):
         Prueba para comprobar la eliminacion logica de atributos
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
 
             # Creacion de un cliente
             self.cliente = Client()
@@ -487,6 +507,9 @@ class TestCrearRelacion(unittest.TestCase):
         Prueba para comprobar la creacion de relaciones
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
 
             # Creacion de un cliente
             self.cliente = Client()
@@ -572,6 +595,9 @@ class TestEliminarRelaciones(unittest.TestCase):
         Prueba para comprobar la eliminacion logica de relaciones
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
 
             # Creacion de un cliente
             self.cliente = Client()
@@ -673,6 +699,9 @@ class Reversionar(unittest.TestCase):
         Prueba para comprobar la reversion de items
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
 
             # Creacion de un cliente
             self.cliente = Client()
@@ -736,16 +765,11 @@ class Reversionar(unittest.TestCase):
         # Cliente es autenticado como el usuario 'fulano Login'
         b = self.cliente.login(username='fulano Login7', password='123')
 
-        # NO SE TIENE OPCION PARA MODIFICAR ATRIBUTO AUN
-        consultaInstancia = atributo.objects.get(item_id=7)
-        print consultaInstancia.pk
-
         # Peticion POST para modificar el atributo con id=9
         response = self.cliente.post("/items/atributos/modificar/9",data={'nombre':'atributo modificado',
                                             'descripcion':'modificacion atributo de prueba'
                                             })
-        consultaInstancia = atributo.objects.get(version=2)
-        print consultaInstancia.pk
+
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
         #Peticion POST para reversionar el item con id=7
@@ -755,7 +779,7 @@ class Reversionar(unittest.TestCase):
 
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'reversionar'
 
-        #Se consulta si el item volvio a su version anterior, la version 1 (en realidad queda con una version 3, el item)
+        #Se consulta si el item volvio a su version anterior, la version 1 (en realidad el item queda con una version 3)
         consultaInstancia = items.objects.get(id=7, versionAct=3)
         consultaInstancia2 = atributo.objects.get(descripcion="descripcion 1", version=3)
 
@@ -774,9 +798,12 @@ class Reversionar(unittest.TestCase):
 
 class TestFinalizarItem(unittest.TestCase):
     """
-        Prueba para comprobar la eliminacion de fases
+        Prueba para comprobar la finalizacion de items de los proyectos
     """
     def setUp(self):
+            """
+                Metodo de inicializacion
+            """
 
             # Creacion de un cliente
             self.cliente = Client()
@@ -848,15 +875,15 @@ class TestFinalizarItem(unittest.TestCase):
 
     def test_details(self):
 
-        # Cliente es autenticado como el usuario 'fulano Login'
+        # Cliente es autenticado como el usuario 'fulano Login8'
         b = self.cliente.login(username='fulano Login8', password='123')
 
         # Peticion POST para finalizar el item con id=21
         response = self.cliente.post("/items/finalizar/21",data={'comentario':'prueba finalizacion de fase'})
 
-        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'finalizar'
 
-        #Se consulta si la fase fue finalizada
+        #Se consulta si el item fue finalizado
         consultaInstancia = items.objects.get(nombre="item hijo finalizado", complejidad="10", estado="finalizado")
 
 
