@@ -11,9 +11,15 @@ from django.shortcuts import render, HttpResponseRedirect
 
 # Create your views here.
 class adminFases(TemplateView):
+    """
+        Vista de administracion de fases, hereda atributos y metodos de la clase TemplateView
+    """
     template_name = 'fases/admin.html'
 
 class crearFaseEnProyecto(CreateView):
+    """
+        Vista de creacion de fase en un proyecto especifico, hereda atributos y metodos de la clase CreateView
+    """
     model = fases
     template_name = 'fases/crear.html'
     success_url = reverse_lazy("listar_proyectos")
@@ -39,12 +45,17 @@ class crearFaseEnProyecto(CreateView):
              return render(self.request, 'error/general.html', {'mensaje':'Ya no se pueden agregar fases','nombreProyecto':p.nombre,'url':'/proyectos/detalles/'+str(p.id)})
 
 class listarFases(ListView):
+    """
+        Vista para listar fases de los proyectos, hereda atributos y metodos de la clase ListView
+    """
     model = fases
     template_name = 'fases/listar.html'
     context_object_name = 'fases'
 
 class modificarFases(UpdateView):
-    """ Vista de modificacion de fases, hereda atributos y metodos de la clase UpdateView """
+    """
+        Vista de modificacion de fases, hereda atributos y metodos de la clase UpdateView
+    """
     model = fases
     fields = ['nombre', 'presupuesto']     # Permite modificar solo el campo 'nombre'
     template_name = 'fases/update.html'
@@ -63,7 +74,9 @@ class modificarFases(UpdateView):
 
 
 class eliminarFase(FormView):
-    """ Vista de eliminacion de fases, hereda atributos y metodos de la clase FormView """
+    """
+        Vista de eliminacion de fases, hereda atributos y metodos de la clase FormView
+    """
     form_class = ComentariosLog
     template_name = 'fases/eliminar.html'
     success_url = reverse_lazy('listar_proyectos')      # Se mostrara la vista 'listar_proyectos' en el caso de eliminacion exitosa
@@ -77,6 +90,9 @@ class eliminarFase(FormView):
         return super(eliminarFase, self).form_valid(form)
 
 class finalizarFase(FormView):
+    """
+        Vista para finalizar fases de un proyecto, hereda atributos y metodos de la clase FormView
+    """
     form_class = ComentariosLog
     template_name = 'fases/finalizar.html'
     success_url = reverse_lazy('listar_fasesFinalizadas')      # Se mostrara la vista 'listar_fasesFinalizadas' en el caso de eliminacion exitosa
@@ -110,8 +126,9 @@ class finalizarFase(FormView):
         return render(self.request, 'fases/listarFinalizadas.html', {'nombreProyecto':fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(fase.proyecto.id), 'idProyecto':fase.proyecto.id,'fases':fasesR})
 
 class listarFasesFinalizadas(ListView):
-    """ Vista de listado de proyectos no iniciados, hereda atributos y metodos de la clase ListView """
+    """
+        Vista de listado de fases finalizadas, hereda atributos y metodos de la clase ListView
+    """
     model = fases
     template_name = 'fases/listarFinalizadas.html'
     context_object_name = 'fases'
-    print 'LLEGO'
