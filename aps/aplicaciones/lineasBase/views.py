@@ -1,3 +1,6 @@
+""" Los nombres de clases son los nombres de las vistas que posteriormente son invocadas en el archivo URLS.py
+Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py """
+
 from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 from aps.aplicaciones.fases.models import fases
