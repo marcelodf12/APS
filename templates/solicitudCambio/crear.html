@@ -14,7 +14,15 @@
 {% block contenido %}
      <h1>Nueva Solicitud de cambio</h1>
         <form method="post">{% csrf_token %}
-            {{form.as_p}}
+            <p></p><label for="descripcion">descripcion</label>
+            <input name="descripcion" id="descripcion"></p>
+
+
+            <p><label for="costoAdicional">Costo Adicional</label>
+            <input name="costoAdicional" id="costoAdicional"><br></p>
+
+            <input type="hidden" value="{{item.id}}" name="idItem">
+
             <input type="submit" value="Crear">
         </form>
  {% endblock %}

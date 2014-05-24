@@ -4,6 +4,6 @@ from .views import crearSolicitudCambio
 
 admin.autodiscover()
 urlpatterns = patterns('',
-   url(r'^crear_solicitud_cambio/(?P<id>\d+)$', crearSolicitudCambio.as_view(), name='crear_solicitud_cambio'),
+   url(r'^crear/(?P<id>\d+)$', crearSolicitudCambio.as_view(), name='crear_solicitud_cambio'),
 
 )

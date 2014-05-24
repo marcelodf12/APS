@@ -13,7 +13,7 @@ from django.contrib.auth.admin import User
 class solicitudCambio(models.Model):
 
     descripcion = models.CharField(max_length=200)
-    fechaExpiracion = models.DateField()
+    fechaExpiracion = models.DateField(null='True')
     lineaBase = models.ForeignKey(lineasBase, null='True')
     item = models.ForeignKey (items , null= 'true')
     costoAdicional = models.IntegerField(null='True')
