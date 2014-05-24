@@ -1,3 +1,8 @@
+"""
+    Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py
+    de la aplicacion 'lineasBase'.
+"""
+
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from .views import crear, retornarItemsDeFaseAJAX, listarLineasBase, listarDetallesLineasBase
