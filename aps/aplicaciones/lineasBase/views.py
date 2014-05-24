@@ -21,17 +21,22 @@ class crear(TemplateView):
             fase = fases.objects.get(id=idFase)
             proyecto = fase.proyecto
             nombre = request.POST['nombre']
+            if nombre == '':
+                return render(request, 'error/general.html',{'mensaje':'El campo nombre es obligatorio'})
             nuevaLineaBase = lineasBase(nombre=nombre, fase=fase, estado='cerrado')
             nuevaLineaBase.save()
             lista = request.POST.getlist('idItems')
-            for l in lista:
-                item=items.objects.get(id=l)
-                elementoNuevo = relacionItemLineaBase(item=item, linea=nuevaLineaBase)
-                item.estado='finalizado'
-                item.save()
-                elementoNuevo.save()
-            url = '/proyectos/detalles/' + str(proyecto.id)
-            return HttpResponseRedirect(url)
+            if lista:
+                for l in lista:
+                    item=items.objects.get(id=l)
+                    elementoNuevo = relacionItemLineaBase(item=item, linea=nuevaLineaBase)
+                    item.estado='finalizado'
+                    item.save()
+                    elementoNuevo.save()
+                url = '/proyectos/detalles/' + str(proyecto.id)
+                return HttpResponseRedirect(url)
+            else:
+                return render(request, 'error/general.html',{'mensaje':'No selecciono ningun item'})
         else:
             return render(request, 'error/general.html',{'mensaje':'No selecciono la fase'})
 
@@ -44,7 +49,7 @@ class retornarItemsDeFaseAJAX(TemplateView):
         for r in rel:
             itemsEnlb.append(r.item.id)
         print itemsEnlb
-        i = items.objects.filter(fase__id=idFase).exclude(pk__in=itemsEnlb)
+        i = items.objects.filter(fase__id=idFase).exclude(pk__in=itemsEnlb).filter(estado='finalizado')
         data = serializers.serialize('json',i,fields=('nombre','id'))
         return HttpResponse(data, content_type='application/json')
 
