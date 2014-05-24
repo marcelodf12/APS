@@ -130,6 +130,7 @@ class TestModificarItem(unittest.TestCase):
             #Creacion de un item para la modificacion
             itemRegistrado = items()
             itemRegistrado.pk = 2
+            itemRegistrado.fase = faseRegistrada
             itemRegistrado.nombre = "item Registrado"
             itemRegistrado.versionAct = 1
             itemRegistrado.complejidad = 10
@@ -145,7 +146,7 @@ class TestModificarItem(unittest.TestCase):
         response = self.cliente.post("/items/modificar/2",data={'nombre':'item prueba modificado',
                                                         'complejidad':'11',
                                                         'costo':'2100'
-                                                           })
+                                                        })
 
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
@@ -195,6 +196,7 @@ class TestEliminarItem(unittest.TestCase):
             #Creacion de una fase para instanciar un item
             faseRegistrada = fases()
             faseRegistrada.nombre = "fase Registrada"
+            faseRegistrada.proyecto = proyectoRegistrado
             faseRegistrada.versionAct = 1
             faseRegistrada.complejidad = 10
             faseRegistrada.cantItems = 6
@@ -220,6 +222,8 @@ class TestEliminarItem(unittest.TestCase):
 
         # Cliente es autenticado como el usuario 'fulano Login'
         b = self.cliente.login(username='fulano Login3', password='123')
+
+        consultaInstancia = items.objects.get(pk=3,nombre="item Registrado", complejidad=10, versionAct=1, estado="creado" )
 
         # Peticion POST para eliminar el item con id=3
         response = self.cliente.post("/items/eliminar/3",data={'comentario':'eliminacion item de prueba'})
@@ -767,6 +771,100 @@ class Reversionar(unittest.TestCase):
         self.assertNotEquals(consultaInstancia, None)           # Se verifica la modificacion de version del item
         self.assertNotEquals(consultaInstancia2, None)          # Se verifica los cambios de reversion del atributo
 
+
+class TestFinalizarItem(unittest.TestCase):
+    """
+        Prueba para comprobar la eliminacion de fases
+    """
+    def setUp(self):
+
+            # Creacion de un cliente
+            self.cliente = Client()
+
+            # Creacion de un usuario para la autenticacion
+            self.userLogin = User.objects.create_user(username="fulano Login8", password="123")
+
+            #Creacion de un usuario Lider para instanciar un proyecto
+            userRegistrado = User()
+            userRegistrado.username = "fulano Lider8"
+            userRegistrado.password = "123"
+            userRegistrado.save()
+
+            #Creacion de un proyecto para instanciar una fase
+            proyectoRegistrado = Proyectos()
+            proyectoRegistrado.nombre = "proyecto Registrado"
+            proyectoRegistrado.pk=3
+            proyectoRegistrado.cantFases = 7
+            proyectoRegistrado.fechaInicio = "2014-03-03"
+            proyectoRegistrado.lider = userRegistrado
+            proyectoRegistrado.fechaFinP = "2014-03-03"
+            proyectoRegistrado.presupuesto= 1000
+            proyectoRegistrado.penalizacion=500
+            proyectoRegistrado.save()
+
+            #Creacion de una fase con orden = 1
+            faseRegistrada = fases()
+            faseRegistrada.pk=20
+            faseRegistrada.nombre = "fase prueba terminar"
+            faseRegistrada.fechaInicioP = "2014-03-24"
+            faseRegistrada.fechaInicioR = "2014-03-25"
+            faseRegistrada.estado = "creado"
+            faseRegistrada.proyecto = proyectoRegistrado
+            faseRegistrada.costo = 100
+            faseRegistrada.cantItems = 6
+            faseRegistrada.presupuesto = 1000
+            faseRegistrada.orden = 1
+            faseRegistrada.save()
+
+            #Creacion de un item padre (ya con estado finalizado)
+            itemRegistrado = items()
+            itemRegistrado.pk = 20
+            itemRegistrado.nombre = "item Registrado10"
+            itemRegistrado.fase = faseRegistrada
+            itemRegistrado.estado = 'finalizado'
+            itemRegistrado.versionAct = 1
+            itemRegistrado.complejidad = 10
+            itemRegistrado.costo = 2000
+            itemRegistrado.save()
+
+            #Creacion de un item hijo (con estado creado)
+            itemRegistrado2 = items()
+            itemRegistrado2.pk = 21
+            itemRegistrado2.nombre = "item hijo finalizado"
+            itemRegistrado2.fase = faseRegistrada
+            itemRegistrado2.estado = 'creado'
+            itemRegistrado2.versionAct = 1
+            itemRegistrado2.complejidad = 10
+            itemRegistrado2.costo = 2000
+            itemRegistrado2.save()
+
+            #Creacion de la relacion padre-hijo
+            relacionPadreHijo = relacion()
+            relacionPadreHijo.pk = 21
+            relacionPadreHijo.itemHijo = itemRegistrado2
+            relacionPadreHijo.itemPadre = itemRegistrado
+            relacionPadreHijo.estado = True
+
+
+    def test_details(self):
+
+        # Cliente es autenticado como el usuario 'fulano Login'
+        b = self.cliente.login(username='fulano Login8', password='123')
+
+        # Peticion POST para finalizar el item con id=21
+        response = self.cliente.post("/items/finalizar/21",data={'comentario':'prueba finalizacion de fase'})
+
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'borrar'
+
+        #Se consulta si la fase fue finalizada
+        consultaInstancia = items.objects.get(nombre="item hijo finalizado", complejidad="10", estado="finalizado")
+
+
+        #print "\nNombre del item: ", consultaInstancia.nombre                     # Nombre del item finalizado
+        #print "Complejidad del item: ", consultaInstancia.complejidad             # Complejidad del item finalizado
+        #print "Estado del item:", consultaInstancia.estado                        # Estado del item finalizado
+
+        self.assertNotEquals(consultaInstancia, None)
 
 
 if __name__ == '__main__':
