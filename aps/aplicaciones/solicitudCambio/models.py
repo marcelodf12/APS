@@ -24,3 +24,9 @@ class solicitudCambio(models.Model):
     def __unicode__(self):
         return self.descripcion
 
+class votos(models.Model):
+    solicitud = models.ForeignKey(solicitudCambio)
+    estado = models.CharField(max_length=50, default='pendiente')
+    usuario = models.ForeignKey(User)
+    aceptar = models.BooleanField(default=False)
+

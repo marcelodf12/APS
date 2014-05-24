@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+      Votar
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+     <h1>Solicitud de Cambio</h1>
+        <p>
+        Se desea hacer cambios al item: <b>{{voto.solicitud.item.nombre}}</b> que se encuentra en la
+        fase <b>{{voto.solicitud.item.fase.nombre}}</b> del proyecto <b>{{voto.solicitud.item.fase.proyecto.nombre}}</b>
+        </p>
+        <p>
+            El usuario que lo solicitud es <b>{{voto.solicitud.usuario.first_name}} {{voto.solicitud.usuario.last_name}}</b>
+        </p>
+        <p>
+            El calculo de impacto se establecio en <b>{{voto.solicitud.costoAdicional}} USD</b>
+        </p>
+        <h2>Descripcion de la solicitud</h2>
+        <p>
+                    {{voto.solicitud.descripcion}}
+        </p>
+
+        <h2>Voto</h2>
+        <form method="post">{% csrf_token %}
+            <input type="hidden" name="id" value="{{voto.id}}">
+            <table>
+                <tr>
+                    <td><input type="radio" name="voto" value="True"></td>
+                    <td>Aceptar</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="voto" value="False"></td>
+                    <td>Rechazar</td>
+                </tr>
+            </table><br>
+            <input type="submit" value="Votar">
+        </form>
+ {% endblock %}

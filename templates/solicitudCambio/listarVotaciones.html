@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+      Votaciones Activas
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+
+        {% for v in votaciones%}
+        <br> <a href="/solicitudCambio/votar/{{v.id}}"> {{v.solicitud.descripcion}}</a>
+        {% endfor %}
+ {% endblock %}
