@@ -13,4 +13,7 @@
 
 {% block contenido %}
 
+        {% for v in votaciones%}
+        <br> <a href="/solicitudCambio/votar/{{v.id}}"> {{v.solicitud.descripcion}}</a>
+        {% endfor %}
  {% endblock %}
