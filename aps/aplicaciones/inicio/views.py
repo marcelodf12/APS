@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import Group
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.models import User
+from aps.aplicaciones.solicitudCambio.models import votos
 
 from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
 from .forms import ComentariosLog
@@ -20,6 +21,13 @@ from .forms import ComentariosLog
 class home(TemplateView):
     """ Vista de bienvenida (login exitoso), hereda atributos y metodos de la clase TemplateView """
     template_name = 'inicio/inicio.html'    # Se define la direccion y nombre del template
+    def get(self, request, *args, **kwargs):
+        usuario = request.user
+        votaciones = votos.objects.filter(usuario=usuario, estado='pendiente')
+        haySolicitudes = False
+        if votaciones:
+            haySolicitudes = True
+        return render(request, 'inicio/inicio.html',{'haySolicitudes':haySolicitudes})
 
 
 class Registrarse(FormView):
