@@ -2,7 +2,6 @@ from django.utils import unittest
 from django.test import TestCase
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.items.models import items
-from aps.aplicaciones.permisos.models import Permisos
 from aps.aplicaciones.proyectos.models import Proyectos
 from aps.aplicaciones.lineasBase.models import lineasBase
 from django.test.client import Client
