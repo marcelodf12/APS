@@ -10,6 +10,7 @@ from aps.aplicaciones.lineasBase.models import relacionItemLineaBase, lineasBase
 from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
+from aps.aplicaciones.solicitudCambio.models import solicitudCambio
 import pickle
 
 
@@ -235,11 +236,15 @@ class mostrarDetalles(TemplateView):
         item = items.objects.get(id=kwargs['id'])
         atributos = atributo.objects.filter(item=item, version=item.versionAct).order_by('pk')
         listaItems = relacionItemLineaBase.objects.filter(item=item)
+        solicitudes=solicitudCambio.objects.filter(item=item, estado='aceptada').order_by('pk')
+        solicitud = 0
+        for s in solicitudes:
+            solicitud = s.id
         if listaItems:
             tieneHijos=True
         else:
             tieneHijos=False
-        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos,'tieneHijos':tieneHijos, 'nombreProyecto':item.fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+        return render(self.request, 'items/listarAtributos.html',{'item':item, 'atributos':atributos,'tieneHijos':tieneHijos, 'nombreProyecto':item.fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id), 'solicitud':solicitud})
 
 class mostrarDetallesV(TemplateView):
     """
@@ -560,7 +565,7 @@ class listarItemsFinalizados(ListView):
 class listarItemCandidatos(TemplateView):
     def get(self, request, *args, **kwargs):
         proyecto = Proyectos.objects.get(id=kwargs['id'])
-        return render(self.request, 'items/listarCandidatos.html', {'nombreProyecto': proyecto.nombre, 'idProyecto': kwargs['id'],'candidatos':items.objects.filter(estado='eliminado', fase__proyecto__id=kwargs['id']), 'url':'/proyectos/detalles/'+str(proyecto.id)})
+        return render(self.request, 'items/listarCandidatos.html', {'nombreProyecto': proyecto.nombre, 'idProyecto': kwargs['id'],'candidatos':items.objects.filter(estado='eliminado', fase__proyecto__id=kwargs['id']).exclude(fase__estado='finalizada'), 'url':'/proyectos/detalles/'+str(proyecto.id)})
 
 
 class revivirItem(TemplateView):

@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
 from aps.aplicaciones.lineasBase.models import lineasBase, relacionItemLineaBase
 from aps.aplicaciones.items.models import items
+from aps.aplicaciones.items.forms import ComentariosLog
 from aps.aplicaciones.solicitudCambio.models import solicitudCambio, votos
 from aps.aplicaciones.proyectos.models import Proyectos, Miembros
 from datetime import date, timedelta
@@ -42,6 +43,7 @@ class votar(TemplateView):
             if aFavor > enContra:
                 voto.solicitud.estado = 'aceptada'
                 voto.solicitud.fechaExpiracion = date.today() + timedelta(days=7)
+                voto.solicitud.item.estado = 'revision'
             elif enContra > aFavor:
                 voto.solicitud.estado = 'rechazada'
             else:
@@ -50,11 +52,13 @@ class votar(TemplateView):
                     print 'lider voto aceptar'
                     voto.solicitud.estado = 'aceptada'
                     voto.solicitud.fechaExpiracion = date.today() + timedelta(days=7)
+                    voto.solicitud.item.estado = 'revision'
                 else:
                     print 'lider voto rechazar'
                     voto.solicitud.estado = 'rechazada'
             voto.solicitud.save()
             if voto.solicitud.estado == 'aceptada':
+                voto.solicitud.item.save()
                 lb = relacionItemLineaBase.objects.get(item=voto.solicitud.item).linea
                 lb.estado = 'abierto'
                 lb.save()
@@ -93,3 +97,19 @@ class crearSolicitudCambio(TemplateView):
         else:
             return render(request, 'error/general.html',{'mensaje':'No selecciono ningun item'})
 
+class ejecutarSolicitud(FormView):
+    form_class = ComentariosLog
+    template_name = 'solicitudCambio/ejecutar.html'
+
+    def form_valid(self, form):
+        solicitud = solicitudCambio.objects.get(id=self.kwargs['id'])
+        solicitud.item.estado = 'finalizado'
+        solicitud.item.save()
+        solicitud.estado = 'ejecutado'
+        solicitud.save()
+        lb = solicitud.lineaBase
+        solicitudesPendiente = solicitudCambio.objects.filter(lineaBase=lb, estado='aceptada')
+        if not solicitudesPendiente:
+            lb.estado='cerrado'
+        url = '/proyectos/detalles/'+str(solicitud.item.fase.proyecto.id)
+        return HttpResponseRedirect(url)

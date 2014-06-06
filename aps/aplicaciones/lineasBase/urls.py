@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^listaItems/', retornarItemsDeFaseAJAX.as_view(), name='retornar_items'),
     url(r'^listar/(?P<id>\d+)$', listarLineasBase.as_view()),
     url(r'^listarDetalles/(?P<id>\d+)$', listarDetallesLineasBase.as_view()),
+
 )

@@ -110,7 +110,7 @@ class finalizarFase(FormView):
         #Buscamos la Fase anterior
         ordenAnterior=fase.orden-1
         if ordenAnterior>0:
-            faseAnterior = fases.objects.get(orden=ordenAnterior)
+            faseAnterior = fases.objects.get(orden=ordenAnterior, proyecto=fase.proyecto)
 
             #Consultamos el estado de la fase anterior
             if(faseAnterior.estado != 'finalizada'):

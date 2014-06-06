@@ -143,7 +143,7 @@
                                                                                             {% for i in items %}
                                                                                             {% if i.fase_id == f.pk %}
                                                                                                 <a href='/items/atributos/listar/{{i.id}}'><img src='/static/images/Detalles.png' width='24' height='24'></a>
-                                                                                                {% if i.estado != 'finalizado' %}
+                                                                                                {% if i.estado == 'creado' %}
                                                                                                 <a href='/items/modificar/{{i.id}}'><img src='/static/images/Edit.png' width='24' height='24'></a>
                                                                                                 <a href='/items/eliminar/{{i.id}}'><img src='/static/images/Delete.png' width='24' height='24'></a>
                                                                                                 <a href='/items/finalizar/{{i.id}}'><img src='/static/images/finalizar.png' width='24' height='24'></a>
