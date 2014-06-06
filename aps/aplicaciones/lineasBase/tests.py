@@ -3,7 +3,7 @@ from django.test import TestCase
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.items.models import items
 from aps.aplicaciones.proyectos.models import Proyectos
-from aps.aplicaciones.lineasBase.models import lineasBase
+from aps.aplicaciones.lineasBase.models import lineasBase, relacionItemLineaBase
 from django.test.client import Client
 from django.contrib.auth.models import User
 
@@ -95,20 +95,25 @@ class TestCrearLineaBase(unittest.TestCase):
         # Peticion POST para crear una Linea Base
         response = self.cliente.post("/lineasBase/crear/1",data={'idFase':'1',
                                                                  'nombre':'nom1',
-                                                                 'idItems':'1',
-                                                                 'idItems':'2', # ESTO ES CORRECTO? --- LISTA DE ITEMS
+                                                                 'idItems':['1','3'],
                                                             })
 
-        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
+        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
 
-        # Se consulta por el permiso creado en la tabla de lineas base
+        # Se consulta por la Linea Base creada en la tabla de lineas base
         consultaInstancia = lineasBase.objects.get(nombre="nom1",
-                             #estado="creado",
+                             estado="cerrado",
                              fase=1
                              )
 
-        #print "\nNombre de Linea Base: ", consultaInstancia.nombre
-        #print "Estado: ", consultaInstancia.estado
-        #print "Fase: ", consultaInstancia.fase
+        # Se consulta por el item 1 en la Linea Base recien creada (con id=1)
+        #consultaInstancia = relacionItemLineaBase.objects.get(item=1,
+        #                     linea=1
+        #                     )
+
+
+        print "\nNombre de Linea Base: ", consultaInstancia.nombre
+        print "Estado: ", consultaInstancia.estado
+        print "Fase: ", consultaInstancia.fase
 
         self.assertNotEquals(consultaInstancia,None)
