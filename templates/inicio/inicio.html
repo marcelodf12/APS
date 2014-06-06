@@ -21,6 +21,11 @@ Bienvenido
                 }
         </script>
 {% endif %}
+{% if hayExpirados == True %}
+        <script language="JavaScript" type="text/javascript">
+                alert("Hay solicitudes de cambio que expiraron.\nLos items afectados no se han modificado")
+        </script>
+{% endif %}
 
 {% endblock %}
 {% block js %}

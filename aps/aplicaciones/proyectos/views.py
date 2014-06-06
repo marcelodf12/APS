@@ -12,7 +12,8 @@ from .models import Proyectos, Miembros
 from .forms import ComentariosLog
 from aps.aplicaciones.permisos.models import Permisos
 from aps.aplicaciones.fases.models import fases
-from aps.aplicaciones.items.models import items
+from aps.aplicaciones.items.models import items, atributo
+from aps.aplicaciones.solicitudCambio.models import solicitudCambio
 
 
 # Create your views here.
@@ -261,3 +262,29 @@ class eliminarMiembro(DeleteView):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
         obj = Miembros.objects.get(id=self.kwargs['id'])
         return obj
+
+def comprobarSolicitudesExpiradas():
+    """
+        Funcion que comprueba si hay solicitudes expiradas.
+        Si las hay revierte los cambios y retorna True
+        Si no hay solicitudes expiradas retorna Falso
+    """
+    import datetime
+    solicitudes = solicitudCambio.objects.filter(estado='aceptada')
+    for s in solicitudes:
+        if s.fechaExpiracion < datetime.date.today():
+            print 'Expiro'
+            item = items.objects.get(id=s.item.id)
+            versionVieja = s.orden
+            atributos = atributo.objects.filter(item=item, version=versionVieja).order_by('pk')
+            versionNueva = item.versionAct + 1
+            for a in atributos:
+                nuevo = atributo(nombre=a.nombre, descripcion=a.descripcion, item=item, version=versionNueva)
+                nuevo.save()
+            item.versionAct = versionNueva
+            item.save()
+            s.estado = 'expirado'
+            s.save()
+            return True
+    return False
+
