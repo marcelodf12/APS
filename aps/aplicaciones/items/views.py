@@ -122,9 +122,9 @@ class eliminarItems(FormView):
         rel = relacion.objects.filter(itemPadre=item).exclude(estado=False)
         lb = relacionItemLineaBase.objects.filter(item=item)
         if lb:
-            return render(self.request, 'error/general.html', {'mensaje':'No puede eliminar este items porque esta en una linea base','url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+            return render(self.request, 'error/general.html', {'mensaje':'No puede eliminar este item porque esta en una linea base','url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
         elif rel:
-            return render(self.request, 'error/general.html', {'mensaje':'No puede eliminar este items porque otros depende del el','url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+            return render(self.request, 'error/general.html', {'mensaje':'No puede eliminar este item porque otros depende del el','url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
         else:
             item.estado='eliminado'
             item.save()
