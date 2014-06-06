@@ -98,7 +98,12 @@ class TestCrearLineaBase(unittest.TestCase):
                                                                  'idItems':['1','3'],
                                                             })
 
-        print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
+        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
+
+        # Se consulta por el item 1 en la Linea Base recien creada (con id=1)
+        consultaInstancia = relacionItemLineaBase.objects.get(item=1,
+                             linea=1
+                             )
 
         # Se consulta por la Linea Base creada en la tabla de lineas base
         consultaInstancia = lineasBase.objects.get(nombre="nom1",
@@ -106,14 +111,9 @@ class TestCrearLineaBase(unittest.TestCase):
                              fase=1
                              )
 
-        # Se consulta por el item 1 en la Linea Base recien creada (con id=1)
-        #consultaInstancia = relacionItemLineaBase.objects.get(item=1,
-        #                     linea=1
-        #                     )
 
-
-        print "\nNombre de Linea Base: ", consultaInstancia.nombre
-        print "Estado: ", consultaInstancia.estado
-        print "Fase: ", consultaInstancia.fase
+        #print "\nNombre de Linea Base: ", consultaInstancia.nombre
+        #print "Estado: ", consultaInstancia.estado
+        #print "Fase: ", consultaInstancia.fase
 
         self.assertNotEquals(consultaInstancia,None)
