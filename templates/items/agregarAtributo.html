@@ -9,6 +9,22 @@
 
 {% block menu2 %}
 
+        {% if item.estado == "revision" %}
+            <center>
+                <img style="width: 35px; height: 35px;" alt="" src="{{STATIC_URL}}images/alerta.png"><br>
+                <font color="red"> <B id="alertaSolicitud">Este item esta bajo revision</B></font>
+            </center><br>
+        {% endif %}
+        <img src='/static/images/item.png' width='24' height='24'><a id='ultima'>  Ultima Version</a><br><br>
+        <img src='/static/images/versiones.png' width='24' height='24'><a id='version'>  Ver otras versiones</a><br><br>
+        <img src='/static/images/reversionar.png' width='24' height='24'><a id='reversion'>  Reversionar </a><br><br>
+        <script type="text/javascript">
+            palabras=document.URL.split("/");
+            idItem=palabras[palabras.length-1];
+            ultima.href = "/items/atributos/listar/" + idItem;
+            version.href = "/items/atributos/listarVersiones/"+ idItem;
+            reversion.href = "/items/reversionar/"+ idItem;
+        </script>
 {% endblock %}
 
 {% block contenido %}

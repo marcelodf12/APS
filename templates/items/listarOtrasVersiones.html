@@ -10,16 +10,21 @@
 
 
 {% block menu2 %}
-        <img src='/static/images/relacion.png' width='24' height='24'><a id='relacion'>  Nueva Relación</a><br><br>
-        <img src='/static/images/atributo.png' width='24' height='24'><a id='atributo'>  Nuevo Atributo</a><br><br>
+        {% if item.estado == "revision" %}
+            <center>
+                <img style="width: 35px; height: 35px;" alt="" src="{{STATIC_URL}}images/alerta.png"><br>
+                <font color="red"> <B id="alertaSolicitud">Este item esta bajo revision</B></font>
+            </center><br>
+        {% endif %}
         <img src='/static/images/versiones.png' width='24' height='24'><a id='version' href="/items/atributos/listarVersiones/{{item.id}}">  Ver otras versiones</a><br><br>
-        <img src='/static/images/reversionar.png' width='24' height='24'><a id='reversion' href="#">  Reversionar </a><br><br>
+        <img src='/static/images/reversionar.png' width='24' height='24'><a id='reversion' href="/items/reversionar/{{item.id}}">  Reversionar </a><br><br>
         <script type="text/javascript">
             var elemento = document.getElementById("relacion");
             palabras=document.URL.split("/");
             idItem=palabras[palabras.length-2];
             elemento.href = "/items/relaciones/listarParaCrear/" + idItem;
             atributo.href = "/items/atributos/agregar/" + idItem;
+            ultima.href = "/items/atributos/listar/" + idItem;
         </script>
 {% endblock %}
 

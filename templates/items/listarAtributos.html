@@ -10,8 +10,12 @@
 
 
 {% block menu2 %}
-        {% if tieneHijos = False %}
-        <img src='/static/images/relacion.png' width='24' height='24'><a id='relacion'>  Crear Padre </a><br><br>
+        {% if item.estado == "revision" %}
+            <center>
+                <img style="width: 35px; height: 35px;" alt="" src="{{STATIC_URL}}images/alerta.png"><br>
+                <font color="red"> <B id="alertaSolicitud">Este item esta bajo revision</B></font>
+            </center><br>
+            <img src='/static/images/ejecutar.png' width='24' height='24'><a href="/solicitudCambio/ejecutar/{{solicitud}}">  Ejecutar Solicitud </a><br><br>
         {% endif %}
         {% if item.estado != "finalizado" %}
         <img src='/static/images/atributo.png' width='24' height='24'><a id='atributo'>  Nuevo Atributo</a><br><br>
@@ -23,12 +27,14 @@
             idItem=palabras[palabras.length-1];
             if(elemento){
                 elemento.href = "/items/relaciones/listarParaCrear/" + idItem;
+                ultima.href = "/items/atributos/listar/" + idItem;
             }
             atributo.href = "/items/atributos/agregar/" + idItem;
         </script>
         {% else %}
-        <img src='/static/images/solicitud.png' width='24' height='24'><a href="/solicitudCambio/crear/{{item.id}}">  Solicitar Cambio </a><br><br>
+            <img src='/static/images/solicitud.png' width='24' height='24'><a href="/solicitudCambio/crear/{{item.id}}">  Solicitar Cambio </a><br><br>
         {% endif %}
+
 {% endblock %}
 
 {% block contenido %}
@@ -37,6 +43,7 @@
 <h2>Proyecto</h2>{{item.fase.proyecto}}
 <h2>Fase</h2> {{item.fase.nombre}}
 <h2>Costo</h2> {{item.costo}}<br><br>
+<h2>Estado</h2> {{item.estado}}<br><br>
 <h2>Atributos</h2>
 <table id="tablaDatos"><tbody>
     {% for a in atributos %}

@@ -10,7 +10,13 @@
 
 
 {% block menu2 %}
-
+        {% if item.estado == "revision" %}
+            <center>
+                <img style="width: 35px; height: 35px;" alt="" src="{{STATIC_URL}}images/alerta.png"><br>
+                <font color="red"> <B id="alertaSolicitud">Este item esta bajo revision</B></font>
+            </center><br>
+        {% endif %}
+        <img src='/static/images/item.png' width='24' height='24'><a href="/items/atributos/listar/{{item.id}}" id='ultima'>  Ultima Version</a><br><br>
 {% endblock %}
 
 {% block contenido %}
