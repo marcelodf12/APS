@@ -80,7 +80,7 @@ class crearSolicitudCambio(TemplateView):
             item = items.objects.get(id=idItem)
             descripcion = request.POST['descripcion']
             costoAdicional = request.POST['costoAdicional']
-            nuevaSolicitudCambio = solicitudCambio(descripcion=descripcion, costoAdicional=costoAdicional, estado='pendiente', item=item,usuario=request.user, lineaBase=itemRellb.linea)
+            nuevaSolicitudCambio = solicitudCambio(descripcion=descripcion, costoAdicional=costoAdicional, estado='pendiente', item=item,usuario=request.user, lineaBase=itemRellb.linea, orden=item.versionAct)
             nuevaSolicitudCambio.save()
             url = '/proyectos/detalles/' + str(itemRellb.linea.fase.proyecto.id)
             comite = Miembros.objects.filter(proyecto=item.fase.proyecto, comite=True).exclude(miembro=item.fase.proyecto.lider)
