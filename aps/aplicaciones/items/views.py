@@ -565,7 +565,7 @@ class listarItemsFinalizados(ListView):
 class listarItemCandidatos(TemplateView):
     def get(self, request, *args, **kwargs):
         proyecto = Proyectos.objects.get(id=kwargs['id'])
-        return render(self.request, 'items/listarCandidatos.html', {'nombreProyecto': proyecto.nombre, 'idProyecto': kwargs['id'],'candidatos':items.objects.filter(estado='eliminado', fase__proyecto__id=kwargs['id']), 'url':'/proyectos/detalles/'+str(proyecto.id)})
+        return render(self.request, 'items/listarCandidatos.html', {'nombreProyecto': proyecto.nombre, 'idProyecto': kwargs['id'],'candidatos':items.objects.filter(estado='eliminado', fase__proyecto__id=kwargs['id']).exclude(fase__estado='finalizada'), 'url':'/proyectos/detalles/'+str(proyecto.id)})
 
 
 class revivirItem(TemplateView):
