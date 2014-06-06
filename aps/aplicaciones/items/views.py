@@ -556,3 +556,39 @@ class listarItemsFinalizados(ListView):
     model = items
     template_name = 'items/listarFinalizados.html'
     context_object_name = 'items'
+
+class listarItemCandidatos(TemplateView):
+    def get(self, request, *args, **kwargs):
+        proyecto = Proyectos.objects.get(id=kwargs['id'])
+        return render(self.request, 'items/listarCandidatos.html', {'nombreProyecto': proyecto.nombre, 'idProyecto': kwargs['id'],'candidatos':items.objects.filter(estado='eliminado', fase__proyecto__id=kwargs['id']), 'url':'/proyectos/detalles/'+str(proyecto.id)})
+
+
+class revivirItem(TemplateView):
+    def get(self, request, *args, **kwargs):
+        idItem = kwargs['id']
+        item=items.objects.get(id=idItem)
+        rel = relacion.objects.get(itemHijo=item)
+        print rel
+        if rel.itemPadre.estado == 'eliminado':
+            itemsCandiatos = items.objects.filter(fase=int(item.fase.id)-1).exclude(estado='eliminado') | items.objects.filter(fase=int(item.fase.id)).exclude(estado='eliminado')
+            if itemsCandiatos:
+                return render(self.request, 'items/asignarPadre.html', {'idProyecto': item.fase.proyecto, 'candidatos':itemsCandiatos, 'idItem':int(item.id)})
+            else:
+                return render(self.request, 'error/general.html', {'mensaje':'No hay padres candidatos', 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+        else:
+            item.estado = 'creado'
+            rel.estado = True
+            item.save()
+            rel.save()
+            return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
+
+    def post(self, request, *args, **kwargs):
+        itemHijo = items.objects.get(id=request.POST['idHijo'])
+        itemPadre = items.objects.get(id=request.POST['idPadre'])
+        rel = relacion.objects.get(itemHijo=itemHijo)
+        rel.delete()
+        nuevaRelacion= relacion(itemHijo=itemHijo, itemPadre=itemPadre, estado=True)
+        nuevaRelacion.save()
+        itemHijo.estado = 'creado'
+        itemHijo.save()
+        return HttpResponseRedirect('/proyectos/detalles/'+str(itemHijo.fase.proyecto.id))

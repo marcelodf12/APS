@@ -9,7 +9,7 @@ from .views import adminItems, crearItem, crearItemEnFase, listarItems, listarIt
     listarItemParaCrearRelacion, crearRelacion, listarRelaciones, eliminarRelacion, agregarAtributo, mostrarDetalles, mostrarDetallesV, \
     modificarAtributo, eliminarAtributo, listarVersiones, ReversionVersiones, reversionar, crearTipoItem, agregarAtributoAlTipoItem, \
     definirCantidadAtributos, formularioAgregarAtributoAlTipoItem, verAtributosTipoItems, verTipoItems, modificarAtributoDeTipoItem, \
-    eliminarTipoItem, importar, finalizarItem, listarItemsFinalizados, graficar
+    eliminarTipoItem, importar, finalizarItem, listarItemsFinalizados, graficar, revivirItem, listarItemCandidatos
 
 
 admin.autodiscover()
@@ -50,5 +50,7 @@ urlpatterns = patterns('',
     url(r'^relaciones/graficar/(?P<id>\d+)$', graficar.as_view()),
     url(r'^finalizar/(?P<id>\d+)$', finalizarItem.as_view()),
 
+    url(r'^revivir/(?P<id>\d+)$', revivirItem.as_view()),
+    url(r'^listarCandidatos/(?P<id>\d+)$', listarItemCandidatos.as_view()),
 
 )

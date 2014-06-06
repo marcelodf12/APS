@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+      Asignar un padre
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+     <h1>Seleccione un nuevo padre</h1>
+     <form method="post">{% csrf_token %}
+            <input type="hidden" value="{{idItem}}" name="idHijo">
+            <select name="idPadre">
+                {% for item in candidatos%}
+                    <option value="{{item.id}}">{{item.nombre}}</option>
+                {% endfor %}
+            </select><br>
+            <input type="submit" value="Revivir">
+     </form>
+ {% endblock %}

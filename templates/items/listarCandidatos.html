@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+      Items Candidatos
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+<img src='/static/images/Proyecto.png' width='24' height='24'><a href="/proyectos/detalles/{{idProyecto}}">  Seguir Administrando</a><br><br>
+{% endblock %}
+
+{% block contenido %}
+    <table id="tablaDatos">
+    <tbody>
+    <tr>
+        <td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'>Item Eliminado</td>
+        <td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'>Revivir</td>
+    </tr>
+    {% for i in candidatos %}
+        <tr>
+            <td>{{i.nombre}}</td>
+            <td>
+                <a href="/items/revivir/{{i.pk}}">
+                    <img src='/static/images/revivir.png' width='24' height='24'>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

@@ -60,12 +60,18 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class crearItemEnFase</h1><p class="nomargin-top"><span class="codelink"><a href="aps.aplicaciones.items.views-pysrc.html#crearItemEnFase">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-django.views.generic.CreateView --+
-                                  |
-                                 <strong class="uidshort">crearItemEnFase</strong>
+django.views.generic.TemplateView --+
+                                    |
+                                   <strong class="uidshort">crearItemEnFase</strong>
 </pre>
 
 <hr />
+<pre class="literalblock">
+
+Vista de creacion de items en una Fase especifica, hereda atributos y metodos de la clase CreateView
+
+</pre>
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -89,11 +95,12 @@ django.views.generic.CreateView --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="form_valid"></a><span class="summary-sig-name">form_valid</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">form</span>)</span><br />
-      Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original</td>
+          <td><span class="summary-sig"><a name="get"></a><span class="summary-sig-name">get</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="aps.aplicaciones.items.views-pysrc.html#crearItemEnFase.form_valid">source&nbsp;code</a></span>
+            <span class="codelink"><a href="aps.aplicaciones.items.views-pysrc.html#crearItemEnFase.get">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -101,50 +108,24 @@ django.views.generic.CreateView --+
       
     </td>
   </tr>
-</table>
-<!-- ==================== CLASS VARIABLES ==================== -->
-<a name="section-ClassVariables"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Class Variables</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariables"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="model"></a><span class="summary-name">model</span> = <code title="items">items</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="template_name"></a><span class="summary-name">template_name</span> = <code title="'items/crear.html'">'items/crear.html'</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="success_url"></a><span class="summary-name">success_url</span> = <code title="reverse_lazy('listar_proyectos')">reverse_lazy('listar_proyectos')</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="fields"></a><span class="summary-name">fields</span> = <code title="['nombre', 'complejidad', 'costo']">['nombre', 'complejidad', 'costo']</code>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="post"></a><span class="summary-sig-name">post</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="aps.aplicaciones.items.views-pysrc.html#crearItemEnFase.post">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
     </td>
   </tr>
 </table>
@@ -174,7 +155,7 @@ django.views.generic.CreateView --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sat May 17 01:40:01 2014
+    Generated by Epydoc 3.0.1 on Fri May 23 23:46:03 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

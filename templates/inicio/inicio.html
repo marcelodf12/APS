@@ -10,10 +10,21 @@ Bienvenido
 {% endblock %}
 
 {% block menu2 %}
-
+{% if haySolicitudes == True%}
+        <center>
+            <img style="width: 45px; height: 45px;" alt="" src="{{STATIC_URL}}images/alerta.png"><br>
+            <font color="red"> <B id="alertaSolicitud">Tiene solicitudes pendientes</B> </font>
+        </center>
+        <script language="JavaScript" type="text/javascript">
+                if(confirm("Tiene solicitudes pendientes.\nDesea atenderlas ahora")){
+                    document.location.href= '/solicitudCambio/Votaciones/';
+                }
+        </script>
+{% endif %}
 
 {% endblock %}
-
+{% block js %}
+{% endblock %}
 
 {% block contenido %}
     <table style="text-align: center; width: 100%;" border="0" cellpadding="0"
