@@ -102,6 +102,7 @@
                                                     <td style="vertical-align: top; text-align:right; padding: 5px;">
                                                         {{ f.nombre }}
                                                         {% if proyecto.estado != "finalizado" %}
+                                                        {% if f.estado != "finalizada" %}
                                                             <a href="/fases/modificar/{{f.pk}}"><img src='/static/images/Edit.png' width='32' height='32'></a>
                                                             <a href="/items/crearEnFase/{{f.pk}}"><img src='/static/images/Add.png' width='32' height='32'></a>
                                                             <a href="/items/importar/{{f.pk}}"><img src='/static/images/import.png' width='32' height='32'></a>
@@ -109,6 +110,7 @@
                                                             <a href="/fases/finalizar/{{f.pk}}"><img src='/static/images/finalizar.png' width='32' height='32'></a>
                                                             {% endif %}
                                                             <br></td>
+                                                        {% endif %}
                                                         {% endif %}
                                                 </tr>
                                                 <tr>
