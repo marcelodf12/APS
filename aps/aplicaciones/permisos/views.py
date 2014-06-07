@@ -2,12 +2,12 @@ from django.views.generic import TemplateView, ListView, CreateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import User, Group
 from django.http import HttpResponse
-
+from django.shortcuts import render, HttpResponseRedirect
+from django.core import serializers
 from aps.aplicaciones.permisos.models import Permisos
-from aps.aplicaciones.proyectos.models import Proyectos
+from aps.aplicaciones.proyectos.models import Proyectos, Miembros
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.items.models import items
-
 
 
 # Create your views here.
@@ -117,3 +117,29 @@ class permisos_grupos_ajax(TemplateView):
         datajson+=']'
         #data = serializers.serialize('json',permisos,fields=('permiso','tipoObjeto','proyecto','fases','items'))
         return HttpResponse(datajson, content_type = 'application/json')
+
+class asignarAProyecto(TemplateView):
+    def get(self, request, *args, **kwargs):
+        id_proyecto = kwargs['id']
+        comite = Miembros.objects.filter(proyecto__id=id_proyecto)
+        return render(request, 'permisos/proyectos.html', {'usuarios':comite, 'idProyecto':id_proyecto})
+    def post(self, request, *args, **kwargs):
+        lista = request.POST.getlist('permisos')
+        permisos = Permisos.objects.filter(usuario__id=request.POST['usuario'], tipoObjeto='proyecto', id_fk=request.POST['idProyecto'])
+        for p in permisos:
+            p.delete()
+        for p in lista:
+            usuario = User.objects.get(id=request.POST['usuario'])
+            aux = Permisos(usuario=usuario, tipoObjeto='proyecto', id_fk=request.POST['idProyecto'], permiso=p)
+            aux.save()
+        return HttpResponseRedirect('/proyectos/detalles/'+str(request.POST['idProyecto']))
+
+
+class proyectos_ajax(TemplateView):
+    def get(self, request, *args, **kwargs):
+        id_proyecto = request.GET['id']
+        estado = request.GET['estado']
+        permisos = Permisos.objects.filter(usuario__id=estado, tipoObjeto='proyecto', id_fk=id_proyecto)
+        print permisos
+        data = serializers.serialize('json',permisos,fields=('permiso'))
+        return HttpResponse(data, content_type = 'application/json')

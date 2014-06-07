@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}
+     Permisos sobre Proyecto
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+
+{% endblock %}
+
+{% block contenido %}
+<h1>Permisos sobre proyecto {{proyecto.nombre}}</h1>
+<form id="formulario" method="post">{% csrf_token %}
+<input type="hidden" value="{{idProyecto}}" name="idProyecto">
+<select onchange="inicio(this.value);" name='usuario'>
+    <option>Seleccione el Usuario</option>
+    {% for u in usuarios %}
+        <option name='usuario' value="{{u.miembro.id}}">{{u.miembro}}</option>
+    {% endfor %}
+</select>
+<div id="datos"><br>
+    <input type="checkbox" name="permisos" value="CLB" id="CLB"> Crear Linea Base <br><br>
+    <input type="checkbox" name="permisos" value="LLB" id="LLB"> Listar Linea Base <br><br>
+    <input type="checkbox" name="permisos" value="REVI" id="REVI"> Revivir Items <br><br>
+    <input type="checkbox" name="permisos" value="VERR" id="VERR"> Ver Relaciones <br><br>
+    <input type="checkbox" name="permisos" value="GRAF" id="GRAF"> Graficar <br><br>
+    <input type="submit" value="Asignar">
+</div>
+</form>
+{% endblock %}
+
+{% block js %}
+<script>
+    function inicio(valor){
+        palabras=document.URL.split("/");
+        idItem=palabras[palabras.length-1];
+        $.ajax({
+          data : {'estado' : valor, 'id':idItem},
+          url : '/permisos/proyectos_ajax/',
+          type : 'get',
+          success : function(data){
+            for(i=0;i<data.length;i++){
+                switch (data[i].fields.permiso){
+                    case 'CLB':
+                        document.getElementById('CLB').checked=true;
+                        break;
+                    case 'LLB':
+                        document.getElementById('LLB').checked=true;
+                        break;
+                    case 'REVI':
+                        document.getElementById('REVI').checked=true;
+                        break;
+                    case 'VERR':
+                        document.getElementById('VERR').checked=true;
+                        break;
+                    case 'GRAF':
+                        document.getElementById('GRAF').checked=true;
+                        break;
+                }
+            }
+          }
+        });
+    }
+
+</script>
+{% endblock %}
+
