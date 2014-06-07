@@ -45,6 +45,8 @@ class crearProyecto(CreateView):
                 nuevaFase.estado='creado'
                 nuevaFase.presupuesto=0
                 nuevaFase.fechaInicioP=proyecto.fechaInicio
+                if cant_fases == proyecto.cantFases:
+                    nuevaFase.fechaInicioR=datetime.datetime.now().date()
                 cant_fases = cant_fases - 1
                 nuevaFase.save()
             return super(crearProyecto, self).form_valid(form)
@@ -182,7 +184,13 @@ class detallesProyecto(TemplateView):
             penalizacion = diasRestantes.days * p.penalizacion
         else:
             penalizacion = 0
+
+        if p.estado == 'finalizado':
+            diasRestantes = 0
+            penalizacion = p.penalizacion
         saldo = p.presupuesto - costo_total + penalizacion
+        p.saldo = saldo
+        p.save()
         print f
         if(True):
             return TemplateResponse(request, 'proyectos/tablaProyecto.html', {

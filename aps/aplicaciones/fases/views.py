@@ -6,7 +6,7 @@ from aps.aplicaciones.items.models import items, relacion
 from aps.aplicaciones.proyectos.forms import ComentariosLog
 from aps.aplicaciones.proyectos.models import Proyectos
 from django.shortcuts import render, HttpResponseRedirect
-
+import datetime
 
 
 # Create your views here.
@@ -119,11 +119,28 @@ class finalizarFase(FormView):
         fase.estado = 'finalizada'
         fase.save()
 
-        #todas las fases de este proyecto
-        fasesR = fases.objects.filter(proyecto_id=fase.proyecto)
-        print fasesR
+        ordenPosterior=fase.orden+1
+        if ordenPosterior<=fase.proyecto.cantFases:
+            fasePosterior = fases.objects.get(orden=ordenPosterior, proyecto=fase.proyecto)
+            fasePosterior.fechaInicioR = datetime.datetime.now().date()
+            fasePosterior.save()
 
-        return render(self.request, 'fases/listarFinalizadas.html', {'nombreProyecto':fase.proyecto.nombre, 'url':'/proyectos/detalles/'+str(fase.proyecto.id), 'idProyecto':fase.proyecto.id,'fases':fasesR})
+
+        #todas las fases de este proyecto
+        #fasesR = fases.objects.filter(proyecto_id=fase.proyecto)
+        #print fasesR
+        if fase.orden == fase.proyecto.cantFases:
+            fase.proyecto.estado='finalizado'
+            hoy=datetime.datetime.now().date()
+            fase.proyecto.fechaFinR = hoy
+            diasRestantes = datetime.datetime.strptime(str(fase.proyecto.fechaFinP), '%Y-%m-%d').date() - hoy
+            if(diasRestantes.days<0):
+                fase.proyecto.penalizacion = diasRestantes.days * fase.proyecto.penalizacion
+            else:
+                fase.proyecto.penalizacion = 0
+            fase.proyecto.save()
+            return render(self.request, 'proyectos/listarAJAX.html', {'seFinalizo':True, 'proyecto':fase.proyecto})
+        return HttpResponseRedirect('/proyectos/detalles/'+str(fase.proyecto.id))
 
 class listarFasesFinalizadas(ListView):
     """
