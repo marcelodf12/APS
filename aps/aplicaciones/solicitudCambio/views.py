@@ -16,7 +16,7 @@ class listarVotaciones(TemplateView):
     def get(self, request, *args, **kwargs):
         usuario = request.user
         votaciones = votos.objects.filter(usuario=usuario, estado='pendiente')
-        return render(request, 'solicitudCambio/listarVotaciones.html',{'votaciones':votaciones})
+        return render(request, 'solicitudCambio/listarVotaciones.html',{'votaciones':votaciones, 'estado':'pendientes'})
 
 class votar(TemplateView):
     """
@@ -113,3 +113,18 @@ class ejecutarSolicitud(FormView):
             lb.estado='cerrado'
         url = '/proyectos/detalles/'+str(solicitud.item.fase.proyecto.id)
         return HttpResponseRedirect(url)
+
+class adminSolicitudes(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'solicitudCambio/admin.html')
+
+class listar(TemplateView):
+    """
+       Vista que lista todas las votaciones pendientes
+    """
+    def get(self, request, *args, **kwargs):
+        estado = kwargs['estado']
+        print "'"+estado+"'"
+        usuario = request.user
+        solicitudes = solicitudCambio.objects.filter(usuario=usuario, estado=estado)
+        return render(request, 'solicitudCambio/listar.html',{'solicitudes':solicitudes, 'estado':estado})
