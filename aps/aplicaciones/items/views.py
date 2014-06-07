@@ -551,7 +551,7 @@ class finalizarItem(FormView):
 
         item.estado = 'finalizado'
         item.save()
-        return super(finalizarItem, self).form_valid(form)
+        return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
 
 
 class listarItemsFinalizados(ListView):

@@ -16,6 +16,7 @@ from aps.aplicaciones.solicitudCambio.models import votos
 from aps.aplicaciones.proyectos.views import comprobarSolicitudesExpiradas
 
 from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
+from aps.aplicaciones.permisos.models import Permisos
 from .forms import ComentariosLog
 
 
@@ -46,6 +47,9 @@ class Registrarse(FormView):
         user.last_name = form.cleaned_data['apellido']
         user.email = form.cleaned_data['correo']
         user.save()
+        permisoNuevo = Permisos(permiso='ADD', tipoObjeto='proyecto', usuario=user, id_fk=0)
+        permisoNuevo = Permisos(permiso='VER', tipoObjeto='proyecto', usuario=user, id_fk=0)
+        permisoNuevo.save()
         return super(Registrarse, self).form_valid(form)
 
 class UpdateUser(UpdateView):

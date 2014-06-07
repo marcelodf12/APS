@@ -53,8 +53,13 @@
                                                         <th style="vertical-align: top;">{{proyecto.fechaFinP}}<br></th>
                                                     </tr>
                                                     <tr>
+                                                        {% if proyecto.estado == "finalizado" %}
+                                                        <td style="vertical-align: top;">Fecha real de fin<br></td>
+                                                        <td style="vertical-align: top;">{{proyecto.fechaFinR}}<br></td>
+                                                        {% else %}
                                                         <td style="vertical-align: top;">Dias restantes<br></td>
                                                         <td style="vertical-align: top;">{{diasRestantes}}<br></td>
+                                                        {% endif %}
                                                     </tr>
                                                     <tr>
                                                         <th style="vertical-align: top;">Presupuesto<br></th>

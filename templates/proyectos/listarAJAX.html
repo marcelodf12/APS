@@ -11,7 +11,11 @@
         <img src='/static/images/Detalles.png' width='24' height='24'><a href="/proyectos/listar/">  Listar Proyectos</a><br><br>
 		<img src='/static/images/Add.png' width='24' height='24'><a href="/proyectos/crear/">  Nuevo Proyecto</a><br><br>
         <br><br>
-
+    {% if seFinalizo == True %}
+        <script language="JavaScript" type="text/javascript">
+                alert("En hora buena!.\nSe ha finalizado el proyecto\n{{proyecto.nombre}}")
+        </script>
+    {% endif %}
 
 {% endblock %}
 
@@ -22,6 +26,7 @@
     <option value="creado">No iniciados</option>
     <option value="activo">Activos</option>
     <option value="eliminado">Eliminados</option>
+    <option value="finalizado">Finalizados</option>
 </select>
 <div id="datos">
 
