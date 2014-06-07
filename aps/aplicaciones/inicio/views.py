@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import Group
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.models import User
-from aps.aplicaciones.solicitudCambio.models import votos
+from aps.aplicaciones.solicitudCambio.models import votos, solicitudCambio
 from aps.aplicaciones.proyectos.views import comprobarSolicitudesExpiradas
 
 from aps.aplicaciones.inicio.forms import UserForm, ActualizarPass
@@ -27,10 +27,11 @@ class home(TemplateView):
         hayExpirados = comprobarSolicitudesExpiradas()
         usuario = request.user
         votaciones = votos.objects.filter(usuario=usuario, estado='pendiente')
+        solicitudes = solicitudCambio.objects.filter(usuario=usuario, estado='aceptada')
         haySolicitudes = False
         if votaciones:
             haySolicitudes = True
-        return render(request, 'inicio/inicio.html',{'haySolicitudes':haySolicitudes, 'hayExpirados':hayExpirados})
+        return render(request, 'inicio/inicio.html',{'haySolicitudes':haySolicitudes, 'hayExpirados':hayExpirados, 'solicitudes':solicitudes})
 
 
 class Registrarse(FormView):
