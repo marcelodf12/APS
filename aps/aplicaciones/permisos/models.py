@@ -24,7 +24,7 @@ CLASE_PERMISOS = (
     ('REV','REV')
 )
 class Permisos(models.Model):
-    permiso = models.CharField(max_length=30, choices=CLASE_PERMISOS)
+    permiso = models.CharField(max_length=30)
     tipoObjeto = models.CharField(max_length=15, choices=TIPOS_PERMISOS)
     usuario = models.ForeignKey(User, null='True', blank='True')
     grupo = models.ForeignKey(Group, null='True', blank='True')
