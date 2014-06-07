@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}
+Bienvenido
+{% endblock %}
+
+
+{% block menu1 %}
+<li><a href="#"> Bienvenido {{user.first_name}} {{user.last_name}}</a></li>
+{% endblock %}
+
+{% block menu2 %}
+{% if haySolicitudes == True%}
+        <center>
+            <img style="width: 45px; height: 45px;" alt="" src="{{STATIC_URL}}images/alerta.png"><br>
+            <font color="red"> <B id="alertaSolicitud">Tiene solicitudes pendientes</B> </font>
+        </center>
+        <script language="JavaScript" type="text/javascript">
+                if(confirm("Tiene solicitudes pendientes.\nDesea atenderlas ahora")){
+                    document.location.href= '/solicitudCambio/Votaciones/';
+                }
+        </script>
+{% endif %}
+{% if hayExpirados == True %}
+        <script language="JavaScript" type="text/javascript">
+                alert("Hay solicitudes de cambio que expiraron.\nLos items afectados no se han modificado")
+        </script>
+{% endif %}
+
+{% endblock %}
+{% block js %}
+{% endblock %}
+
+{% block contenido %}
+<center><h1> Solicitudes de Cambio </h1></center><br>
+<table style="text-align: center; width: 100%;" border="0" cellpadding="0">
+<tbody>
+    <tr>
+    <td style="vertical-align: top;">
+        <a href="/solicitudCambio/Votaciones/">
+            <img style="width: 52px; height: 52px;" alt="" src="{{STATIC_URL}}images/alerta.png"><br><br>
+        </a>
+
+    </td>
+    <td style="vertical-align: top;">
+        <a href="/solicitudCambio/listar/rechazada">
+            <img style="width: 52px; height: 52px;" alt="" src="{{STATIC_URL}}images/error.png"><br><br>
+        </a>
+    </td>
+    <td style="vertical-align: top;">
+        <a href="/solicitudCambio/listar/aceptada">
+            <img style="width: 52px; height: 52px;" alt="" src="{{STATIC_URL}}images/finalizado.png"><br><br>
+        </a>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;">Pendientes<br><br><br><br>
+    </td>
+    <td style="vertical-align: top;">Rechazadas<br><br><br><br>
+    </td>
+    <td style="vertical-align: top;">Aprobadas<br><br><br><br>
+    </td>
+    </tr>
+
+
+
+
+    <tr>
+    <td style="vertical-align: top;">
+        <a href="/solicitudCambio/listar/expirado">
+            <img style="width: 52px; height: 52px;" alt="" src="{{STATIC_URL}}images/timer.png"><br><br>
+        </a>
+
+    </td>
+    <td style="vertical-align: top;">
+        <a href="/solicitudCambio/listar/ejecutado">
+            <img style="width: 52px; height: 52px;" alt="" src="{{STATIC_URL}}images/ejecutar.png"><br><br>
+        </a>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;">Expirados<br><br><br><br>
+    </td>
+    <td style="vertical-align: top;">Ejecutados<br><br><br><br>
+    </td>
+    </tr>
+
+</tbody>
+</table>
+
+{% endblock %}

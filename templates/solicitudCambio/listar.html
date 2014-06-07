@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+      Solicitudes Pendientes
+{% endblock %}
+
+{% block menu1 %}
+
+{% endblock %}
+
+{% block menu2 %}
+    <img src='/static/images/Cambio.png' width='24' height='24'><a href="/solicitudCambio/admin/">  Solicitudes </a><br><br>
+{% endblock %}
+
+{% block contenido %}
+    <H1>Solicitudes {{estado}}s</H1>
+        <table id='tablaDatos' border='0' cellpadding='0' cellspacing='0'> <tbody>
+        <tr>
+                <td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'>Solicitud</td>
+                <td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'>Usuario</td>
+                <td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'>Proyecto</td>
+                <td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'>Fase</td>
+                <td class='title' style='background-color:rgba(26, 108, 122, 1); font-size: 18px; font-weight: bold ; color: #FFF;text-align: center;'>Item</td>
+        </tr>
+        {% for s in solicitudes%}
+            <tr>
+                <td>{{s.descripcion}}</td>
+                <td>{{s.usuario}}</td>
+                <td>{{s.item.fase.proyecto.nombre}}</td>
+                <td>{{s.item.fase.nombre}}</td>
+                <td>{{s.item.nombre}}</td>
+            </tr>
+        {% endfor %}
+        </tbody></table>
+        <br>
+ {% endblock %}

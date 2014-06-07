@@ -8,11 +8,11 @@
 {% endblock %}
 
 {% block menu2 %}
-
+<img src='/static/images/Cambio.png' width='24' height='24'><a href="/solicitudCambio/admin/">  Solicitudes </a><br><br>
 {% endblock %}
 
 {% block contenido %}
-    <H1>Solicitudes pendientes</H1>
+    <H1>Solicitudes {{estado}}</H1>
         {% for v in votaciones%}
         <img src='/static/images/solicitud.png' width='24' height='24'><a href="/solicitudCambio/votar/{{v.id}}"> {{v.solicitud.descripcion}}</a><br><br>
         {% endfor %}
