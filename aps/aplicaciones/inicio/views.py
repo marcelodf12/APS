@@ -141,10 +141,12 @@ class eliminarUser(FormView):
     template_name = 'inicio/eliminar user.html'
     success_url = reverse_lazy('listar_usuarios')      # Se mostrara la vista 'listar_usuarios' en el caso de eliminacion exitosa
 
+
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         usuario = User.objects.get(id=self.kwargs['id'])
-        if usuario.id != 1:
+        #User.is_authenticated()
+        if usuario.id != 1 and usuario.is_authenticated() == False:
             usuario.is_active=False
             usuario.save()
         else:
