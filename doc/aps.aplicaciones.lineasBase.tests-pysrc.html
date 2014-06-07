@@ -58,10 +58,303 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="aps.aplicaciones.lineasBase.tests-module.html">Module aps.aplicaciones.lineasBase.tests</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno">1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">test</tt> <tt class="py-keyword">import</tt> <tt class="py-name">TestCase</tt> </tt>
-<a name="L2"></a><tt class="py-lineno">2</tt>  <tt class="py-line"> </tt>
-<a name="L3"></a><tt class="py-lineno">3</tt>  <tt class="py-line"><tt class="py-comment"># Create your tests here.</tt> </tt>
-<a name="L4"></a><tt class="py-lineno">4</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">utils</tt> <tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">test</tt> <tt class="py-keyword">import</tt> <tt class="py-name">TestCase</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Package aps.aplicaciones=aps.aplicaciones-module.html"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-0', 'aplicaciones', 'link-0');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package aps.aplicaciones.fases=aps.aplicaciones.fases-module.html,Class aps.aplicaciones.fases.models.fases=aps.aplicaciones.fases.models.fases-class.html"><a title="aps.aplicaciones.fases
+aps.aplicaciones.fases.models.fases" class="py-name" href="#" onclick="return doclink('link-1', 'fases', 'link-1');">fases</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module aps.aplicaciones.fases.models=aps.aplicaciones.fases.models-module.html,Module aps.aplicaciones.inicio.models=aps.aplicaciones.inicio.models-module.html,Module aps.aplicaciones.items.models=aps.aplicaciones.items.models-module.html,Module aps.aplicaciones.lineasBase.models=aps.aplicaciones.lineasBase.models-module.html,Module aps.aplicaciones.permisos.models=aps.aplicaciones.permisos.models-module.html,Module aps.aplicaciones.proyectos.models=aps.aplicaciones.proyectos.models-module.html,Module aps.aplicaciones.solicitudCambio.models=aps.aplicaciones.solicitudCambio.models-module.html"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.lineasBase.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models
+aps.aplicaciones.solicitudCambio.models" class="py-name" href="#" onclick="return doclink('link-2', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name"><a title="aps.aplicaciones.fases
+aps.aplicaciones.fases.models.fases" class="py-name" href="#" onclick="return doclink('link-3', 'fases', 'link-1');">fases</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-4', 'aplicaciones', 'link-0');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Package aps.aplicaciones.items=aps.aplicaciones.items-module.html,Class aps.aplicaciones.items.models.items=aps.aplicaciones.items.models.items-class.html"><a title="aps.aplicaciones.items
+aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-5', 'items', 'link-5');">items</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.lineasBase.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models
+aps.aplicaciones.solicitudCambio.models" class="py-name" href="#" onclick="return doclink('link-6', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-7" class="py-name"><a title="aps.aplicaciones.items
+aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-7', 'items', 'link-5');">items</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-8', 'aplicaciones', 'link-0');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Package aps.aplicaciones.proyectos=aps.aplicaciones.proyectos-module.html"><a title="aps.aplicaciones.proyectos" class="py-name" href="#" onclick="return doclink('link-9', 'proyectos', 'link-9');">proyectos</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.lineasBase.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models
+aps.aplicaciones.solicitudCambio.models" class="py-name" href="#" onclick="return doclink('link-10', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-11" class="py-name" targets="Class aps.aplicaciones.proyectos.models.Proyectos=aps.aplicaciones.proyectos.models.Proyectos-class.html"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-11', 'Proyectos', 'link-11');">Proyectos</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-12', 'aplicaciones', 'link-0');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Package aps.aplicaciones.lineasBase=aps.aplicaciones.lineasBase-module.html,Class aps.aplicaciones.lineasBase.models.lineasBase=aps.aplicaciones.lineasBase.models.lineasBase-class.html"><a title="aps.aplicaciones.lineasBase
+aps.aplicaciones.lineasBase.models.lineasBase" class="py-name" href="#" onclick="return doclink('link-13', 'lineasBase', 'link-13');">lineasBase</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.lineasBase.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models
+aps.aplicaciones.solicitudCambio.models" class="py-name" href="#" onclick="return doclink('link-14', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-15" class="py-name"><a title="aps.aplicaciones.lineasBase
+aps.aplicaciones.lineasBase.models.lineasBase" class="py-name" href="#" onclick="return doclink('link-15', 'lineasBase', 'link-13');">lineasBase</a></tt><tt class="py-op">,</tt> <tt id="link-16" class="py-name" targets="Class aps.aplicaciones.lineasBase.models.relacionItemLineaBase=aps.aplicaciones.lineasBase.models.relacionItemLineaBase-class.html"><a title="aps.aplicaciones.lineasBase.models.relacionItemLineaBase" class="py-name" href="#" onclick="return doclink('link-16', 'relacionItemLineaBase', 'link-16');">relacionItemLineaBase</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">test</tt><tt class="py-op">.</tt><tt class="py-name">client</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Client</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt><tt class="py-op">.</tt><tt class="py-name">auth</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.lineasBase.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models
+aps.aplicaciones.solicitudCambio.models" class="py-name" href="#" onclick="return doclink('link-17', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">User</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># Create your tests here.</tt> </tt>
+<a name="TestCrearLineaBase"></a><div id="TestCrearLineaBase-def"><a name="L11"></a><tt class="py-lineno"> 11</tt> <a class="py-toggle" href="#" id="TestCrearLineaBase-toggle" onclick="return toggle('TestCrearLineaBase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.lineasBase.tests.TestCrearLineaBase-class.html">TestCrearLineaBase</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCrearLineaBase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TestCrearLineaBase-expanded"><a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">        Prueba para comprobar la creacion de Lineas Base</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="TestCrearLineaBase.setUp"></a><div id="TestCrearLineaBase.setUp-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="TestCrearLineaBase.setUp-toggle" onclick="return toggle('TestCrearLineaBase.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.lineasBase.tests.TestCrearLineaBase-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCrearLineaBase.setUp-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCrearLineaBase.setUp-expanded"><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">            <tt class="py-docstring">"""</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">                Metodo de inicializacion</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">            """</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">            <tt class="py-comment"># Creacion de un cliente</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt> <tt class="py-op">=</tt> <tt class="py-name">Client</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">            <tt class="py-comment"># Creacion de un usuario para la autenticacion</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">            <tt class="py-name">userLogin</tt> <tt class="py-op">=</tt> <tt class="py-name">User</tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">create_user</tt><tt class="py-op">(</tt><tt class="py-name">pk</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">username</tt><tt class="py-op">=</tt><tt class="py-string">"fulano Login"</tt><tt class="py-op">,</tt> <tt class="py-name">password</tt><tt class="py-op">=</tt><tt class="py-string">"123"</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">            <tt class="py-comment">#Creacion de un usuario Lider para instanciar un proyecto</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">            <tt class="py-name">userRegistrado</tt> <tt class="py-op">=</tt> <tt class="py-name">User</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">            <tt class="py-name">userRegistrado</tt><tt class="py-op">.</tt><tt class="py-name">username</tt> <tt class="py-op">=</tt> <tt class="py-string">"fulano Lider2"</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">            <tt class="py-name">userRegistrado</tt><tt class="py-op">.</tt><tt class="py-name">password</tt> <tt class="py-op">=</tt> <tt class="py-string">"123"</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">            <tt class="py-name">userRegistrado</tt><tt class="py-op">.</tt><tt class="py-name">pk</tt> <tt class="py-op">=</tt> <tt class="py-number">2</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt class="py-name">userRegistrado</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">            <tt class="py-comment">#Creacion de un proyecto para instanciar una fase</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-18', 'Proyectos', 'link-11');">Proyectos</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt class="py-name">pk</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.nombre=aps.aplicaciones.fases.models.fases-class.html#nombre,Variable aps.aplicaciones.inicio.forms.UserForm.nombre=aps.aplicaciones.inicio.forms.UserForm-class.html#nombre,Variable aps.aplicaciones.items.models.atributo.nombre=aps.aplicaciones.items.models.atributo-class.html#nombre,Variable aps.aplicaciones.items.models.items.nombre=aps.aplicaciones.items.models.items-class.html#nombre,Variable aps.aplicaciones.items.models.tipoItem.nombre=aps.aplicaciones.items.models.tipoItem-class.html#nombre,Variable aps.aplicaciones.lineasBase.models.lineasBase.nombre=aps.aplicaciones.lineasBase.models.lineasBase-class.html#nombre,Variable aps.aplicaciones.proyectos.models.Proyectos.nombre=aps.aplicaciones.proyectos.models.Proyectos-class.html#nombre"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-19', 'nombre', 'link-19');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"proyecto Registrado"</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.cantFases=aps.aplicaciones.proyectos.models.Proyectos-class.html#cantFases"><a title="aps.aplicaciones.proyectos.models.Proyectos.cantFases" class="py-name" href="#" onclick="return doclink('link-20', 'cantFases', 'link-20');">cantFases</a></tt> <tt class="py-op">=</tt> <tt class="py-number">7</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.fechaInicio=aps.aplicaciones.proyectos.models.Proyectos-class.html#fechaInicio"><a title="aps.aplicaciones.proyectos.models.Proyectos.fechaInicio" class="py-name" href="#" onclick="return doclink('link-21', 'fechaInicio', 'link-21');">fechaInicio</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"2014-03-03"</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.lider=aps.aplicaciones.proyectos.models.Proyectos-class.html#lider"><a title="aps.aplicaciones.proyectos.models.Proyectos.lider" class="py-name" href="#" onclick="return doclink('link-22', 'lider', 'link-22');">lider</a></tt> <tt class="py-op">=</tt> <tt class="py-name">userRegistrado</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.fechaFinP=aps.aplicaciones.proyectos.models.Proyectos-class.html#fechaFinP"><a title="aps.aplicaciones.proyectos.models.Proyectos.fechaFinP" class="py-name" href="#" onclick="return doclink('link-23', 'fechaFinP', 'link-23');">fechaFinP</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"2014-10-03"</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.fechaFinR=aps.aplicaciones.proyectos.models.Proyectos-class.html#fechaFinR"><a title="aps.aplicaciones.proyectos.models.Proyectos.fechaFinR" class="py-name" href="#" onclick="return doclink('link-24', 'fechaFinR', 'link-24');">fechaFinR</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"2014-10-04"</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.presupuesto=aps.aplicaciones.fases.models.fases-class.html#presupuesto,Variable aps.aplicaciones.proyectos.models.Proyectos.presupuesto=aps.aplicaciones.proyectos.models.Proyectos-class.html#presupuesto"><a title="aps.aplicaciones.fases.models.fases.presupuesto
+aps.aplicaciones.proyectos.models.Proyectos.presupuesto" class="py-name" href="#" onclick="return doclink('link-25', 'presupuesto', 'link-25');">presupuesto</a></tt><tt class="py-op">=</tt><tt class="py-number">1500</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.penalizacion=aps.aplicaciones.proyectos.models.Proyectos-class.html#penalizacion"><a title="aps.aplicaciones.proyectos.models.Proyectos.penalizacion" class="py-name" href="#" onclick="return doclink('link-26', 'penalizacion', 'link-26');">penalizacion</a></tt><tt class="py-op">=</tt><tt class="py-number">350</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">            <tt class="py-name">proyectoRegistrado</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">            <tt class="py-comment">#Creacion de una fase para instanciar un item</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt> <tt class="py-op">=</tt> <tt id="link-27" class="py-name"><a title="aps.aplicaciones.fases
+aps.aplicaciones.fases.models.fases" class="py-name" href="#" onclick="return doclink('link-27', 'fases', 'link-1');">fases</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt class="py-name">pk</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-28', 'nombre', 'link-19');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"fase Registrada"</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.proyecto=aps.aplicaciones.fases.models.fases-class.html#proyecto,Variable aps.aplicaciones.proyectos.models.Miembros.proyecto=aps.aplicaciones.proyectos.models.Miembros-class.html#proyecto"><a title="aps.aplicaciones.fases.models.fases.proyecto
+aps.aplicaciones.proyectos.models.Miembros.proyecto" class="py-name" href="#" onclick="return doclink('link-29', 'proyecto', 'link-29');">proyecto</a></tt> <tt class="py-op">=</tt> <tt class="py-name">proyectoRegistrado</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Variable aps.aplicaciones.items.models.items.versionAct=aps.aplicaciones.items.models.items-class.html#versionAct"><a title="aps.aplicaciones.items.models.items.versionAct" class="py-name" href="#" onclick="return doclink('link-30', 'versionAct', 'link-30');">versionAct</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Variable aps.aplicaciones.items.models.items.complejidad=aps.aplicaciones.items.models.items-class.html#complejidad"><a title="aps.aplicaciones.items.models.items.complejidad" class="py-name" href="#" onclick="return doclink('link-31', 'complejidad', 'link-31');">complejidad</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt class="py-name">cantItems</tt> <tt class="py-op">=</tt> <tt class="py-number">6</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos.fechaInicio" class="py-name" href="#" onclick="return doclink('link-32', 'fechaInicio', 'link-21');">fechaInicio</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"2014-03-24"</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.fechaInicioP=aps.aplicaciones.fases.models.fases-class.html#fechaInicioP"><a title="aps.aplicaciones.fases.models.fases.fechaInicioP" class="py-name" href="#" onclick="return doclink('link-33', 'fechaInicioP', 'link-33');">fechaInicioP</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"2014-03-24"</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.fechaInicioR=aps.aplicaciones.fases.models.fases-class.html#fechaInicioR"><a title="aps.aplicaciones.fases.models.fases.fechaInicioR" class="py-name" href="#" onclick="return doclink('link-34', 'fechaInicioR', 'link-34');">fechaInicioR</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"2014-03-24"</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="aps.aplicaciones.fases.models.fases.presupuesto
+aps.aplicaciones.proyectos.models.Proyectos.presupuesto" class="py-name" href="#" onclick="return doclink('link-35', 'presupuesto', 'link-25');">presupuesto</a></tt> <tt class="py-op">=</tt> <tt class="py-number">2500000</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.orden=aps.aplicaciones.fases.models.fases-class.html#orden,Variable aps.aplicaciones.solicitudCambio.models.solicitudCambio.orden=aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#orden"><a title="aps.aplicaciones.fases.models.fases.orden
+aps.aplicaciones.solicitudCambio.models.solicitudCambio.orden" class="py-name" href="#" onclick="return doclink('link-36', 'orden', 'link-36');">orden</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-name">faseRegistrada</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">            <tt class="py-comment">#Creacion de items para la modificacion</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado</tt> <tt class="py-op">=</tt> <tt id="link-37" class="py-name"><a title="aps.aplicaciones.items
+aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-37', 'items', 'link-5');">items</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado</tt><tt class="py-op">.</tt><tt class="py-name">pk</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name" targets="Variable aps.aplicaciones.items.models.items.fase=aps.aplicaciones.items.models.items-class.html#fase,Variable aps.aplicaciones.lineasBase.models.lineasBase.fase=aps.aplicaciones.lineasBase.models.lineasBase-class.html#fase"><a title="aps.aplicaciones.items.models.items.fase
+aps.aplicaciones.lineasBase.models.lineasBase.fase" class="py-name" href="#" onclick="return doclink('link-38', 'fase', 'link-38');">fase</a></tt> <tt class="py-op">=</tt> <tt class="py-name">faseRegistrada</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-39', 'nombre', 'link-19');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"item Registrado"</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="aps.aplicaciones.items.models.items.versionAct" class="py-name" href="#" onclick="return doclink('link-40', 'versionAct', 'link-30');">versionAct</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="aps.aplicaciones.items.models.items.complejidad" class="py-name" href="#" onclick="return doclink('link-41', 'complejidad', 'link-31');">complejidad</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.costo=aps.aplicaciones.fases.models.fases-class.html#costo,Variable aps.aplicaciones.items.models.items.costo=aps.aplicaciones.items.models.items-class.html#costo"><a title="aps.aplicaciones.fases.models.fases.costo
+aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="return doclink('link-42', 'costo', 'link-42');">costo</a></tt> <tt class="py-op">=</tt> <tt class="py-number">2000</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado2</tt> <tt class="py-op">=</tt> <tt id="link-43" class="py-name"><a title="aps.aplicaciones.items
+aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-43', 'items', 'link-5');">items</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado2</tt><tt class="py-op">.</tt><tt class="py-name">pk</tt> <tt class="py-op">=</tt> <tt class="py-number">2</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado2</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="aps.aplicaciones.items.models.items.fase
+aps.aplicaciones.lineasBase.models.lineasBase.fase" class="py-name" href="#" onclick="return doclink('link-44', 'fase', 'link-38');">fase</a></tt> <tt class="py-op">=</tt> <tt class="py-name">faseRegistrada</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado2</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-45', 'nombre', 'link-19');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"item Registrado"</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado2</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="aps.aplicaciones.items.models.items.versionAct" class="py-name" href="#" onclick="return doclink('link-46', 'versionAct', 'link-30');">versionAct</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado2</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="aps.aplicaciones.items.models.items.complejidad" class="py-name" href="#" onclick="return doclink('link-47', 'complejidad', 'link-31');">complejidad</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado2</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="aps.aplicaciones.fases.models.fases.costo
+aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="return doclink('link-48', 'costo', 'link-42');">costo</a></tt> <tt class="py-op">=</tt> <tt class="py-number">2000</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado2</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado3</tt> <tt class="py-op">=</tt> <tt id="link-49" class="py-name"><a title="aps.aplicaciones.items
+aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-49', 'items', 'link-5');">items</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado3</tt><tt class="py-op">.</tt><tt class="py-name">pk</tt> <tt class="py-op">=</tt> <tt class="py-number">3</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado3</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="aps.aplicaciones.items.models.items.fase
+aps.aplicaciones.lineasBase.models.lineasBase.fase" class="py-name" href="#" onclick="return doclink('link-50', 'fase', 'link-38');">fase</a></tt> <tt class="py-op">=</tt> <tt class="py-name">faseRegistrada</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado3</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-51', 'nombre', 'link-19');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"item Registrado"</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado3</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="aps.aplicaciones.items.models.items.versionAct" class="py-name" href="#" onclick="return doclink('link-52', 'versionAct', 'link-30');">versionAct</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado3</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="aps.aplicaciones.items.models.items.complejidad" class="py-name" href="#" onclick="return doclink('link-53', 'complejidad', 'link-31');">complejidad</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado3</tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="aps.aplicaciones.fases.models.fases.costo
+aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="return doclink('link-54', 'costo', 'link-42');">costo</a></tt> <tt class="py-op">=</tt> <tt class="py-number">2000</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-name">itemRegistrado3</tt><tt class="py-op">.</tt><tt class="py-name">save</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="TestCrearLineaBase.test_details"></a><div id="TestCrearLineaBase.test_details-def"><a name="L90"></a><tt class="py-lineno"> 90</tt> <a class="py-toggle" href="#" id="TestCrearLineaBase.test_details-toggle" onclick="return toggle('TestCrearLineaBase.test_details');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.lineasBase.tests.TestCrearLineaBase-class.html#test_details">test_details</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCrearLineaBase.test_details-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCrearLineaBase.test_details-expanded"><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-comment"># Cliente es autenticado como el usuario 'fulano Login'</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">b</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt class="py-name">login</tt><tt class="py-op">(</tt><tt class="py-name">username</tt><tt class="py-op">=</tt><tt class="py-string">'fulano Login'</tt><tt class="py-op">,</tt> <tt class="py-name">password</tt><tt class="py-op">=</tt><tt class="py-string">'123'</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-comment"># Peticion POST para crear una Linea Base</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cliente</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name" targets="Method aps.aplicaciones.inicio.views.ActualizarPassView.post()=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#post,Method aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post()=aps.aplicaciones.items.views.agregarAtributoAlTipoItem-class.html#post,Method aps.aplicaciones.items.views.crearItemEnFase.post()=aps.aplicaciones.items.views.crearItemEnFase-class.html#post,Method aps.aplicaciones.items.views.crearRelacion.post()=aps.aplicaciones.items.views.crearRelacion-class.html#post,Method aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post()=aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem-class.html#post,Method aps.aplicaciones.items.views.importar.post()=aps.aplicaciones.items.views.importar-class.html#post,Method aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post()=aps.aplicaciones.items.views.modificarAtributoDeTipoItem-class.html#post,Method aps.aplicaciones.items.views.reversionar.post()=aps.aplicaciones.items.views.reversionar-class.html#post,Method aps.aplicaciones.items.views.revivirItem.post()=aps.aplicaciones.items.views.revivirItem-class.html#post,Method aps.aplicaciones.lineasBase.views.crear.post()=aps.aplicaciones.lineasBase.views.crear-class.html#post,Method aps.aplicaciones.permisos.views.asignarAProyecto.post()=aps.aplicaciones.permisos.views.asignarAProyecto-class.html#post,Method aps.aplicaciones.proyectos.views.eliminarProyectos.post()=aps.aplicaciones.proyectos.views.eliminarProyectos-class.html#post,Method aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.post()=aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio-class.html#post,Method aps.aplicaciones.solicitudCambio.views.votar.post()=aps.aplicaciones.solicitudCambio.views.votar-class.html#post"><a title="aps.aplicaciones.inicio.views.ActualizarPassView.post
+aps.aplicaciones.items.views.agregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.crearItemEnFase.post
+aps.aplicaciones.items.views.crearRelacion.post
+aps.aplicaciones.items.views.formularioAgregarAtributoAlTipoItem.post
+aps.aplicaciones.items.views.importar.post
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.post
+aps.aplicaciones.items.views.reversionar.post
+aps.aplicaciones.items.views.revivirItem.post
+aps.aplicaciones.lineasBase.views.crear.post
+aps.aplicaciones.permisos.views.asignarAProyecto.post
+aps.aplicaciones.proyectos.views.eliminarProyectos.post
+aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.post
+aps.aplicaciones.solicitudCambio.views.votar.post" class="py-name" href="#" onclick="return doclink('link-55', 'post', 'link-55');">post</a></tt><tt class="py-op">(</tt><tt class="py-string">"/lineasBase/crear/1"</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'idFase'</tt><tt class="py-op">:</tt><tt class="py-string">'1'</tt><tt class="py-op">,</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                                                                 <tt class="py-string">'nombre'</tt><tt class="py-op">:</tt><tt class="py-string">'nom1'</tt><tt class="py-op">,</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">                                                                 <tt class="py-string">'idItems'</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-string">'1'</tt><tt class="py-op">,</tt><tt class="py-string">'3'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                                                            <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-comment">#print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-comment"># Se consulta por el item 1 en la Linea Base recien creada (con id=1)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-name">consultaInstancia</tt> <tt class="py-op">=</tt> <tt id="link-56" class="py-name"><a title="aps.aplicaciones.lineasBase.models.relacionItemLineaBase" class="py-name" href="#" onclick="return doclink('link-56', 'relacionItemLineaBase', 'link-16');">relacionItemLineaBase</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name" targets="Method aps.aplicaciones.inicio.views.home.get()=aps.aplicaciones.inicio.views.home-class.html#get,Method aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get()=aps.aplicaciones.inicio.views.listarUsuariosDeGrupo-class.html#get,Method aps.aplicaciones.items.views.ReversionVersiones.get()=aps.aplicaciones.items.views.ReversionVersiones-class.html#get,Method aps.aplicaciones.items.views.crearItemEnFase.get()=aps.aplicaciones.items.views.crearItemEnFase-class.html#get,Method aps.aplicaciones.items.views.definirCantidadAtributos.get()=aps.aplicaciones.items.views.definirCantidadAtributos-class.html#get,Method aps.aplicaciones.items.views.eliminarAtributo.get()=aps.aplicaciones.items.views.eliminarAtributo-class.html#get,Method aps.aplicaciones.items.views.graficar.get()=aps.aplicaciones.items.views.graficar-class.html#get,Method aps.aplicaciones.items.views.importar.get()=aps.aplicaciones.items.views.importar-class.html#get,Method aps.aplicaciones.items.views.listarItemCandidatos.get()=aps.aplicaciones.items.views.listarItemCandidatos-class.html#get,Method aps.aplicaciones.items.views.listarItemParaCrearRelacion.get()=aps.aplicaciones.items.views.listarItemParaCrearRelacion-class.html#get,Method aps.aplicaciones.items.views.listarRelaciones.get()=aps.aplicaciones.items.views.listarRelaciones-class.html#get,Method aps.aplicaciones.items.views.listarVersiones.get()=aps.aplicaciones.items.views.listarVersiones-class.html#get,Method aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get()=aps.aplicaciones.items.views.modificarAtributoDeTipoItem-class.html#get,Method aps.aplicaciones.items.views.mostrarDetalles.get()=aps.aplicaciones.items.views.mostrarDetalles-class.html#get,Method aps.aplicaciones.items.views.mostrarDetallesV.get()=aps.aplicaciones.items.views.mostrarDetallesV-class.html#get,Method aps.aplicaciones.items.views.revivirItem.get()=aps.aplicaciones.items.views.revivirItem-class.html#get,Method aps.aplicaciones.items.views.verAtributosTipoItems.get()=aps.aplicaciones.items.views.verAtributosTipoItems-class.html#get,Method aps.aplicaciones.lineasBase.views.crear.get()=aps.aplicaciones.lineasBase.views.crear-class.html#get,Method aps.aplicaciones.lineasBase.views.listarDetallesLineasBase.get()=aps.aplicaciones.lineasBase.views.listarDetallesLineasBase-class.html#get,Method aps.aplicaciones.lineasBase.views.listarLineasBase.get()=aps.aplicaciones.lineasBase.views.listarLineasBase-class.html#get,Method aps.aplicaciones.lineasBase.views.retornarItemsDeFaseAJAX.get()=aps.aplicaciones.lineasBase.views.retornarItemsDeFaseAJAX-class.html#get,Method aps.aplicaciones.permisos.views.asignarAProyecto.get()=aps.aplicaciones.permisos.views.asignarAProyecto-class.html#get,Method aps.aplicaciones.permisos.views.permisos_ajax.get()=aps.aplicaciones.permisos.views.permisos_ajax-class.html#get,Method aps.aplicaciones.permisos.views.permisos_grupos_ajax.get()=aps.aplicaciones.permisos.views.permisos_grupos_ajax-class.html#get,Method aps.aplicaciones.permisos.views.proyectos_ajax.get()=aps.aplicaciones.permisos.views.proyectos_ajax-class.html#get,Method aps.aplicaciones.proyectos.views.adminComite.get()=aps.aplicaciones.proyectos.views.adminComite-class.html#get,Method aps.aplicaciones.proyectos.views.adminProyecto.get()=aps.aplicaciones.proyectos.views.adminProyecto-class.html#get,Method aps.aplicaciones.proyectos.views.detallesProyecto.get()=aps.aplicaciones.proyectos.views.detallesProyecto-class.html#get,Method aps.aplicaciones.proyectos.views.miembrosAJAX.get()=aps.aplicaciones.proyectos.views.miembrosAJAX-class.html#get,Method aps.aplicaciones.proyectos.views.proyectos_ajax.get()=aps.aplicaciones.proyectos.views.proyectos_ajax-class.html#get,Method aps.aplicaciones.solicitudCambio.views.adminSolicitudes.get()=aps.aplicaciones.solicitudCambio.views.adminSolicitudes-class.html#get,Method aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.get()=aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio-class.html#get,Method aps.aplicaciones.solicitudCambio.views.listar.get()=aps.aplicaciones.solicitudCambio.views.listar-class.html#get,Method aps.aplicaciones.solicitudCambio.views.listarVotaciones.get()=aps.aplicaciones.solicitudCambio.views.listarVotaciones-class.html#get,Method aps.aplicaciones.solicitudCambio.views.votar.get()=aps.aplicaciones.solicitudCambio.views.votar-class.html#get"><a title="aps.aplicaciones.inicio.views.home.get
+aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.crearItemEnFase.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.graficar.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemCandidatos.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.revivirItem.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
+aps.aplicaciones.lineasBase.views.crear.get
+aps.aplicaciones.lineasBase.views.listarDetallesLineasBase.get
+aps.aplicaciones.lineasBase.views.listarLineasBase.get
+aps.aplicaciones.lineasBase.views.retornarItemsDeFaseAJAX.get
+aps.aplicaciones.permisos.views.asignarAProyecto.get
+aps.aplicaciones.permisos.views.permisos_ajax.get
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.permisos.views.proyectos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get
+aps.aplicaciones.solicitudCambio.views.adminSolicitudes.get
+aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.get
+aps.aplicaciones.solicitudCambio.views.listar.get
+aps.aplicaciones.solicitudCambio.views.listarVotaciones.get
+aps.aplicaciones.solicitudCambio.views.votar.get" class="py-name" href="#" onclick="return doclink('link-57', 'get', 'link-57');">get</a></tt><tt class="py-op">(</tt><tt id="link-58" class="py-name" targets="Variable aps.aplicaciones.items.models.atributo.item=aps.aplicaciones.items.models.atributo-class.html#item,Variable aps.aplicaciones.lineasBase.models.relacionItemLineaBase.item=aps.aplicaciones.lineasBase.models.relacionItemLineaBase-class.html#item,Variable aps.aplicaciones.solicitudCambio.models.solicitudCambio.item=aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#item"><a title="aps.aplicaciones.items.models.atributo.item
+aps.aplicaciones.lineasBase.models.relacionItemLineaBase.item
+aps.aplicaciones.solicitudCambio.models.solicitudCambio.item" class="py-name" href="#" onclick="return doclink('link-58', 'item', 'link-58');">item</a></tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                             <tt id="link-59" class="py-name" targets="Variable aps.aplicaciones.lineasBase.models.relacionItemLineaBase.linea=aps.aplicaciones.lineasBase.models.relacionItemLineaBase-class.html#linea"><a title="aps.aplicaciones.lineasBase.models.relacionItemLineaBase.linea" class="py-name" href="#" onclick="return doclink('link-59', 'linea', 'link-59');">linea</a></tt><tt class="py-op">=</tt><tt class="py-number">1</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                             <tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-comment"># Se consulta por la Linea Base creada en la tabla de lineas base</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-name">consultaInstancia</tt> <tt class="py-op">=</tt> <tt id="link-60" class="py-name"><a title="aps.aplicaciones.lineasBase
+aps.aplicaciones.lineasBase.models.lineasBase" class="py-name" href="#" onclick="return doclink('link-60', 'lineasBase', 'link-13');">lineasBase</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name"><a title="aps.aplicaciones.inicio.views.home.get
+aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.crearItemEnFase.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.graficar.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemCandidatos.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.revivirItem.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
+aps.aplicaciones.lineasBase.views.crear.get
+aps.aplicaciones.lineasBase.views.listarDetallesLineasBase.get
+aps.aplicaciones.lineasBase.views.listarLineasBase.get
+aps.aplicaciones.lineasBase.views.retornarItemsDeFaseAJAX.get
+aps.aplicaciones.permisos.views.asignarAProyecto.get
+aps.aplicaciones.permisos.views.permisos_ajax.get
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.permisos.views.proyectos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get
+aps.aplicaciones.solicitudCambio.views.adminSolicitudes.get
+aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.get
+aps.aplicaciones.solicitudCambio.views.listar.get
+aps.aplicaciones.solicitudCambio.views.listarVotaciones.get
+aps.aplicaciones.solicitudCambio.views.votar.get" class="py-name" href="#" onclick="return doclink('link-61', 'get', 'link-57');">get</a></tt><tt class="py-op">(</tt><tt id="link-62" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-62', 'nombre', 'link-19');">nombre</a></tt><tt class="py-op">=</tt><tt class="py-string">"nom1"</tt><tt class="py-op">,</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                             <tt id="link-63" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.estado=aps.aplicaciones.fases.models.fases-class.html#estado,Variable aps.aplicaciones.items.models.items.estado=aps.aplicaciones.items.models.items-class.html#estado,Variable aps.aplicaciones.items.models.relacion.estado=aps.aplicaciones.items.models.relacion-class.html#estado,Variable aps.aplicaciones.lineasBase.models.lineasBase.estado=aps.aplicaciones.lineasBase.models.lineasBase-class.html#estado,Variable aps.aplicaciones.proyectos.models.Proyectos.estado=aps.aplicaciones.proyectos.models.Proyectos-class.html#estado,Variable aps.aplicaciones.solicitudCambio.models.solicitudCambio.estado=aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#estado,Variable aps.aplicaciones.solicitudCambio.models.votos.estado=aps.aplicaciones.solicitudCambio.models.votos-class.html#estado"><a title="aps.aplicaciones.fases.models.fases.estado
+aps.aplicaciones.items.models.items.estado
+aps.aplicaciones.items.models.relacion.estado
+aps.aplicaciones.lineasBase.models.lineasBase.estado
+aps.aplicaciones.proyectos.models.Proyectos.estado
+aps.aplicaciones.solicitudCambio.models.solicitudCambio.estado
+aps.aplicaciones.solicitudCambio.models.votos.estado" class="py-name" href="#" onclick="return doclink('link-63', 'estado', 'link-63');">estado</a></tt><tt class="py-op">=</tt><tt class="py-string">"cerrado"</tt><tt class="py-op">,</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                             <tt id="link-64" class="py-name"><a title="aps.aplicaciones.items.models.items.fase
+aps.aplicaciones.lineasBase.models.lineasBase.fase" class="py-name" href="#" onclick="return doclink('link-64', 'fase', 'link-38');">fase</a></tt><tt class="py-op">=</tt><tt class="py-number">1</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">                             <tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-comment">#print "\nNombre de Linea Base: ", consultaInstancia.nombre</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-comment">#print "Estado: ", consultaInstancia.estado</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-comment">#print "Fase: ", consultaInstancia.fase</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertNotEquals</tt><tt class="py-op">(</tt><tt class="py-name">consultaInstancia</tt><tt class="py-op">,</tt><tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -94,7 +387,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri May 23 23:46:04 2014
+    Generated by Epydoc 3.0.1 on Sat Jun  7 00:59:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

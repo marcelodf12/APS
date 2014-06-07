@@ -59,6 +59,7 @@ aps.aplicaciones.proyectos.tests	aps.aplicaciones.proyectos.tests-module.html
 aps.aplicaciones.proyectos.urls	aps.aplicaciones.proyectos.urls-module.html
 aps.aplicaciones.proyectos.urls.urlpatterns	aps.aplicaciones.proyectos.urls-module.html#urlpatterns
 aps.aplicaciones.proyectos.views	aps.aplicaciones.proyectos.views-module.html
+aps.aplicaciones.proyectos.views.comprobarSolicitudesExpiradas	aps.aplicaciones.proyectos.views-module.html#comprobarSolicitudesExpiradas
 aps.aplicaciones.solicitudCambio	aps.aplicaciones.solicitudCambio-module.html
 aps.aplicaciones.solicitudCambio.__package__	aps.aplicaciones.solicitudCambio-module.html#__package__
 aps.aplicaciones.solicitudCambio.models	aps.aplicaciones.solicitudCambio.models-module.html
@@ -193,6 +194,7 @@ aps.aplicaciones.inicio.views.errorPermiso	aps.aplicaciones.inicio.views.errorPe
 aps.aplicaciones.inicio.views.errorPermiso.template_name	aps.aplicaciones.inicio.views.errorPermiso-class.html#template_name
 aps.aplicaciones.inicio.views.home	aps.aplicaciones.inicio.views.home-class.html
 aps.aplicaciones.inicio.views.home.template_name	aps.aplicaciones.inicio.views.home-class.html#template_name
+aps.aplicaciones.inicio.views.home.get	aps.aplicaciones.inicio.views.home-class.html#get
 aps.aplicaciones.inicio.views.listarGrupos	aps.aplicaciones.inicio.views.listarGrupos-class.html
 aps.aplicaciones.inicio.views.listarGrupos.template_name	aps.aplicaciones.inicio.views.listarGrupos-class.html#template_name
 aps.aplicaciones.inicio.views.listarGrupos.model	aps.aplicaciones.inicio.views.listarGrupos-class.html#model
@@ -319,6 +321,8 @@ aps.aplicaciones.items.views.graficar.get	aps.aplicaciones.items.views.graficar-
 aps.aplicaciones.items.views.importar	aps.aplicaciones.items.views.importar-class.html
 aps.aplicaciones.items.views.importar.post	aps.aplicaciones.items.views.importar-class.html#post
 aps.aplicaciones.items.views.importar.get	aps.aplicaciones.items.views.importar-class.html#get
+aps.aplicaciones.items.views.listarItemCandidatos	aps.aplicaciones.items.views.listarItemCandidatos-class.html
+aps.aplicaciones.items.views.listarItemCandidatos.get	aps.aplicaciones.items.views.listarItemCandidatos-class.html#get
 aps.aplicaciones.items.views.listarItemParaCrearRelacion	aps.aplicaciones.items.views.listarItemParaCrearRelacion-class.html
 aps.aplicaciones.items.views.listarItemParaCrearRelacion.get	aps.aplicaciones.items.views.listarItemParaCrearRelacion-class.html#get
 aps.aplicaciones.items.views.listarItems	aps.aplicaciones.items.views.listarItems-class.html
@@ -358,6 +362,9 @@ aps.aplicaciones.items.views.mostrarDetallesV	aps.aplicaciones.items.views.mostr
 aps.aplicaciones.items.views.mostrarDetallesV.get	aps.aplicaciones.items.views.mostrarDetallesV-class.html#get
 aps.aplicaciones.items.views.reversionar	aps.aplicaciones.items.views.reversionar-class.html
 aps.aplicaciones.items.views.reversionar.post	aps.aplicaciones.items.views.reversionar-class.html#post
+aps.aplicaciones.items.views.revivirItem	aps.aplicaciones.items.views.revivirItem-class.html
+aps.aplicaciones.items.views.revivirItem.post	aps.aplicaciones.items.views.revivirItem-class.html#post
+aps.aplicaciones.items.views.revivirItem.get	aps.aplicaciones.items.views.revivirItem-class.html#get
 aps.aplicaciones.items.views.verAtributosTipoItems	aps.aplicaciones.items.views.verAtributosTipoItems-class.html
 aps.aplicaciones.items.views.verAtributosTipoItems.get	aps.aplicaciones.items.views.verAtributosTipoItems-class.html#get
 aps.aplicaciones.items.views.verTipoItems	aps.aplicaciones.items.views.verTipoItems-class.html
@@ -372,6 +379,9 @@ aps.aplicaciones.lineasBase.models.lineasBase.fase	aps.aplicaciones.lineasBase.m
 aps.aplicaciones.lineasBase.models.relacionItemLineaBase	aps.aplicaciones.lineasBase.models.relacionItemLineaBase-class.html
 aps.aplicaciones.lineasBase.models.relacionItemLineaBase.item	aps.aplicaciones.lineasBase.models.relacionItemLineaBase-class.html#item
 aps.aplicaciones.lineasBase.models.relacionItemLineaBase.linea	aps.aplicaciones.lineasBase.models.relacionItemLineaBase-class.html#linea
+aps.aplicaciones.lineasBase.tests.TestCrearLineaBase	aps.aplicaciones.lineasBase.tests.TestCrearLineaBase-class.html
+aps.aplicaciones.lineasBase.tests.TestCrearLineaBase.setUp	aps.aplicaciones.lineasBase.tests.TestCrearLineaBase-class.html#setUp
+aps.aplicaciones.lineasBase.tests.TestCrearLineaBase.test_details	aps.aplicaciones.lineasBase.tests.TestCrearLineaBase-class.html#test_details
 aps.aplicaciones.lineasBase.views.crear	aps.aplicaciones.lineasBase.views.crear-class.html
 aps.aplicaciones.lineasBase.views.crear.post	aps.aplicaciones.lineasBase.views.crear-class.html#post
 aps.aplicaciones.lineasBase.views.crear.get	aps.aplicaciones.lineasBase.views.crear-class.html#get
@@ -397,6 +407,9 @@ aps.aplicaciones.permisos.tests.TestEliminarPermiso.setUp	aps.aplicaciones.permi
 aps.aplicaciones.permisos.tests.TestEliminarPermiso.test_details	aps.aplicaciones.permisos.tests.TestEliminarPermiso-class.html#test_details
 aps.aplicaciones.permisos.views.admin	aps.aplicaciones.permisos.views.admin-class.html
 aps.aplicaciones.permisos.views.admin.template_name	aps.aplicaciones.permisos.views.admin-class.html#template_name
+aps.aplicaciones.permisos.views.asignarAProyecto	aps.aplicaciones.permisos.views.asignarAProyecto-class.html
+aps.aplicaciones.permisos.views.asignarAProyecto.post	aps.aplicaciones.permisos.views.asignarAProyecto-class.html#post
+aps.aplicaciones.permisos.views.asignarAProyecto.get	aps.aplicaciones.permisos.views.asignarAProyecto-class.html#get
 aps.aplicaciones.permisos.views.crear	aps.aplicaciones.permisos.views.crear-class.html
 aps.aplicaciones.permisos.views.crear.template_name	aps.aplicaciones.permisos.views.crear-class.html#template_name
 aps.aplicaciones.permisos.views.crear.model	aps.aplicaciones.permisos.views.crear-class.html#model
@@ -419,6 +432,8 @@ aps.aplicaciones.permisos.views.permisos_ajax	aps.aplicaciones.permisos.views.pe
 aps.aplicaciones.permisos.views.permisos_ajax.get	aps.aplicaciones.permisos.views.permisos_ajax-class.html#get
 aps.aplicaciones.permisos.views.permisos_grupos_ajax	aps.aplicaciones.permisos.views.permisos_grupos_ajax-class.html
 aps.aplicaciones.permisos.views.permisos_grupos_ajax.get	aps.aplicaciones.permisos.views.permisos_grupos_ajax-class.html#get
+aps.aplicaciones.permisos.views.proyectos_ajax	aps.aplicaciones.permisos.views.proyectos_ajax-class.html
+aps.aplicaciones.permisos.views.proyectos_ajax.get	aps.aplicaciones.permisos.views.proyectos_ajax-class.html#get
 aps.aplicaciones.proyectos.forms.ComentariosLog	aps.aplicaciones.proyectos.forms.ComentariosLog-class.html
 aps.aplicaciones.proyectos.forms.ComentariosLog.comentario	aps.aplicaciones.proyectos.forms.ComentariosLog-class.html#comentario
 aps.aplicaciones.proyectos.forms.ComentariosLog.media	aps.aplicaciones.proyectos.forms.ComentariosLog-class.html#media
@@ -522,9 +537,17 @@ aps.aplicaciones.solicitudCambio.models.votos.aceptar	aps.aplicaciones.solicitud
 aps.aplicaciones.solicitudCambio.models.votos.usuario	aps.aplicaciones.solicitudCambio.models.votos-class.html#usuario
 aps.aplicaciones.solicitudCambio.models.votos.estado	aps.aplicaciones.solicitudCambio.models.votos-class.html#estado
 aps.aplicaciones.solicitudCambio.models.votos.solicitud	aps.aplicaciones.solicitudCambio.models.votos-class.html#solicitud
+aps.aplicaciones.solicitudCambio.views.adminSolicitudes	aps.aplicaciones.solicitudCambio.views.adminSolicitudes-class.html
+aps.aplicaciones.solicitudCambio.views.adminSolicitudes.get	aps.aplicaciones.solicitudCambio.views.adminSolicitudes-class.html#get
 aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio	aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio-class.html
 aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.post	aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio-class.html#post
 aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.get	aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio-class.html#get
+aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud	aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud-class.html
+aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud.template_name	aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud-class.html#template_name
+aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud.form_class	aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud-class.html#form_class
+aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud.form_valid	aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud-class.html#form_valid
+aps.aplicaciones.solicitudCambio.views.listar	aps.aplicaciones.solicitudCambio.views.listar-class.html
+aps.aplicaciones.solicitudCambio.views.listar.get	aps.aplicaciones.solicitudCambio.views.listar-class.html#get
 aps.aplicaciones.solicitudCambio.views.listarVotaciones	aps.aplicaciones.solicitudCambio.views.listarVotaciones-class.html
 aps.aplicaciones.solicitudCambio.views.listarVotaciones.get	aps.aplicaciones.solicitudCambio.views.listarVotaciones-class.html#get
 aps.aplicaciones.solicitudCambio.views.votar	aps.aplicaciones.solicitudCambio.views.votar-class.html

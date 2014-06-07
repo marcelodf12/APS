@@ -119,6 +119,9 @@ class permisos_grupos_ajax(TemplateView):
         return HttpResponse(datajson, content_type = 'application/json')
 
 class asignarAProyecto(TemplateView):
+    """
+    Vista para asignar permisos especificos a usuarios en un determinado proyecto
+    """
     def get(self, request, *args, **kwargs):
         id_proyecto = kwargs['id']
         comite = Miembros.objects.filter(proyecto__id=id_proyecto)
@@ -136,6 +139,9 @@ class asignarAProyecto(TemplateView):
 
 
 class proyectos_ajax(TemplateView):
+    """
+    Respuesta AJAX con permisos actuales de un usuario sobre un determinado proyecto
+    """
     def get(self, request, *args, **kwargs):
         id_proyecto = request.GET['id']
         estado = request.GET['estado']
