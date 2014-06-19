@@ -95,7 +95,7 @@ DATABASES = {
 
 # Archivos Dinamicos multimedia
 MEDIA_ROOT = RUTA_PROYECTO.child('media')
-
+IMAGENES_ROOT = RUTA_PROYECTO.child('static').child('images')
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
