@@ -231,7 +231,7 @@ class reporteProyecto(TemplateView):
         story.append(Spacer(0,20))
 
         # Creamos un DocTemplate en una hoja DIN A4, en la que se muestra el texto enmarcado (showBoundary=1) por un recuadro.
-        doc=SimpleDocTemplate(MEDIA_ROOT + "/solicitud_" +str(s.id) + ".pdf",pagesize=A4, rightMargin=1, leftMargin=1, topMargin=0, bottomMargin=0)
+        doc=SimpleDocTemplate(MEDIA_ROOT + "/solicitud_" +str(p.id) + ".pdf",pagesize=A4, rightMargin=1, leftMargin=1, topMargin=0, bottomMargin=0)
         import datetime
 
         parrafo = Paragraph('-'*193,cabecera)
@@ -245,5 +245,10 @@ class reporteProyecto(TemplateView):
         # Construimos el Platypus story.
         doc.build(story)
 
-        image_data = open(MEDIA_ROOT + "/solicitud_" +str(s.id) + ".pdf", "rb").read()
+        image_data = open(MEDIA_ROOT + "/solicitud_" +str(p.id) + ".pdf", "rb").read()
         return HttpResponse(image_data, mimetype="application/pdf")
+
+class menu(TemplateView):
+    def get(self, request, *args, **kwargs):
+        proyectos = Proyectos.objects.filter(lider=request.user)
+        return render(self.request, 'reportes/proyecto.html', {'proyectos':proyectos})

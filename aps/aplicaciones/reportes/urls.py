@@ -4,9 +4,10 @@
     Todas las urls definidas aqui esta relacionadas con el inicio de sesion
 """
 from django.conf.urls import patterns, url
-from .views import reporteProyecto, reporteItems
+from .views import reporteProyecto, reporteItems, menu
 
 urlpatterns = patterns('',
     url(r'^proyecto/(?P<id>\d+)$', reporteProyecto.as_view()),
     url(r'^items/(?P<id>\d+)$', reporteItems.as_view()),
+    url(r'^menu/', menu.as_view()),
 )
