@@ -11,6 +11,7 @@ from .forms import ComentariosLog
 from aps.aplicaciones.fases.models import fases
 from aps.aplicaciones.proyectos.models import Proyectos
 from aps.aplicaciones.solicitudCambio.models import solicitudCambio
+from aps.aplicaciones.permisos.models import Permisos
 import pickle
 
 
@@ -182,7 +183,10 @@ class listarRelaciones(TemplateView):
     def get(self, request, *args, **kwargs):
         queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id']).exclude(estado=False)
         proyecto = Proyectos.objects.get(id=kwargs['id'])
+        if(not Permisos.valido(usuario=self.request.user,permiso='VERR',tipoObjeto='proyecto',id=proyecto.id) or proyecto.lider==self.request.user):
+            return render(self.request, 'error/permisos.html')
         return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre, 'idProyecto':proyecto.id})
+
 
 class eliminarRelacion(DeleteView):
     """
@@ -470,6 +474,8 @@ class graficar(TemplateView):
     def get(self, request, *args, **kwargs):
         cadena = 'digraph A {\n'
         proyecto = Proyectos.objects.get(id=kwargs['id'])
+        if(not Permisos.valido(usuario=self.request.user,permiso='GRAF',tipoObjeto='proyecto',id=proyecto.id) or proyecto.lider==self.request.user):
+            return render(self.request, 'error/permisos.html')
         listaFases = fases.objects.filter(proyecto=proyecto)
         c = 0
         for f in listaFases:
@@ -578,20 +584,24 @@ class revivirItem(TemplateView):
     def get(self, request, *args, **kwargs):
         idItem = kwargs['id']
         item=items.objects.get(id=idItem)
-        rel = relacion.objects.get(itemHijo=item)
-        print rel
-        if rel.itemPadre.estado == 'eliminado':
-            itemsCandiatos = items.objects.filter(fase=int(item.fase.id)-1).exclude(estado='eliminado') | items.objects.filter(fase=int(item.fase.id)).exclude(estado='eliminado')
-            if itemsCandiatos:
-                return render(self.request, 'items/asignarPadre.html', {'idProyecto': item.fase.proyecto, 'candidatos':itemsCandiatos, 'idItem':int(item.id)})
+        proyecto = item.fase.proyecto
+        if(Permisos.valido(usuario=self.request.user,permiso='CLB',tipoObjeto='proyecto',id=proyecto.id) or proyecto.lider==self.request.user):
+            rel = relacion.objects.get(itemHijo=item)
+            print rel
+            if rel.itemPadre.estado == 'eliminado':
+                itemsCandiatos = items.objects.filter(fase=int(item.fase.id)-1).exclude(estado='eliminado') | items.objects.filter(fase=int(item.fase.id)).exclude(estado='eliminado')
+                if itemsCandiatos:
+                    return render(self.request, 'items/asignarPadre.html', {'idProyecto': item.fase.proyecto, 'candidatos':itemsCandiatos, 'idItem':int(item.id)})
+                else:
+                    return render(self.request, 'error/general.html', {'mensaje':'No hay padres candidatos', 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
             else:
-                return render(self.request, 'error/general.html', {'mensaje':'No hay padres candidatos', 'url':'/proyectos/detalles/'+str(item.fase.proyecto.id)})
+                item.estado = 'creado'
+                rel.estado = True
+                item.save()
+                rel.save()
+                return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
         else:
-            item.estado = 'creado'
-            rel.estado = True
-            item.save()
-            rel.save()
-            return HttpResponseRedirect('/proyectos/detalles/'+str(item.fase.proyecto.id))
+            return render(self.request, 'error/permisos.html')
 
     def post(self, request, *args, **kwargs):
         itemHijo = items.objects.get(id=request.POST['idHijo'])
