@@ -3,8 +3,10 @@
     de la aplicacion 'reportes'.
 """
 from django.conf.urls import patterns, url
-from .views import reporteProyecto
+from .views import reporteProyecto, reporteItems, menu
 
 urlpatterns = patterns('',
-    url(r'^proyecto/(?P<id>\d+)$', reporteProyecto.as_view(), name='updateUser'),
+    url(r'^proyecto/(?P<id>\d+)$', reporteProyecto.as_view()),
+    url(r'^items/(?P<id>\d+)$', reporteItems.as_view()),
+    url(r'^menu/', menu.as_view()),
 )

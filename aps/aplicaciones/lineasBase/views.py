@@ -9,6 +9,7 @@ from aps.aplicaciones.items.models import items
 from .models import lineasBase, relacionItemLineaBase
 from django.core import serializers
 from django.http import HttpResponse
+from aps.aplicaciones.permisos.models import Permisos
 # Create your views here.
 
 class crear(TemplateView):
@@ -18,8 +19,12 @@ class crear(TemplateView):
     def get(self, request, *args, **kwargs):
         idProyecto = kwargs['id']
         proyecto = Proyectos.objects.get(id=idProyecto)
-        listaFases = fases.objects.filter(proyecto=proyecto)
-        return render(request, 'lineaBase/crear.html',{'fases':listaFases, 'nombreProyecto':proyecto.nombre, 'proyecto':proyecto})
+        if(Permisos.valido(usuario=self.request.user,permiso='CLB',tipoObjeto='proyecto',id=idProyecto) or proyecto.lider==self.request.user):
+            proyecto = Proyectos.objects.get(id=idProyecto)
+            listaFases = fases.objects.filter(proyecto=proyecto)
+            return render(request, 'lineaBase/crear.html',{'fases':listaFases, 'nombreProyecto':proyecto.nombre, 'proyecto':proyecto})
+        else:
+            return render(request, 'error/permisos.html')
 
     def post(self, request, *args, **kwargs):
         idFase = request.POST['idFase']
@@ -68,12 +73,15 @@ class listarLineasBase(TemplateView):
     """
     def get(self, request, *args, **kwargs):
         proyecto=Proyectos.objects.get(id=kwargs['id'])
-        listaLineasBase=lineasBase.objects.filter(fase__proyecto=proyecto)
-        print listaLineasBase
-        return render(request, 'lineaBase/listar.html', {'lineasBase': listaLineasBase,\
-                                                         'url':'/proyectos/detalles/'+str(kwargs['id']),\
-                                                         'nombreProyecto':proyecto.nombre,\
-                                                         'proyecto':proyecto})
+        if(Permisos.valido(usuario=self.request.user,permiso='LLB',tipoObjeto='proyecto',id=proyecto.id) or proyecto.lider==self.request.user):
+            listaLineasBase=lineasBase.objects.filter(fase__proyecto=proyecto)
+            print listaLineasBase
+            return render(request, 'lineaBase/listar.html', {'lineasBase': listaLineasBase,\
+                                                             'url':'/proyectos/detalles/'+str(kwargs['id']),\
+                                                             'nombreProyecto':proyecto.nombre,\
+                                                             'proyecto':proyecto})
+        else:
+            return render(request, 'error/permisos.html')
 
 class listarDetallesLineasBase(TemplateView):
     """
