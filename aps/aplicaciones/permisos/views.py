@@ -127,12 +127,15 @@ class asignarAProyecto(TemplateView):
         comite = Miembros.objects.filter(proyecto__id=id_proyecto)
         return render(request, 'permisos/proyectos.html', {'usuarios':comite, 'idProyecto':id_proyecto})
     def post(self, request, *args, **kwargs):
+        try:
+            usuario = User.objects.get(id=request.POST['usuario'])
+        except:
+            return HttpResponseRedirect('/proyectos/detalles/'+str(request.POST['idProyecto']))
         lista = request.POST.getlist('permisos')
         permisos = Permisos.objects.filter(usuario__id=request.POST['usuario'], tipoObjeto='proyecto', id_fk=request.POST['idProyecto'])
         for p in permisos:
             p.delete()
         for p in lista:
-            usuario = User.objects.get(id=request.POST['usuario'])
             aux = Permisos(usuario=usuario, tipoObjeto='proyecto', id_fk=request.POST['idProyecto'], permiso=p)
             aux.save()
         return HttpResponseRedirect('/proyectos/detalles/'+str(request.POST['idProyecto']))

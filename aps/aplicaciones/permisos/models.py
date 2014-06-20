@@ -55,10 +55,13 @@ class Permisos(models.Model):
         grupos=Group.objects.filter(user__username=u)
         permU = Permisos.objects.filter(usuario__username=u).filter(tipoObjeto=t).filter(id_fk=i).filter(permiso=p)
         if permU:
+            print '*** Permiso otorgado ***'
             return True
         else:
             for g in grupos:
                 permG = Permisos.objects.filter(grupo__name=g).filter(tipoObjeto=t).filter(id_fk=i).filter(permiso=p)
                 if permG:
+                    print '*** Permiso otorgado ***'
                     return True
+        print '*** Permiso Denegado ***'
         return False

@@ -27,6 +27,12 @@
     <input type="checkbox" name="permisos" value="REVI" id="REVI"> Revivir Items <br><br>
     <input type="checkbox" name="permisos" value="VERR" id="VERR"> Ver Relaciones <br><br>
     <input type="checkbox" name="permisos" value="GRAF" id="GRAF"> Graficar <br><br>
+    <input type="checkbox" name="permisos" value="MODF" id="MODF"> Editar Fases <br><br>
+    <input type="checkbox" name="permisos" value="FINF" id="FINF"> Finalizar Fase <br><br>
+    <input type="checkbox" name="permisos" value="ADDI" id="ADDI"> Agregar Items <br><br>
+    <input type="checkbox" name="permisos" value="FINI" id="FINI"> Finalizar Items <br><br>
+    <input type="checkbox" name="permisos" value="DELI" id="DELI"> Eliminar Items <br><br>
+    <input type="checkbox" name="permisos" value="MODI" id="MODI"> Editar Items <br><br>
     <input type="submit" value="Asignar">
 </div>
 </form>
@@ -42,6 +48,17 @@
           url : '/permisos/proyectos_ajax/',
           type : 'get',
           success : function(data){
+            document.getElementById('CLB').checked=false;
+            document.getElementById('LLB').checked=false;
+            document.getElementById('REVI').checked=false;
+            document.getElementById('VERR').checked=false;
+            document.getElementById('GRAF').checked=false;
+            document.getElementById('ADDI').checked=false;
+            document.getElementById('FINF').checked=false;
+            document.getElementById('MODI').checked=false;
+            document.getElementById('MODF').checked=false;
+            document.getElementById('FINI').checked=false;
+            document.getElementById('DELI').checked=false;
             for(i=0;i<data.length;i++){
                 switch (data[i].fields.permiso){
                     case 'CLB':
@@ -58,6 +75,24 @@
                         break;
                     case 'GRAF':
                         document.getElementById('GRAF').checked=true;
+                        break;
+                    case 'ADDI':
+                        document.getElementById('ADDI').checked=true;
+                        break;
+                    case 'FINF':
+                        document.getElementById('FINF').checked=true;
+                        break;
+                    case 'MODI':
+                        document.getElementById('MODI').checked=true;
+                        break;
+                    case 'MODF':
+                        document.getElementById('MODF').checked=true;
+                        break;
+                    case 'FINI':
+                        document.getElementById('FINI').checked=true;
+                        break;
+                    case 'DELI':
+                        document.getElementById('DELI').checked=true;
                         break;
                 }
             }

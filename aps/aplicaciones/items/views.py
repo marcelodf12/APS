@@ -45,6 +45,9 @@ class crearItemEnFase(TemplateView):
     """
     def get(self, request, *args, **kwargs):
         faseAct = fases.objects.get(id=kwargs['id'])
+        proyecto = faseAct.proyecto
+        if((not Permisos.valido(usuario=self.request.user,permiso='ADDI',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
+            return render(self.request, 'error/permisos.html')
         listaItems=items.objects.filter(fase=faseAct)
         if(faseAct.orden>1):
             proyecto = faseAct.proyecto
@@ -101,12 +104,18 @@ class modificarItems(UpdateView):
     fields = ['nombre','complejidad','costo']     # Permite modificar solo el campo 'nombre'
     template_name = 'items/update.html'
     success_url = reverse_lazy('listar_item')      # Se mostrara la vista 'listar_proyecto' en el caso de modificacion exitosa
+    def form_valid(self, form):
+        proyecto = self.proyecto
+        if((not Permisos.valido(usuario=self.request.user,permiso='MODI',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
+            return HttpResponseRedirect('/error/permisos/')
+        return super(modificarItems, self).form_valid(form)
 
     def get_object(self, queryset=None):
         """
             Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original
         """
         obj = items.objects.get(id=self.kwargs['id'])
+        self.proyecto = obj.fase.proyecto
         self.success_url='/proyectos/detalles/'+str(obj.fase.proyecto.id)
         return obj
 
@@ -121,6 +130,9 @@ class eliminarItems(FormView):
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
         item = items.objects.get(id=self.kwargs['id'])
+        proyecto = item.fase.proyecto
+        if((not Permisos.valido(usuario=self.request.user,permiso='DELI',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
+            return render(self.request, 'error/permisos.html')
         rel = relacion.objects.filter(itemPadre=item).exclude(estado=False)
         lb = relacionItemLineaBase.objects.filter(item=item)
         if lb:
@@ -183,7 +195,7 @@ class listarRelaciones(TemplateView):
     def get(self, request, *args, **kwargs):
         queryset = relacion.objects.filter(itemHijo__fase__proyecto__id=kwargs['id']).exclude(estado=False)
         proyecto = Proyectos.objects.get(id=kwargs['id'])
-        if(not Permisos.valido(usuario=self.request.user,permiso='VERR',tipoObjeto='proyecto',id=proyecto.id) or proyecto.lider==self.request.user):
+        if((not Permisos.valido(usuario=self.request.user,permiso='VERR',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
             return render(self.request, 'error/permisos.html')
         return render(self.request, 'relaciones/listar.html',{'relaciones':queryset, 'proyecto':proyecto.nombre, 'idProyecto':proyecto.id})
 
@@ -457,6 +469,9 @@ class importar(TemplateView):
 
     def post(self, request, *args, **kwargs):
         fase=fases.objects.get(id=request.POST['id'])
+        proyecto = fase.proyecto
+        if((not Permisos.valido(usuario=self.request.user,permiso='ADDI',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
+            return render(self.request, 'error/permisos.html')
         ti = tipoItem.objects.get(id=request.POST['tipo'])
         listaTipos= pickle.loads(ti.atributos)
         item = items(nombre=request.POST['nombre'], complejidad=request.POST['complejidad'],costo=request.POST['costo'], fase=fase)
@@ -474,7 +489,7 @@ class graficar(TemplateView):
     def get(self, request, *args, **kwargs):
         cadena = 'digraph A {\n'
         proyecto = Proyectos.objects.get(id=kwargs['id'])
-        if(not Permisos.valido(usuario=self.request.user,permiso='GRAF',tipoObjeto='proyecto',id=proyecto.id) or proyecto.lider==self.request.user):
+        if((not Permisos.valido(usuario=self.request.user,permiso='GRAF',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
             return render(self.request, 'error/permisos.html')
         listaFases = fases.objects.filter(proyecto=proyecto)
         c = 0
@@ -535,7 +550,9 @@ class finalizarItem(FormView):
 
     def form_valid(self, form):
         item = items.objects.get(id=self.kwargs['id'])
-
+        proyecto = item.fase.proyecto
+        if((not Permisos.valido(usuario=self.request.user,permiso='FINI',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
+            return render(self.request, 'error/permisos.html')
         #se encuentra la fase que contiene al item
         fase = item.fase
         nroFase = fase.orden
@@ -574,6 +591,8 @@ class listarItemCandidatos(TemplateView):
     """
     def get(self, request, *args, **kwargs):
         proyecto = Proyectos.objects.get(id=kwargs['id'])
+        if((not Permisos.valido(usuario=self.request.user,permiso='REVI',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
+            return render(self.request, 'error/permisos.html')
         return render(self.request, 'items/listarCandidatos.html', {'nombreProyecto': proyecto.nombre, 'idProyecto': kwargs['id'],'candidatos':items.objects.filter(estado='eliminado', fase__proyecto__id=kwargs['id']).exclude(fase__estado='finalizada'), 'url':'/proyectos/detalles/'+str(proyecto.id)})
 
 
@@ -585,7 +604,7 @@ class revivirItem(TemplateView):
         idItem = kwargs['id']
         item=items.objects.get(id=idItem)
         proyecto = item.fase.proyecto
-        if(Permisos.valido(usuario=self.request.user,permiso='CLB',tipoObjeto='proyecto',id=proyecto.id) or proyecto.lider==self.request.user):
+        if(Permisos.valido(usuario=self.request.user,permiso='REVI',tipoObjeto='proyecto',id=proyecto.id) or proyecto.lider==self.request.user):
             rel = relacion.objects.get(itemHijo=item)
             print rel
             if rel.itemPadre.estado == 'eliminado':
