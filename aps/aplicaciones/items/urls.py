@@ -1,6 +1,5 @@
-""" Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py de
+""" Aqui se definen las urls que invocaran las distintas vistas creadas en el archivo VIEWS.py de
      la aplicacion 'items'.
-     Todas las urls definidas aqui esta relacionadas con la administracion de items
 """
 from django.conf.urls import patterns, url
 from django.contrib import admin

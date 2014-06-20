@@ -563,18 +563,12 @@ class listarItemsFinalizados(ListView):
     context_object_name = 'items'
 
 class listarItemCandidatos(TemplateView):
-    """
-    Vista que lista los items candidatos a ser revividos
-    """
     def get(self, request, *args, **kwargs):
         proyecto = Proyectos.objects.get(id=kwargs['id'])
         return render(self.request, 'items/listarCandidatos.html', {'nombreProyecto': proyecto.nombre, 'idProyecto': kwargs['id'],'candidatos':items.objects.filter(estado='eliminado', fase__proyecto__id=kwargs['id']).exclude(fase__estado='finalizada'), 'url':'/proyectos/detalles/'+str(proyecto.id)})
 
 
 class revivirItem(TemplateView):
-    """
-    Vista que pasa un item de estado eliminado a estado activo
-    """
     def get(self, request, *args, **kwargs):
         idItem = kwargs['id']
         item=items.objects.get(id=idItem)

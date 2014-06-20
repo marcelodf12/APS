@@ -60,6 +60,14 @@ aps.aplicaciones.proyectos.urls	aps.aplicaciones.proyectos.urls-module.html
 aps.aplicaciones.proyectos.urls.urlpatterns	aps.aplicaciones.proyectos.urls-module.html#urlpatterns
 aps.aplicaciones.proyectos.views	aps.aplicaciones.proyectos.views-module.html
 aps.aplicaciones.proyectos.views.comprobarSolicitudesExpiradas	aps.aplicaciones.proyectos.views-module.html#comprobarSolicitudesExpiradas
+aps.aplicaciones.reportes	aps.aplicaciones.reportes-module.html
+aps.aplicaciones.reportes.__package__	aps.aplicaciones.reportes-module.html#__package__
+aps.aplicaciones.reportes.admin	aps.aplicaciones.reportes.admin-module.html
+aps.aplicaciones.reportes.models	aps.aplicaciones.reportes.models-module.html
+aps.aplicaciones.reportes.tests	aps.aplicaciones.reportes.tests-module.html
+aps.aplicaciones.reportes.urls	aps.aplicaciones.reportes.urls-module.html
+aps.aplicaciones.reportes.urls.urlpatterns	aps.aplicaciones.reportes.urls-module.html#urlpatterns
+aps.aplicaciones.reportes.views	aps.aplicaciones.reportes.views-module.html
 aps.aplicaciones.solicitudCambio	aps.aplicaciones.solicitudCambio-module.html
 aps.aplicaciones.solicitudCambio.__package__	aps.aplicaciones.solicitudCambio-module.html#__package__
 aps.aplicaciones.solicitudCambio.models	aps.aplicaciones.solicitudCambio.models-module.html
@@ -522,6 +530,9 @@ aps.aplicaciones.proyectos.views.modificarProyectos.template_name	aps.aplicacion
 aps.aplicaciones.proyectos.views.modificarProyectos.model	aps.aplicaciones.proyectos.views.modificarProyectos-class.html#model
 aps.aplicaciones.proyectos.views.proyectos_ajax	aps.aplicaciones.proyectos.views.proyectos_ajax-class.html
 aps.aplicaciones.proyectos.views.proyectos_ajax.get	aps.aplicaciones.proyectos.views.proyectos_ajax-class.html#get
+aps.aplicaciones.reportes.views.reporteProyecto	aps.aplicaciones.reportes.views.reporteProyecto-class.html
+aps.aplicaciones.reportes.views.reporteProyecto.template_name	aps.aplicaciones.reportes.views.reporteProyecto-class.html#template_name
+aps.aplicaciones.reportes.views.reporteProyecto.get	aps.aplicaciones.reportes.views.reporteProyecto-class.html#get
 aps.aplicaciones.solicitudCambio.models.solicitudCambio	aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html
 aps.aplicaciones.solicitudCambio.models.solicitudCambio.orden	aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#orden
 aps.aplicaciones.solicitudCambio.models.solicitudCambio.usuario	aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#usuario

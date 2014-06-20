@@ -1,3 +1,7 @@
+"""
+    Modulo de Pruebas Unitarias para la aplicacion lineasBase
+"""
+
 from django.utils import unittest
 from django.test import TestCase
 from aps.aplicaciones.fases.models import fases

@@ -1,5 +1,5 @@
 """
-    Aqui se definen las urls que permitiran visualizar las distintas vistas creadas en el archivo VIEWS.py
+    Aqui se definen las urls que invocaran las distintas vistas creadas en el archivo VIEWS.py
     de la aplicacion 'permisos'.
 """
 

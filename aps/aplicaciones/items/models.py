@@ -1,3 +1,7 @@
+"""
+    Modelos definidos para la aplicacion items
+"""
+
 from django.db import models
 
 from aps.aplicaciones.fases.models import fases

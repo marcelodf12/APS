@@ -1,3 +1,7 @@
+"""
+    Modelos definidos para la aplicacion lineasBase
+"""
+
 from django.db import models
 
 # Create your models here.

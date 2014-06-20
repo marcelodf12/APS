@@ -1,3 +1,8 @@
+"""
+    Aqui se definen las urls que invocaran las distintas vistas creadas en el archivo VIEWS.py
+    de la aplicacion 'solicitudCambio'.
+"""
+
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from .views import crearSolicitudCambio, listarVotaciones, votar, ejecutarSolicitud, adminSolicitudes, listar
