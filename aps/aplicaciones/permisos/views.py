@@ -124,6 +124,9 @@ class asignarAProyecto(TemplateView):
     """
     def get(self, request, *args, **kwargs):
         id_proyecto = kwargs['id']
+        proyecto = Proyectos.objects.get(id=id_proyecto)
+        if(not proyecto.lider==self.request.user):
+            return render(self.request, 'error/permisos.html')
         comite = Miembros.objects.filter(proyecto__id=id_proyecto)
         return render(request, 'permisos/proyectos.html', {'usuarios':comite, 'idProyecto':id_proyecto})
     def post(self, request, *args, **kwargs):
