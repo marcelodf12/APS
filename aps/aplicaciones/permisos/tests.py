@@ -92,7 +92,7 @@ class TestEliminarPermiso(unittest.TestCase):
             # Creacion del permiso que sera eliminado
             permisoEliminar = Permisos()
             permisoEliminar.pk = 3
-            permisoEliminar.permiso = "ADD"
+            permisoEliminar.permiso = "ADDMINADD"
             permisoEliminar.tipoObjeto = "permiso"
             permisoEliminar.id_fk = 0
             permisoEliminar.usuario = self.userEliminar
@@ -114,7 +114,7 @@ class TestEliminarPermiso(unittest.TestCase):
         # fue fisicamente eliminado, creando otro permiso con el mismo id
         permisoRestaurado = Permisos()
         permisoRestaurado.pk = 3
-        permisoRestaurado.permiso = "ADD"
+        permisoRestaurado.permiso = "ADDMINADD"
         permisoRestaurado.tipoObjeto = "permiso"
         permisoRestaurado.id_fk = 0
         permisoRestaurado.usuario = self.userEliminar
