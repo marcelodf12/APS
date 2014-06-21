@@ -10,6 +10,7 @@ from aps.aplicaciones.proyectos.models import Proyectos
 from aps.aplicaciones.lineasBase.models import lineasBase, relacionItemLineaBase
 from django.test.client import Client
 from django.contrib.auth.models import User
+from aps.aplicaciones.permisos.models import Permisos
 
 # Create your tests here.
 class TestCrearLineaBase(unittest.TestCase):
@@ -89,6 +90,14 @@ class TestCrearLineaBase(unittest.TestCase):
             itemRegistrado3.complejidad = 10
             itemRegistrado3.costo = 2000
             itemRegistrado3.save()
+
+            # Asignacion del permiso MOD para userLogin, a fin de poder modificar un item
+            permisoUserLogin = Permisos()
+            permisoUserLogin.permiso = "CLB"
+            permisoUserLogin.tipoObjeto = "proyecto"
+            permisoUserLogin.id_fk = 1
+            permisoUserLogin.usuario = userLogin
+            permisoUserLogin.save()
 
 
     def test_details(self):

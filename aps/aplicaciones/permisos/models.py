@@ -48,20 +48,20 @@ class Permisos(models.Model):
         p=kwargs.get('permiso')
         t=kwargs.get('tipoObjeto')
         i=kwargs.get('id')
-        # print 'Permiso  : ' + p
-        # print 'Usuario  : ' + str(u)
-        # print 'Tipo     : ' + str(t)
-        # print 'Id       : ' + str(i)
+        #print 'Permiso  : ' + p
+        #print 'Usuario  : ' + str(u)
+        #print 'Tipo     : ' + str(t)
+        #print 'Id       : ' + str(i)
         grupos=Group.objects.filter(user__username=u)
         permU = Permisos.objects.filter(usuario__username=u).filter(tipoObjeto=t).filter(id_fk=i).filter(permiso=p)
         if permU:
-            print '*** Permiso otorgado ***'
+            #print '*** Permiso otorgado ***'
             return True
         else:
             for g in grupos:
                 permG = Permisos.objects.filter(grupo__name=g).filter(tipoObjeto=t).filter(id_fk=i).filter(permiso=p)
                 if permG:
-                    print '*** Permiso otorgado ***'
+                    #print '*** Permiso otorgado ***'
                     return True
-        print '*** Permiso Denegado ***'
+        #print '*** Permiso Denegado ***'
         return False

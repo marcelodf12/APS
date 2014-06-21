@@ -11,67 +11,6 @@ from aps.aplicaciones.permisos.models import Permisos
 
 
 # Create your tests here.
-class TestCrearFase(unittest.TestCase):
-    """ Prueba para comprobar la creacion de fases """
-
-    def setUp(self):
-            """
-                Metodo de inicializacion
-            """
-
-            # Creacion de un cliente
-            self.cliente = Client()
-
-            # Creacion de un usuario para la autenticacion
-            userLogin = User.objects.create_user(username="fulano Login19", password="123")
-
-            #Creacion de un usuario Lider para instanciar un proyecto
-            userRegistrado = User()
-            userRegistrado.username = "fulano Lider"
-            userRegistrado.password = "123"
-            userRegistrado.save()
-
-            #Creacion de un proyecto para instanciar una fase
-            proyectoRegistrado = Proyectos()
-            proyectoRegistrado.nombre = "proyecto Registrado"
-            proyectoRegistrado.pk=1
-            proyectoRegistrado.cantFases = 7
-            proyectoRegistrado.fechaInicio = "2014-03-03"
-            proyectoRegistrado.lider = userRegistrado
-            proyectoRegistrado.fechaFinP = "2014-10-03"
-            proyectoRegistrado.fechaFinR = "2014-10-04"
-            proyectoRegistrado.presupuesto=1500
-            proyectoRegistrado.penalizacion=350
-            proyectoRegistrado.save()
-
-
-
-    def test_details(self):
-        # Cliente es autenticado como el usuario 'fulano Login'
-        b = self.cliente.login(username='fulano Login', password='123')
-
-        # Peticion POST para crear una fase
-        response = self.cliente.post("/fases/crearEnProyecto/1",data={'nombre':'fase prueba',
-                                                           'fechaInicioP':'2014-04-03',
-                                                           'fechaInicioR':'2014-04-03',
-                                                           'estado':'creado',
-                                                           'presupuesto':'2000'
-                                                           })
-
-        #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'crear'
-
-        # Se consulta por la fase creada en la tabla de items
-        consultaInstancia = fases.objects.get(nombre="fase prueba",
-                           fechaInicioP="2014-04-03",
-                           estado="creado",
-                           presupuesto="2000")
-
-        #print "\nNombre de la fase: ", consultaInstancia.nombre                    # Nombre de la fase creada
-        #print "Estado: ", consultaInstancia.estado                                 # Estado de la fase creada
-        #print "Presupuesto: ", consultaInstancia.presupuesto                       # Presupuesto de la fase creada
-
-        self.assertNotEquals(consultaInstancia,None)
-
 
 class TestModificarFase(unittest.TestCase):
     """Prueba para comprobar la modificacion de items"""
@@ -80,35 +19,22 @@ class TestModificarFase(unittest.TestCase):
         # Creacion de un cliente
             self.cliente = Client()
 
-            # Creacion de un usuario para la autenticacion
-            userLogin = User.objects.create_user(username="fulano Login25", password="123")
 
             #Creacion de un usuario Lider para instanciar un proyecto
-            userRegistrado = User()
-            userRegistrado.username = "fulano Lider20"
-            userRegistrado.password = "123"
-            userRegistrado.save()
-
-            # Asignacion del permiso MOD para userRegistrado, a fin de poder modificar una fase
-            permisoProy = Permisos()
-            permisoProy.permiso = "ADMINLIDER"
-            permisoProy.tipoObjeto = "permiso"
-            permisoProy.id_fk = 0
-            permisoProy.usuario = userRegistrado
-            permisoProy.save()
+            userRegistrado = User(username='fulano Lider2', password=123).save()
 
             #Creacion de un proyecto para instanciar una fase
-            proyectoRegistrado = Proyectos()
-            proyectoRegistrado.nombre = "proyecto Registrado"
-            proyectoRegistrado.pk=2
-            proyectoRegistrado.cantFases = 7
-            proyectoRegistrado.fechaInicio = "2014-03-03"
-            proyectoRegistrado.lider = userRegistrado
-            proyectoRegistrado.fechaFinP = "2014-10-03"
-            proyectoRegistrado.fechaFinR = "2014-10-04"
-            proyectoRegistrado.presupuesto = 100000000
-            proyectoRegistrado.penalizacion = 10000000
-            proyectoRegistrado.save()
+            proyectoRegistrado = Proyectos(
+            nombre = "proyecto Registrado",
+            cantFases = 7,
+            fechaInicio = "2014-03-03",
+            lider = userRegistrado,
+            fechaFinP = "2014-10-03",
+            fechaFinR = "2014-10-04",
+            presupuesto = 100000000,
+            penalizacion = 10000000,
+            id=10
+            ).save()
 
             #Creacion de una fase para la modificacion
             faseRegistrada = fases()
@@ -127,26 +53,35 @@ class TestModificarFase(unittest.TestCase):
             permisoUserLogin = Permisos()
             permisoUserLogin.permiso = "MODF"
             permisoUserLogin.tipoObjeto = "proyecto"
-            permisoUserLogin.id_fk = 2
+            permisoUserLogin.id_fk = 10
             permisoUserLogin.usuario = userRegistrado
             permisoUserLogin.save()
 
 
     def test_details(self):
+        print "#"*20
+        print "Prueba de Modificar Fase"
 
         # Cliente es autenticado como el usuario 'fulano Login'
-        b = self.cliente.login(username='fulano Lider20', password='123')
+        b = self.cliente.login(username='fulano Lider2', password='123')
+
 
         # Peticion POST para modificar la fase con id=2
-        response = self.cliente.post("/fases/modificar/2",data={'nombre':'fase Registrada modificada',
-                                                                'presupuesto':'20000000'
-                                                          })
+        #response = self.cliente.post("/fases/modificar/2",data={'nombre':'f',
+        #                                                        'presupuesto':'2'
+        #                                                  })
 
         #print response.__str__()                           # Muestra la URL a la que se redirecciona luego de 'modificar'
 
         # Se consulta por el item modificado en la tabla items
         #SOLUCIONAR
-        #consultaInstancia = fases.objects.get(nombre="fase Registrada modificada", presupuesto="20000000")
+        consultaInstancia = fases.objects.get(id=2)
+        print "\nNombre de la fase: ", consultaInstancia.nombre                  # Nombre de la fase modificada
+        print "Estado de la fase: ", consultaInstancia.estado                    # Estado de la fase modificada
+        print "Presupuesto: ", consultaInstancia.presupuesto                     # Presupuesto de la fase modificada
+
+
+        #consultaInstancia = fases.objects.get(nombre="f", presupuesto=2)
 
         #print "\nNombre de la fase: ", consultaInstancia.nombre                  # Nombre de la fase modificada
         #print "Estado de la fase: ", consultaInstancia.estado                    # Estado de la fase modificada
@@ -154,6 +89,8 @@ class TestModificarFase(unittest.TestCase):
 
 
         #self.assertNotEquals(consultaInstancia, None)
+        print "Fin de la prueba"
+        print "#"*20
 
 
 class TestFinalizarFase(unittest.TestCase):
@@ -165,14 +102,8 @@ class TestFinalizarFase(unittest.TestCase):
             # Creacion de un cliente
             self.cliente = Client()
 
-            # Creacion de un usuario para la autenticacion
-            self.userLogin = User.objects.create_user(username="fulano Login40", password="123")
-
             #Creacion de un usuario Lider para instanciar un proyecto
-            userRegistrado = User()
-            userRegistrado.username = "fulano Lider40"
-            userRegistrado.password = "123"
-            userRegistrado.save()
+            userRegistrado = User(username='fulano Lider', password=123).save()
 
             #Creacion de un proyecto para instanciar una fase
             proyectoRegistrado = Proyectos()
