@@ -26,7 +26,7 @@ SECRET_KEY = 'ahomuh^*!#m3w$udfbc*lowvu^+j84ro@fn_vc#(z!-%mi+w2y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ## Para que funcione esta linea debe hacerse pip install unipath
 from unipath import Path

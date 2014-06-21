@@ -6,6 +6,7 @@ import datetime
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, FormView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import HttpResponseRedirect, render
+from django.http import Http404
 from django.template.response import TemplateResponse
 
 from .models import Proyectos, Miembros
@@ -164,7 +165,10 @@ class proyectos_ajax(TemplateView):
 class detallesProyecto(TemplateView):
     """ Vista que muestra un vistazo general de un proyecto """
     def get(self, request, *args, **kwargs):
-        p=Proyectos.objects.get(id=self.kwargs['id'])
+        try:
+            p=Proyectos.objects.get(id=self.kwargs['id'])
+        except:
+            raise Http404
         f=fases.objects.filter(proyecto=p).order_by('pk')
         i=items.objects.filter(fase__proyecto=p).exclude(estado='eliminado')
         costo_total=0

@@ -6,6 +6,7 @@ from aps.aplicaciones.items.models import items, relacion
 from aps.aplicaciones.proyectos.forms import ComentariosLog
 from aps.aplicaciones.proyectos.models import Proyectos
 from django.shortcuts import render, HttpResponseRedirect
+from aps.aplicaciones.permisos.models import Permisos
 import datetime
 
 
@@ -67,6 +68,9 @@ class modificarFases(UpdateView):
         return obj
 
     def form_valid(self, form):
+        proyecto = self.fase.proyecto
+        if((not Permisos.valido(usuario=self.request.user,permiso='MODF',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
+            return render(self.request, 'error/permisos.html')
         self.fase.nombre = form.cleaned_data['nombre']
         self.fase.presupuesto = form.cleaned_data['presupuesto']
         self.fase.save()
@@ -99,7 +103,11 @@ class finalizarFase(FormView):
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
+
         fase = fases.objects.get(id=self.kwargs['id'])
+        proyecto = fase.proyecto
+        if((not Permisos.valido(usuario=self.request.user,permiso='FINF',tipoObjeto='proyecto',id=proyecto.id)) and (not proyecto.lider==self.request.user)):
+            return render(self.request, 'error/permisos.html')
         item=items.objects.filter(fase=fase).exclude(estado='eliminado')
 
         for i in item:
