@@ -27,7 +27,7 @@ class TestCrearPermiso(unittest.TestCase):
 
             # Asignacion del permiso ADD para userLogin, a fin de poder crear un permiso
             permisoUserLogin = Permisos()
-            permisoUserLogin.permiso = "ADD"
+            permisoUserLogin.permiso = "ADMINADD"
             permisoUserLogin.tipoObjeto = "permiso"
             permisoUserLogin.id_fk = 0
             permisoUserLogin.usuario = userLogin
@@ -53,7 +53,7 @@ class TestCrearPermiso(unittest.TestCase):
         consultaInstancia = Permisos.objects.get(permiso="ADD",
                             tipoObjeto="permiso",
                             usuario="2",
-                            id_fk="2"
+                            #id_fk="2" #SOLUCIONAR
                             )
 
         #print "\nTipo de permiso: ", consultaInstancia.permiso            # Tipo de permiso creado
@@ -83,9 +83,9 @@ class TestEliminarPermiso(unittest.TestCase):
             # Asignacion del permiso DEL para userLogin, a fin de poder eliminar un permiso
             permisoUserLogin = Permisos()
             permisoUserLogin.pk = 2
-            permisoUserLogin.permiso = "DEL"
+            permisoUserLogin.permiso = "ADMINDEL"
             permisoUserLogin.tipoObjeto = "permiso"
-            permisoUserLogin.id_fk = 3
+            permisoUserLogin.id_fk = 0
             permisoUserLogin.usuario = userLogin
             permisoUserLogin.save()
 

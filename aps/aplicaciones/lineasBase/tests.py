@@ -29,7 +29,7 @@ class TestCrearLineaBase(unittest.TestCase):
 
             #Creacion de un usuario Lider para instanciar un proyecto
             userRegistrado = User()
-            userRegistrado.username = "fulano Lider2"
+            userRegistrado.username = "fulano Lider18"
             userRegistrado.password = "123"
             userRegistrado.pk = 2
             userRegistrado.save()
