@@ -19,7 +19,25 @@
 {% block contenido %}
       <h1>Asignar Nuevo Permiso</h1>
         <form method="post">{% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Crear">
+            <br><select name="usuario">
+                <option value="0"> Seleccione el usuarios </option>
+                {% for u in usuarios %}
+                    <option value="{{u.id}}">{{u.username}}</option>
+                {% endfor %}
+            </select>
+            <br><select name="grupo">
+                <option value="0"> Seleccione el grupo </option>
+                {% for g in grupos %}
+                    <option value="{{g.id}}">{{g.name}}</option>
+                {% endfor %}
+            </select>
+            <br><select name="permiso">
+                <option value="ADMINLIDER"> Lider de Proyectos </option>
+                <option value="ADMINDEL"> Eliminar Permisos Administrativos </option>
+                <option value="ADMINVER"> Ver Permisos Administrativos </option>
+                <option value="ADMINADD"> Agregar Permisos Administrativos </option>
+            </select>
+            <font color="red">{{msj}}</font>
+            <br><input type="submit" value="Crear">
         </form>
 {% endblock %}
