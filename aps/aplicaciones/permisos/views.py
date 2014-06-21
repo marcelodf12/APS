@@ -27,9 +27,11 @@ class listar(ListView):
 
 class crear(TemplateView):
     def get(self, request, *args, **kwargs):
-        usuarios = User.objects.filter()
-        grupos = Group.objects.filter()
-        return render(request, 'permisos/crear.html', {'usuarios':usuarios, 'grupos':grupos})
+        if Permisos.valido(usuario=self.request.user,permiso='ADMINADD',tipoObjeto='permiso',id=0) or self.request.user.is_superuser==True:
+            usuarios = User.objects.filter()
+            grupos = Group.objects.filter()
+            return render(request, 'permisos/crear.html', {'usuarios':usuarios, 'grupos':grupos})
+        return render(self.request, 'error/permisos.html')
 
     def post(self, request, *args, **kwargs):
         id_usuario = request.POST['usuario']
@@ -102,7 +104,11 @@ class eliminar(DeleteView):
     """ Vista para Eliminar un permiso """
     model = Permisos
     template_name = 'permisos/delete.html'
-    success_url = reverse_lazy('listar_permisos')      # Se mostrara la vista 'listar_permisos' en el caso de modificacion exitosa
+    success_url = reverse_lazy('admin_permisos')      # Se mostrara la vista 'listar_permisos' en el caso de modificacion exitosa
+    def get(self, request, *args, **kwargs):
+        if Permisos.valido(usuario=self.request.user,permiso='ADMINDEL',tipoObjeto='permiso',id=0) or self.request.user.is_superuser==True:
+            return super(eliminar, self).get(request, args, kwargs)
+        return render(self.request, 'error/permisos.html')
 
     def get_object(self, queryset=None):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """

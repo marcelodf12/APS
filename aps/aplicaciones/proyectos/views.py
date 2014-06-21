@@ -28,7 +28,7 @@ class crearProyecto(CreateView):
 
     def form_valid(self, form):
         """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
-        if(Permisos.valido(usuario=self.request.user,permiso='ADD',tipoObjeto='proyecto',id=0)):
+        if(Permisos.valido(usuario=self.request.user,permiso='ADMINLIDER',tipoObjeto='permiso',id=0)):
             proyecto = form.save()
             proyecto.estado ='creado'
             proyecto.lider = self.request.user
