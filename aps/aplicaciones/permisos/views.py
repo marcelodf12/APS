@@ -18,6 +18,10 @@ from aps.aplicaciones.items.models import items
 class admin(TemplateView):
     """ Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """
     template_name = 'permisos/admin.html'
+    def get(self, request, *args, **kwargs):
+        if Permisos.valido(usuario=self.request.user,permiso='ADMINVER',tipoObjeto='permiso',id=0) or self.request.user.is_superuser==True:
+            return render(request,'permisos/admin.html')
+        return render(self.request, 'error/permisos.html')
 
 class listar(ListView):
     """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
@@ -25,18 +29,40 @@ class listar(ListView):
     model = User
     context_object_name = 'usuarios'
 
-class crear(CreateView):
-    """ Vista de creacion de proyectos, hereda atributos y metodos de la clase CreateView """
-    template_name = 'permisos/crear.html'      # Se define la direccion y nombre del template
-    model = Permisos                                  # Se asocia al modelo 'items'
-    success_url = reverse_lazy('listar_permisos')      # Se mostrara la vista 'listar_proyecto' en el caso de registro exitoso
+class crear(TemplateView):
+    def get(self, request, *args, **kwargs):
+        if Permisos.valido(usuario=self.request.user,permiso='ADMINADD',tipoObjeto='permiso',id=0) or self.request.user.is_superuser==True:
+            usuarios = User.objects.filter()
+            grupos = Group.objects.filter()
+            return render(request, 'permisos/crear.html', {'usuarios':usuarios, 'grupos':grupos})
+        return render(self.request, 'error/permisos.html')
 
-    def form_valid(self, form):
-        """ Se extiende la funcion form_valid, se agrega el codigo adicional de abajo a la funcion original """
-        permiso = form.save()
-        permiso.save()
-        return super(crear, self).form_valid(form)
-
+    def post(self, request, *args, **kwargs):
+        id_usuario = request.POST['usuario']
+        id_grupo = request.POST['grupo']
+        permiso = request.POST['permiso']
+        print id_usuario
+        print id_grupo
+        print permiso
+        if int(id_usuario) == 0 and int(id_grupo) == 0:
+            usuarios = User.objects.filter()
+            grupos = Group.objects.filter()
+            return render(request, 'permisos/crear.html', {'usuarios':usuarios, 'grupos':grupos, 'msj':'Seleccione un usuario o grupo'})
+        try:
+            usuario = User.objects.get(id=id_usuario)
+            if not Permisos.valido(usuario=usuario,permiso=permiso,tipoObjeto='permiso',id=0):
+                p = Permisos(permiso=permiso, tipoObjeto='permiso', id_fk=0, usuario=usuario)
+                p.save()
+        except:
+            pass
+        try:
+            grupo = Group.objects.get(id=id_grupo)
+            if not Permisos.valido(grupo=grupo,permiso=permiso,tipoObjeto='permiso',id=0):
+                p = Permisos(permiso=permiso, tipoObjeto='permiso', id_fk=0, grupo=grupo)
+                p.save()
+        except:
+            pass
+        return HttpResponseRedirect('/permisos/admin/')
 
 class permisos_ajax(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -82,7 +108,11 @@ class eliminar(DeleteView):
     """ Vista para Eliminar un permiso """
     model = Permisos
     template_name = 'permisos/delete.html'
-    success_url = reverse_lazy('listar_permisos')      # Se mostrara la vista 'listar_permisos' en el caso de modificacion exitosa
+    success_url = reverse_lazy('admin_permisos')      # Se mostrara la vista 'listar_permisos' en el caso de modificacion exitosa
+    def get(self, request, *args, **kwargs):
+        if Permisos.valido(usuario=self.request.user,permiso='ADMINDEL',tipoObjeto='permiso',id=0) or self.request.user.is_superuser==True:
+            return super(eliminar, self).get(request, args, kwargs)
+        return render(self.request, 'error/permisos.html')
 
     def get_object(self, queryset=None):
         """ Se extiende la funcion get_object, se agrega el codigo adicional de abajo a la funcion original """
@@ -128,6 +158,9 @@ class asignarAProyecto(TemplateView):
     """
     def get(self, request, *args, **kwargs):
         id_proyecto = kwargs['id']
+        proyecto = Proyectos.objects.get(id=id_proyecto)
+        if(not proyecto.lider==self.request.user):
+            return render(self.request, 'error/permisos.html')
         comite = Miembros.objects.filter(proyecto__id=id_proyecto)
         return render(request, 'permisos/proyectos.html', {'usuarios':comite, 'idProyecto':id_proyecto})
     def post(self, request, *args, **kwargs):

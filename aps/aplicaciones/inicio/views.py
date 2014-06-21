@@ -98,6 +98,10 @@ class CrearGrupo(CreateView):
 class adminGrupos(TemplateView):
     """ Vista de administracion de proyectos, hereda atributos y metodos de la clase TemplateView """
     template_name = 'inicio/adminGrupos.html'
+    def get(self, request, *args, **kwargs):
+        if Permisos.valido(usuario=self.request.user,permiso='ADMINGRUPOS',tipoObjeto='permiso',id=0) or self.request.user.is_superuser==True:
+            return super(adminGrupos, self).get(request, args, kwargs)
+        return render(self.request, 'error/permisos.html')
 
 class listarGrupos(ListView):
     """ Vista de listado de proyectos, hereda atributos y metodos de la clase ListView """
