@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>aps.aplicaciones.reportes.views</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="aps.aplicaciones-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;aps ::
+        <a href="aps.aplicaciones-module.html">Package&nbsp;aplicaciones</a> ::
+        <a href="aps.aplicaciones.reportes-module.html">Package&nbsp;reportes</a> ::
+        Module&nbsp;views
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="aps.aplicaciones.reportes.views-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="aps.aplicaciones.reportes.views-module.html">Module aps.aplicaciones.reportes.views</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">""" Los nombres de clases son los nombres de las vistas que posteriormente son invocadas en el archivo URLS.py</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">Las vistas son definidas en base a los modelos definidos en el archivo MODELS.py """</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">shortcuts</tt> <tt class="py-keyword">import</tt> <tt class="py-name">render</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Module aps.aplicaciones.fases.views=aps.aplicaciones.fases.views-module.html,Module aps.aplicaciones.inicio.views=aps.aplicaciones.inicio.views-module.html,Module aps.aplicaciones.items.views=aps.aplicaciones.items.views-module.html,Module aps.aplicaciones.lineasBase.views=aps.aplicaciones.lineasBase.views-module.html,Module aps.aplicaciones.permisos.views=aps.aplicaciones.permisos.views-module.html,Module aps.aplicaciones.proyectos.views=aps.aplicaciones.proyectos.views-module.html,Module aps.aplicaciones.reportes.views=aps.aplicaciones.reportes.views-module.html,Module aps.aplicaciones.solicitudCambio.views=aps.aplicaciones.solicitudCambio.views-module.html"><a title="aps.aplicaciones.fases.views
+aps.aplicaciones.inicio.views
+aps.aplicaciones.items.views
+aps.aplicaciones.lineasBase.views
+aps.aplicaciones.permisos.views
+aps.aplicaciones.proyectos.views
+aps.aplicaciones.reportes.views
+aps.aplicaciones.solicitudCambio.views" class="py-name" href="#" onclick="return doclink('link-0', 'views', 'link-0');">views</a></tt><tt class="py-op">.</tt><tt class="py-name">generic</tt> <tt class="py-keyword">import</tt> <tt class="py-name">TemplateView</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package aps.aplicaciones=aps.aplicaciones-module.html"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-1', 'aplicaciones', 'link-1');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Package aps.aplicaciones.proyectos=aps.aplicaciones.proyectos-module.html"><a title="aps.aplicaciones.proyectos" class="py-name" href="#" onclick="return doclink('link-2', 'proyectos', 'link-2');">proyectos</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module aps.aplicaciones.fases.models=aps.aplicaciones.fases.models-module.html,Module aps.aplicaciones.inicio.models=aps.aplicaciones.inicio.models-module.html,Module aps.aplicaciones.items.models=aps.aplicaciones.items.models-module.html,Module aps.aplicaciones.lineasBase.models=aps.aplicaciones.lineasBase.models-module.html,Module aps.aplicaciones.permisos.models=aps.aplicaciones.permisos.models-module.html,Module aps.aplicaciones.proyectos.models=aps.aplicaciones.proyectos.models-module.html,Module aps.aplicaciones.reportes.models=aps.aplicaciones.reportes.models-module.html,Module aps.aplicaciones.solicitudCambio.models=aps.aplicaciones.solicitudCambio.models-module.html"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.lineasBase.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models
+aps.aplicaciones.reportes.models
+aps.aplicaciones.solicitudCambio.models" class="py-name" href="#" onclick="return doclink('link-3', 'models', 'link-3');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class aps.aplicaciones.proyectos.models.Proyectos=aps.aplicaciones.proyectos.models.Proyectos-class.html"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-4', 'Proyectos', 'link-4');">Proyectos</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-5', 'aplicaciones', 'link-1');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Package aps.aplicaciones.fases=aps.aplicaciones.fases-module.html,Class aps.aplicaciones.fases.models.fases=aps.aplicaciones.fases.models.fases-class.html"><a title="aps.aplicaciones.fases
+aps.aplicaciones.fases.models.fases" class="py-name" href="#" onclick="return doclink('link-6', 'fases', 'link-6');">fases</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.lineasBase.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models
+aps.aplicaciones.reportes.models
+aps.aplicaciones.solicitudCambio.models" class="py-name" href="#" onclick="return doclink('link-7', 'models', 'link-3');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name"><a title="aps.aplicaciones.fases
+aps.aplicaciones.fases.models.fases" class="py-name" href="#" onclick="return doclink('link-8', 'fases', 'link-6');">fases</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-9', 'aplicaciones', 'link-1');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Package aps.aplicaciones.solicitudCambio=aps.aplicaciones.solicitudCambio-module.html,Class aps.aplicaciones.solicitudCambio.models.solicitudCambio=aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html"><a title="aps.aplicaciones.solicitudCambio
+aps.aplicaciones.solicitudCambio.models.solicitudCambio" class="py-name" href="#" onclick="return doclink('link-10', 'solicitudCambio', 'link-10');">solicitudCambio</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.lineasBase.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models
+aps.aplicaciones.reportes.models
+aps.aplicaciones.solicitudCambio.models" class="py-name" href="#" onclick="return doclink('link-11', 'models', 'link-3');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-12" class="py-name"><a title="aps.aplicaciones.solicitudCambio
+aps.aplicaciones.solicitudCambio.models.solicitudCambio" class="py-name" href="#" onclick="return doclink('link-12', 'solicitudCambio', 'link-10');">solicitudCambio</a></tt><tt class="py-op">,</tt> <tt id="link-13" class="py-name" targets="Class aps.aplicaciones.solicitudCambio.models.votos=aps.aplicaciones.solicitudCambio.models.votos-class.html"><a title="aps.aplicaciones.solicitudCambio.models.votos" class="py-name" href="#" onclick="return doclink('link-13', 'votos', 'link-13');">votos</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="aps.aplicaciones" class="py-name" href="#" onclick="return doclink('link-14', 'aplicaciones', 'link-1');">aplicaciones</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Package aps.aplicaciones.items=aps.aplicaciones.items-module.html,Class aps.aplicaciones.items.models.items=aps.aplicaciones.items.models.items-class.html"><a title="aps.aplicaciones.items
+aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-15', 'items', 'link-15');">items</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="aps.aplicaciones.fases.models
+aps.aplicaciones.inicio.models
+aps.aplicaciones.items.models
+aps.aplicaciones.lineasBase.models
+aps.aplicaciones.permisos.models
+aps.aplicaciones.proyectos.models
+aps.aplicaciones.reportes.models
+aps.aplicaciones.solicitudCambio.models" class="py-name" href="#" onclick="return doclink('link-16', 'models', 'link-3');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-17" class="py-name"><a title="aps.aplicaciones.items
+aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-17', 'items', 'link-15');">items</a></tt><tt class="py-op">,</tt> <tt id="link-18" class="py-name" targets="Class aps.aplicaciones.items.models.relacion=aps.aplicaciones.items.models.relacion-class.html"><a title="aps.aplicaciones.items.models.relacion" class="py-name" href="#" onclick="return doclink('link-18', 'relacion', 'link-18');">relacion</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">http</tt> <tt class="py-keyword">import</tt> <tt class="py-name">HttpResponse</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">aps</tt><tt class="py-op">.</tt><tt class="py-name">settings</tt> <tt class="py-keyword">import</tt> <tt class="py-name">MEDIA_ROOT</tt><tt class="py-op">,</tt> <tt class="py-name">IMAGENES_ROOT</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># Create your views here.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="reporteItems"></a><div id="reporteItems-def"><a name="L14"></a><tt class="py-lineno"> 14</tt> <a class="py-toggle" href="#" id="reporteItems-toggle" onclick="return toggle('reporteItems');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.reportes.views.reporteItems-class.html">reporteItems</a><tt class="py-op">(</tt><tt class="py-base-class">TemplateView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="reporteItems-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="reporteItems-expanded"><a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">    <tt id="link-19" class="py-name" targets="Variable aps.aplicaciones.fases.views.adminFases.template_name=aps.aplicaciones.fases.views.adminFases-class.html#template_name,Variable aps.aplicaciones.fases.views.crearFaseEnProyecto.template_name=aps.aplicaciones.fases.views.crearFaseEnProyecto-class.html#template_name,Variable aps.aplicaciones.fases.views.eliminarFase.template_name=aps.aplicaciones.fases.views.eliminarFase-class.html#template_name,Variable aps.aplicaciones.fases.views.finalizarFase.template_name=aps.aplicaciones.fases.views.finalizarFase-class.html#template_name,Variable aps.aplicaciones.fases.views.listarFases.template_name=aps.aplicaciones.fases.views.listarFases-class.html#template_name,Variable aps.aplicaciones.fases.views.listarFasesFinalizadas.template_name=aps.aplicaciones.fases.views.listarFasesFinalizadas-class.html#template_name,Variable aps.aplicaciones.fases.views.modificarFases.template_name=aps.aplicaciones.fases.views.modificarFases-class.html#template_name,Variable aps.aplicaciones.inicio.views.ActualizarPassView.template_name=aps.aplicaciones.inicio.views.ActualizarPassView-class.html#template_name,Variable aps.aplicaciones.inicio.views.CrearGrupo.template_name=aps.aplicaciones.inicio.views.CrearGrupo-class.html#template_name,Variable aps.aplicaciones.inicio.views.Registrarse.template_name=aps.aplicaciones.inicio.views.Registrarse-class.html#template_name,Variable aps.aplicaciones.inicio.views.UpdateUser.template_name=aps.aplicaciones.inicio.views.UpdateUser-class.html#template_name,Variable aps.aplicaciones.inicio.views.adminGrupos.template_name=aps.aplicaciones.inicio.views.adminGrupos-class.html#template_name,Variable aps.aplicaciones.inicio.views.asignarGrupo.template_name=aps.aplicaciones.inicio.views.asignarGrupo-class.html#template_name,Variable aps.aplicaciones.inicio.views.eliminarGrupo.template_name=aps.aplicaciones.inicio.views.eliminarGrupo-class.html#template_name,Variable aps.aplicaciones.inicio.views.eliminarUser.template_name=aps.aplicaciones.inicio.views.eliminarUser-class.html#template_name,Variable aps.aplicaciones.inicio.views.error.template_name=aps.aplicaciones.inicio.views.error-class.html#template_name,Variable aps.aplicaciones.inicio.views.errorPermiso.template_name=aps.aplicaciones.inicio.views.errorPermiso-class.html#template_name,Variable aps.aplicaciones.inicio.views.home.template_name=aps.aplicaciones.inicio.views.home-class.html#template_name,Variable aps.aplicaciones.inicio.views.listarGrupos.template_name=aps.aplicaciones.inicio.views.listarGrupos-class.html#template_name,Variable aps.aplicaciones.inicio.views.listarUsuarios.template_name=aps.aplicaciones.inicio.views.listarUsuarios-class.html#template_name,Variable aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name=aps.aplicaciones.inicio.views.listarUsuariosDeGrupo-class.html#template_name,Variable aps.aplicaciones.items.views.adminItems.template_name=aps.aplicaciones.items.views.adminItems-class.html#template_name,Variable aps.aplicaciones.items.views.agregarAtributo.template_name=aps.aplicaciones.items.views.agregarAtributo-class.html#template_name,Variable aps.aplicaciones.items.views.crearItem.template_name=aps.aplicaciones.items.views.crearItem-class.html#template_name,Variable aps.aplicaciones.items.views.crearTipoItem.template_name=aps.aplicaciones.items.views.crearTipoItem-class.html#template_name,Variable aps.aplicaciones.items.views.eliminarItems.template_name=aps.aplicaciones.items.views.eliminarItems-class.html#template_name,Variable aps.aplicaciones.items.views.eliminarRelacion.template_name=aps.aplicaciones.items.views.eliminarRelacion-class.html#template_name,Variable aps.aplicaciones.items.views.eliminarTipoItem.template_name=aps.aplicaciones.items.views.eliminarTipoItem-class.html#template_name,Variable aps.aplicaciones.items.views.finalizarItem.template_name=aps.aplicaciones.items.views.finalizarItem-class.html#template_name,Variable aps.aplicaciones.items.views.listarItems.template_name=aps.aplicaciones.items.views.listarItems-class.html#template_name,Variable aps.aplicaciones.items.views.listarItemsEliminados.template_name=aps.aplicaciones.items.views.listarItemsEliminados-class.html#template_name,Variable aps.aplicaciones.items.views.listarItemsFinalizados.template_name=aps.aplicaciones.items.views.listarItemsFinalizados-class.html#template_name,Variable aps.aplicaciones.items.views.modificarAtributo.template_name=aps.aplicaciones.items.views.modificarAtributo-class.html#template_name,Variable aps.aplicaciones.items.views.modificarItems.template_name=aps.aplicaciones.items.views.modificarItems-class.html#template_name,Variable aps.aplicaciones.items.views.verTipoItems.template_name=aps.aplicaciones.items.views.verTipoItems-class.html#template_name,Variable aps.aplicaciones.permisos.views.admin.template_name=aps.aplicaciones.permisos.views.admin-class.html#template_name,Variable aps.aplicaciones.permisos.views.eliminar.template_name=aps.aplicaciones.permisos.views.eliminar-class.html#template_name,Variable aps.aplicaciones.permisos.views.listar.template_name=aps.aplicaciones.permisos.views.listar-class.html#template_name,Variable aps.aplicaciones.permisos.views.listarGrupos.template_name=aps.aplicaciones.permisos.views.listarGrupos-class.html#template_name,Variable aps.aplicaciones.proyectos.views.agregarMiembro.template_name=aps.aplicaciones.proyectos.views.agregarMiembro-class.html#template_name,Variable aps.aplicaciones.proyectos.views.crearProyecto.template_name=aps.aplicaciones.proyectos.views.crearProyecto-class.html#template_name,Variable aps.aplicaciones.proyectos.views.editMiembro.template_name=aps.aplicaciones.proyectos.views.editMiembro-class.html#template_name,Variable aps.aplicaciones.proyectos.views.eliminarProyectos.template_name=aps.aplicaciones.proyectos.views.eliminarProyectos-class.html#template_name,Variable aps.aplicaciones.proyectos.views.iniciarProyecto.template_name=aps.aplicaciones.proyectos.views.iniciarProyecto-class.html#template_name,Variable aps.aplicaciones.proyectos.views.listarProyectosAJAX.template_name=aps.aplicaciones.proyectos.views.listarProyectosAJAX-class.html#template_name,Variable aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name=aps.aplicaciones.proyectos.views.listarProyectosNoIniciados-class.html#template_name,Variable aps.aplicaciones.proyectos.views.modificarProyectos.template_name=aps.aplicaciones.proyectos.views.modificarProyectos-class.html#template_name,Variable aps.aplicaciones.reportes.views.reporteItems.template_name=aps.aplicaciones.reportes.views.reporteItems-class.html#template_name,Variable aps.aplicaciones.reportes.views.reporteProyecto.template_name=aps.aplicaciones.reportes.views.reporteProyecto-class.html#template_name,Variable aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud.template_name=aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud-class.html#template_name"><a title="aps.aplicaciones.fases.views.adminFases.template_name
+aps.aplicaciones.fases.views.crearFaseEnProyecto.template_name
+aps.aplicaciones.fases.views.eliminarFase.template_name
+aps.aplicaciones.fases.views.finalizarFase.template_name
+aps.aplicaciones.fases.views.listarFases.template_name
+aps.aplicaciones.fases.views.listarFasesFinalizadas.template_name
+aps.aplicaciones.fases.views.modificarFases.template_name
+aps.aplicaciones.inicio.views.ActualizarPassView.template_name
+aps.aplicaciones.inicio.views.CrearGrupo.template_name
+aps.aplicaciones.inicio.views.Registrarse.template_name
+aps.aplicaciones.inicio.views.UpdateUser.template_name
+aps.aplicaciones.inicio.views.adminGrupos.template_name
+aps.aplicaciones.inicio.views.asignarGrupo.template_name
+aps.aplicaciones.inicio.views.eliminarGrupo.template_name
+aps.aplicaciones.inicio.views.eliminarUser.template_name
+aps.aplicaciones.inicio.views.error.template_name
+aps.aplicaciones.inicio.views.errorPermiso.template_name
+aps.aplicaciones.inicio.views.home.template_name
+aps.aplicaciones.inicio.views.listarGrupos.template_name
+aps.aplicaciones.inicio.views.listarUsuarios.template_name
+aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name
+aps.aplicaciones.items.views.adminItems.template_name
+aps.aplicaciones.items.views.agregarAtributo.template_name
+aps.aplicaciones.items.views.crearItem.template_name
+aps.aplicaciones.items.views.crearTipoItem.template_name
+aps.aplicaciones.items.views.eliminarItems.template_name
+aps.aplicaciones.items.views.eliminarRelacion.template_name
+aps.aplicaciones.items.views.eliminarTipoItem.template_name
+aps.aplicaciones.items.views.finalizarItem.template_name
+aps.aplicaciones.items.views.listarItems.template_name
+aps.aplicaciones.items.views.listarItemsEliminados.template_name
+aps.aplicaciones.items.views.listarItemsFinalizados.template_name
+aps.aplicaciones.items.views.modificarAtributo.template_name
+aps.aplicaciones.items.views.modificarItems.template_name
+aps.aplicaciones.items.views.verTipoItems.template_name
+aps.aplicaciones.permisos.views.admin.template_name
+aps.aplicaciones.permisos.views.eliminar.template_name
+aps.aplicaciones.permisos.views.listar.template_name
+aps.aplicaciones.permisos.views.listarGrupos.template_name
+aps.aplicaciones.proyectos.views.agregarMiembro.template_name
+aps.aplicaciones.proyectos.views.crearProyecto.template_name
+aps.aplicaciones.proyectos.views.editMiembro.template_name
+aps.aplicaciones.proyectos.views.eliminarProyectos.template_name
+aps.aplicaciones.proyectos.views.iniciarProyecto.template_name
+aps.aplicaciones.proyectos.views.listarProyectosAJAX.template_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name
+aps.aplicaciones.proyectos.views.modificarProyectos.template_name
+aps.aplicaciones.reportes.views.reporteItems.template_name
+aps.aplicaciones.reportes.views.reporteProyecto.template_name
+aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud.template_name" class="py-name" href="#" onclick="return doclink('link-19', 'template_name', 'link-19');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'reportes/proyecto.html'</tt> </tt>
+<a name="reporteItems.get"></a><div id="reporteItems.get-def"><a name="L16"></a><tt class="py-lineno"> 16</tt> <a class="py-toggle" href="#" id="reporteItems.get-toggle" onclick="return toggle('reporteItems.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.reportes.views.reporteItems-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">request</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kwargs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="reporteItems.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="reporteItems.get-expanded"><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt id="link-20" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-20', 'Proyectos', 'link-4');">Proyectos</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method aps.aplicaciones.inicio.views.adminGrupos.get()=aps.aplicaciones.inicio.views.adminGrupos-class.html#get,Method aps.aplicaciones.inicio.views.home.get()=aps.aplicaciones.inicio.views.home-class.html#get,Method aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get()=aps.aplicaciones.inicio.views.listarUsuariosDeGrupo-class.html#get,Method aps.aplicaciones.items.views.ReversionVersiones.get()=aps.aplicaciones.items.views.ReversionVersiones-class.html#get,Method aps.aplicaciones.items.views.crearItemEnFase.get()=aps.aplicaciones.items.views.crearItemEnFase-class.html#get,Method aps.aplicaciones.items.views.definirCantidadAtributos.get()=aps.aplicaciones.items.views.definirCantidadAtributos-class.html#get,Method aps.aplicaciones.items.views.eliminarAtributo.get()=aps.aplicaciones.items.views.eliminarAtributo-class.html#get,Method aps.aplicaciones.items.views.graficar.get()=aps.aplicaciones.items.views.graficar-class.html#get,Method aps.aplicaciones.items.views.importar.get()=aps.aplicaciones.items.views.importar-class.html#get,Method aps.aplicaciones.items.views.listarItemCandidatos.get()=aps.aplicaciones.items.views.listarItemCandidatos-class.html#get,Method aps.aplicaciones.items.views.listarItemParaCrearRelacion.get()=aps.aplicaciones.items.views.listarItemParaCrearRelacion-class.html#get,Method aps.aplicaciones.items.views.listarRelaciones.get()=aps.aplicaciones.items.views.listarRelaciones-class.html#get,Method aps.aplicaciones.items.views.listarVersiones.get()=aps.aplicaciones.items.views.listarVersiones-class.html#get,Method aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get()=aps.aplicaciones.items.views.modificarAtributoDeTipoItem-class.html#get,Method aps.aplicaciones.items.views.mostrarDetalles.get()=aps.aplicaciones.items.views.mostrarDetalles-class.html#get,Method aps.aplicaciones.items.views.mostrarDetallesV.get()=aps.aplicaciones.items.views.mostrarDetallesV-class.html#get,Method aps.aplicaciones.items.views.revivirItem.get()=aps.aplicaciones.items.views.revivirItem-class.html#get,Method aps.aplicaciones.items.views.verAtributosTipoItems.get()=aps.aplicaciones.items.views.verAtributosTipoItems-class.html#get,Method aps.aplicaciones.lineasBase.views.crear.get()=aps.aplicaciones.lineasBase.views.crear-class.html#get,Method aps.aplicaciones.lineasBase.views.listarDetallesLineasBase.get()=aps.aplicaciones.lineasBase.views.listarDetallesLineasBase-class.html#get,Method aps.aplicaciones.lineasBase.views.listarLineasBase.get()=aps.aplicaciones.lineasBase.views.listarLineasBase-class.html#get,Method aps.aplicaciones.lineasBase.views.retornarItemsDeFaseAJAX.get()=aps.aplicaciones.lineasBase.views.retornarItemsDeFaseAJAX-class.html#get,Method aps.aplicaciones.permisos.views.admin.get()=aps.aplicaciones.permisos.views.admin-class.html#get,Method aps.aplicaciones.permisos.views.asignarAProyecto.get()=aps.aplicaciones.permisos.views.asignarAProyecto-class.html#get,Method aps.aplicaciones.permisos.views.crear.get()=aps.aplicaciones.permisos.views.crear-class.html#get,Method aps.aplicaciones.permisos.views.eliminar.get()=aps.aplicaciones.permisos.views.eliminar-class.html#get,Method aps.aplicaciones.permisos.views.permisos_ajax.get()=aps.aplicaciones.permisos.views.permisos_ajax-class.html#get,Method aps.aplicaciones.permisos.views.permisos_grupos_ajax.get()=aps.aplicaciones.permisos.views.permisos_grupos_ajax-class.html#get,Method aps.aplicaciones.permisos.views.proyectos_ajax.get()=aps.aplicaciones.permisos.views.proyectos_ajax-class.html#get,Method aps.aplicaciones.proyectos.views.adminComite.get()=aps.aplicaciones.proyectos.views.adminComite-class.html#get,Method aps.aplicaciones.proyectos.views.adminProyecto.get()=aps.aplicaciones.proyectos.views.adminProyecto-class.html#get,Method aps.aplicaciones.proyectos.views.detallesProyecto.get()=aps.aplicaciones.proyectos.views.detallesProyecto-class.html#get,Method aps.aplicaciones.proyectos.views.miembrosAJAX.get()=aps.aplicaciones.proyectos.views.miembrosAJAX-class.html#get,Method aps.aplicaciones.proyectos.views.proyectos_ajax.get()=aps.aplicaciones.proyectos.views.proyectos_ajax-class.html#get,Method aps.aplicaciones.reportes.views.menu.get()=aps.aplicaciones.reportes.views.menu-class.html#get,Method aps.aplicaciones.reportes.views.reporteItems.get()=aps.aplicaciones.reportes.views.reporteItems-class.html#get,Method aps.aplicaciones.reportes.views.reporteProyecto.get()=aps.aplicaciones.reportes.views.reporteProyecto-class.html#get,Method aps.aplicaciones.solicitudCambio.views.adminSolicitudes.get()=aps.aplicaciones.solicitudCambio.views.adminSolicitudes-class.html#get,Method aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.get()=aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio-class.html#get,Method aps.aplicaciones.solicitudCambio.views.listar.get()=aps.aplicaciones.solicitudCambio.views.listar-class.html#get,Method aps.aplicaciones.solicitudCambio.views.listarVotaciones.get()=aps.aplicaciones.solicitudCambio.views.listarVotaciones-class.html#get,Method aps.aplicaciones.solicitudCambio.views.votar.get()=aps.aplicaciones.solicitudCambio.views.votar-class.html#get"><a title="aps.aplicaciones.inicio.views.adminGrupos.get
+aps.aplicaciones.inicio.views.home.get
+aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.crearItemEnFase.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.graficar.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemCandidatos.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.revivirItem.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
+aps.aplicaciones.lineasBase.views.crear.get
+aps.aplicaciones.lineasBase.views.listarDetallesLineasBase.get
+aps.aplicaciones.lineasBase.views.listarLineasBase.get
+aps.aplicaciones.lineasBase.views.retornarItemsDeFaseAJAX.get
+aps.aplicaciones.permisos.views.admin.get
+aps.aplicaciones.permisos.views.asignarAProyecto.get
+aps.aplicaciones.permisos.views.crear.get
+aps.aplicaciones.permisos.views.eliminar.get
+aps.aplicaciones.permisos.views.permisos_ajax.get
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.permisos.views.proyectos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get
+aps.aplicaciones.reportes.views.menu.get
+aps.aplicaciones.reportes.views.reporteItems.get
+aps.aplicaciones.reportes.views.reporteProyecto.get
+aps.aplicaciones.solicitudCambio.views.adminSolicitudes.get
+aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.get
+aps.aplicaciones.solicitudCambio.views.listar.get
+aps.aplicaciones.solicitudCambio.views.listarVotaciones.get
+aps.aplicaciones.solicitudCambio.views.votar.get" class="py-name" href="#" onclick="return doclink('link-21', 'get', 'link-21');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">kwargs</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt class="py-comment"># Obtenemos de platypus las clases Paragraph, para escribir parrafos Image, para insertar imagenes y SimpleDocTemplate para definir el DocTemplate. Ademas importamos Spacer, para incluir espacios .</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Paragraph</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Image</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">SimpleDocTemplate</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Spacer</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Table</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">styles</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-comment"># Importamos clase de hoja de estilo de ejemplo.</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt><tt class="py-op">.</tt><tt class="py-name">styles</tt> <tt class="py-keyword">import</tt> <tt class="py-name">getSampleStyleSheet</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-comment"># Se importa el tamanho de la hoja y los colores</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt><tt class="py-op">.</tt><tt class="py-name">pagesizes</tt> <tt class="py-keyword">import</tt> <tt class="py-name">A4</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">colors</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-comment"># Creamos un PageTemplate de ejemplo.</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">estiloHoja</tt> <tt class="py-op">=</tt> <tt class="py-name">getSampleStyleSheet</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-comment">#Inicializamos la lista Platypus Story.</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">story</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-comment"># Ahora incluimos una imagen.</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name">fichero_imagen</tt> <tt class="py-op">=</tt> <tt class="py-name">IMAGENES_ROOT</tt> <tt class="py-op">+</tt> <tt class="py-string">"/cabecera.png"</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-name">imagen_logo</tt> <tt class="py-op">=</tt> <tt class="py-name">Image</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">realpath</tt><tt class="py-op">(</tt><tt class="py-name">fichero_imagen</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">width</tt><tt class="py-op">=</tt><tt class="py-number">400</tt><tt class="py-op">,</tt><tt class="py-name">height</tt><tt class="py-op">=</tt><tt class="py-number">50</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">imagen_logo</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-comment">#Definimos como queremos que sea el estilo de la PageTemplate.</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt> <tt class="py-op">=</tt> <tt class="py-name">estiloHoja</tt><tt class="py-op">[</tt><tt class="py-string">'Heading5'</tt><tt class="py-op">]</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-comment">#No se hara un salto de pagina despues de escribir la cabecera (valor 1 en caso contrario).</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">pageBreakBefore</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-comment"># Se quiere que se empiece en la primera pagina a escribir. Si es distinto de 0 deja la primera hoja en blanco.</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">keepWithNext</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-comment"># Color de la cabecera.</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">backColor</tt><tt class="py-op">=</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">spaceAfter</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">spaceBefore</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'.'</tt><tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'Proyecto: '</tt><tt class="py-op">+</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.nombre=aps.aplicaciones.fases.models.fases-class.html#nombre,Variable aps.aplicaciones.inicio.forms.UserForm.nombre=aps.aplicaciones.inicio.forms.UserForm-class.html#nombre,Variable aps.aplicaciones.items.models.atributo.nombre=aps.aplicaciones.items.models.atributo-class.html#nombre,Variable aps.aplicaciones.items.models.items.nombre=aps.aplicaciones.items.models.items-class.html#nombre,Variable aps.aplicaciones.items.models.tipoItem.nombre=aps.aplicaciones.items.models.tipoItem-class.html#nombre,Variable aps.aplicaciones.lineasBase.models.lineasBase.nombre=aps.aplicaciones.lineasBase.models.lineasBase-class.html#nombre,Variable aps.aplicaciones.proyectos.models.Proyectos.nombre=aps.aplicaciones.proyectos.models.Proyectos-class.html#nombre"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-22', 'nombre', 'link-22');">nombre</a></tt><tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'-'</tt><tt class="py-op">*</tt><tt class="py-number">193</tt><tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-comment"># Incluimos un Flowable, que en este caso es un parrafo.</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-name">cabecera2</tt> <tt class="py-op">=</tt> <tt class="py-name">estiloHoja</tt><tt class="py-op">[</tt><tt class="py-string">'Heading3'</tt><tt class="py-op">]</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">cabecera2</tt><tt class="py-op">.</tt><tt class="py-name">pageBreakBefore</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-name">cabecera2</tt><tt class="py-op">.</tt><tt class="py-name">keepWithNext</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">cabecera2</tt><tt class="py-op">.</tt><tt class="py-name">backColor</tt><tt class="py-op">=</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'   '</tt><tt class="py-op">,</tt><tt class="py-name">cabecera2</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-comment"># Lo incluimos en el Platypus story.</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-comment"># Definimos un parrafo. Vamos a crear un texto largo para demostrar como se genera mas de una hoja.</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-name">fas</tt> <tt class="py-op">=</tt> <tt id="link-23" class="py-name"><a title="aps.aplicaciones.fases
+aps.aplicaciones.fases.models.fases" class="py-name" href="#" onclick="return doclink('link-23', 'fases', 'link-6');">fases</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt id="link-24" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.proyecto=aps.aplicaciones.fases.models.fases-class.html#proyecto,Variable aps.aplicaciones.proyectos.models.Miembros.proyecto=aps.aplicaciones.proyectos.models.Miembros-class.html#proyecto"><a title="aps.aplicaciones.fases.models.fases.proyecto
+aps.aplicaciones.proyectos.models.Miembros.proyecto" class="py-name" href="#" onclick="return doclink('link-24', 'proyecto', 'link-24');">proyecto</a></tt><tt class="py-op">=</tt><tt class="py-name">p</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">fas</tt><tt class="py-op">:</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">            <tt class="py-name">li</tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="aps.aplicaciones.items
+aps.aplicaciones.items.models.items" class="py-name" href="#" onclick="return doclink('link-25', 'items', 'link-15');">items</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt id="link-26" class="py-name" targets="Variable aps.aplicaciones.items.models.items.fase=aps.aplicaciones.items.models.items-class.html#fase,Variable aps.aplicaciones.lineasBase.models.lineasBase.fase=aps.aplicaciones.lineasBase.models.lineasBase-class.html#fase"><a title="aps.aplicaciones.items.models.items.fase
+aps.aplicaciones.lineasBase.models.lineasBase.fase" class="py-name" href="#" onclick="return doclink('link-26', 'fase', 'link-26');">fase</a></tt><tt class="py-op">=</tt><tt class="py-name">f</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">order_by</tt><tt class="py-op">(</tt><tt class="py-string">'id'</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt class="py-name">lista</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">'FASE: '</tt> <tt class="py-op">+</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-27', 'nombre', 'link-22');">nombre</a></tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">            <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">'ID'</tt><tt class="py-op">,</tt><tt class="py-string">'DESCRIPCION'</tt><tt class="py-op">,</tt><tt class="py-string">'PADRE'</tt><tt class="py-op">,</tt><tt class="py-string">'VERSION'</tt><tt class="py-op">,</tt><tt class="py-string">'COSTO'</tt><tt class="py-op">,</tt> <tt class="py-string">'ESTADO'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">li</tt><tt class="py-op">:</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                <tt class="py-name">padre</tt> <tt class="py-op">=</tt> <tt class="py-string">'No tiene'</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                <tt class="py-name">r</tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="aps.aplicaciones.items.models.relacion" class="py-name" href="#" onclick="return doclink('link-28', 'relacion', 'link-18');">relacion</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt id="link-29" class="py-name" targets="Variable aps.aplicaciones.items.models.relacion.itemHijo=aps.aplicaciones.items.models.relacion-class.html#itemHijo"><a title="aps.aplicaciones.items.models.relacion.itemHijo" class="py-name" href="#" onclick="return doclink('link-29', 'itemHijo', 'link-29');">itemHijo</a></tt><tt class="py-op">=</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">r</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                    <tt class="py-keyword">for</tt> <tt class="py-name">aux</tt> <tt class="py-keyword">in</tt> <tt class="py-name">r</tt><tt class="py-op">:</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                        <tt class="py-name">padre</tt> <tt class="py-op">=</tt> <tt class="py-name">aux</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Variable aps.aplicaciones.items.models.relacion.itemPadre=aps.aplicaciones.items.models.relacion-class.html#itemPadre"><a title="aps.aplicaciones.items.models.relacion.itemPadre" class="py-name" href="#" onclick="return doclink('link-30', 'itemPadre', 'link-30');">itemPadre</a></tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-31', 'nombre', 'link-22');">nombre</a></tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">,</tt><tt class="py-name">i</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-32', 'nombre', 'link-22');">nombre</a></tt><tt class="py-op">,</tt><tt class="py-name">padre</tt><tt class="py-op">,</tt><tt class="py-name">i</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Variable aps.aplicaciones.items.models.items.versionAct=aps.aplicaciones.items.models.items-class.html#versionAct"><a title="aps.aplicaciones.items.models.items.versionAct" class="py-name" href="#" onclick="return doclink('link-33', 'versionAct', 'link-33');">versionAct</a></tt><tt class="py-op">,</tt><tt class="py-name">i</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.costo=aps.aplicaciones.fases.models.fases-class.html#costo,Variable aps.aplicaciones.items.models.items.costo=aps.aplicaciones.items.models.items-class.html#costo"><a title="aps.aplicaciones.fases.models.fases.costo
+aps.aplicaciones.items.models.items.costo" class="py-name" href="#" onclick="return doclink('link-34', 'costo', 'link-34');">costo</a></tt><tt class="py-op">,</tt><tt class="py-name">i</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Variable aps.aplicaciones.fases.models.fases.estado=aps.aplicaciones.fases.models.fases-class.html#estado,Variable aps.aplicaciones.items.models.items.estado=aps.aplicaciones.items.models.items-class.html#estado,Variable aps.aplicaciones.items.models.relacion.estado=aps.aplicaciones.items.models.relacion-class.html#estado,Variable aps.aplicaciones.lineasBase.models.lineasBase.estado=aps.aplicaciones.lineasBase.models.lineasBase-class.html#estado,Variable aps.aplicaciones.proyectos.models.Proyectos.estado=aps.aplicaciones.proyectos.models.Proyectos-class.html#estado,Variable aps.aplicaciones.solicitudCambio.models.solicitudCambio.estado=aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#estado,Variable aps.aplicaciones.solicitudCambio.models.votos.estado=aps.aplicaciones.solicitudCambio.models.votos-class.html#estado"><a title="aps.aplicaciones.fases.models.fases.estado
+aps.aplicaciones.items.models.items.estado
+aps.aplicaciones.items.models.relacion.estado
+aps.aplicaciones.lineasBase.models.lineasBase.estado
+aps.aplicaciones.proyectos.models.Proyectos.estado
+aps.aplicaciones.solicitudCambio.models.solicitudCambio.estado
+aps.aplicaciones.solicitudCambio.models.votos.estado" class="py-name" href="#" onclick="return doclink('link-35', 'estado', 'link-35');">estado</a></tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">            <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">''</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">            <tt class="py-name">t</tt><tt class="py-op">=</tt><tt class="py-name">Table</tt><tt class="py-op">(</tt> <tt class="py-name">lista</tt><tt class="py-op">,</tt> <tt class="py-name">style</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'GRID'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">0.5</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'BOX'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'SPAN'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'ROWBACKGROUNDS'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">Color</tt><tt class="py-op">(</tt><tt class="py-number">0.9</tt><tt class="py-op">,</tt> <tt class="py-number">0.9</tt><tt class="py-op">,</tt> <tt class="py-number">0.9</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'BACKGROUND'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">rgb2cmyk</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">=</tt><tt class="py-number">6</tt><tt class="py-op">,</tt><tt class="py-name">g</tt><tt class="py-op">=</tt><tt class="py-number">62</tt><tt class="py-op">,</tt><tt class="py-name">b</tt><tt class="py-op">=</tt><tt class="py-number">193</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'LINEABOVE'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">1.5</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">black</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'LINEBELOW'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">1.5</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">black</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'SIZE'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">12</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'ALIGN'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'CENTER'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'VALIGN'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'MIDDLE'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'TEXTCOLOR'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'BACKGROUND'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                       <tt class="py-op">]</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">              <tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-comment"># Y lo incluimos en el story.</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">            <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-comment"># Dejamos espacio.</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">Spacer</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">20</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-comment"># Creamos un DocTemplate en una hoja DIN A4, en la que se muestra el texto enmarcado (showBoundary=1) por un recuadro.</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-name">SimpleDocTemplate</tt><tt class="py-op">(</tt><tt class="py-name">MEDIA_ROOT</tt> <tt class="py-op">+</tt> <tt class="py-string">"/proyecto_"</tt> <tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">".pdf"</tt><tt class="py-op">,</tt><tt class="py-name">pagesize</tt><tt class="py-op">=</tt><tt class="py-name">A4</tt><tt class="py-op">,</tt> <tt class="py-name">rightMargin</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">leftMargin</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">topMargin</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">bottomMargin</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">datetime</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'-'</tt><tt class="py-op">*</tt><tt class="py-number">193</tt><tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'a'</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt><tt class="py-op">*</tt><tt class="py-number">100</tt> <tt class="py-op">+</tt> <tt class="py-string">'b'</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'Fin del Informe'</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt><tt class="py-op">*</tt><tt class="py-number">100</tt> <tt class="py-op">+</tt> <tt class="py-string">'('</tt><tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">datetime</tt><tt class="py-op">.</tt><tt class="py-name">date</tt><tt class="py-op">.</tt><tt class="py-name">today</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">')'</tt> <tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-comment"># Construimos el Platypus story.</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-name">doc</tt><tt class="py-op">.</tt><tt class="py-name">build</tt><tt class="py-op">(</tt><tt class="py-name">story</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-name">image_data</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">MEDIA_ROOT</tt> <tt class="py-op">+</tt> <tt class="py-string">"/proyecto_"</tt> <tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">".pdf"</tt><tt class="py-op">,</tt> <tt class="py-string">"rb"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">HttpResponse</tt><tt class="py-op">(</tt><tt class="py-name">image_data</tt><tt class="py-op">,</tt> <tt class="py-name">mimetype</tt><tt class="py-op">=</tt><tt class="py-string">"application/pdf"</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"> </tt>
+<a name="reporteProyecto"></a><div id="reporteProyecto-def"><a name="L136"></a><tt class="py-lineno">136</tt> <a class="py-toggle" href="#" id="reporteProyecto-toggle" onclick="return toggle('reporteProyecto');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.reportes.views.reporteProyecto-class.html">reporteProyecto</a><tt class="py-op">(</tt><tt class="py-base-class">TemplateView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="reporteProyecto-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="reporteProyecto-expanded"><a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">    <tt id="link-36" class="py-name"><a title="aps.aplicaciones.fases.views.adminFases.template_name
+aps.aplicaciones.fases.views.crearFaseEnProyecto.template_name
+aps.aplicaciones.fases.views.eliminarFase.template_name
+aps.aplicaciones.fases.views.finalizarFase.template_name
+aps.aplicaciones.fases.views.listarFases.template_name
+aps.aplicaciones.fases.views.listarFasesFinalizadas.template_name
+aps.aplicaciones.fases.views.modificarFases.template_name
+aps.aplicaciones.inicio.views.ActualizarPassView.template_name
+aps.aplicaciones.inicio.views.CrearGrupo.template_name
+aps.aplicaciones.inicio.views.Registrarse.template_name
+aps.aplicaciones.inicio.views.UpdateUser.template_name
+aps.aplicaciones.inicio.views.adminGrupos.template_name
+aps.aplicaciones.inicio.views.asignarGrupo.template_name
+aps.aplicaciones.inicio.views.eliminarGrupo.template_name
+aps.aplicaciones.inicio.views.eliminarUser.template_name
+aps.aplicaciones.inicio.views.error.template_name
+aps.aplicaciones.inicio.views.errorPermiso.template_name
+aps.aplicaciones.inicio.views.home.template_name
+aps.aplicaciones.inicio.views.listarGrupos.template_name
+aps.aplicaciones.inicio.views.listarUsuarios.template_name
+aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.template_name
+aps.aplicaciones.items.views.adminItems.template_name
+aps.aplicaciones.items.views.agregarAtributo.template_name
+aps.aplicaciones.items.views.crearItem.template_name
+aps.aplicaciones.items.views.crearTipoItem.template_name
+aps.aplicaciones.items.views.eliminarItems.template_name
+aps.aplicaciones.items.views.eliminarRelacion.template_name
+aps.aplicaciones.items.views.eliminarTipoItem.template_name
+aps.aplicaciones.items.views.finalizarItem.template_name
+aps.aplicaciones.items.views.listarItems.template_name
+aps.aplicaciones.items.views.listarItemsEliminados.template_name
+aps.aplicaciones.items.views.listarItemsFinalizados.template_name
+aps.aplicaciones.items.views.modificarAtributo.template_name
+aps.aplicaciones.items.views.modificarItems.template_name
+aps.aplicaciones.items.views.verTipoItems.template_name
+aps.aplicaciones.permisos.views.admin.template_name
+aps.aplicaciones.permisos.views.eliminar.template_name
+aps.aplicaciones.permisos.views.listar.template_name
+aps.aplicaciones.permisos.views.listarGrupos.template_name
+aps.aplicaciones.proyectos.views.agregarMiembro.template_name
+aps.aplicaciones.proyectos.views.crearProyecto.template_name
+aps.aplicaciones.proyectos.views.editMiembro.template_name
+aps.aplicaciones.proyectos.views.eliminarProyectos.template_name
+aps.aplicaciones.proyectos.views.iniciarProyecto.template_name
+aps.aplicaciones.proyectos.views.listarProyectosAJAX.template_name
+aps.aplicaciones.proyectos.views.listarProyectosNoIniciados.template_name
+aps.aplicaciones.proyectos.views.modificarProyectos.template_name
+aps.aplicaciones.reportes.views.reporteItems.template_name
+aps.aplicaciones.reportes.views.reporteProyecto.template_name
+aps.aplicaciones.solicitudCambio.views.ejecutarSolicitud.template_name" class="py-name" href="#" onclick="return doclink('link-36', 'template_name', 'link-19');">template_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'reportes/proyecto.html'</tt> </tt>
+<a name="reporteProyecto.get"></a><div id="reporteProyecto.get-def"><a name="L138"></a><tt class="py-lineno">138</tt> <a class="py-toggle" href="#" id="reporteProyecto.get-toggle" onclick="return toggle('reporteProyecto.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.reportes.views.reporteProyecto-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">request</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kwargs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="reporteProyecto.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="reporteProyecto.get-expanded"><a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">        <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt id="link-37" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-37', 'Proyectos', 'link-4');">Proyectos</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="aps.aplicaciones.inicio.views.adminGrupos.get
+aps.aplicaciones.inicio.views.home.get
+aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.crearItemEnFase.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.graficar.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemCandidatos.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.revivirItem.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
+aps.aplicaciones.lineasBase.views.crear.get
+aps.aplicaciones.lineasBase.views.listarDetallesLineasBase.get
+aps.aplicaciones.lineasBase.views.listarLineasBase.get
+aps.aplicaciones.lineasBase.views.retornarItemsDeFaseAJAX.get
+aps.aplicaciones.permisos.views.admin.get
+aps.aplicaciones.permisos.views.asignarAProyecto.get
+aps.aplicaciones.permisos.views.crear.get
+aps.aplicaciones.permisos.views.eliminar.get
+aps.aplicaciones.permisos.views.permisos_ajax.get
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.permisos.views.proyectos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get
+aps.aplicaciones.reportes.views.menu.get
+aps.aplicaciones.reportes.views.reporteItems.get
+aps.aplicaciones.reportes.views.reporteProyecto.get
+aps.aplicaciones.solicitudCambio.views.adminSolicitudes.get
+aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.get
+aps.aplicaciones.solicitudCambio.views.listar.get
+aps.aplicaciones.solicitudCambio.views.listarVotaciones.get
+aps.aplicaciones.solicitudCambio.views.votar.get" class="py-name" href="#" onclick="return doclink('link-38', 'get', 'link-21');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">kwargs</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-name">solicitudes</tt> <tt class="py-op">=</tt> <tt id="link-39" class="py-name"><a title="aps.aplicaciones.solicitudCambio
+aps.aplicaciones.solicitudCambio.models.solicitudCambio" class="py-name" href="#" onclick="return doclink('link-39', 'solicitudCambio', 'link-10');">solicitudCambio</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">item__fase__proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">p</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">order_by</tt><tt class="py-op">(</tt><tt class="py-string">'id'</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-comment"># Obtenemos de platypus las clases Paragraph, para escribir parrafos Image, para insertar imagenes y SimpleDocTemplate para definir el DocTemplate. Ademas importamos Spacer, para incluir espacios .</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Paragraph</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Image</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">SimpleDocTemplate</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Spacer</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Table</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">styles</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-comment"># Importamos clase de hoja de estilo de ejemplo.</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt><tt class="py-op">.</tt><tt class="py-name">styles</tt> <tt class="py-keyword">import</tt> <tt class="py-name">getSampleStyleSheet</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-comment"># Se importa el tamanho de la hoja y los colores</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt><tt class="py-op">.</tt><tt class="py-name">pagesizes</tt> <tt class="py-keyword">import</tt> <tt class="py-name">A4</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">colors</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-comment"># Creamos un PageTemplate de ejemplo.</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">        <tt class="py-name">estiloHoja</tt> <tt class="py-op">=</tt> <tt class="py-name">getSampleStyleSheet</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">        <tt class="py-comment">#Inicializamos la lista Platypus Story.</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-name">story</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">        <tt class="py-comment"># Ahora incluimos una imagen.</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-name">fichero_imagen</tt> <tt class="py-op">=</tt> <tt class="py-name">IMAGENES_ROOT</tt> <tt class="py-op">+</tt> <tt class="py-string">"/cabecera.png"</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-name">imagen_logo</tt> <tt class="py-op">=</tt> <tt class="py-name">Image</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">realpath</tt><tt class="py-op">(</tt><tt class="py-name">fichero_imagen</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">width</tt><tt class="py-op">=</tt><tt class="py-number">400</tt><tt class="py-op">,</tt><tt class="py-name">height</tt><tt class="py-op">=</tt><tt class="py-number">50</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">imagen_logo</tt><tt class="py-op">)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-comment">#Definimos como queremos que sea el estilo de la PageTemplate.</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt> <tt class="py-op">=</tt> <tt class="py-name">estiloHoja</tt><tt class="py-op">[</tt><tt class="py-string">'Heading5'</tt><tt class="py-op">]</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-comment">#No se hara un salto de pagina despues de escribir la cabecera (valor 1 en caso contrario).</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">pageBreakBefore</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-comment"># Se quiere que se empiece en la primera pagina a escribir. Si es distinto de 0 deja la primera hoja en blanco.</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">keepWithNext</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-comment"># Color de la cabecera.</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">backColor</tt><tt class="py-op">=</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">spaceAfter</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">spaceBefore</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'.'</tt><tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'Proyecto: '</tt><tt class="py-op">+</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-40', 'nombre', 'link-22');">nombre</a></tt><tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'-'</tt><tt class="py-op">*</tt><tt class="py-number">193</tt><tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-comment"># Incluimos un Flowable, que en este caso es un parrafo.</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">        <tt class="py-name">cabecera2</tt> <tt class="py-op">=</tt> <tt class="py-name">estiloHoja</tt><tt class="py-op">[</tt><tt class="py-string">'Heading3'</tt><tt class="py-op">]</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-name">cabecera2</tt><tt class="py-op">.</tt><tt class="py-name">pageBreakBefore</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">        <tt class="py-name">cabecera2</tt><tt class="py-op">.</tt><tt class="py-name">keepWithNext</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">        <tt class="py-name">cabecera2</tt><tt class="py-op">.</tt><tt class="py-name">backColor</tt><tt class="py-op">=</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'   '</tt><tt class="py-op">,</tt><tt class="py-name">cabecera2</tt><tt class="py-op">)</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">        <tt class="py-comment"># Lo incluimos en el Platypus story.</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">        <tt class="py-comment"># Definimos un parrafo. Vamos a crear un texto largo para demostrar como se genera mas de una hoja.</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">        <tt class="py-name">lista</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">        <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">'SOLICITUDES DE CAMBIO'</tt><tt class="py-op">,</tt><tt class="py-string">''</tt><tt class="py-op">,</tt><tt class="py-string">''</tt><tt class="py-op">,</tt><tt class="py-string">''</tt><tt class="py-op">,</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">        <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">' '</tt><tt class="py-op">,</tt><tt class="py-string">' '</tt><tt class="py-op">,</tt><tt class="py-string">' '</tt><tt class="py-op">,</tt><tt class="py-string">' '</tt><tt class="py-op">,</tt><tt class="py-string">' '</tt><tt class="py-op">,</tt> <tt class="py-string">' '</tt><tt class="py-op">,</tt> <tt class="py-string">' '</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">        <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">'ID'</tt><tt class="py-op">,</tt><tt class="py-string">'LINEA BASE'</tt><tt class="py-op">,</tt><tt class="py-string">'DESCRIPCION'</tt><tt class="py-op">,</tt><tt class="py-string">'ESTADO'</tt><tt class="py-op">,</tt><tt class="py-string">'SOLICITANTE'</tt><tt class="py-op">,</tt> <tt class="py-string">'COSTO'</tt><tt class="py-op">,</tt> <tt class="py-string">'LIDER VOTO?'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">        <tt class="py-name">fas</tt> <tt class="py-op">=</tt> <tt id="link-41" class="py-name"><a title="aps.aplicaciones.fases
+aps.aplicaciones.fases.models.fases" class="py-name" href="#" onclick="return doclink('link-41', 'fases', 'link-6');">fases</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt id="link-42" class="py-name"><a title="aps.aplicaciones.fases.models.fases.proyecto
+aps.aplicaciones.proyectos.models.Miembros.proyecto" class="py-name" href="#" onclick="return doclink('link-42', 'proyecto', 'link-24');">proyecto</a></tt><tt class="py-op">=</tt><tt class="py-name">p</tt><tt class="py-op">)</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">s</tt> <tt class="py-keyword">in</tt> <tt class="py-name">solicitudes</tt><tt class="py-op">:</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">            <tt class="py-name">voto</tt><tt class="py-op">=</tt><tt id="link-43" class="py-name"><a title="aps.aplicaciones.solicitudCambio.models.votos" class="py-name" href="#" onclick="return doclink('link-43', 'votos', 'link-13');">votos</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="aps.aplicaciones.inicio.views.adminGrupos.get
+aps.aplicaciones.inicio.views.home.get
+aps.aplicaciones.inicio.views.listarUsuariosDeGrupo.get
+aps.aplicaciones.items.views.ReversionVersiones.get
+aps.aplicaciones.items.views.crearItemEnFase.get
+aps.aplicaciones.items.views.definirCantidadAtributos.get
+aps.aplicaciones.items.views.eliminarAtributo.get
+aps.aplicaciones.items.views.graficar.get
+aps.aplicaciones.items.views.importar.get
+aps.aplicaciones.items.views.listarItemCandidatos.get
+aps.aplicaciones.items.views.listarItemParaCrearRelacion.get
+aps.aplicaciones.items.views.listarRelaciones.get
+aps.aplicaciones.items.views.listarVersiones.get
+aps.aplicaciones.items.views.modificarAtributoDeTipoItem.get
+aps.aplicaciones.items.views.mostrarDetalles.get
+aps.aplicaciones.items.views.mostrarDetallesV.get
+aps.aplicaciones.items.views.revivirItem.get
+aps.aplicaciones.items.views.verAtributosTipoItems.get
+aps.aplicaciones.lineasBase.views.crear.get
+aps.aplicaciones.lineasBase.views.listarDetallesLineasBase.get
+aps.aplicaciones.lineasBase.views.listarLineasBase.get
+aps.aplicaciones.lineasBase.views.retornarItemsDeFaseAJAX.get
+aps.aplicaciones.permisos.views.admin.get
+aps.aplicaciones.permisos.views.asignarAProyecto.get
+aps.aplicaciones.permisos.views.crear.get
+aps.aplicaciones.permisos.views.eliminar.get
+aps.aplicaciones.permisos.views.permisos_ajax.get
+aps.aplicaciones.permisos.views.permisos_grupos_ajax.get
+aps.aplicaciones.permisos.views.proyectos_ajax.get
+aps.aplicaciones.proyectos.views.adminComite.get
+aps.aplicaciones.proyectos.views.adminProyecto.get
+aps.aplicaciones.proyectos.views.detallesProyecto.get
+aps.aplicaciones.proyectos.views.miembrosAJAX.get
+aps.aplicaciones.proyectos.views.proyectos_ajax.get
+aps.aplicaciones.reportes.views.menu.get
+aps.aplicaciones.reportes.views.reporteItems.get
+aps.aplicaciones.reportes.views.reporteProyecto.get
+aps.aplicaciones.solicitudCambio.views.adminSolicitudes.get
+aps.aplicaciones.solicitudCambio.views.crearSolicitudCambio.get
+aps.aplicaciones.solicitudCambio.views.listar.get
+aps.aplicaciones.solicitudCambio.views.listarVotaciones.get
+aps.aplicaciones.solicitudCambio.views.votar.get" class="py-name" href="#" onclick="return doclink('link-44', 'get', 'link-21');">get</a></tt><tt class="py-op">(</tt><tt id="link-45" class="py-name" targets="Variable aps.aplicaciones.solicitudCambio.models.votos.solicitud=aps.aplicaciones.solicitudCambio.models.votos-class.html#solicitud"><a title="aps.aplicaciones.solicitudCambio.models.votos.solicitud" class="py-name" href="#" onclick="return doclink('link-45', 'solicitud', 'link-45');">solicitud</a></tt><tt class="py-op">=</tt><tt class="py-name">s</tt><tt class="py-op">,</tt> <tt id="link-46" class="py-name" targets="Variable aps.aplicaciones.inicio.forms.ActualizarPass.usuario=aps.aplicaciones.inicio.forms.ActualizarPass-class.html#usuario,Variable aps.aplicaciones.permisos.models.Permisos.usuario=aps.aplicaciones.permisos.models.Permisos-class.html#usuario,Variable aps.aplicaciones.solicitudCambio.models.solicitudCambio.usuario=aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#usuario,Variable aps.aplicaciones.solicitudCambio.models.votos.usuario=aps.aplicaciones.solicitudCambio.models.votos-class.html#usuario"><a title="aps.aplicaciones.inicio.forms.ActualizarPass.usuario
+aps.aplicaciones.permisos.models.Permisos.usuario
+aps.aplicaciones.solicitudCambio.models.solicitudCambio.usuario
+aps.aplicaciones.solicitudCambio.models.votos.usuario" class="py-name" href="#" onclick="return doclink('link-46', 'usuario', 'link-46');">usuario</a></tt><tt class="py-op">=</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Variable aps.aplicaciones.proyectos.models.Proyectos.lider=aps.aplicaciones.proyectos.models.Proyectos-class.html#lider"><a title="aps.aplicaciones.proyectos.models.Proyectos.lider" class="py-name" href="#" onclick="return doclink('link-47', 'lider', 'link-47');">lider</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt class="py-name">voto</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="aps.aplicaciones.fases.models.fases.estado
+aps.aplicaciones.items.models.items.estado
+aps.aplicaciones.items.models.relacion.estado
+aps.aplicaciones.lineasBase.models.lineasBase.estado
+aps.aplicaciones.proyectos.models.Proyectos.estado
+aps.aplicaciones.solicitudCambio.models.solicitudCambio.estado
+aps.aplicaciones.solicitudCambio.models.votos.estado" class="py-name" href="#" onclick="return doclink('link-48', 'estado', 'link-35');">estado</a></tt><tt class="py-op">==</tt><tt class="py-string">'pendiente'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">                <tt class="py-name">votolider</tt> <tt class="py-op">=</tt> <tt class="py-string">'No'</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">                <tt class="py-name">votolider</tt> <tt class="py-op">=</tt> <tt class="py-string">'Si'</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">            <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">s</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">,</tt><tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name" targets="Variable aps.aplicaciones.solicitudCambio.models.solicitudCambio.lineaBase=aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#lineaBase"><a title="aps.aplicaciones.solicitudCambio.models.solicitudCambio.lineaBase" class="py-name" href="#" onclick="return doclink('link-49', 'lineaBase', 'link-49');">lineaBase</a></tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="aps.aplicaciones.fases.models.fases.nombre
+aps.aplicaciones.inicio.forms.UserForm.nombre
+aps.aplicaciones.items.models.atributo.nombre
+aps.aplicaciones.items.models.items.nombre
+aps.aplicaciones.items.models.tipoItem.nombre
+aps.aplicaciones.lineasBase.models.lineasBase.nombre
+aps.aplicaciones.proyectos.models.Proyectos.nombre" class="py-name" href="#" onclick="return doclink('link-50', 'nombre', 'link-22');">nombre</a></tt> <tt class="py-op">,</tt><tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name" targets="Variable aps.aplicaciones.items.models.atributo.descripcion=aps.aplicaciones.items.models.atributo-class.html#descripcion,Variable aps.aplicaciones.solicitudCambio.models.solicitudCambio.descripcion=aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#descripcion"><a title="aps.aplicaciones.items.models.atributo.descripcion
+aps.aplicaciones.solicitudCambio.models.solicitudCambio.descripcion" class="py-name" href="#" onclick="return doclink('link-51', 'descripcion', 'link-51');">descripcion</a></tt><tt class="py-op">,</tt> <tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="aps.aplicaciones.fases.models.fases.estado
+aps.aplicaciones.items.models.items.estado
+aps.aplicaciones.items.models.relacion.estado
+aps.aplicaciones.lineasBase.models.lineasBase.estado
+aps.aplicaciones.proyectos.models.Proyectos.estado
+aps.aplicaciones.solicitudCambio.models.solicitudCambio.estado
+aps.aplicaciones.solicitudCambio.models.votos.estado" class="py-name" href="#" onclick="return doclink('link-52', 'estado', 'link-35');">estado</a></tt><tt class="py-op">,</tt> <tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="aps.aplicaciones.inicio.forms.ActualizarPass.usuario
+aps.aplicaciones.permisos.models.Permisos.usuario
+aps.aplicaciones.solicitudCambio.models.solicitudCambio.usuario
+aps.aplicaciones.solicitudCambio.models.votos.usuario" class="py-name" href="#" onclick="return doclink('link-53', 'usuario', 'link-46');">usuario</a></tt><tt class="py-op">,</tt> <tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-54" class="py-name" targets="Variable aps.aplicaciones.solicitudCambio.models.solicitudCambio.costoAdicional=aps.aplicaciones.solicitudCambio.models.solicitudCambio-class.html#costoAdicional"><a title="aps.aplicaciones.solicitudCambio.models.solicitudCambio.costoAdicional" class="py-name" href="#" onclick="return doclink('link-54', 'costoAdicional', 'link-54');">costoAdicional</a></tt><tt class="py-op">,</tt> <tt class="py-name">votolider</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">        <tt class="py-name">t</tt><tt class="py-op">=</tt><tt class="py-name">Table</tt><tt class="py-op">(</tt> <tt class="py-name">lista</tt><tt class="py-op">,</tt> <tt class="py-name">style</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'GRID'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">0.5</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'BOX'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'SPAN'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'ROWBACKGROUNDS'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">Color</tt><tt class="py-op">(</tt><tt class="py-number">0.9</tt><tt class="py-op">,</tt> <tt class="py-number">0.9</tt><tt class="py-op">,</tt> <tt class="py-number">0.9</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'BACKGROUND'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">rgb2cmyk</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">=</tt><tt class="py-number">6</tt><tt class="py-op">,</tt><tt class="py-name">g</tt><tt class="py-op">=</tt><tt class="py-number">62</tt><tt class="py-op">,</tt><tt class="py-name">b</tt><tt class="py-op">=</tt><tt class="py-number">193</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'BACKGROUND'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'LINEABOVE'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">1.5</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">black</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'LINEBELOW'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">1.5</tt><tt class="py-op">,</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">black</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'SIZE'</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">12</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'ALIGN'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'CENTER'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'VALIGN'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'MIDDLE'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">                       <tt class="py-op">(</tt><tt class="py-string">'TEXTCOLOR'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">white</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">                       <tt class="py-op">]</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">              <tt class="py-op">)</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">        <tt class="py-comment"># Y lo incluimos en el story.</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">        <tt class="py-comment"># Dejamos espacio.</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">Spacer</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">20</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">        <tt class="py-comment"># Creamos un DocTemplate en una hoja DIN A4, en la que se muestra el texto enmarcado (showBoundary=1) por un recuadro.</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">        <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-name">SimpleDocTemplate</tt><tt class="py-op">(</tt><tt class="py-name">MEDIA_ROOT</tt> <tt class="py-op">+</tt> <tt class="py-string">"/solicitud_"</tt> <tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">".pdf"</tt><tt class="py-op">,</tt><tt class="py-name">pagesize</tt><tt class="py-op">=</tt><tt class="py-name">A4</tt><tt class="py-op">,</tt> <tt class="py-name">rightMargin</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">leftMargin</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">topMargin</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">bottomMargin</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">datetime</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line"> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'-'</tt><tt class="py-op">*</tt><tt class="py-number">193</tt><tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'a'</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt><tt class="py-op">*</tt><tt class="py-number">100</tt> <tt class="py-op">+</tt> <tt class="py-string">'b'</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt> <tt class="py-op">=</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">'Fin del Informe'</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt><tt class="py-op">*</tt><tt class="py-number">100</tt> <tt class="py-op">+</tt> <tt class="py-string">'('</tt><tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">datetime</tt><tt class="py-op">.</tt><tt class="py-name">date</tt><tt class="py-op">.</tt><tt class="py-name">today</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">')'</tt> <tt class="py-op">,</tt><tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">        <tt class="py-name">story</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line"> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">        <tt class="py-comment"># Construimos el Platypus story.</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">        <tt class="py-name">doc</tt><tt class="py-op">.</tt><tt class="py-name">build</tt><tt class="py-op">(</tt><tt class="py-name">story</tt><tt class="py-op">)</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">        <tt class="py-name">image_data</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">MEDIA_ROOT</tt> <tt class="py-op">+</tt> <tt class="py-string">"/solicitud_"</tt> <tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">".pdf"</tt><tt class="py-op">,</tt> <tt class="py-string">"rb"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">HttpResponse</tt><tt class="py-op">(</tt><tt class="py-name">image_data</tt><tt class="py-op">,</tt> <tt class="py-name">mimetype</tt><tt class="py-op">=</tt><tt class="py-string">"application/pdf"</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line"> </tt>
+<a name="menu"></a><div id="menu-def"><a name="L254"></a><tt class="py-lineno">254</tt> <a class="py-toggle" href="#" id="menu-toggle" onclick="return toggle('menu');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="aps.aplicaciones.reportes.views.menu-class.html">menu</a><tt class="py-op">(</tt><tt class="py-base-class">TemplateView</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="menu-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="menu-expanded"><a name="menu.get"></a><div id="menu.get-def"><a name="L255"></a><tt class="py-lineno">255</tt> <a class="py-toggle" href="#" id="menu.get-toggle" onclick="return toggle('menu.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="aps.aplicaciones.reportes.views.menu-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">request</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kwargs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="menu.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="menu.get-expanded"><a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">        <tt id="link-55" class="py-name"><a title="aps.aplicaciones.proyectos" class="py-name" href="#" onclick="return doclink('link-55', 'proyectos', 'link-2');">proyectos</a></tt> <tt class="py-op">=</tt> <tt id="link-56" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos" class="py-name" href="#" onclick="return doclink('link-56', 'Proyectos', 'link-4');">Proyectos</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt id="link-57" class="py-name"><a title="aps.aplicaciones.proyectos.models.Proyectos.lider" class="py-name" href="#" onclick="return doclink('link-57', 'lider', 'link-47');">lider</a></tt><tt class="py-op">=</tt><tt class="py-name">request</tt><tt class="py-op">.</tt><tt class="py-name">user</tt><tt class="py-op">)</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">,</tt> <tt class="py-string">'reportes/proyecto.html'</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'proyectos'</tt><tt class="py-op">:</tt><tt id="link-58" class="py-name"><a title="aps.aplicaciones.proyectos" class="py-name" href="#" onclick="return doclink('link-58', 'proyectos', 'link-2');">proyectos</a></tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="aps.aplicaciones-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Jun 21 09:16:55 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
